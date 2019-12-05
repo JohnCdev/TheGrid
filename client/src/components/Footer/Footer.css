@@ -1,0 +1,15 @@
+.footer {
+    min-height: 50px;
+    background: #EB6864;
+    position: relative;
+}
+
+.footer span {
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right : 0;
+    padding: 3px;
+}
