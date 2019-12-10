@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Input, TextArea, FormBtn, InputPassword, InputEmail } from "../components/Form";
+import { Input, TextArea, FormBtn, InputPassword, InputEmail } from "../components/Form/Form";
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
