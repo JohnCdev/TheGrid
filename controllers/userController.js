@@ -8,7 +8,6 @@ module.exports = {
       console.log(req.body)
         //find users with this username
         db.User.find({ userName: req.body.userName }).then(dbModal => {
-          console.log(dbModal)
             //if any show up tell the client their account cannot be created
           if (dbModal) {
             res.sendStatus(400)
