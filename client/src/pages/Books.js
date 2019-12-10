@@ -4,7 +4,7 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid/Grid";
 import { List, ListItem } from "../components/List/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea, FormBtn } from "../components/Form/Form";
 import API from "../utils/API";
 
 class Books extends Component {
