@@ -7,9 +7,12 @@ module.exports = {
     create: (req, res) => {
       console.log(req.body)
         //find users with this username
-        db.User.find({ where: { userName: req.body.name } }).then(dbModal => {
+        db.User.find({ userName: req.body.userName }).then(dbModal => {
+          console.log(dbModal)
             //if any show up tell the client their account cannot be created
-          if (dbModal.length > 0) res.json({ userCreated: false });
+          if (dbModal) {
+            res.sendStatus(400)
+          }
           else {
               //otherwise hash the password and create the user
             bcrypt.hash(req.body.password, 10, (err, hash) => {
