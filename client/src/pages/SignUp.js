@@ -22,6 +22,7 @@ export default class SignUp extends Component {
       handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.userName && this.state.email && this.state.password) {
+          
           API.saveUser({
             userName: this.state.userName,
             email: this.state.email,
