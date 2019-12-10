@@ -10,6 +10,22 @@ export function Input(props) {
   );
 }
 
+export function InputPassword(props) { 
+  return (
+    <div className="form-group">
+      <input className="form-control" type="password" {...props} />
+    </div>
+  )
+}
+
+export function InputEmail(props) {
+  return (
+    <div className="form-group">
+    <input className="form-control" {...props} />
+  </div>
+  )
+}
+
 export function TextArea(props) {
   return (
     <div className="form-group">
