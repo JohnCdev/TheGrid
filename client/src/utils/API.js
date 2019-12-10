@@ -18,5 +18,5 @@ export default {
     return axios.post("/api/books", bookData);
   },
 
-  saveUser: userData => axios.post('/api/users', userData)
+  saveUser: userData => axios.post('/api/create-new-user', userData)
 };
