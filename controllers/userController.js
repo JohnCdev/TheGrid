@@ -5,15 +5,16 @@ const jwt = require('jsonwebtoken');
 module.exports = {
     //create new user
     create: (req, res) => {
+      console.log(req.body)
         //find users with this username
-        db.User.findAll({ where: { userName: req.body.name } }).then(dbModal => {
+        db.User.find({ where: { userName: req.body.name } }).then(dbModal => {
             //if any show up tell the client their account cannot be created
           if (dbModal.length > 0) res.json({ userCreated: false });
           else {
               //otherwise hash the password and create the user
             bcrypt.hash(req.body.password, 10, (err, hash) => {
               db.User.create({
-                userName: req.body.name,
+                userName: req.body.userName,
                 email: req.body.email,
                 password: hash
               })
