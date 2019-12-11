@@ -45,7 +45,7 @@ module.exports = {
               if (err) throw err
               else {
                 const data = [user, token];
-                res.json({ data })
+                res.json({ data });
               }
             })
           } else res.json({ message: "Invalid login"})
