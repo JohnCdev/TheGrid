@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Nav.css";
 import LogInOutBtn from "../LogInOutBtn/LogInOutBtn";
+import "./Nav.css";
 
 export default class Nav extends React.Component {
     state = {
