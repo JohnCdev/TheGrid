@@ -24,16 +24,17 @@ export default class Nav extends React.Component {
 
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+                <nav className="navbar navbar-expand navbar-dark bg-primary">
                     <a className="navbar-brand" href="/">
-                        React Reading List
+                        Base
                     </a>
+                    {/* add "active" to the nav-item className for what is active */}
                     <ul class="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Allies<span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Features</a>
+                            <a className="nav-link" href="#">nav item</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">{this.state.count}</a>
