@@ -21,5 +21,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "enzyme": "^2.5.2",
+    "react-test-renderer": "^16.12.0"
+  }
 }
