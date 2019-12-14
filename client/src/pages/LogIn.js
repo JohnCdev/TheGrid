@@ -4,11 +4,13 @@ import { Input, TextArea, FormBtn, InputPassword } from "../components/Form/Form
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
+import { Redirect } from 'react-router';
 
 export default class LogIn extends Component {
     state = {
         userName: "",
-        password: ""
+        password: "",
+        isLoggedIn: false
     }
 
     handleInputChange = event => {
@@ -31,13 +33,20 @@ export default class LogIn extends Component {
                         user: res.data.data[0],
                         token: res.data.data[1]
                     }
-                    console.log(resObj)
+                    console.log(resObj);
+                    this.setState(() => ({
+                        isLoggedIn: true
+                    }))
                 })
                 .catch(err => console.log(err));
         }
     };
 
     render() {
+        if (this.state.isLoggedIn === true) {
+            return <Redirect to='/' />
+        }
+        
         return (
             <Container>
                 <Jumbotron> <h1>Log In</h1></Jumbotron>
