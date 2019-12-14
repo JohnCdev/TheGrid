@@ -7,7 +7,6 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import {AuthContext} from '../context/AuthContext';
 
-
 export default function LogIn() {
     const { isAuthenticated, logInFunction, userData  } = useContext(AuthContext);
     const [formData, setFormData] = useState(
@@ -56,9 +55,9 @@ export default function LogIn() {
         }
     };
 
-        // if (isAuthenticated) {
-        //     return <Redirect to='/' />
-        // }
+        if (isAuthenticated) {
+            return <Redirect to='/' />
+        }
         
         return (
             <Container>
