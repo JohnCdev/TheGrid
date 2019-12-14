@@ -4,12 +4,14 @@ import { Input, TextArea, FormBtn, InputPassword, InputEmail } from "../componen
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
+import { Redirect } from 'react-router';
 
 export default class SignUp extends Component {
     state= {
         userName: "",
         email: "",
-        password: ""
+        password: "",
+        isNewAccount: false
     }
 
     handleInputChange = event => {
@@ -28,12 +30,18 @@ export default class SignUp extends Component {
             email: this.state.email,
             password: this.state.password
           })
-            .then(res => console.log(res))
+            .then(this.setState(() => ({
+              isNewAccount: true
+          })))
             .catch(err => console.log(err));
         }
       };
 
     render() {
+
+      if (this.state.isNewAccount) {
+        return <Redirect to='/log-in' />
+      }
         return (
             <Container>
                 <Jumbotron> <h1>Sign up</h1></Jumbotron>
