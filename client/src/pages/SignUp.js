@@ -40,7 +40,7 @@ export default class SignUp extends Component {
     render() {
 
       if (this.state.isNewAccount) {
-        return <Redirect to='/login' />
+        return <Redirect to='/log-in' />
       }
         return (
             <Container>
