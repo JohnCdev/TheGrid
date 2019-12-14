@@ -18,7 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Books} />
           <Route exact path = '/new-user' component={SignUp} />
-          <Route exact path = '/login' component={LogIn} />
+          <Route exact path = '/log-in' component={LogIn} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />
