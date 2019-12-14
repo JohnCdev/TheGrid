@@ -8,5 +8,7 @@ router.route('/login')
 router.route('/create-new-user') //http://localhost:3000/api/create-new-user
   .post(userController.create);  
 
+  router.route('/auth-test')
+  .post(userController.authTest)
 
 module.exports = router;

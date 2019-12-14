@@ -18,6 +18,10 @@ export default {
     return axios.post("/api/books", bookData);
   },
 
+  authTest: () => {
+    return axios.post('/api/users/auth-test')
+  },
+
   saveUser: userData => axios.post('/api/users/create-new-user', userData),
 
   userLogIn: userData => axios.post('/api/users/login', userData)
