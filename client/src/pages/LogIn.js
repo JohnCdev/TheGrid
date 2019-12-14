@@ -9,15 +9,16 @@ import {AuthContext} from '../context/AuthContext';
 
 
 export default function LogIn() {
-    const { isAuthenticated, logInFunction } = useContext(AuthContext);
+    const { isAuthenticated, logInFunction, userData  } = useContext(AuthContext);
     const [formData, setFormData] = useState(
         {userName: '', password: ''}
     )
-    
+
         const apiTest = (e) => {
             e.preventDefault()
-            API.authTest()
-            .then(console.log('hello'))
+
+            API.authTest(userData.token)
+            .then(res => console.log(res))
         }
 
     const handleUserNameChange = event => {
@@ -37,7 +38,6 @@ export default function LogIn() {
     };
 
     const handleFormSubmit = event => {
-        console.log(logInFunction)
         event.preventDefault();
         if (formData.userName && formData.password) {
 
@@ -50,17 +50,15 @@ export default function LogIn() {
                         user: res.data.data[0],
                         token: res.data.data[1]
                     }
-                    console.log(logInFunction)
-                    console.log(resObj);
-                    logInFunction({ resObj })
+                    logInFunction({ user: resObj })
                 })
                 .catch(err => console.log(err));
         }
     };
 
-        if (isAuthenticated) {
-            return <Redirect to='/' />
-        }
+        // if (isAuthenticated) {
+        //     return <Redirect to='/' />
+        // }
         
         return (
             <Container>
