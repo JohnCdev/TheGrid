@@ -31,7 +31,6 @@ export default class LogIn extends Component {
                         user: res.data.data[0],
                         token: res.data.data[1]
                     }
-                    console.log(resObj)
                 })
                 .catch(err => console.log(err));
         }

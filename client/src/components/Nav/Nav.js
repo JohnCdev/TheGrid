@@ -1,28 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./Nav.css";
 import LogInOutBtn from "../LogInOutBtn/LogInOutBtn";
-import "./Nav.css";
+import { AuthContext } from "../../context/AuthContext";
 
-export default class Nav extends React.Component {
-    state = {
-        authenticated: false,
-        count: 0
-    }
-
-
-    handleClick = () => {
-        let nextCount = this.state.count + 1;
-        this.setState({count: nextCount})
-        
-    }
-
-
-
-    render() {
-
-
-
-
+export default function Nav() {
+  const { isAuthenticated, toggleAuth } = useContext(AuthContext);
+    
         return (
             <div>
                 <nav className="navbar navbar-expand navbar-dark bg-primary">
@@ -38,12 +21,13 @@ export default class Nav extends React.Component {
                             <a className="nav-link" href="#">nav item</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">{this.state.count}</a>
+                            <a className="nav-link" href="#"></a>
                         </li>
                     </ul>
-                    <LogInOutBtn handleClick={this.handleClick} authenticated={this.state.authenticated}/>
+                    <LogInOutBtn />
+
                 </nav>
             </div>
         )
-    }
+    
 }
