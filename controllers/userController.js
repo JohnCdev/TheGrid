@@ -72,5 +72,10 @@ module.exports = {
         res.json({ hello: 'this finall works' })
       }
     });
+  },
+  getProfile: (req,res) => {
+    db.Profile.find({userName: req.body.userName})
+    .then(data => res.json({data}))
   }
 };
+

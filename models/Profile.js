@@ -9,28 +9,28 @@ var ProfileSchema = new Schema({
         required: true
     },
 
-  firstName: {
-      type: String,
-      required: true
-  },
-  lastName: {
-      type: String,
-      required: true
-  },
-  age: {
-      type: Number,
-      required: true
-  },
-  currentCity: {
-      type: String,
-      required: true
-  },
-  lastLogIn: {
-      type: Date
-  },
-  /*friendList: {
-      type: Array
-  }*/
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number,
+        required: true
+    },
+    currentCity: {
+        type: String,
+        required: true
+    },
+    lastLogIn: {
+        type: Date
+    },
+    /*friendList: {
+        type: Array
+    }*/
 });
 
 var Profile = mongoose.model("Profile", ProfileSchema);

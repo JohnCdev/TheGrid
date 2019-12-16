@@ -46,9 +46,10 @@ export default function LogIn() {
             })
                 .then((res) => {
                     const resObj = {
-                        user: res.data.data[0].id,
+                        user: res.data.data[0].userName,
                         token: res.data.data[1]
                     }
+                    sessionStorage.setItem('userName', resObj.user);
                     logInFunction({ user: resObj })
                 })
                 .catch(err => console.log(err));
@@ -56,7 +57,7 @@ export default function LogIn() {
     };
 
         if (isAuthenticated) {
-            return <Redirect to='/' />
+            return <Redirect to='/profile' />
         }
         
         return (

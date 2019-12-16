@@ -7,8 +7,8 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 
 export default class ViewProfile extends Component {
-    state= {
-        id: "",
+    state = {
+        userName: "",
         firstName: "",
         lastName: "",
         age: "",
@@ -19,30 +19,36 @@ export default class ViewProfile extends Component {
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
-          [name]: value
+            [name]: value
         });
-      };
+    };
     componentDidMount = event => {
-        this.state.id = sessionStorage.getItem("userObj")
+        this.state.userName = sessionStorage.getItem("userName")
         API.getProfile({
-            id: this.state.id
+            userName: this.state.userName
         })
-        .then(res => {
-           // this.state.firstName = res[0].profile.firstName
-            console.log(res)
-        })
-        .catch(err => console.log(err))
+            .then(res => {
+                const user = res.data.data[0]
+                this.setState({
+                    userName: user.userName,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    age: user.age,
+                    currentCity: user.currentCity
+                })
+            })
+            .catch(err => console.log(err))
     }
-    
-      handleFormSubmit = event => {
+
+    handleFormSubmit = event => {
         event.preventDefault();
-        
-      };
+
+    };
 
     render() {
         return (
             <Container>
-                <Jumbotron> <h1>Sign up</h1></Jumbotron>
+                <Jumbotron> <h1>Profile</h1></Jumbotron>
                 <form>
                     <Input
                         value={this.state.firstName}
