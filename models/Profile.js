@@ -23,9 +23,9 @@ var ProfileSchema = new Schema({
   lastLogIn: {
       type: Date
   },
-  friendList: {
+  /*friendList: {
       type: Array
-  }
+  }*/
 });
 
 var Profile = mongoose.model("Profile", ProfileSchema);

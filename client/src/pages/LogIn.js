@@ -30,10 +30,11 @@ export default class LogIn extends Component {
             })
                 .then((res) => {
                     const resObj = {
-                        user: res.data.data[0],
+                        user: res.data.data[0].id,
                         token: res.data.data[1]
                     }
-                    console.log(resObj);
+                    sessionStorage.setItem('userObj',resObj.user)
+                    sessionStorage.setItem('token',resObj.token)
                     this.setState(() => ({
                         isLoggedIn: true
                     }))
@@ -44,7 +45,7 @@ export default class LogIn extends Component {
 
     render() {
         if (this.state.isLoggedIn === true) {
-            return <Redirect to='/' />
+            return <Redirect to='/profile' />
         }
         
         return (

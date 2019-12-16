@@ -24,11 +24,11 @@ export default class SignUp extends Component {
       handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.userName && this.state.email && this.state.password) {
-          
+          //add a blank profile element
           API.saveUser({
             userName: this.state.userName,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
           })
             .then(this.setState(() => ({
               isNewAccount: true

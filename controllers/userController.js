@@ -16,7 +16,14 @@ module.exports = {
           db.User.create({
             userName: req.body.userName,
             email: req.body.email,
-            password: hash
+            password: hash,
+            profile: {
+              firstName: req.body.profile.firstName,
+              lastName: req.body.profile.lastName,
+              age: req.body.profile.age,
+              currentCity: req.body.profile.currentCity,
+              friendList: req.body.friendList
+            }
           })
             //tell the client their account was successfully created
             .then(res.json({ userCreated: true }))
@@ -48,9 +55,24 @@ module.exports = {
                 res.json({ data });
               }
             })
-          } else res.json({ message: "Invalid login"})
+          } else res.json({ message: "Invalid login" })
 
         })
       })
-  }
+  },
+
+  getProfile: (req, res) => {
+    db.User.find({ _id: req.body.id })
+      .then(data => console.log(data)/* {
+        userProfile = {
+          firstName: data[0].profile.firstName,
+          lastName: data[0].profile.lastName,
+          age: data[0].profile.age,
+          currentCity: data[0].profile.currentCity
+        }
+        res.json({ userProfile })
+      }*/)
+      .catch(err => console.log(err))
+  },
+
 };
