@@ -4,6 +4,11 @@ var Schema = mongoose.Schema;
 //Schema That will be associated with the User Model
 var ProfileSchema = new Schema({
 
+    userName: {
+        type: String,
+        required: true
+    },
+
   firstName: {
       type: String,
       required: true

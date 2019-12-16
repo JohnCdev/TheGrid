@@ -33,5 +33,5 @@ export default {
 
   userLogIn: userData => axios.post('/api/users/login', userData),
 
-  getProfile: userData => axios.post('api/users/profile', userData)
+  //getProfile: userData => axios.post('api/users/profile', userData)
 };

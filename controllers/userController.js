@@ -17,16 +17,18 @@ module.exports = {
             userName: req.body.userName,
             email: req.body.email,
             password: hash,
-            profile: {
-              firstName: req.body.profile.firstName,
-              lastName: req.body.profile.lastName,
-              age: req.body.profile.age,
-              currentCity: req.body.profile.currentCity,
-              friendList: req.body.friendList
-            }
           })
             //tell the client their account was successfully created
             .then(res.json({ userCreated: true }))
+            .catch(err => console.log(err));
+          db.Profile.create({
+            userName: req.body.userName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            age: req.body.age,
+            currentCity: req.body.currentCity
+          })
+            .then(/*res.json({ profileCreated: true })*/)
             .catch(err => console.log(err));
         });
       }
@@ -67,7 +69,7 @@ module.exports = {
       if (err) {
         res.sendStatus(403);
       } else {
-        res.json({hello: 'this finall works'})
+        res.json({ hello: 'this finall works' })
       }
     });
   }
