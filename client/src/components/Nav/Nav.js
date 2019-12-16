@@ -3,6 +3,9 @@ import "./Nav.css";
 import LogInOutBtn from "../LogInOutBtn/LogInOutBtn";
 import { AuthContext } from "../../context/AuthContext";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import BaseNav from "../BaseNav/BaseNav";
+import AlliesNav from "../AlliesNav/AlliesNav";
+import DiscoverNav from "../DiscoverNav/DiscoverNav";
 
 export default function Nav() {
   const { isAuthenticated, toggleAuth } = useContext(AuthContext);
@@ -10,21 +13,15 @@ export default function Nav() {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-primary">
-        <Link className="navbar-brand" to="/">
-          Base
-        </Link>
+        <BaseNav />
 
         {/* add "active" to the nav-item className for what is active */}
         <ul class="navbar-nav mr-auto">
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Allies<span className="sr-only">(current)</span>
-            </a>
+            <AlliesNav />
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              nav item
-            </a>
+            <DiscoverNav />
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#"></a>
