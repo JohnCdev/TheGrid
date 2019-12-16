@@ -52,5 +52,16 @@ module.exports = {
 
         })
       })
+  },
+  authTest: (req, res) => {
+
+    const requestData = JSON.parse(JSON.stringify(req.body));
+    jwt.verify(req.token, "secretkey", (err, authData) => {
+      if (err) {
+        res.sendStatus(403);
+      } else {
+        res.json({hello: 'this finall works'})
+      }
+    });
   }
 };

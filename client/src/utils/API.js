@@ -18,6 +18,17 @@ export default {
     return axios.post("/api/books", bookData);
   },
 
+  authTest: (token,) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    }
+
+    return axios.post('/api/users/auth-test',{hello: 'hello'}, config)
+  },
+
   saveUser: userData => axios.post('/api/users/create-new-user', userData),
 
   userLogIn: userData => axios.post('/api/users/login', userData)
