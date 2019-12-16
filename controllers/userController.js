@@ -60,19 +60,15 @@ module.exports = {
         })
       })
   },
+  authTest: (req, res) => {
 
-  getProfile: (req, res) => {
-    db.User.find({ _id: req.body.id })
-      .then(data => console.log(data)/* {
-        userProfile = {
-          firstName: data[0].profile.firstName,
-          lastName: data[0].profile.lastName,
-          age: data[0].profile.age,
-          currentCity: data[0].profile.currentCity
-        }
-        res.json({ userProfile })
-      }*/)
-      .catch(err => console.log(err))
-  },
-
+    const requestData = JSON.parse(JSON.stringify(req.body));
+    jwt.verify(req.token, "secretkey", (err, authData) => {
+      if (err) {
+        res.sendStatus(403);
+      } else {
+        res.json({hello: 'this finall works'})
+      }
+    });
+  }
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AuthContext from './context/AuthContext';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import ViewProfile from './pages/ViewProfile';
@@ -11,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
+    <AuthContext >
     <Router>
       <div>
         <Nav />
@@ -24,6 +26,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </AuthContext>
   );
 }
 
