@@ -48,10 +48,14 @@ class ViewUserProfile extends Component {
     ) : (
       <>
         <Jumbotron>
-          <h1>Latest Status Update Here</h1>
+          <h1>{this.state.userName}</h1>
+          <h3>Latest Status Update?</h3>
           <h3>About? What clans/games they play?</h3>
           <h3>Last logged in?</h3>
-          <ProfilePicture name={this.state.userName} location={this.state.currentCity} age={this.state.age} />
+          <ProfilePicture
+            location={this.state.currentCity}
+            age={this.state.age}
+          />
         </Jumbotron>
         <Container>{this.state.userName}</Container>
       </>

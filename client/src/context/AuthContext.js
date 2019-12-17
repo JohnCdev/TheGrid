@@ -5,13 +5,11 @@ export const AuthContext = createContext();
 class AuthContextProvider extends Component {
   state = {
     logInFunction: (userObject) => {
-      console.log(userObject)
+      console.log(userObject.user.user)
         this.setState({
             isAuthenticated: true,
             userData: {
-              id: userObject.user.user.id,
-              userName: userObject.user.user.userName,
-              email: userObject.user.user.email,
+              userName: userObject.user.user,
               token: userObject.user.token
             }
         })

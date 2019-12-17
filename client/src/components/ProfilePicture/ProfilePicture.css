@@ -16,14 +16,14 @@ img{
     text-align: center;
 
 }
-ul{
+.ProfilePicture ul{
     padding: 0px;
     background-color: yellow;
     width: 160px;
     margin: 0px;
 }
 
-li{
+.ProfilePicture li{
     list-style: none;
     background-color: green;
     
