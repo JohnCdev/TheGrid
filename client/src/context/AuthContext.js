@@ -19,7 +19,8 @@ class AuthContextProvider extends Component {
     isAuthenticated: false
   };
 
-  logOut = () => {
+  toggleAuth = () => {
+    console.log("auth toggle")
     this.setState({ isAuthenticated: !this.state.isAuthenticated });
   };
 
