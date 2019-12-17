@@ -9,10 +9,10 @@ export default function LogInOutBtn() {
       <Link to="/log-in">Log In</Link>
     </button>
   ) : (
-    <button className="btn my-2 my-sm-0">
-      Log Out
-    </button>
-  );
+      <button className="btn my-2 my-sm-0">
+        <Link to="/log-in">Log Out</Link>
+      </button>
+    );
 
   return authenticationStatus;
 }
