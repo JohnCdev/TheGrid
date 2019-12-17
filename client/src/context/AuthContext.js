@@ -23,6 +23,16 @@ class AuthContextProvider extends Component {
   };
 
   render() {
+    if(!this.state.isAuthenticated){
+      const user = JSON.parse(sessionStorage.getItem('project3user'))
+      const userObject = {
+        user: {
+          user: user.user,
+          token: user.token
+        }
+      }
+      this.state.logInFunction(userObject)
+    }
     return (
         <AuthContext.Provider value={{...this.state, toggleAuth: this.toggleAuth}}>
             { this.props.children }
