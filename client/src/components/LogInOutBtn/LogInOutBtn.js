@@ -9,7 +9,7 @@ export default function LogInOutBtn() {
       <Link to="/log-in">Log In</Link>
     </button>
   ) : (
-      <button type="button" className="btn my-2 my-sm-0">
+      <button className="btn my-2 my-sm-0">
         <Link to="/log-in">Log Out</Link>
       </button>
     );
