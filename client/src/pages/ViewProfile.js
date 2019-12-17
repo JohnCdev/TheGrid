@@ -42,7 +42,15 @@ export default class ViewProfile extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
+        API.updateProfile({
+            userName: this.state.userName,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            age: this.state.age,
+            currentCity: this.state.currentCity,
+            lastUpdated: Date.now()
+        }).then(res => console.log(res))
+            .catch(err => console.log(err))
     };
 
     render() {

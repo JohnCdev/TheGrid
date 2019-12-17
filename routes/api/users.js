@@ -23,6 +23,7 @@ router.route('/create-new-user') //http://localhost:3000/api/create-new-user
   
 router.route('/profile')
   .post(userController.getProfile)
+  .put(userController.updateProfile)
 
   router.route('/auth-test')
   .post(verifyToken, userController.authTest)

@@ -25,7 +25,7 @@ var ProfileSchema = new Schema({
         type: String,
         required: true
     },
-    lastLogIn: {
+    lastUpdated: {
         type: Date
     },
     /*friendList: {
