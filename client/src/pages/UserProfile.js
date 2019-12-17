@@ -1,14 +1,6 @@
-import React, { Component, useEffect, useState, useContext } from "react";
-import { Link, withRouter } from "react-router-dom";
+import React, { Component } from "react";
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
-import Jumbotron from "../components/Jumbotron/Jumbotron";
-import { Redirect } from "react-router";
-import { AuthContext } from "../context/AuthContext";
-import Nav from "../components/Nav/Nav";
-
-
-
 
 class ViewUserProfile extends Component {
 
@@ -22,8 +14,6 @@ class ViewUserProfile extends Component {
         })
     }
     
-    
-
   render() {
 
     const profile = this.props.match.params.userProfile
