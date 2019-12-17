@@ -63,8 +63,9 @@ module.exports = {
       })
   },
   getUserProfile: (req, res) => {
-    console.log(req.params)
-    res.json({hello: 'hello'})
+    console.log(req.params.profile)
+    db.Profile.find({userName: req.params.profile})
+    .then(data => res.json({data}))
   },
   authTest: (req, res) => {
 
