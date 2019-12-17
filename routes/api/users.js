@@ -26,6 +26,7 @@ router.route('/get-profile/:profile')
   
 router.route('/profile')
   .post(userController.getProfile)
+  .put(userController.updateProfile)
 
   router.route('/auth-test')
   .post(verifyToken, userController.authTest)

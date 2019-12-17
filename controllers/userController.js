@@ -26,7 +26,8 @@ module.exports = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             age: req.body.age,
-            currentCity: req.body.currentCity
+            currentCity: req.body.currentCity,
+            lastUpdated: Date.now()
           })
             .then(/*res.json({ profileCreated: true })*/)
             .catch(err => console.log(err));
@@ -78,9 +79,23 @@ module.exports = {
       }
     });
   },
-  getProfile: (req,res) => {
-    db.Profile.find({userName: req.body.userName})
-    .then(data => res.json({data}))
+  getProfile: (req, res) => {
+    db.Profile.find({ userName: req.body.userName })
+      .then(data => res.json({ data }))
+  },
+
+  updateProfile: (req, res) => {
+    db.Profile.updateOne({ userName: req.body.userName },
+      {
+        $set: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          age: req.body.age,
+          currentCity: req.body.currentCity,
+          lastUpdated: req.body.lastUpdated
+        }
+      }).then(data => res.json({data}))
+      .catch(err => console.log(err))
   }
 };
 
