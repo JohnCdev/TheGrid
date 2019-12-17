@@ -53,6 +53,10 @@ module.exports = {
         })
       })
   },
+  getProfile: (req, res) => {
+    console.log(req.params)
+    res.json({hello: 'hello'})
+  },
   authTest: (req, res) => {
 
     const requestData = JSON.parse(JSON.stringify(req.body));

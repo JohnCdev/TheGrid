@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/" component={Books} />
           <Route exact path = '/new-user' component={SignUp} />
           <Route exact path = '/log-in' component={LogIn} />
-          <Route path = '/user-profile/' component={UserProfile} />
+          <Route path = '/user-profile/:userProfile' component={UserProfile} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />
