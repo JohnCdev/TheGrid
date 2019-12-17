@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "../components/Grid/Grid";
-import Jumbotron from "../components/Jumbotron/Jumbotron";
 import AlliesBar from "../components/AlliesBar/AlliesBar";
 import Feed from "../components/Feed/Feed";
 
 const FeedPage = () => {
     const [feed, setFeed] = useState([
-        { id: 1, userName: "John", timeStamp: "xx:xx:xx", content: "awofinawfpaihninwfpainawinawolkinflokinaglnbedglknedgljkrsglknijgd;lkn" },
-        { id: 1, userName: "John", timeStamp: "xx:xx:xx", content: "awofinawfpaihninwfpainawinawolkinflokinaglnbedglknedgljkrsglknijgd;lkn" },
-        { id: 1, userName: "John", timeStamp: "xx:xx:xx", content: "awofinawfpaihninwfpainawinawolkinflokinaglnbedglknedgljkrsglknijgd;lkn" },
-        { id: 1, userName: "John", timeStamp: "xx:xx:xx", content: "awofinawfpaihninwfpainawinawolkinflokinaglnbedglknedgljkrsglknijgd;lkn" }
+        { id: 1, userName: "John", timeStamp: "12:12:12", content: "Yo, this is an awesome post." },
+        { id: 2, userName: "Shawn", timeStamp: "12:12:12", content: "Yo, this is an awesome post." },
+        { id: 3, userName: "Charles", timeStamp: "12:12:12", content: "Yo, this is an awesome post." },
+        { id: 4, userName: "Tripp", timeStamp: "12:12:12", content: "Yo, this is an awesome post." }
     ]);
 
     return (
-        <main>
+        <main style={{ "height": "100%", "marginBottom": "200px" }}>
             <AlliesBar />
             <Container>
                 {feed.length > 0 ?
-                    <Feed feed={{...feed}}/> :
+                    <Feed feed={feed} /> :
                     <h1>You have no feed</h1>}
             </Container>
         </main>
