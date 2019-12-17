@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
+
+
+
+
 
 class ViewUserProfile extends Component {
 
@@ -14,6 +19,8 @@ class ViewUserProfile extends Component {
         })
     }
     
+    
+
   render() {
 
     const profile = this.props.match.params.userProfile
