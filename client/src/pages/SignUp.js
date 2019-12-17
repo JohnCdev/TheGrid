@@ -7,71 +7,104 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 
 export default class SignUp extends Component {
-    state= {
-        userName: "",
-        email: "",
-        password: "",
-        isNewAccount: false
+  state = {
+    userName: "",
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    age: "",
+    currentCity: "",
+    isNewAccount: false
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.userName && this.state.email && this.state.password) {
+      //add a blank profile element
+      API.saveUser({
+        userName: this.state.userName,
+        email: this.state.email,
+        password: this.state.password,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        age: this.state.age,
+        currentCity: this.state.currentCity
+      })
+        .then(this.setState(() => ({
+          isNewAccount: true
+        })))
+        .catch(err => console.log(err));
     }
+  };
 
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-          [name]: value
-        });
-      };
-    
-      handleFormSubmit = event => {
-        event.preventDefault();
-        if (this.state.userName && this.state.email && this.state.password) {
-          
-          API.saveUser({
-            userName: this.state.userName,
-            email: this.state.email,
-            password: this.state.password
-          })
-            .then(this.setState(() => ({
-              isNewAccount: true
-          })))
-            .catch(err => console.log(err));
-        }
-      };
+  render() {
 
-    render() {
-
-      if (this.state.isNewAccount) {
-        return <Redirect to='/log-in' />
-      }
-        return (
-            <Container>
-                <Jumbotron> <h1>Sign up</h1></Jumbotron>
-                <form>
-                    <Input
-                        value={this.state.userName}
-                        onChange={this.handleInputChange}
-                        name="userName"
-                        placeholder="User Name"
-                    />
-                    <InputEmail 
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
-                        name="email"
-                        placeholder="Email"
-                    />
-                    <InputPassword 
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                        name="password"
-                        placeholder="Password"
-                    />
-                    <FormBtn
-                      //  disabled={!(this.state.userName && this.state.email && this.state.password)}
-                        onClick={this.handleFormSubmit}
-                    >
-                        Submit
+    if (this.state.isNewAccount) {
+      return <Redirect to='/log-in' />
+    }
+    return (
+      <Container>
+        <Jumbotron> <h1>Sign up</h1></Jumbotron>
+        <form>
+          <Input
+            value={this.state.userName}
+            onChange={this.handleInputChange}
+            name="userName"
+            placeholder="User Name"
+          />
+          <InputEmail
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            name="email"
+            placeholder="Email"
+          />
+          <InputPassword
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            name="password"
+            placeholder="Password"
+          />
+          <hr />
+          <Input
+            value={this.state.firstName}
+            onChange={this.handleInputChange}
+            name="firstName"
+            placeholder="First Name"
+          />
+          <Input
+            value={this.state.lastName}
+            onChange={this.handleInputChange}
+            name="lastName"
+            placeholder="Last Name"
+          />
+          <Input
+            value={this.state.age}
+            onChange={this.handleInputChange}
+            name="age"
+            placeholder="Age"
+          />
+          <Input
+            value={this.state.currentCity}
+            onChange={this.handleInputChange}
+            name="currentCity"
+            placeholder="City"
+          />
+          <FormBtn
+            //  disabled={!(this.state.userName && this.state.email && this.state.password)}
+            onClick={this.handleFormSubmit}
+          >
+            Submit
                     </FormBtn>
-                </form>
-            </Container>
-        )
-    }
+        </form>
+      </Container>
+    )
+  }
 }

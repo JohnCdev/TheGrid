@@ -31,5 +31,7 @@ export default {
 
   saveUser: userData => axios.post('/api/users/create-new-user', userData),
 
-  userLogIn: userData => axios.post('/api/users/login', userData)
+  userLogIn: userData => axios.post('/api/users/login', userData),
+
+  getProfile: userData => axios.post('api/users/profile', userData)
 };

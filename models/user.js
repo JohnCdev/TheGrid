@@ -7,10 +7,6 @@ const userSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   createdOn: { type: Date, default: Date.now },
-  profile: {
-    type: Schema.Types.ObjectId,
-    ref: "Profile"
-  }
 });
 
 userSchema.plugin(uniqueValidator);
