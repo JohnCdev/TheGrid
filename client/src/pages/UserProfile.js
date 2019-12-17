@@ -14,7 +14,8 @@ class ViewUserProfile extends Component {
 
     componentDidMount(){
         const profile = this.props.match.params.userProfile
-        API.getProfile(profile)
+        console.log(profile)
+        API.getUserProfile(profile)
         .then(res => {
             console.log(res)
             //update state and get the components to update
@@ -25,10 +26,10 @@ class ViewUserProfile extends Component {
 
   render() {
 
-
+    const profile = this.props.match.params.userProfile
     return (
       <Container>
-         
+         {profile}
       </Container>
     );
   }

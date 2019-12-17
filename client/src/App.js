@@ -4,11 +4,11 @@ import AuthContext from './context/AuthContext';
 import SignUp from './pages/SignUp';
 import UserProfile from './pages/UserProfile';
 import LogIn from './pages/LogIn';
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
+import ViewProfile from './pages/ViewProfile';
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -17,9 +17,10 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Books} />
+          <Route exact path="/" component={HomePage} />
           <Route exact path = '/new-user' component={SignUp} />
           <Route exact path = '/log-in' component={LogIn} />
+          <Route exact path = '/profile' component={ViewProfile} />
           <Route path = '/user-profile/:userProfile' component={UserProfile} />
           <Route component={NoMatch} />
         </Switch>

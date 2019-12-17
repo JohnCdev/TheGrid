@@ -16,10 +16,19 @@ module.exports = {
           db.User.create({
             userName: req.body.userName,
             email: req.body.email,
-            password: hash
+            password: hash,
           })
             //tell the client their account was successfully created
             .then(res.json({ userCreated: true }))
+            .catch(err => console.log(err));
+          db.Profile.create({
+            userName: req.body.userName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            age: req.body.age,
+            currentCity: req.body.currentCity
+          })
+            .then(/*res.json({ profileCreated: true })*/)
             .catch(err => console.log(err));
         });
       }
@@ -48,12 +57,12 @@ module.exports = {
                 res.json({ data });
               }
             })
-          } else res.json({ message: "Invalid login"})
+          } else res.json({ message: "Invalid login" })
 
         })
       })
   },
-  getProfile: (req, res) => {
+  getUserProfile: (req, res) => {
     console.log(req.params)
     res.json({hello: 'hello'})
   },
@@ -64,8 +73,13 @@ module.exports = {
       if (err) {
         res.sendStatus(403);
       } else {
-        res.json({hello: 'this finall works'})
+        res.json({ hello: 'this finall works' })
       }
     });
+  },
+  getProfile: (req,res) => {
+    db.Profile.find({userName: req.body.userName})
+    .then(data => res.json({data}))
   }
 };
+
