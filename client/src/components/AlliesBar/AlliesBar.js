@@ -4,8 +4,8 @@ import './alliesBar.css';
 
 const AlliesBar = () => {
     const [allies, setAllies] = useState([
-        { id: 1, name: "John", status: "Active", profileimg: "http://fogucksouryelf" },
-        { id: 2, name: "Shawn", status: "Busy", profileimg: "http://fogucksouryelf" }
+        { id: 1, name: "John", status: "Active", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" }
     ]);
 
     return (
@@ -16,7 +16,7 @@ const AlliesBar = () => {
                     key={ally.id}
                     name={ally.name}
                     status={ally.status}
-                    profileimg={ally.profileimg}
+                    profileImg={ally.profileImg}
                 />
             ))}
         </div>
