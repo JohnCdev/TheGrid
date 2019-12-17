@@ -20,6 +20,9 @@ router.route('/login')
 
 router.route('/create-new-user') //http://localhost:3000/api/create-new-user
   .post(userController.create);
+
+router.route('/get-profile/:profile')
+  .get(userController.getUserProfile)  
   
 router.route('/profile')
   .post(userController.getProfile)
