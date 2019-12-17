@@ -55,9 +55,9 @@ export default function LogIn() {
         }
     };
 
-        if (isAuthenticated) {
-            return <Redirect to='/' />
-        }
+        // if (isAuthenticated) {
+        //     return <Redirect to='/' />
+        // }
         
         return (
             <Container>
