@@ -46,9 +46,16 @@ export default function LogIn() {
             })
                 .then((res) => {
                     console.log(res.data)
+                    const client = res.data.data
                     const resObj = {
-                        user: res.data.data[0].userName,
-                        token: res.data.data[1]
+                        user: client[0].userName,
+                        firstName: client[0].firstName,
+                        lastName: client[0].lastName,
+                        age: client[0].age,
+                        friendList: client[0].friendList,
+                        sentFriendRequests: client[0].sentFriendRequests,
+                        receivedFriendRequests: client[0].receivedFriendRequests,
+                        token: client[1]
                     }
                     sessionStorage.setItem('project3user', JSON.stringify(resObj));
                     logInFunction({ user: resObj })

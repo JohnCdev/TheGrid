@@ -6,11 +6,18 @@ class AuthContextProvider extends Component {
   state = {
     logInFunction: userObject => {
       console.log(userObject.user.user);
+      const client = userObject.user;
       this.setState({
         isAuthenticated: true,
         userData: {
-          userName: userObject.user.user,
-          token: userObject.user.token
+          userName: client.user,
+          firstName: client.firstName,
+          lastName: client.lastName,
+          age: client.age,
+          friendList: client.friendList,
+          sentFriendRequests: client.sentFriendRequests,
+          receivedFriendRequests: client.receivedFriendRequests,
+          token: client.token
         }
       });
     },
@@ -25,15 +32,21 @@ class AuthContextProvider extends Component {
   render() {
     if (!this.state.isAuthenticated) {
       const user = JSON.parse(sessionStorage.getItem("project3user"));
- 
-      if(user !== undefined && user !== null){
+
+      if (user !== undefined && user !== null) {
         const userObject = {
           user: {
             user: user.user,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            age: user.age,
+            friendList: user.friendList,
+            sentFriendRequests: user.sentFriendRequests,
+            receivedFriendRequests: user.receivedFriendRequests,
             token: user.token
           }
         };
-        this.state.logInFunction(userObject)
+        this.state.logInFunction(userObject);
       }
     }
     return (
