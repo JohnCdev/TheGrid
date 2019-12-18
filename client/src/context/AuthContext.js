@@ -21,7 +21,8 @@ class AuthContextProvider extends Component {
         }
       });
     },
-    isAuthenticated: false
+    isAuthenticated: false,
+    userData: {}
   };
 
   toggleAuth = () => {
@@ -29,10 +30,10 @@ class AuthContextProvider extends Component {
     this.setState({ isAuthenticated: !this.state.isAuthenticated });
   };
 
-  render() {
+  componentDidMount(){
     if (!this.state.isAuthenticated) {
       const user = JSON.parse(sessionStorage.getItem("project3user"));
-
+  
       if (user !== undefined && user !== null) {
         const userObject = {
           user: {
@@ -49,6 +50,10 @@ class AuthContextProvider extends Component {
         this.state.logInFunction(userObject);
       }
     }
+  }
+
+  render() {
+
     return (
       <AuthContext.Provider
         value={{ ...this.state, toggleAuth: this.toggleAuth }}
