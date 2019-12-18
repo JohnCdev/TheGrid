@@ -45,11 +45,12 @@ export default function LogIn() {
                 password: formData.password
             })
                 .then((res) => {
+                    console.log(res.data)
                     const resObj = {
                         user: res.data.data[0].userName,
                         token: res.data.data[1]
                     }
-                    sessionStorage.setItem('userName', resObj.user);
+                    sessionStorage.setItem('project3user', JSON.stringify(resObj));
                     logInFunction({ user: resObj })
                 })
                 .catch(err => console.log(err));

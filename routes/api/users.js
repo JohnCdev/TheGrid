@@ -18,7 +18,7 @@ function verifyToken(req, res, next) {
 router.route('/login')
   .post(userController.logIn);
 
-router.route('/create-new-user') //http://localhost:3000/api/create-new-user
+router.route('/create-new-user')
   .post(userController.create);
 
 router.route('/get-profile/:profile')
