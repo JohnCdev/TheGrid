@@ -7,10 +7,10 @@ import API from "../utils/API";
 
 const FeedPage = () => {
     const [feed, setFeed] = useState([
-        { _id: 1, userName: "John", timeStamp: "12:12:12", content: "Yo, this is an awesome post." },
-        { _id: 2, userName: "Shawn", timeStamp: "12:12:12", content: "Yo, this is an awesome post." },
-        { _id: 3, userName: "Charles", timeStamp: "12:12:12", content: "Yo, this is an awesome post." },
-        { _id: 4, userName: "Tripp", timeStamp: "12:12:12", content: "Yo, this is an awesome post." }
+        { id: 1, userName: "John", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
+        { id: 2, userName: "Shawn", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
+        { id: 3, userName: "Charles", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
+        { id: 4, userName: "Tripp", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" }
     ]);
 
     useEffect(() => {
