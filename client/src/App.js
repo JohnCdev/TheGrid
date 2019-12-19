@@ -9,6 +9,7 @@ import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
+import FeedPage from "./pages/FeedPage";
 
 function App() {
   return (
@@ -18,9 +19,10 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path = '/new-user' component={SignUp} />
-          <Route exact path = '/log-in' component={LogIn} />
-          <Route exact path = '/profile' component={ViewProfile} />
+          <Route exact path='/new-user' component={SignUp} />
+          <Route exact path='/log-in' component={LogIn} />
+          <Route exact path='/profile' component={ViewProfile} />
+          <Route exact path='/feed' component={FeedPage} />
           <Route path = '/user-profile/:userProfile' component={UserProfile} />
           <Route component={NoMatch} />
         </Switch>
