@@ -27,15 +27,13 @@ class AuthContextProvider extends Component {
         case 'update-sent-requests':
           userDataCopy.sentFriendRequests = payLoad;
           sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
-          return (
-            this.setState({ userData: userDataCopy })
-            
-            );
+          return this.setState({ userData: userDataCopy });
         
         case 'update-friend-list':
           userDataCopy.friendList = payLoad.friendList;
           userDataCopy.receivedFriendRequests = payLoad.receivedFriendRequests;
-          sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
+          userDataCopy.userName = this.state.userData.userName;
+          sessionStorage.setItem('project3user', JSON.stringify(userDataCopy));
           return this.setState({ userData: userDataCopy });
 
 
@@ -64,7 +62,8 @@ class AuthContextProvider extends Component {
             friendList: user.friendList,
             sentFriendRequests: user.sentFriendRequests,
             receivedFriendRequests: user.receivedFriendRequests,
-            token: user.token
+            token: user.token,
+            userName: user.userName
           }
         };
         this.state.logInFunction(userObject);
