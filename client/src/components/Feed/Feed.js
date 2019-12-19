@@ -12,8 +12,8 @@ const Feed = ({ feed }) => {
             <h1>Your Feed Goes Here</h1>
             {feed.map(post => (
                 <FeedCard
-                    key={post.id}
-                    id={post.id}
+                    key={post._id}
+                    id={post._id}
                     userName={post.userName}
                     timeStamp={post.timeStamp}
                     content={post.content}

@@ -14,10 +14,9 @@ const FeedPage = () => {
     ]);
 
     useEffect(() => {
-        API.getUserPosts({userName: "jastring"})
+        API.getUserPosts({userName: sessionStorage.getItem('project3username')})
         .then(data => {
-            setFeed(data)
-            console.log(feed)
+            setFeed(data.data)
         })
         .catch(err => console.log(err))
     },[])

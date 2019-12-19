@@ -13,10 +13,8 @@ module.exports = {
     },
 
     getUser: (req, res) => {
-        console.log(req.body)
         db.Post.find({ userName: req.body.userName })
             .then(data => {
-                console.log(data)
                 res.json(data)
             })
             .catch(err => console.log(err))
