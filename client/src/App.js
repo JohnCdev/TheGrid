@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path='/new-user' component={SignUp} />
-          <Route exact path='/log-in' component={LogIn} />
+          <Route exact path='/log-in' component={LogIn} / >
           <Route exact path='/profile' component={ViewProfile} />
           <Route exact path='/feed' component={FeedPage} />
           <Route path = '/user-profile/:userProfile' component={UserProfile} />
