@@ -21,6 +21,26 @@ class AuthContextProvider extends Component {
         }
       });
     },
+    updateFriendRequests: (command, payLoad) => {
+      const userDataCopy = {...this.state.userData}
+      switch(command){
+        case 'update-sent-requests':
+          userDataCopy.sentFriendRequests = payLoad;
+          sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
+          return (
+            this.setState({ userData: userDataCopy })
+            
+            );
+        
+        case 'update-friend-list':
+          userDataCopy.friendList = payLoad.friendList;
+          userDataCopy.receivedFriendRequests = payLoad.receivedFriendRequests;
+          sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
+          return this.setState({ userData: userDataCopy });
+
+
+      }
+    },
     isAuthenticated: false,
     userData: {}
   };
