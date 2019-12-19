@@ -17,6 +17,7 @@ const Feed = ({ feed }) => {
                     userName={post.userName}
                     timeStamp={post.timeStamp}
                     content={post.content}
+                    profileImg={post.profileImg}
                 />
             ))}
         </div>
