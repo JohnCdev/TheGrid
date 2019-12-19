@@ -7,7 +7,7 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import AddFriend from '../components/AddFriend/AddFriend';
 
-export default class ViewProfile extends Component {
+export default class EditProfile extends Component {
     state = {
         userName: "",
         firstName: "",

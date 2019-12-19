@@ -16,8 +16,6 @@ const PostForm = () => {
             timeStamp: Date.now()
         }).then(data => console.log(data))
             .catch(err => console.log(err))
-        console.log(post)
-        console.log(sessionStorage.getItem('project3username'))
     }
 
     const handleClickCancel = (e) => {
