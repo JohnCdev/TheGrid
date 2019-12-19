@@ -28,9 +28,19 @@ var ProfileSchema = new Schema({
     lastUpdated: {
         type: Date
     },
-    /*friendList: {
-        type: Array
-    }*/
+    friendList: {
+         type: Array, 
+         default: [] 
+    },
+    sentFriendRequests: {
+        type: Array,
+        default: []
+    },
+    receivedFriendRequests: {
+        type: Array,
+        default: []
+    }
+    
 });
 
 var Profile = mongoose.model("Profile", ProfileSchema);
