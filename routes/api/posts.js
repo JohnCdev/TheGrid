@@ -5,7 +5,7 @@ router.route('/new-post')
     .post(postController.create);
 
 router.route('/user-posts')
-    .get(postController.getUser);
+    .post(postController.getUser);
 
 /*router.route('/feed-posts')
 .get(postController.getFeed);*/
