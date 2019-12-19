@@ -3,6 +3,7 @@ import "./Nav.css";
 import LogInOutBtn from "../LogInOutBtn/LogInOutBtn";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import ProfileIcon from "../ProfileIcon/ProfileIcon";
 
 const Nav = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -35,6 +36,7 @@ const Nav = () => {
               null}
           </li>
         </ul>
+        {isAuthenticated && <ProfileIcon img={null} large={true}/>}
         <LogInOutBtn />
       </nav>
     </div>
