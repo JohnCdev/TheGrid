@@ -37,6 +37,12 @@ export default {
 
   getProfile: userData => axios.post('api/users/profile', userData),
 
-  updateProfile: userData => axios.put('/api/users/profile', userData)
+  updateProfile: userData => axios.put('/api/users/profile', userData),
+
+  createPost: postData => axios.post('/api/posts/new-post', postData),
+  
+  getUserPosts: postData => axios.get('/api/posts/user-posts', postData),
+
+  //getFeedPosts: postData => axios.get('/api/posts/feed-posts', postData)
 
 };

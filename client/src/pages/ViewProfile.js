@@ -23,7 +23,7 @@ export default class ViewProfile extends Component {
         });
     };
     componentDidMount = event => {
-        this.state.userName = sessionStorage.getItem("userName")
+        this.state.userName = sessionStorage.getItem("project3username")
         API.getProfile({
             userName: this.state.userName
         })
