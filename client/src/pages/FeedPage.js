@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "../components/Grid/Grid";
 import AlliesBar from "../components/AlliesBar/AlliesBar";
 import Feed from "../components/Feed/Feed";
+import PostForm from "../components/PostForm/PostForm"
 
 const FeedPage = () => {
     const [feed, setFeed] = useState([
@@ -15,6 +16,7 @@ const FeedPage = () => {
         <main style={{ "height": "100%", "marginBottom": "200px" }}>
             <AlliesBar />
             <Container>
+                <PostForm />
                 {feed.length > 0 ?
                     <Feed feed={feed} /> :
                     <h1>You have no feed</h1>}

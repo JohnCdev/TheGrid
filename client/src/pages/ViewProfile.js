@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
+import AddFriend from '../components/AddFriend/AddFriend';
 
 export default class ViewProfile extends Component {
     state = {

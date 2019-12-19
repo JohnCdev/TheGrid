@@ -4,6 +4,7 @@ import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import ProfilePicture from "../components/ProfilePicture/ProfilePicture";
+import AddFriend from '../components/AddFriend/AddFriend';
 
 class ViewUserProfile extends Component {
   //initial state
@@ -55,6 +56,9 @@ class ViewUserProfile extends Component {
           <ProfilePicture
             location={this.state.currentCity}
             age={this.state.age}
+          />
+          <AddFriend
+            viewedProfile = {this.state.userName}
           />
         </Jumbotron>
         <Container>{this.state.userName}</Container>

@@ -29,6 +29,31 @@ export default {
     return axios.post('/api/users/auth-test',{hello: 'hello'}, config)
   },
 
+  friendRequest: (command, sender, receiver, token) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    }
+
+    const payLoad = {
+      sender: sender,
+      receiver: receiver
+    };
+
+    switch(command){
+      case('request-friend'):
+      return (axios.post('/api/profiles/request-friend', payLoad, config)
+        .then(res => console.log(res))
+      )
+      case('accept-friend-request'):
+      return axios.post('/api/profiles/accept-friend-request', payLoad, config)
+      case('remove-friend'):
+      return axios.post('/api/profiles/remove-friend', payLoad, config)
+    }
+  },
+
   saveUser: userData => axios.post('/api/users/create-new-user', userData),
 
   userLogIn: userData => axios.post('/api/users/login', userData),
