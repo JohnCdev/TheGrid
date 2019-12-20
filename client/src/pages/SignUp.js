@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
+import Header from '../components/Header/Header';
 
 export default class SignUp extends Component {
   state = {
@@ -52,7 +53,9 @@ export default class SignUp extends Component {
     }
     return (
       <Container>
-        <Jumbotron> <h1>Sign up</h1></Jumbotron>
+          <Jumbotron>
+            <Header headerText={'Sign Up'}/>
+          </Jumbotron>
         <form>
           <Input
             value={this.state.userName}

@@ -1,10 +1,12 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
+import Header from '../components/Header/Header';
 
 function NoMatch() {
   return (
     <Container fluid>
+      <Header headerText={404}/>
       <Row>
         <Col size="md-12">
           <Jumbotron>
