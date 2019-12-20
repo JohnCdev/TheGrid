@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   requestFriend: (req, res) => {
+    const requestData = JSON.parse(JSON.stringify(req.body));
     jwt.verify(req.token, "secretkey", (err, authData) => {
       if (err) {
         res.sendStatus(403);
@@ -14,12 +15,12 @@ module.exports = {
                 if(result[0].sentFriendRequests.includes(req.body.sender)){
                     const newFriendList = [...result[0].friendList, req.body.sender]
                     const newSentRequests = result[0].sentFriendRequests.filter(request => request !== req.body.sender)
-                    db.Profile.findOneAndUpdate({ userName: req.body.receiver },  {$set: {sentFriendRequests: newSentRequests }}, { $set: { friendList: newFriendList }})
+                    db.Profile.findOneAndUpdate({ userName: req.body.receiver },  {$set: {sentFriendRequests: newSentRequests, friendList: newFriendList }})
                         .then(db.Profile.find({ userName: req.body.sender}).then(result =>{
                             const friendList = [...result[0].friendList, req.body.receiver];
                             const sentFriendRequests = result[0].sentFriendRequests;
                             const receivedFriendRequests = result[0].receivedFriendRequests.filter(request => request !== req.body.receiver)
-                                db.Profile.findOneAndUpdate({userName: req.body.sender }, {$set:{receivedFriendRequests: receivedFriendRequests}}, {$set:{friendList:friendList}})
+                                db.Profile.findOneAndUpdate({userName: req.body.sender }, {$set:{receivedFriendRequests: receivedFriendRequests, friendList:friendList}})
                                     .then(result => {res.json({sentFriendRequests, friendList, receivedFriendRequests})})
                         }))
 
@@ -52,23 +53,22 @@ module.exports = {
 
         db.Profile.find({ userName: accepter }).then(result => {
           const newFriendList = result[0].friendList.filter(
-            friend => friend.userName !== requester
+            friend => friend !== requester
           );
           db.Profile.findOneAndUpdate(
             { userName: accepter },
             { $set: { friendList: newFriendList } }
           ).then(result => {
             db.Profile.find({ userName: requester }).then(result => {
-                console.log(accepter)
-                console.log(accepter === result[0].friendList[0])
+                console.log(result[0].friendList)
               const friendList = result[0].friendList.filter(
                 friend => friend !== accepter
               );
-
-              console.log(newFriendList)
+              console.log(friendList)
               db.Profile.findOneAndUpdate(
                 { userName: requester },
-                { $set: { friendList: newFriendList } }
+                { $set: { friendList: result[0].friendList.filter(
+                    friend => friend !== accepter) }}
               ).then(result =>{
                   const receivedFriendRequests = result.receivedFriendRequests.filter(request => request !== accepter)
                   const sentFriendRequests = result.sentFriendRequests;
@@ -110,8 +110,8 @@ module.exports = {
               const sentFriendRequests = [...result[0].sentFriendRequests]
               db.Profile.findOneAndUpdate(
                 { userName: accepter },
-                { $set: { friendList: newFriends } },
-                { $set: { receivedFriendRequests: newFriendRequests } }
+                { $set: { friendList: friendList } },
+                { $set: { receivedFriendRequests: receivedFriendRequests } }
               ).then(result =>
                 res.json({
                   receivedFriendRequests,
@@ -125,5 +125,32 @@ module.exports = {
         });
       }
     });
+  },
+  getUserProfile: (req, res) => {
+    console.log(req.params.profile);
+    db.Profile.find({ userName: req.params.profile }).then(data =>
+      res.json({ data })
+    );
+  },
+  getProfile: (req, res) => {
+    db.Profile.find({ userName: req.body.userName }).then(data =>
+      res.json({ data })
+    );
+  },
+  updateProfile: (req, res) => {
+    db.Profile.updateOne(
+      { userName: req.body.userName },
+      {
+        $set: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          age: req.body.age,
+          currentCity: req.body.currentCity,
+          lastUpdated: req.body.lastUpdated
+        }
+      }
+    )
+      .then(data => res.json({ data }))
+      .catch(err => console.log(err));
   }
 };

@@ -57,6 +57,7 @@ export default function LogIn() {
                         token: client[1]
                     }
                     sessionStorage.setItem('project3user', JSON.stringify(resObj));
+                    sessionStorage.setItem('project3username', resObj.user);
                     logInFunction({ user: resObj })
                 })
                 .catch(err => console.log(err));

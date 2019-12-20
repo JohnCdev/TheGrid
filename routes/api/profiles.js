@@ -11,4 +11,11 @@ router.route('/remove-friend')
 router.route('/accept-friend')
     .post(verifyToken, profileController.acceptFriend)
 
+router.route('/get-profile/:profile')
+    .get(profileController.getUserProfile)
+
+router.route('/profile')
+    .post(profileController.getProfile)
+    .put(profileController.updateProfile)
+
 module.exports = router
