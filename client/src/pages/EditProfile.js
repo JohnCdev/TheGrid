@@ -7,7 +7,7 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import AddFriend from '../components/AddFriend/AddFriend';
 
-export default class ViewProfile extends Component {
+export default class EditProfile extends Component {
     state = {
         userName: "",
         firstName: "",
@@ -24,7 +24,7 @@ export default class ViewProfile extends Component {
         });
     };
     componentDidMount = event => {
-        this.state.userName = sessionStorage.getItem("userName")
+        this.state.userName = sessionStorage.getItem("project3username")
         API.getProfile({
             userName: this.state.userName
         })

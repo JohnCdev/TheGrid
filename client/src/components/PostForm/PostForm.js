@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { TextArea, FormBtn } from '../Form/Form';
 import { AuthContext } from "../../context/AuthContext";
+import API from '../../utils/API';
 
 const PostForm = () => {
     const { userData } = useContext(AuthContext);
@@ -8,8 +9,13 @@ const PostForm = () => {
 
     const handlePostSubmit = (e) => {
         e.preventDefault();
-        console.log(post)
-        console.log(sessionStorage.getItem('userName'))
+        const sessionName = sessionStorage.getItem('project3username')
+        API.createPost({
+            userName: sessionName,
+            content: post,
+            timeStamp: Date.now()
+        }).then(data => console.log(data))
+            .catch(err => console.log(err))
     }
 
     const handleClickCancel = (e) => {

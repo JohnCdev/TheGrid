@@ -4,7 +4,7 @@ import AuthContext from './context/AuthContext';
 import SignUp from './pages/SignUp';
 import UserProfile from './pages/UserProfile';
 import LogIn from './pages/LogIn';
-import ViewProfile from './pages/ViewProfile';
+import EditProfile from './pages/EditProfile';
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path='/new-user' component={SignUp} />
           <Route exact path='/log-in' component={LogIn} />
-          <Route exact path='/profile' component={ViewProfile} />
+          <Route exact path='/profile' component={EditProfile} />
           <Route exact path='/feed' component={FeedPage} />
           <Route path = '/user-profile/:userProfile' component={UserProfile} />
           <Route component={NoMatch} />
