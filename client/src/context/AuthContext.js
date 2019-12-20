@@ -10,7 +10,7 @@ class AuthContextProvider extends Component {
       this.setState({
         isAuthenticated: true,
         userData: {
-          userName: client.user,
+          userName: client.userName,
           firstName: client.firstName,
           lastName: client.lastName,
           age: client.age,
@@ -21,23 +21,14 @@ class AuthContextProvider extends Component {
         }
       });
     },
-    updateFriendRequests: (command, payLoad) => {
+    updateFriendRequests: (payLoad) => {
       const userDataCopy = {...this.state.userData}
-      switch(command){
-        case 'update-sent-requests':
-          userDataCopy.sentFriendRequests = payLoad;
-          sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
-          return this.setState({ userData: userDataCopy });
-        
-        case 'update-friend-list':
+      console.log(payLoad)
+          userDataCopy.sentFriendRequests = payLoad.sentFriendRequests;
           userDataCopy.friendList = payLoad.friendList;
-          userDataCopy.receivedFriendRequests = payLoad.receivedFriendRequests;
-          userDataCopy.userName = this.state.userData.userName;
-          sessionStorage.setItem('project3user', JSON.stringify(userDataCopy));
-          return this.setState({ userData: userDataCopy });
-
-
-      }
+          userDataCopy.receivedFriendRequests = payLoad.receivedFriendRequests
+          sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
+          this.setState({ userData: userDataCopy });
     },
     isAuthenticated: false,
     userData: {}
@@ -51,11 +42,12 @@ class AuthContextProvider extends Component {
   componentDidMount(){
     if (!this.state.isAuthenticated) {
       const user = JSON.parse(sessionStorage.getItem("project3user"));
+      console.log(user)
   
       if (user !== undefined && user !== null) {
         const userObject = {
           user: {
-            user: user.user,
+            userName: user.userName,
             firstName: user.firstName,
             lastName: user.lastName,
             age: user.age,
@@ -63,7 +55,7 @@ class AuthContextProvider extends Component {
             sentFriendRequests: user.sentFriendRequests,
             receivedFriendRequests: user.receivedFriendRequests,
             token: user.token,
-            userName: user.userName
+           // userName: user.userName
           }
         };
         this.state.logInFunction(userObject);

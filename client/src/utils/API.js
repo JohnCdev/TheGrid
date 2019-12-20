@@ -36,14 +36,10 @@ export default {
         'Authorization': `Bearer ${token}`,
       }
     }
-
     const payLoad = {
       sender: sender,
       receiver: receiver
     };
-
-    console.log(payLoad)
-
     switch(command){
       case('request-friend'):
         return (axios.post('/api/profiles/request-friend', payLoad, config))

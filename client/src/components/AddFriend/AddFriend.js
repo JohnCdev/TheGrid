@@ -13,7 +13,7 @@ export default function AddFriend(props) {
         //viewed profile is a friend
         userData.friendList.includes(props.viewedProfile)             ? 
             <button onClick={() =>{API.friendRequest('remove-friend', userData.userName, props.viewedProfile, userData.token)
-                                    .then(res => {updateFriendRequests('update-friend-list', res.data)})}}>
+                                    .then(res => {updateFriendRequests(res.data)})}}>
                 Remove Ally</button> :
         
         //viewed profile has a friend request pending
@@ -23,11 +23,11 @@ export default function AddFriend(props) {
         //viewed profile sent client a friend request
         userData.receivedFriendRequests.includes(props.viewedProfile) ? 
             <button onClick={() =>{API.friendRequest('accept-friend-request', userData.userName, props.viewedProfile, userData.token)
-                                    .then(res => {updateFriendRequests('update-friend-list', res.data)})}}>Accept Alliance Request</button> :
+                                    .then(res => {updateFriendRequests(res.data)})}}>Accept Alliance Request</button> :
         
         //default: viewed profile is not a friend or a potential friend yet    
             <button onClick={() =>{API.friendRequest('request-friend', userData.userName, props.viewedProfile, userData.token)
-                                    .then(res =>  {updateFriendRequests('update-sent-requests', res.data.receivedFriendRequests)})}}>Send Alliance Request</button>;
+                                    .then(res =>  {updateFriendRequests(res.data)})}}>Send Alliance Request</button>;
         return button
     } else {
         return <button>isn't working</button>

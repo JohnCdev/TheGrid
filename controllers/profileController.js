@@ -8,18 +8,36 @@ module.exports = {
       if (err) {
         res.sendStatus(403);
       } else {
-        db.Profile.findOneAndUpdate(
-          { userName: req.body.receiver },
-          { $push: { receivedFriendRequests: req.body.sender } }
-        ).then(result => {
-          db.Profile.findOneAndUpdate(
-            { userName: req.body.sender },
-            { $push: { sentFriendRequests: req.body.receiver } },
-            { new: true }
-          ).then(result => {
-            res.json({ receivedFriendRequests: result.sentFriendRequests });
-          });
-        });
+          db.Profile.find({userName: req.body.receiver})
+            .then(result =>{
+                //if the other user has already sent a request to the client w/o the client knowing...
+                if(result[0].sentFriendRequests.includes(req.body.sender)){
+                    const newFriendList = [...result[0].friendList, req.body.sender]
+                    const newSentRequests = result[0].sentFriendRequests.filter(request => request !== req.body.sender)
+                    db.Profile.findOneAndUpdate({ userName: req.body.receiver },  {$set: {sentFriendRequests: newSentRequests }}, { $set: { friendList: newFriendList }})
+                        .then(db.Profile.find({ userName: req.body.sender}).then(result =>{
+                            const friendList = [...result[0].friendList, req.body.receiver];
+                            const sentFriendRequests = result[0].sentFriendRequests;
+                            const receivedFriendRequests = result[0].receivedFriendRequests.filter(request => request !== req.body.receiver)
+                                db.Profile.findOneAndUpdate({userName: req.body.sender }, {$set:{receivedFriendRequests: receivedFriendRequests}}, {$set:{friendList:friendList}})
+                                    .then(result => {res.json({sentFriendRequests, friendList, receivedFriendRequests})})
+                        }))
+
+                } else { //otherwise simply push to the arrays and send the new sentRequests array back to client
+                    db.Profile.findOneAndUpdate(
+                        { userName: req.body.receiver },
+                        { $push: { receivedFriendRequests: req.body.sender } }
+                      ).then(result => {
+                        db.Profile.findOneAndUpdate(
+                          { userName: req.body.sender },
+                          { $push: { sentFriendRequests: req.body.receiver } },
+                          { new: true }
+                        ).then(result => {
+                          res.json({ receivedFriendRequests: result.receivedFriendRequests, friendList: result.friendList, sentFriendRequests: result.sentFriendRequests });
+                        });
+                      });
+                }
+            })
       }
     });
   },
@@ -43,18 +61,21 @@ module.exports = {
             db.Profile.find({ userName: requester }).then(result => {
                 console.log(accepter)
                 console.log(accepter === result[0].friendList[0])
-              const newFriendList = result[0].friendList.filter(
+              const friendList = result[0].friendList.filter(
                 friend => friend !== accepter
               );
+
               console.log(newFriendList)
               db.Profile.findOneAndUpdate(
                 { userName: requester },
                 { $set: { friendList: newFriendList } }
               ).then(result =>{
-                  const friendRequests = result.receivedFriendRequests.filter(request => request !== accepter)
+                  const receivedFriendRequests = result.receivedFriendRequests.filter(request => request !== accepter)
+                  const sentFriendRequests = result.sentFriendRequests;
                 res.json({
-                  receivedFriendRequests: friendRequests,
-                  friendList: newFriendList
+                  receivedFriendRequests,
+                  friendList,
+                  sentFriendRequests
                 })}
               );
             });
@@ -82,18 +103,21 @@ module.exports = {
           ).then(result => {
             db.Profile.find({ userName: accepter }).then(result => {
               const oldFriendRequests = result[0].receivedFriendRequests;
-              const newFriendRequests = oldFriendRequests.filter(
+              const receivedFriendRequests = oldFriendRequests.filter(
                 request => request !== requester
               );
-              const newFriends = [...result[0].friendList, requester];
+              const friendList = [...result[0].friendList, requester];
+              const sentFriendRequests = [...result[0].sentFriendRequests]
               db.Profile.findOneAndUpdate(
                 { userName: accepter },
                 { $set: { friendList: newFriends } },
                 { $set: { receivedFriendRequests: newFriendRequests } }
               ).then(result =>
                 res.json({
-                  receivedFriendRequests: newFriendRequests,
-                  friendList: newFriends
+                  receivedFriendRequests,
+                  friendList,
+                  sentFriendRequests
+
                 })
               );
             });

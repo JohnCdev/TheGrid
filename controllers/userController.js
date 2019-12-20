@@ -55,7 +55,6 @@ module.exports = {
               sentFriendRequests: client.sentFriendRequests,
               receivedFriendRequests: client.receivedFriendRequests
             };
-          });
           //assign a token to this user and send the user information and token back to the user
           jwt.sign({ user }, "secretkey", (err, token) => {
             if (err) throw err;
@@ -64,6 +63,8 @@ module.exports = {
               res.json({ data });
             }
           });
+          });
+
         } else res.json({ message: "Invalid login" });
       });
     });
