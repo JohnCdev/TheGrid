@@ -3,7 +3,7 @@ import { TextArea, FormBtn } from '../Form/Form';
 import { AuthContext } from "../../context/AuthContext";
 import API from '../../utils/API';
 
-const PostForm = () => {
+const PostForm = ({ reloadPosts }) => {
     const { userData } = useContext(AuthContext);
     const [post, setPost] = useState('');
 
@@ -14,7 +14,10 @@ const PostForm = () => {
             userName: sessionName,
             content: post,
             timeStamp: Date.now()
-        }).then(data => console.log(data))
+        }).then(data => {
+            console.log(data)
+            reloadPosts()
+        })
             .catch(err => console.log(err))
     }
 
@@ -35,9 +38,16 @@ const PostForm = () => {
                     name="postComment"
                     onChange={onChangeHandler}
                     value={post}
+                    rows="5"
                 />
-                <FormBtn type="button" onClick={handleClickCancel}>Cancel Post</FormBtn>
-                <FormBtn type="submit">Submit Post</FormBtn>
+                <FormBtn
+                    className="btn btn-danger ml-2"
+                    type="button"
+                    onClick={handleClickCancel}
+                >
+                    Cancel Post
+                </FormBtn>
+                <FormBtn className="btn btn-success" type="submit">Submit Post</FormBtn>
             </form>
         </section>
     );

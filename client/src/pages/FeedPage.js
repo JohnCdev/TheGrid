@@ -15,19 +15,27 @@ const FeedPage = () => {
     ]);
 
     useEffect(() => {
-        API.getUserPosts({userName: sessionStorage.getItem('project3username')})
-        .then(data => {
-            setFeed(data.data)
-        })
-        .catch(err => console.log(err))
-    },[])
+        API.getUserPosts({ userName: sessionStorage.getItem('project3username') })
+            .then(data => {
+                setFeed(data.data)
+            })
+            .catch(err => console.log(err))
+    }, [])
+
+    const reloadPosts = () => {
+        API.getUserPosts({ userName: sessionStorage.getItem('project3username') })
+            .then(data => {
+                setFeed(data.data)
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <main style={{ "height": "100%", "marginBottom": "200px" }}>
-            <Header headerText="Your Feed"/>
+            <Header headerText="Your Feed" />
             <AlliesBar />
             <Container>
-                <PostForm />
+                <PostForm reloadPosts={reloadPosts} />
                 {feed.length > 0 ?
                     <Feed feed={feed} /> :
                     <h1>You have no feed</h1>}

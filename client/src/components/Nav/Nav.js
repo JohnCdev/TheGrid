@@ -4,6 +4,7 @@ import LogInOutBtn from "../LogInOutBtn/LogInOutBtn";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import ProfileIcon from "../ProfileIcon/ProfileIcon";
+import Notifications from "../Notifications/Notifications";
 
 const Nav = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -36,6 +37,8 @@ const Nav = () => {
               null}
           </li>
         </ul>
+        {/* Switch || to && to check to auth state for notifications */}
+        {isAuthenticated || <Notifications className="mr-auto"/>}
         {isAuthenticated && <ProfileIcon img={null} large={true}/>}
         <LogInOutBtn />
       </nav>

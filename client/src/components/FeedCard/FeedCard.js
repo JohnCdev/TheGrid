@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import ProfileIcon from '../ProfileIcon/ProfileIcon'
 
-const FeedCard = ({ id, userName, timeStamp, content, profileImg}) => {
+const FeedCard = ({ key, id, userName, timeStamp, content, profileImg}) => {
     return (
-        <div className="card mb-2">
+        <div className="card mb-2" key={key}>
             <h5 className="card-header"><ProfileIcon img={profileImg}/>{userName}</h5>
             <div className="card-body">
                 <h5 className="card-title">{content}</h5>
