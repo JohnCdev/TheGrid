@@ -38,9 +38,16 @@ const PostForm = ({ reloadPosts }) => {
                     name="postComment"
                     onChange={onChangeHandler}
                     value={post}
+                    rows="5"
                 />
-                <FormBtn type="button" onClick={handleClickCancel}>Cancel Post</FormBtn>
-                <FormBtn type="submit">Submit Post</FormBtn>
+                <FormBtn
+                    className="btn btn-danger ml-2"
+                    type="button"
+                    onClick={handleClickCancel}
+                >
+                    Cancel Post
+                </FormBtn>
+                <FormBtn className="btn btn-success" type="submit">Submit Post</FormBtn>
             </form>
         </section>
     );
