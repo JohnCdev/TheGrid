@@ -30,15 +30,30 @@ var ProfileSchema = new Schema({
     },
     friendList: {
          type: Array, 
-         default: [] 
+         default: [{ 
+            type: String,
+            unique: true 
+            }] 
     },
     sentFriendRequests: {
         type: Array,
-        default: []
+        default: [{ 
+            type: String,
+            unique: true 
+        }]
     },
     receivedFriendRequests: {
         type: Array,
-        default: []
+        default: [{ 
+            type: String,
+            unique: true 
+        }]
+    },
+    updates : {
+        type: Array,
+        default: [{
+            type: Object
+        }]
     }
     
 });
