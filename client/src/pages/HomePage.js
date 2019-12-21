@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import API from '../utils/API';
-import { Link } from 'react-router-dom';
-import { Col, Row, Container } from '../components/Grid/Grid';
+import Header from '../components/Header/Header'
 
- 
 export default class HomePage extends Component {
     state = {
         // state stuff
@@ -11,9 +8,13 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Hello World</h2>
-            </div>
+            <Header headerText="Landing Page">
+                <div>
+                    <h2>Hello World</h2>
+                </div>
+            </Header>
+
+
         )
     }
 }

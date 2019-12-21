@@ -4,6 +4,7 @@ import AlliesBar from "../components/AlliesBar/AlliesBar";
 import Feed from "../components/Feed/Feed";
 import PostForm from "../components/PostForm/PostForm"
 import API from "../utils/API";
+import Header from "../components/Header/Header";
 
 const FeedPage = () => {
     const [feed, setFeed] = useState([
@@ -23,6 +24,7 @@ const FeedPage = () => {
 
     return (
         <main style={{ "height": "100%", "marginBottom": "200px" }}>
+            <Header headerText="Your Feed"/>
             <AlliesBar />
             <Container>
                 <PostForm />
