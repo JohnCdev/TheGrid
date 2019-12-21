@@ -7,6 +7,7 @@ import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Books} />
+          <Route exact path="/home" component={HomePage} />
           <Route exact path = '/new-user' component={SignUp} />
           <Route exact path = '/log-in' component={LogIn} />
           <Route component={NoMatch} />
