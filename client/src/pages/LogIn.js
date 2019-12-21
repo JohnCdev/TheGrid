@@ -4,20 +4,21 @@ import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
-import {AuthContext} from '../context/AuthContext';
+import { AuthContext } from '../context/AuthContext';
+import Header from '../components/Header/Header';
 
 export default function LogIn() {
-    const { isAuthenticated, logInFunction, userData  } = useContext(AuthContext);
+    const { isAuthenticated, logInFunction, userData } = useContext(AuthContext);
     const [formData, setFormData] = useState(
-        {userName: '', password: ''}
+        { userName: '', password: '' }
     )
 
-        const apiTest = (e) => {
-            e.preventDefault()
+    const apiTest = (e) => {
+        e.preventDefault()
 
-            API.authTest(userData.token)
+        API.authTest(userData.token)
             .then(res => console.log(res))
-        }
+    }
 
     const handleUserNameChange = event => {
         const { value } = event.target;
@@ -47,7 +48,7 @@ export default function LogIn() {
                     console.log(res.data)
                     const client = res.data.data
                     const resObj = {
-                        user: client[0].userName,
+                        userName: client[0].userName,
                         firstName: client[0].firstName,
                         lastName: client[0].lastName,
                         age: client[0].age,
@@ -64,34 +65,36 @@ export default function LogIn() {
         }
     };
 
-        if (isAuthenticated) {
-            return <Redirect to='/profile' />
-        }
-        
-        return (
-            <Container>
-                <Jumbotron> <h1>Log In</h1></Jumbotron>
-                <form>
-                    <Input
-                        value={formData.userName}
-                        onChange={handleUserNameChange}
-                        name="userName"
-                        placeholder="User Name"
-                    />
-                    <InputPassword
-                        value={formData.password}
-                        onChange={handlePasswordChange}
-                        name="password"
-                        placeholder="Password"
-                    />
-                    <FormBtn
-                        //  disabled={!(this.state.userName && this.state.email && this.state.password)}
-                        onClick={handleFormSubmit}
-                    >
-                        Submit
+    if (isAuthenticated) {
+        return <Redirect to='/profile' />
+    }
+
+    return (
+        <Container>
+            <Jumbotron>
+                <Header headerText={'Log In'}/>
+            </Jumbotron>
+            <form>
+                <Input
+                    value={formData.userName}
+                    onChange={handleUserNameChange}
+                    name="userName"
+                    placeholder="User Name"
+                />
+                <InputPassword
+                    value={formData.password}
+                    onChange={handlePasswordChange}
+                    name="password"
+                    placeholder="Password"
+                />
+                <FormBtn
+                    //  disabled={!(this.state.userName && this.state.email && this.state.password)}
+                    onClick={handleFormSubmit}
+                >
+                    Submit
                     </FormBtn>
-                    <button onClick={apiTest}>api test</button>
-                </form>
-            </Container>
-        )
+                <button onClick={apiTest}>api test</button>
+            </form>
+        </Container >
+    )
 }

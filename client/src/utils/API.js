@@ -36,21 +36,17 @@ export default {
         'Authorization': `Bearer ${token}`,
       }
     }
-
     const payLoad = {
       sender: sender,
       receiver: receiver
     };
-
     switch(command){
       case('request-friend'):
-      return (axios.post('/api/profiles/request-friend', payLoad, config)
-        .then(res => console.log(res))
-      )
+        return (axios.post('/api/profiles/request-friend', payLoad, config))
       case('accept-friend-request'):
-      return axios.post('/api/profiles/accept-friend-request', payLoad, config)
+        return axios.post('/api/profiles/accept-friend', payLoad, config)
       case('remove-friend'):
-      return axios.post('/api/profiles/remove-friend', payLoad, config)
+        return axios.post('/api/profiles/remove-friend', payLoad, config)
     }
   },
 

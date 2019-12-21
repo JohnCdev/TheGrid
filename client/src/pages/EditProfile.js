@@ -6,6 +6,7 @@ import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import AddFriend from '../components/AddFriend/AddFriend';
+import Header from '../components/Header/Header';
 
 export default class EditProfile extends Component {
     state = {
@@ -57,6 +58,7 @@ export default class EditProfile extends Component {
     render() {
         return (
             <Container>
+                <Header headerText="Edit Profile" />
                 <Jumbotron> <h1>Profile</h1></Jumbotron>
                 <form>
                     <Input
