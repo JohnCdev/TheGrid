@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 import Jumbotron from '../Jumbotron/Jumbotron';
-import Header from "../Header/Header";
+import { Input, FormBtn } from '../Form/Form';
 
 
 
 
 
 const FindAlliesSearch = () => {
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        const sessionName = sessionStorage.getItem('project3username')
+        
+    }
 
     return (
         <div>
             <Jumbotron>
             <h1>Recruit Allies</h1>
-                <form>
-                    <label>
-                        Name:
-                    <input type="text" name="name" />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
+            <section>
+            <form onSubmit={handleSearchSubmit}>
+                <label htmlFor="findAllies"></label>
+                <Input
+                    id="postComment"
+                    name="postComment"
+                />
+                <FormBtn type="submit">Search</FormBtn>
+            </form>
+            </section>
             </Jumbotron>
 
         </div>
