@@ -10,7 +10,7 @@ const FindClansSearch= () => {
 
     return (
         <Jumbotron>
-            <Header headerText="Find Clan"/>
+            <h1>Find Clan</h1> 
                 <form>
                     <label>
                         Name:

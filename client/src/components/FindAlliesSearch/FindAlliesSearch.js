@@ -11,7 +11,7 @@ const FindAlliesSearch = () => {
     return (
         <div>
             <Jumbotron>
-            <Header headerText="Recruit Allies"/>
+            <h1>Recruit Allies</h1>
                 <form>
                     <label>
                         Name:
