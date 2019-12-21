@@ -44,7 +44,7 @@ module.exports = {
         //if the return is true, create a client object with their profile information
         if (pwCheck) {
           db.Profile.find({ userName: req.body.userName }).then(data => {
-            const client = data[0]
+            const client = data[0];
             user = {
               userName: client.userName,
               firstName: client.firstName,
@@ -55,14 +55,14 @@ module.exports = {
               sentFriendRequests: client.sentFriendRequests,
               receivedFriendRequests: client.receivedFriendRequests
             };
-          });
-          //assign a token to this user and send the user information and token back to the user
-          jwt.sign({ user }, "secretkey", (err, token) => {
-            if (err) throw err;
-            else {
-              const data = [user, token];
-              res.json({ data });
-            }
+            //assign a token to this user and send the user information and token back to the user
+            jwt.sign({ user }, "secretkey", (err, token) => {
+              if (err) throw err;
+              else {
+                const data = [user, token];
+                res.json({ data });
+              }
+            });
           });
         } else res.json({ message: "Invalid login" });
       });

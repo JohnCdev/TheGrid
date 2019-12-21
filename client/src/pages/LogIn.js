@@ -47,7 +47,7 @@ export default function LogIn() {
                     console.log(res.data)
                     const client = res.data.data
                     const resObj = {
-                        user: client[0].userName,
+                        userName: client[0].userName,
                         firstName: client[0].firstName,
                         lastName: client[0].lastName,
                         age: client[0].age,
