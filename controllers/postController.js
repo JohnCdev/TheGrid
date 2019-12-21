@@ -1,4 +1,5 @@
 const db = require('../models');
+const jwt = require("jsonwebtoken");
 
 module.exports = {
 
@@ -9,7 +10,7 @@ module.exports = {
             timeStamp: Date.now()
         })
             .then(res.json({ postCreated: true }))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err));   
     },
 
     getUser: (req, res) => {

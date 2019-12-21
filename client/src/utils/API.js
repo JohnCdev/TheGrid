@@ -60,10 +60,14 @@ export default {
 
   updateProfile: userData => axios.put('/api/profiles/profile', userData),
 
+  getAllyList: allyData => axios.post('api/profiles/friend-list', allyData),
+
   createPost: postData => axios.post('/api/posts/new-post', postData),
   
   getUserPosts: postData => axios.post('/api/posts/user-posts', postData),
 
   //getFeedPosts: postData => axios.get('/api/posts/feed-posts', postData)
+
+  
 
 };

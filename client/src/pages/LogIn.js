@@ -58,7 +58,7 @@ export default function LogIn() {
                         token: client[1]
                     }
                     sessionStorage.setItem('project3user', JSON.stringify(resObj));
-                    sessionStorage.setItem('project3username', resObj.user);
+                    sessionStorage.setItem('project3username', resObj.userName);
                     logInFunction({ user: resObj })
                 })
                 .catch(err => console.log(err));
@@ -66,7 +66,7 @@ export default function LogIn() {
     };
 
     if (isAuthenticated) {
-        return <Redirect to='/profile' />
+        return <Redirect to='/feed' />
     }
 
     return (
