@@ -1,25 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import "./logInOutBtn.css"
 
-export default function LogInOutBtn(props) {
-    if (!props.athenticated) {
-        //This button will render if no user is logged in
-        return (
-            <button
-                className="btn my-2 my-sm-0"
-                onClick={props.handleClick}>
-                <Link to="/log-in">Log In</Link>
-            </button>
-        )
-    }
-    return (
-        //This button will render If Logged in and will Log user out
-        <button
-            className="btn my-2 my-sm-0"
-            onClick={props.handleClick}>
-            <Link to="log-out">Log Out</Link>
-        </button>
+export default function LogInOutBtn() {
+  const { isAuthenticated } = useContext(AuthContext);
+  const authenticationStatus = !isAuthenticated ? (
+    <button className="btn my-2 my-sm-0">
+      <Link to="/log-in">Log In</Link>
+    </button>
+  ) : (
+      <button className="btn my-2 my-sm-0"
+      style={{marginLeft: 10}}>
+        <Link to="/log-in">Log Out</Link>
+      </button>
+    );
 
-    )
-
+  return authenticationStatus;
 }

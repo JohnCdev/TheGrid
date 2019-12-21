@@ -1,0 +1,30 @@
+img{
+
+    height: 160px;
+    width: 160px;
+}
+
+.ProfilePicture{
+    padding: 5px;
+    float: left;
+    position: absolute;
+    top: 60px;
+    left: 5px;
+    background-color: red;
+    height: 250px;
+    width: 170px;
+    text-align: center;
+
+}
+.ProfilePicture ul{
+    padding: 0px;
+    background-color: yellow;
+    width: 160px;
+    margin: 0px;
+}
+
+.ProfilePicture li{
+    list-style: none;
+    background-color: green;
+    
+}

@@ -1,49 +1,46 @@
-import React from 'react';
+import React, { useContext } from "react";
 import "./Nav.css";
 import LogInOutBtn from "../LogInOutBtn/LogInOutBtn";
-import "./Nav.css";
+import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
+import ProfileIcon from "../ProfileIcon/ProfileIcon";
 
-export default class Nav extends React.Component {
-    state = {
-        authenticated: false,
-        count: 0
-    }
+const Nav = () => {
+  const { isAuthenticated } = useContext(AuthContext);
 
+  const homeLink = () => {
+    const currentLink = isAuthenticated ? '/feed' : '/';
 
-    handleClick = () => {
-        let nextCount = this.state.count + 1;
-        this.setState({count: nextCount})
-        
-    }
+    return <Link to={currentLink} className="navbar-brand">BASE</Link>
+  }
 
-
-
-    render() {
-
-
-
-
-        return (
-            <div>
-                <nav className="navbar navbar-expand navbar-dark bg-primary">
-                    <a className="navbar-brand" href="/">
-                        Base
-                    </a>
-                    {/* add "active" to the nav-item className for what is active */}
-                    <ul class="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Allies<span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">nav item</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">{this.state.count}</a>
-                        </li>
-                    </ul>
-                    <LogInOutBtn handleClick={this.handleClick} authenticated={this.state.authenticated}/>
-                </nav>
-            </div>
-        )
-    }
+  return (
+    <div>
+      <nav className="navbar navbar-expand navbar-dark bg-primary">
+        {homeLink()}
+        {/* add "active" to the nav-item className for what is active */}
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            {isAuthenticated ?
+              <Link to="/feed" className="nav-link">Feed</Link> :
+              null}
+          </li>
+          <li className="nav-item">
+            {isAuthenticated ?
+              <Link to="/clans" className="nav-link">Clans</Link> :
+              null}
+          </li>
+          <li className="nav-item">
+            {isAuthenticated ?
+              <Link to="/discover" className="nav-link">Discover</Link> :
+              null}
+          </li>
+        </ul>
+        {isAuthenticated && <ProfileIcon img={null} large={true}/>}
+        <LogInOutBtn />
+      </nav>
+    </div>
+  );
 }
+
+export default Nav;
