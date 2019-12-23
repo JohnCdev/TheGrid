@@ -8,8 +8,6 @@ const AlliesBar = () => {
         { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" }
     ]);
 
-    
-
     return (
         <div id="allies-bar">
             <h1>Allies Bar</h1>
