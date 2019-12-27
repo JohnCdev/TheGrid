@@ -10,6 +10,22 @@ export function Input(props) {
   );
 }
 
+export function InputPassword(props) { 
+  return (
+    <div className="form-group">
+      <input className="form-control" type="password" {...props} />
+    </div>
+  )
+}
+
+export function InputEmail(props) {
+  return (
+    <div className="form-group">
+    <input className="form-control" {...props} />
+  </div>
+  )
+}
+
 export function TextArea(props) {
   return (
     <div className="form-group">
@@ -20,7 +36,7 @@ export function TextArea(props) {
 
 export function FormBtn(props) {
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+    <button {...props} style={{ float: "right", marginBottom: 10 }}>
       {props.children}
     </button>
   );
