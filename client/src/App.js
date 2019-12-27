@@ -11,6 +11,7 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
 import FeedPage from "./pages/FeedPage";
 import DiscoverPage from "./pages/DiscoverPage";
+import ClanPage from "./pages/ClanPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path='/profile' component={EditProfile} />
           <Route exact path='/feed' component={FeedPage} />
           <Route exact path='/discover' component={DiscoverPage} />
+          <Route exact path='/clans' component={ClanPage} />
           <Route path = '/user-profile/:userProfile' component={UserProfile} />
           <Route component={NoMatch} />
         </Switch>
