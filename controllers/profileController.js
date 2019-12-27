@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   requestFriend: (req, res) => {
     const requestData = JSON.parse(JSON.stringify(req.body));
-    jwt.verify(req.token, "secretkey", (err, authData) => {
+    jwt.verify(req.token, process.env.JWT, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       } else {
@@ -72,7 +72,7 @@ module.exports = {
     });
   },
   removeFriend: (req, res) => {
-    jwt.verify(req.token, "secretkey", (err, authData) => {
+    jwt.verify(req.token, process.env.JWT, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       } else {
@@ -123,7 +123,7 @@ module.exports = {
   acceptFriend: (req, res) => {
     const accepter = req.body.sender;
     const requester = req.body.receiver;
-    jwt.verify(req.token, "secretkey", (err, authData) => {
+    jwt.verify(req.token, process.env.JWT, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       } else {

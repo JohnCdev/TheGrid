@@ -56,7 +56,7 @@ module.exports = {
               receivedFriendRequests: client.receivedFriendRequests
             };
             //assign a token to this user and send the user information and token back to the user
-            jwt.sign({ user }, "secretkey", (err, token) => {
+            jwt.sign({ user }, process.env.JWT, (err, token) => {
               if (err) throw err;
               else {
                 const data = [user, token];
@@ -71,7 +71,7 @@ module.exports = {
 
   authTest: (req, res) => {
     const requestData = JSON.parse(JSON.stringify(req.body));
-    jwt.verify(req.token, "secretkey", (err, authData) => {
+    jwt.verify(req.token, process.env.JWT, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       } else {
