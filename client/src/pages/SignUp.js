@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Input, TextArea, FormBtn, InputPassword, InputEmail } from "../components/Form/Form";
+import {
+  Input,
+  TextArea,
+  FormBtn,
+  InputPassword,
+  InputEmail
+} from "../components/Form/Form";
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
-import { Redirect } from 'react-router';
-import Header from '../components/Header/Header';
+import { Redirect } from "react-router";
+import Header from "../components/Header/Header";
 
 export default class SignUp extends Component {
   state = {
@@ -17,7 +23,7 @@ export default class SignUp extends Component {
     age: "",
     currentCity: "",
     isNewAccount: false
-  }
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -26,9 +32,57 @@ export default class SignUp extends Component {
     });
   };
 
+  alphanumeric = inputtxt => {
+    const letterNumber = /^[0-9a-zA-Z]+$/;
+    if (inputtxt.match(letterNumber)) {
+      return true;
+    } else {
+
+      return false;
+    }
+  };
+
+  alphabet = inputtxt => {
+    const letter = /^[a-zA-Z]+$/;
+    if (inputtxt.match(letter)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  
+  numeric = inputtxt => {
+    const letterNumber = /^[0-9]+$/;
+    if (inputtxt.match(letterNumber)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  emailValidator = inputtxt => {
+    const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (inputtxt.match(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.userName && this.state.email && this.state.password) {
+    if (
+      this.state.userName &&
+      this.alphanumeric(this.state.userName) &&
+      this.state.email &&
+      this.emailValidator(this.state.email) &&
+      this.state.password &&
+      this.alphanumeric(this.state.password) &&
+      this.numeric(this.state.age) &&
+      this.alphabet(this.state.firstName) &&
+      this.alphabet(this.state.lastName) &&
+      this.alphabet(this.state.currentCity)
+    ) {
       //add a blank profile element
       API.saveUser({
         userName: this.state.userName,
@@ -39,23 +93,24 @@ export default class SignUp extends Component {
         age: this.state.age,
         currentCity: this.state.currentCity
       })
-        .then(this.setState(() => ({
-          isNewAccount: true
-        })))
+        .then(
+          this.setState(() => ({
+            isNewAccount: true
+          }))
+        )
         .catch(err => console.log(err));
     }
   };
 
   render() {
-
     if (this.state.isNewAccount) {
-      return <Redirect to='/log-in' />
+      return <Redirect to="/log-in" />;
     }
     return (
       <Container>
-          <Jumbotron>
-            <Header headerText={'Sign Up'}/>
-          </Jumbotron>
+        <Jumbotron>
+          <Header headerText={"Sign Up"} />
+        </Jumbotron>
         <form>
           <Input
             value={this.state.userName}
@@ -105,9 +160,9 @@ export default class SignUp extends Component {
             onClick={this.handleFormSubmit}
           >
             Submit
-                    </FormBtn>
+          </FormBtn>
         </form>
       </Container>
-    )
+    );
   }
 }
