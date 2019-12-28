@@ -26,13 +26,22 @@ class ViewUserProfile extends Component {
   };
 
   componentDidMount() {
-
     const profile = this.props.match.params.userProfile;
     API.getUserProfile(profile).then(res => {
+      const { userData } = this.context;
+      let friendContext;
       const userProfile = res.data.data[0];
-      console.log(userProfile.friendList)
-      console.log(userProfile.sentFriendRequests)
-      console.log(userProfile.receivedFriendRequests)
+      console.log(userData)
+      // console.log(userProfile.friendList);
+      // console.log(userProfile.sentFriendRequests);
+      // console.log(userProfile.receivedFriendRequests);
+      userProfile.friendList.includes(userData.userName)
+        ? friendContext = "friend"
+        : userProfile.sentFriendRequests.includes(userData.userName)
+        ? friendContext = "their-sent-request-pending"
+        : userProfile.receivedFriendRequests.includes(userData.userName)
+        ? friendContext = "their-received-request-pending"
+        : friendContext = "not-a-friend";
 
       //if user profile is not returned, set id equal to null otherwise fill out the state
       userProfile === undefined
@@ -47,22 +56,14 @@ class ViewUserProfile extends Component {
             friendList: userProfile.friendList,
             sentFriendRequests: userProfile.sentFriendRequests,
             receivedFriendRequests: userProfile.receivedFriendRequests,
+            friendContext: friendContext
           });
     });
   }
 
   render() {
 
-    const { userData } = this.context;
-    console.log(userData)
-    let friendContext = this.state.friendList.includes(userData.userName)
-    ? "friend"
-    : this.state.sentFriendRequests.includes(userData.userName)
-    ? "their-sent-request-pending"
-    : this.state.receivedFriendRequests.includes(userData.userName)
-    ? "their-received-request-pending"
-    : "not-a-friend";
-   // this.setState({friendContext})
+    //this.setState({friendContext})
     const helloWorld = (command, value) => {
       console.log(this);
       switch (command) {
