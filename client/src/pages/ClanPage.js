@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 import Feed from '../components/Feed/Feed'
 import ProfileIcon from '../components/ProfileIcon/ProfileIcon';
 import { AuthContext } from '../context/AuthContext';
-import { Redirect } from 'react-router';
+import { Redirect, Link } from 'react-router-dom';
 import PostForm from '../components/PostForm/PostForm';
 
 export default class ClanPage extends Component {
@@ -49,6 +49,9 @@ export default class ClanPage extends Component {
                         <Jumbotron>
                             <Header headerText={`${this.state.clanName}`} />
                             <ProfileIcon large={false} />
+                            <p>
+                                Clan Description wodinadown wdowidn d owaidhjaodiha wdoih oh awdoihdw.
+                            </p>
                         </Jumbotron>
                         <section>
                             <h3>{`${this.state.clanName}'s Active Timezone: ${this.state.clanTimeZone}`}</h3>
@@ -65,6 +68,11 @@ export default class ClanPage extends Component {
                                 <li>CS</li>
                             </ol>
                         </section>
+                        <Link to="/create-clan">
+                            <button type="button" className="btn btn-primary">
+                                Create a Clan
+                            </button>
+                        </Link>
                     </div>
                     <div className="col-sm-12 col-md-9">
                         <section>

@@ -64,31 +64,39 @@ export default class EditProfile extends Component {
         if (!isAuthenticated) {
             return <Redirect to='/log-in' />
         }
-
+        
         return (
             <main>
                 <Container>
                     <Header headerText="Edit Profile" />
                     <Jumbotron> <h1>Profile</h1></Jumbotron>
                     <form onSubmit={this.handleFormSubmit}>
+                        <label htmlFor="firstName">First Name</label>
                         <Input
                             value={this.state.firstName}
                             onChange={this.handleInputChange}
+                            id="firstName"
                             name="firstName"
                         />
+                        <label htmlFor="lastName">Last Name</label>
                         <Input
                             value={this.state.lastName}
                             onChange={this.handleInputChange}
+                            id="lastName"
                             name="lastName"
                         />
+                        <label htmlFor="age">Age</label>
                         <Input
                             value={this.state.age}
                             onChange={this.handleInputChange}
+                            id="age"
                             name="age"
                         />
+                        <label htmlFor="currentCity">City</label>
                         <Input
                             value={this.state.currentCity}
                             onChange={this.handleInputChange}
+                            id="currentCity"
                             name="currentCity"
                         />
                         <FormBtn

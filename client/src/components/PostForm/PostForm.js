@@ -52,7 +52,12 @@ const PostForm = ({ reloadPosts, clan = false }) => {
                 >
                     Cancel Post
                 </FormBtn>
-                <FormBtn className="btn btn-success" type="submit">Submit Post</FormBtn>
+                <FormBtn
+                    className="btn btn-success"
+                    type="submit"
+                >
+                    Submit Post
+                </FormBtn>
             </form>
         </section>
     );
