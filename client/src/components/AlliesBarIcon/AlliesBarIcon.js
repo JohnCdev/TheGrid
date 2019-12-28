@@ -1,12 +1,13 @@
 import React from "react";
 import './alliesBarIcon.css';
 
-const AlliesBarIcon = ({ userName, firstName}) => {
+const AlliesBarIcon = ({ key, name, status }) => {
     return (
         <div className="allies-icon">
             <ul>
-                <li>{userName}</li>
-                <li>{firstName}</li>
+                <li>{key}</li>
+                <li>{name}</li>
+                <li>{status}</li>
             </ul>
         </div>
     );
