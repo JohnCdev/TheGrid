@@ -66,37 +66,40 @@ export default class EditProfile extends Component {
         }
 
         return (
-            <Container>
-                <Header headerText="Edit Profile" />
-                <Jumbotron> <h1>Profile</h1></Jumbotron>
-                <form>
-                    <Input
-                        value={this.state.firstName}
-                        onChange={this.handleInputChange}
-                        name="firstName"
-                    />
-                    <Input
-                        value={this.state.lastName}
-                        onChange={this.handleInputChange}
-                        name="lastName"
-                    />
-                    <Input
-                        value={this.state.age}
-                        onChange={this.handleInputChange}
-                        name="age"
-                    />
-                    <Input
-                        value={this.state.currentCity}
-                        onChange={this.handleInputChange}
-                        name="currentCity"
-                    />
-                    <FormBtn
-                        onClick={this.handleFormSubmit}
-                    >
-                        Submit Changes
-                    </FormBtn>
-                </form>
-            </Container>
+            <main>
+                <Container>
+                    <Header headerText="Edit Profile" />
+                    <Jumbotron> <h1>Profile</h1></Jumbotron>
+                    <form onSubmit={this.handleFormSubmit}>
+                        <Input
+                            value={this.state.firstName}
+                            onChange={this.handleInputChange}
+                            name="firstName"
+                        />
+                        <Input
+                            value={this.state.lastName}
+                            onChange={this.handleInputChange}
+                            name="lastName"
+                        />
+                        <Input
+                            value={this.state.age}
+                            onChange={this.handleInputChange}
+                            name="age"
+                        />
+                        <Input
+                            value={this.state.currentCity}
+                            onChange={this.handleInputChange}
+                            name="currentCity"
+                        />
+                        <FormBtn
+                            className="btn btn-success"
+                            type="submit"
+                        >
+                            Submit Changes
+                        </FormBtn>
+                    </form>
+                </Container>
+            </main>
         )
     }
 }

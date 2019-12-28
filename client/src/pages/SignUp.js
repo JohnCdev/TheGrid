@@ -60,64 +60,81 @@ export default class SignUp extends Component {
     }
 
     return (
-      <Container>
-        <Jumbotron>
-          <Header headerText={'Sign Up'} />
-        </Jumbotron>
-        <form>
-          <label htmlFor="userName">User Name</label>
-          <Input
-            value={this.state.userName}
-            onChange={this.handleInputChange}
-            id="userName"
-            name="userName"
-            placeholder="User Name"
-          />
-          <InputEmail
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            name="email"
-            placeholder="Email"
-          />
-          <InputPassword
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            name="password"
-            placeholder="Password"
-          />
-          <hr />
-          <Input
-            value={this.state.firstName}
-            onChange={this.handleInputChange}
-            name="firstName"
-            placeholder="First Name"
-          />
-          <Input
-            value={this.state.lastName}
-            onChange={this.handleInputChange}
-            name="lastName"
-            placeholder="Last Name"
-          />
-          <Input
-            value={this.state.age}
-            onChange={this.handleInputChange}
-            name="age"
-            placeholder="Age"
-          />
-          <Input
-            value={this.state.currentCity}
-            onChange={this.handleInputChange}
-            name="currentCity"
-            placeholder="City"
-          />
-          <FormBtn
-            //  disabled={!(this.state.userName && this.state.email && this.state.password)}
-            onClick={this.handleFormSubmit}
-          >
-            Submit
-                    </FormBtn>
-        </form>
-      </Container>
+      <main>
+        <Container>
+          <Jumbotron>
+            <Header headerText={'Sign Up'} />
+          </Jumbotron>
+          <form onSubmit={this.handleFormSubmit}>
+            <h3>Account Information</h3>
+            <label htmlFor="userName">User Name</label>
+            <Input
+              value={this.state.userName}
+              onChange={this.handleInputChange}
+              id="userName"
+              name="userName"
+              placeholder="User Name"
+            />
+            <label htmlFor="email">Email</label>
+            <InputEmail
+              value={this.state.email}
+              onChange={this.handleInputChange}
+              id="email"
+              name="email"
+              placeholder="Email"
+            />
+            <label htmlFor="password">Password</label>
+            <InputPassword
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+            <hr />
+            <h3>Profile information</h3>
+            <label htmlFor="firstName">First Name</label>
+            <Input
+              value={this.state.firstName}
+              onChange={this.handleInputChange}
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+            />
+            <label htmlFor="lastName">Last Name</label>
+            <Input
+              value={this.state.lastName}
+              onChange={this.handleInputChange}
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+            />
+            <label htmlFor="age">Age</label>
+            <Input
+              value={this.state.age}
+              onChange={this.handleInputChange}
+              id="age"
+              name="age"
+              placeholder="Age"
+            />
+            <label htmlFor="currentCity">City</label>
+            <Input
+              value={this.state.currentCity}
+              onChange={this.handleInputChange}
+              id="currentCity"
+              name="currentCity"
+              placeholder="City"
+            />
+            <FormBtn
+              //  disabled={!(this.state.userName && this.state.email && this.state.password)}
+              className="btn btn-success"
+              type="submit"
+            >
+              Submit
+            </FormBtn>
+          </form>
+        </Container>
+      </main>
     )
   }
 }

@@ -11,3 +11,11 @@ div[data-reactroot] {
     padding: 0;
     margin: 0;
 }
+
+.container {
+    margin-bottom: 50px;
+}
+
+main {
+    margin-bottom: 200px;
+}
