@@ -7,6 +7,7 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import AddFriend from '../components/AddFriend/AddFriend';
 import Header from '../components/Header/Header';
+import { AuthContext } from '../context/AuthContext';
 
 export default class EditProfile extends Component {
     state = {
@@ -17,6 +18,7 @@ export default class EditProfile extends Component {
         currentCity: "",
         friendList: []
     }
+    static contextType = AuthContext;
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -24,6 +26,7 @@ export default class EditProfile extends Component {
             [name]: value
         });
     };
+
     componentDidMount = event => {
         this.state.userName = sessionStorage.getItem("project3username")
         API.getProfile({
@@ -56,6 +59,12 @@ export default class EditProfile extends Component {
     };
 
     render() {
+
+        const { isAuthenticated } = this.context;
+        if (!isAuthenticated) {
+            return <Redirect to='/log-in' />
+        }
+
         return (
             <Container>
                 <Header headerText="Edit Profile" />

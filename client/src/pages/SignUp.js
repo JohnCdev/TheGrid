@@ -6,6 +6,7 @@ import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import Header from '../components/Header/Header';
+import { AuthContext } from '../context/AuthContext';
 
 export default class SignUp extends Component {
   state = {
@@ -18,6 +19,7 @@ export default class SignUp extends Component {
     currentCity: "",
     isNewAccount: false
   }
+  static contextType = AuthContext;
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -51,15 +53,23 @@ export default class SignUp extends Component {
     if (this.state.isNewAccount) {
       return <Redirect to='/log-in' />
     }
+
+    const { isAuthenticated } = this.context;
+    if (isAuthenticated) {
+      return <Redirect to='/feed' />
+    }
+
     return (
       <Container>
-          <Jumbotron>
-            <Header headerText={'Sign Up'}/>
-          </Jumbotron>
+        <Jumbotron>
+          <Header headerText={'Sign Up'} />
+        </Jumbotron>
         <form>
+          <label htmlFor="userName">User Name</label>
           <Input
             value={this.state.userName}
             onChange={this.handleInputChange}
+            id="userName"
             name="userName"
             placeholder="User Name"
           />

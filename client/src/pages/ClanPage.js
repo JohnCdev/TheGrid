@@ -5,6 +5,9 @@ import Jumbotron from '../components/Jumbotron/Jumbotron';
 import Header from '../components/Header/Header';
 import Feed from '../components/Feed/Feed'
 import ProfileIcon from '../components/ProfileIcon/ProfileIcon';
+import { AuthContext } from '../context/AuthContext';
+import { Redirect } from 'react-router';
+import PostForm from '../components/PostForm/PostForm';
 
 export default class ClanPage extends Component {
     state = {
@@ -18,16 +21,26 @@ export default class ClanPage extends Component {
             { id: 4, userName: "Tripp", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" }
         ]
     }
+    static contextType = AuthContext;
 
     componentDidMount = event => {
         // api call to get clan feed
-
+        this.reloadPosts();
         // this.setState({
         //     clanFeed: []
         // })
     }
 
+    reloadPosts = () => {
+        console.log('API to reload posts');
+    }
+
     render() {
+        const { isAuthenticated } = this.context;
+        if (!isAuthenticated) {
+            return <Redirect to='/log-in' />
+        }
+
         return (
 
             <Container className="mt-4">
@@ -55,6 +68,7 @@ export default class ClanPage extends Component {
                     </div>
                     <div className="col-sm-12 col-md-9">
                         <section>
+                            <PostForm reloadPosts={this.reloadPosts} clan={true} />
                             {this.state.clanFeed.length > 0 ?
                                 <Feed feed={this.state.clanFeed} name={this.state.clanName} /> :
                                 <h2>This clan has no feed.(Yet!)</h2>}
