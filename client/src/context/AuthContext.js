@@ -5,7 +5,6 @@ export const AuthContext = createContext();
 class AuthContextProvider extends Component {
   state = {
     logInFunction: userObject => {
-      console.log(userObject.user.user);
       const client = userObject.user;
       this.setState({
         isAuthenticated: true,
@@ -55,7 +54,6 @@ class AuthContextProvider extends Component {
             sentFriendRequests: user.sentFriendRequests,
             receivedFriendRequests: user.receivedFriendRequests,
             token: user.token,
-           // userName: user.userName
           }
         };
         this.state.logInFunction(userObject);
