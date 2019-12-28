@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './notifications.css'
+import './notifications.css';
 
 const initialNotifications = [
-    { postType: "allyPost", userName: "John", timeStamp: '10:10:10' },
-    { postType: "clanPost", userName: "Average", timeStamp: '10:10:10' }
+    { _id: 1, postType: "allyPost", userName: "John", timeStamp: '10:10:10' },
+    { _id: 2, postType: "clanPost", userName: "Average", timeStamp: '10:10:10' }
 ]
 
 const Notifications = () => {
@@ -21,14 +21,14 @@ const Notifications = () => {
                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     {notifications.map(noti => {
                         return (
-                            <>
+                            <div key={noti._id}>
                                 <a className="dropdown-item"
                                     href={noti.postType === 'allyPost' ? "/feed" : "/clans"}
                                 >
                                     {`${noti.userName} has made a post | ${noti.timeStamp}`}
                                 </a>
-                                <div class="dropdown-divider"></div>
-                            </>
+                                <div className="dropdown-divider"></div>
+                            </div>
                         );
                     })}
                 </div>
