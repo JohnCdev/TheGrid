@@ -35,7 +35,12 @@ class AuthContextProvider extends Component {
 
   toggleAuth = () => {
     console.log("auth toggle");
-    this.setState({ isAuthenticated: !this.state.isAuthenticated });
+    sessionStorage.removeItem('project3user')
+    sessionStorage.removeItem('project3username')
+    this.setState({ 
+      isAuthenticated: false,
+      userData: {}
+     });
   };
 
   componentDidMount(){

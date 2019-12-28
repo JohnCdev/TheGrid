@@ -31,10 +31,6 @@ class ViewUserProfile extends Component {
       const { userData } = this.context;
       let friendContext;
       const userProfile = res.data.data[0];
-      console.log(userData)
-      // console.log(userProfile.friendList);
-      // console.log(userProfile.sentFriendRequests);
-      // console.log(userProfile.receivedFriendRequests);
       userProfile.friendList.includes(userData.userName)
         ? friendContext = "friend"
         : userProfile.sentFriendRequests.includes(userData.userName)
