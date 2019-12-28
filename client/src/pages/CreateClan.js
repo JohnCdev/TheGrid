@@ -8,7 +8,7 @@ import { Container } from '../components/Grid/Grid';
 
 const CreateClan = () => {
     const { isAuthenticated } = useContext(AuthContext);
-    const { formData, setFormData } = useState({
+    const [formData, setFormData] = useState({
         clanName: '',
         clanTimeZone: '',
         clanDescription: ''
@@ -20,11 +20,14 @@ const CreateClan = () => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        console.log(`${formData} Submitted`)
+        console.log(formData)
     }
 
     const handleFormChange = e => {
-        setFormData(e.target.value);
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
     }
 
     return (
@@ -41,7 +44,7 @@ const CreateClan = () => {
                             name="clanName"
                             placeholder="Clan Name"
                             onChange={handleFormChange}
-                            value={formData}
+                            value={formData.clanName}
                         />
                         <label htmlFor="clanTimeZone">Active Time Zone</label>
                         <Input
@@ -49,7 +52,7 @@ const CreateClan = () => {
                             name="clanTimeZone"
                             placeholder="Time Zone"
                             onChange={handleFormChange}
-                            value={formData}
+                            value={formData.clanTimeZone}
                         />
                         <label htmlFor="clanDescription">Clan Description</label>
                         <TextArea
@@ -57,7 +60,7 @@ const CreateClan = () => {
                             name="clanDescription"
                             placeholder="Clan Description"
                             onChange={handleFormChange}
-                            value={formData}
+                            value={formData.clanDescription}
                             rows="5"
                         />
                         <FormBtn
