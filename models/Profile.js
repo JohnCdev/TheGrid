@@ -39,6 +39,10 @@ var ProfileSchema = new Schema({
     receivedFriendRequests: {
         type: Array,
         default: []
+    },
+    updates : {
+        type: Array,
+        default: []
     }
     
 });
