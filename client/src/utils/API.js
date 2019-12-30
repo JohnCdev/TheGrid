@@ -34,10 +34,12 @@ export default {
     }
   },
 
+  ///users
   saveUser: userData => axios.post('/api/users/create-new-user', userData),
 
   userLogIn: userData => axios.post('/api/users/login', userData),
 
+  ///profiles
   getUserProfile: profile => axios.get(`/api/profiles/get-profile/${profile}`),
 
   getProfile: userData => axios.post('api/profiles/profile', userData),
@@ -46,12 +48,26 @@ export default {
 
   getAllyList: allyData => axios.post('api/profiles/friend-list', allyData),
 
+  ///posts
   createPost: postData => axios.post('/api/posts/new-post', postData),
   
   getUserPosts: postData => axios.post('/api/posts/user-posts', postData),
 
-  getFeedPosts: postData => axios.post('/api/posts/feed-posts', postData)
+  getFeedPosts: postData => axios.post('/api/posts/feed-posts', postData),
 
   
+  ///clans
+  createClan: (clanData, token) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    }
+    return axios.post('/api/clans/create-clan', clanData, config)
+},
+
+  getClan: clanName => axios.get(`/api/clans/${clanName}`)
+
 
 };
