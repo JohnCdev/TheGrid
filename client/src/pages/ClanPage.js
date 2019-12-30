@@ -6,10 +6,10 @@ import Header from '../components/Header/Header';
 import Feed from '../components/Feed/Feed'
 import ProfileIcon from '../components/ProfileIcon/ProfileIcon';
 import { AuthContext } from '../context/AuthContext';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, withRouter } from 'react-router-dom';
 import PostForm from '../components/PostForm/PostForm';
 
-export default class ClanPage extends Component {
+class ClanPage extends Component {
     state = {
         clanName: 'That Clan',
         clanImg: '',
@@ -88,3 +88,5 @@ export default class ClanPage extends Component {
         );
     }
 }
+
+export default withRouter(ClanPage)

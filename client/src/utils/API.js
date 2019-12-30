@@ -34,19 +34,33 @@ export default {
     }
   },
 
+  ///users
   saveUser: userData => axios.post('/api/users/create-new-user', userData),
 
   userLogIn: userData => axios.post('/api/users/login', userData),
 
+  ///profiles
   getUserProfile: profile => axios.get(`/api/profiles/get-profile/${profile}`),
 
   getProfile: userData => axios.post('api/profiles/profile', userData),
 
   updateProfile: userData => axios.put('/api/profiles/profile', userData),
 
+  ///posts
   createPost: postData => axios.post('/api/posts/new-post', postData),
   
   getUserPosts: postData => axios.post('/api/posts/user-posts', postData),
+
+  ///clans
+  createClan: (clanData, token) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    }
+    axios.post('/api/clans/create-clan', clanData, config)
+}
 
   //getFeedPosts: postData => axios.get('/api/posts/feed-posts', postData)
 
