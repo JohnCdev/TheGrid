@@ -1,34 +1,43 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import Jumbotron from '../components/Jumbotron/Jumbotron';
-import Header from '../components/Header/Header';
-import { Redirect } from 'react-router';
-import { Input, TextArea, FormBtn } from '../components/Form/Form';
-import { Container } from '../components/Grid/Grid';
+import Jumbotron from "../components/Jumbotron/Jumbotron";
+import Header from "../components/Header/Header";
+import { Redirect } from "react-router";
+import { Input, TextArea, FormBtn } from "../components/Form/Form";
+import { Container } from "../components/Grid/Grid";
+import API from "../utils/API";
 
 const CreateClan = () => {
-    const { isAuthenticated } = useContext(AuthContext);
-    const [formData, setFormData] = useState({
-        clanName: '',
-        clanTimeZone: '',
-        clanDescription: ''
+  const { isAuthenticated, userData } = useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    clanMade: false,
+    clanName: "",
+    clanTimeZone: "",
+    clanDescription: ""
+  });
+
+  // if (!isAuthenticated) {
+  //     return <Redirect to='/log-in' />
+  // }
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    const payLoad = { ...formData, clanFounder: userData.userName };
+    const token = userData.token;
+
+    API.createClan(payLoad, token).then((res) => {
+      setFormData({
+          clanMade: true
+      })
     });
+  };
 
-    if (!isAuthenticated) {
-        return <Redirect to='/log-in' />
-    }
-
-    const handleFormSubmit = e => {
-        e.preventDefault();
-        console.log(formData)
-    }
-
-    const handleFormChange = e => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    }
+  const handleFormChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
     return (
         <main>
