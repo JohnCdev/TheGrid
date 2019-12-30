@@ -36,9 +36,20 @@ export default function LogIn() {
         });
     };
 
+
+
     const handleFormSubmit = event => {
         event.preventDefault();
-        if (formData.userName && formData.password) {
+        const alphanumeric = inputtxt => {
+            const letterNumber = /^[0-9a-zA-Z]+$/;
+            if (inputtxt.match(letterNumber)) {
+              return true;
+            } else {
+        
+              return false;
+            }
+          };
+        if (formData.userName && formData.password && alphanumeric(formData.userName) && alphanumeric(formData.password)) {
 
             API.userLogIn({
                 userName: formData.userName,

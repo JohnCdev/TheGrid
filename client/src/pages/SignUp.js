@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Input, TextArea, FormBtn, InputPassword, InputEmail } from "../components/Form/Form";
+import {
+  Input,
+  TextArea,
+  FormBtn,
+  InputPassword,
+  InputEmail
+} from "../components/Form/Form";
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import Header from '../components/Header/Header';
+import { AuthContext } from '../context/AuthContext';
 
 export default class SignUp extends Component {
   state = {
@@ -18,6 +25,7 @@ export default class SignUp extends Component {
     currentCity: "",
     isNewAccount: false
   }
+  static contextType = AuthContext;
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -26,9 +34,57 @@ export default class SignUp extends Component {
     });
   };
 
+  alphanumeric = inputtxt => {
+    const letterNumber = /^[0-9a-zA-Z]+$/;
+    if (inputtxt.match(letterNumber)) {
+      return true;
+    } else {
+
+      return false;
+    }
+  };
+
+  alphabet = inputtxt => {
+    const letter = /^[a-zA-Z]+$/;
+    if (inputtxt.match(letter)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  
+  numeric = inputtxt => {
+    const letterNumber = /^[0-9]+$/;
+    if (inputtxt.match(letterNumber)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  emailValidator = inputtxt => {
+    const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (inputtxt.match(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.userName && this.state.email && this.state.password) {
+    if (
+      this.state.userName &&
+      this.alphanumeric(this.state.userName) &&
+      this.state.email &&
+      this.emailValidator(this.state.email) &&
+      this.state.password &&
+      this.alphanumeric(this.state.password) &&
+      this.numeric(this.state.age) &&
+      this.alphabet(this.state.firstName) &&
+      this.alphabet(this.state.lastName) &&
+      this.alphabet(this.state.currentCity)
+    ) {
       //add a blank profile element
       API.saveUser({
         userName: this.state.userName,
@@ -39,75 +95,101 @@ export default class SignUp extends Component {
         age: this.state.age,
         currentCity: this.state.currentCity
       })
-        .then(this.setState(() => ({
-          isNewAccount: true
-        })))
+        .then(
+          this.setState(() => ({
+            isNewAccount: true
+          }))
+        )
         .catch(err => console.log(err));
     }
   };
 
   render() {
-
     if (this.state.isNewAccount) {
-      return <Redirect to='/log-in' />
+      return <Redirect to="/log-in" />;
     }
+
+    const { isAuthenticated } = this.context;
+    if (isAuthenticated) {
+      return <Redirect to='/feed' />
+    }
+
     return (
-      <Container>
+      <main>
+        <Container>
           <Jumbotron>
-            <Header headerText={'Sign Up'}/>
+            <Header headerText={'Sign Up'} />
           </Jumbotron>
-        <form>
-          <Input
-            value={this.state.userName}
-            onChange={this.handleInputChange}
-            name="userName"
-            placeholder="User Name"
-          />
-          <InputEmail
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            name="email"
-            placeholder="Email"
-          />
-          <InputPassword
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            name="password"
-            placeholder="Password"
-          />
-          <hr />
-          <Input
-            value={this.state.firstName}
-            onChange={this.handleInputChange}
-            name="firstName"
-            placeholder="First Name"
-          />
-          <Input
-            value={this.state.lastName}
-            onChange={this.handleInputChange}
-            name="lastName"
-            placeholder="Last Name"
-          />
-          <Input
-            value={this.state.age}
-            onChange={this.handleInputChange}
-            name="age"
-            placeholder="Age"
-          />
-          <Input
-            value={this.state.currentCity}
-            onChange={this.handleInputChange}
-            name="currentCity"
-            placeholder="City"
-          />
-          <FormBtn
-            //  disabled={!(this.state.userName && this.state.email && this.state.password)}
-            onClick={this.handleFormSubmit}
-          >
-            Submit
-                    </FormBtn>
-        </form>
-      </Container>
+          <form onSubmit={this.handleFormSubmit}>
+            <h3>Account Information</h3>
+            <label htmlFor="userName">User Name</label>
+            <Input
+              value={this.state.userName}
+              onChange={this.handleInputChange}
+              id="userName"
+              name="userName"
+              placeholder="User Name"
+            />
+            <label htmlFor="email">Email</label>
+            <InputEmail
+              value={this.state.email}
+              onChange={this.handleInputChange}
+              id="email"
+              name="email"
+              placeholder="Email"
+            />
+            <label htmlFor="password">Password</label>
+            <InputPassword
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+            <hr />
+            <h3>Profile information</h3>
+            <label htmlFor="firstName">First Name</label>
+            <Input
+              value={this.state.firstName}
+              onChange={this.handleInputChange}
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+            />
+            <label htmlFor="lastName">Last Name</label>
+            <Input
+              value={this.state.lastName}
+              onChange={this.handleInputChange}
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+            />
+            <label htmlFor="age">Age</label>
+            <Input
+              value={this.state.age}
+              onChange={this.handleInputChange}
+              id="age"
+              name="age"
+              placeholder="Age"
+            />
+            <label htmlFor="currentCity">City</label>
+            <Input
+              value={this.state.currentCity}
+              onChange={this.handleInputChange}
+              id="currentCity"
+              name="currentCity"
+              placeholder="City"
+            />
+            <FormBtn
+              //  disabled={!(this.state.userName && this.state.email && this.state.password)}
+              className="btn btn-success"
+              type="submit"
+            >
+              Submit
+            </FormBtn>
+          </form>
+        </Container>
+      </main>
     )
   }
 }
