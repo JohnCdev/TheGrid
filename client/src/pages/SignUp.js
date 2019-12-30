@@ -52,7 +52,7 @@ export default class SignUp extends Component {
       return false;
     }
   };
-  
+
   numeric = inputtxt => {
     const letterNumber = /^[0-9]+$/;
     if (inputtxt.match(letterNumber)) {
@@ -129,6 +129,9 @@ export default class SignUp extends Component {
               id="userName"
               name="userName"
               placeholder="User Name"
+              required
+              pattern=".{3,20}"
+              title="User name must be between 3 and 20 characters"
             />
             <label htmlFor="email">Email</label>
             <InputEmail
@@ -137,6 +140,7 @@ export default class SignUp extends Component {
               id="email"
               name="email"
               placeholder="Email"
+              required
             />
             <label htmlFor="password">Password</label>
             <InputPassword
@@ -145,9 +149,12 @@ export default class SignUp extends Component {
               id="password"
               name="password"
               placeholder="Password"
+              required
+              pattern=".{5,20}"
+              title="Password must be at-least 5 characters long"
             />
             <hr />
-            <h3>Profile information</h3>
+            <h3>Profile Information</h3>
             <label htmlFor="firstName">First Name</label>
             <Input
               value={this.state.firstName}
@@ -155,6 +162,9 @@ export default class SignUp extends Component {
               id="firstName"
               name="firstName"
               placeholder="First Name"
+              required
+              pattern=".{2,}"
+              title="Enter a valid value"
             />
             <label htmlFor="lastName">Last Name</label>
             <Input
@@ -163,6 +173,9 @@ export default class SignUp extends Component {
               id="lastName"
               name="lastName"
               placeholder="Last Name"
+              required
+              pattern=".{2,}"
+              title="Enter a valid value"
             />
             <label htmlFor="age">Age</label>
             <Input
@@ -171,6 +184,9 @@ export default class SignUp extends Component {
               id="age"
               name="age"
               placeholder="Age"
+              required
+              type="number"
+              min="1"
             />
             <label htmlFor="currentCity">City</label>
             <Input
@@ -179,6 +195,9 @@ export default class SignUp extends Component {
               id="currentCity"
               name="currentCity"
               placeholder="City"
+              required
+              pattern=".{2,}"
+              title="Enter a valid value"
             />
             <FormBtn
               //  disabled={!(this.state.userName && this.state.email && this.state.password)}

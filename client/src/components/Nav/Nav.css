@@ -1,6 +1,18 @@
+/* nav, li, a {
+    color: #231f20 !important;
+} */
+
 nav.bg-primary {
-    background-color: palevioletred !important;
+    background-color: #9c4efa !important;
 }
-nav ul li {
-    font-family: monospace;
+
+#dropdownMenuButton {
+    font-family: PTSans, sans-serif;
+    color: #231f20;
+    background-color: #04dac6;
+
+}
+
+nav > button > a {
+    color: #231f20;
 }

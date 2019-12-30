@@ -64,12 +64,13 @@ export default class EditProfile extends Component {
         if (!isAuthenticated) {
             return <Redirect to='/log-in' />
         }
-        
+
         return (
             <main>
                 <Container>
-                    <Header headerText="Edit Profile" />
-                    <Jumbotron> <h1>Profile</h1></Jumbotron>
+                    <Jumbotron>
+                        <Header headerText="Edit Profile" />
+                    </Jumbotron>
                     <form onSubmit={this.handleFormSubmit}>
                         <label htmlFor="firstName">First Name</label>
                         <Input
@@ -77,6 +78,9 @@ export default class EditProfile extends Component {
                             onChange={this.handleInputChange}
                             id="firstName"
                             name="firstName"
+                            required
+                            pattern=".{2,}"
+                            title="Enter a valid value"
                         />
                         <label htmlFor="lastName">Last Name</label>
                         <Input
@@ -84,6 +88,9 @@ export default class EditProfile extends Component {
                             onChange={this.handleInputChange}
                             id="lastName"
                             name="lastName"
+                            required
+                            pattern=".{2,}"
+                            title="Enter a valid value"
                         />
                         <label htmlFor="age">Age</label>
                         <Input
@@ -91,6 +98,9 @@ export default class EditProfile extends Component {
                             onChange={this.handleInputChange}
                             id="age"
                             name="age"
+                            required
+                            type="number"
+                            min="1"
                         />
                         <label htmlFor="currentCity">City</label>
                         <Input
@@ -98,6 +108,9 @@ export default class EditProfile extends Component {
                             onChange={this.handleInputChange}
                             id="currentCity"
                             name="currentCity"
+                            required
+                            pattern=".{2,}"
+                            title="Enter a valid value"
                         />
                         <FormBtn
                             className="btn btn-success"
