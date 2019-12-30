@@ -15,7 +15,8 @@ class ViewUserProfile extends Component {
     firstName: "",
     lastName: "",
     userName: "",
-    age: ""
+    age: "",
+    feed: []
   };
 
   componentDidMount() {

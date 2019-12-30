@@ -50,7 +50,7 @@ export default {
   
   getUserPosts: postData => axios.post('/api/posts/user-posts', postData),
 
-  //getFeedPosts: postData => axios.get('/api/posts/feed-posts', postData)
+  getFeedPosts: postData => axios.post('/api/posts/feed-posts', postData)
 
   
 

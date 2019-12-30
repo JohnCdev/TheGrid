@@ -15,15 +15,16 @@ const FeedPage = () => {
     ]);
 
     useEffect(() => {
-        API.getUserPosts({ userName: sessionStorage.getItem('project3username') })
+        API.getFeedPosts({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
+                console.log(data)
                 setFeed(data.data)
             })
             .catch(err => console.log(err))
     }, [])
 
     const reloadPosts = () => {
-        API.getUserPosts({ userName: sessionStorage.getItem('project3username') })
+        API.getFeedPosts({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
                 setFeed(data.data)
             })
