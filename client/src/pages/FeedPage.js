@@ -44,7 +44,7 @@ const FeedPage = () => {
             <Container>
                 <PostForm reloadPosts={reloadPosts} />
                 {feed.length > 0 ?
-                    <Feed feed={feed} /> :
+                    <Feed feed={feed} name={sessionStorage.getItem('project3username')}/> :
                     <h1>You have no feed</h1>}
             </Container>
         </main>

@@ -21,7 +21,7 @@ export function InputPassword(props) {
 export function InputEmail(props) {
   return (
     <div className="form-group">
-    <input className="form-control" {...props} />
+    <input className="form-control" type="email" {...props} />
   </div>
   )
 }

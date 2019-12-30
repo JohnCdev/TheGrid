@@ -44,6 +44,7 @@ const PostForm = ({ reloadPosts, clan = false }) => {
                     onChange={onChangeHandler}
                     value={post}
                     rows="5"
+                    required
                 />
                 <FormBtn
                     className="btn btn-danger ml-2"
