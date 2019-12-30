@@ -10,7 +10,7 @@ const AlliesBar = () => {
 
     return (
         <div id="allies-bar">
-            <h1>Allies Bar</h1>
+            <h1>Allies</h1>
             {allies.map(ally => (
                 <AlliesBarIcon
                     key={ally.id}
