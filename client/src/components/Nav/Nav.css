@@ -1,3 +1,6 @@
 nav.bg-primary {
     background-color: palevioletred !important;
 }
+nav ul li {
+    font-family: monospace;
+}

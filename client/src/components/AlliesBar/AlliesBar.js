@@ -5,12 +5,47 @@ import './alliesBar.css';
 const AlliesBar = () => {
     const [allies, setAllies] = useState([
         { id: 1, name: "John", status: "Active", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "wwwwwwwwwwwwwww", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
+        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" },
         { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" }
+
+
+
     ]);
 
     return (
         <div id="allies-bar">
-            <h1>Allies</h1>
             {allies.map(ally => (
                 <AlliesBarIcon
                     key={ally.id}

@@ -1,4 +1,6 @@
 #allies-bar {
     background-color: gainsboro;
-    max-height: 150px;
+    overflow: auto;
+    height: 65;
+    white-space: nowrap;
 }
