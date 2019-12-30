@@ -29,8 +29,6 @@ export default function LogIn() {
         });
     };
 
-
-
     const handleFormSubmit = event => {
         event.preventDefault();
         const alphanumeric = inputtxt => {
@@ -38,8 +36,7 @@ export default function LogIn() {
             if (inputtxt.match(letterNumber)) {
                 return true;
             } else {
-
-                return false;
+              return false;
             }
         };
         if (formData.userName && formData.password && alphanumeric(formData.userName) && alphanumeric(formData.password)) {
