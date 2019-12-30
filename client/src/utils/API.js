@@ -59,8 +59,10 @@ export default {
         'Authorization': `Bearer ${token}`,
       }
     }
-    axios.post('/api/clans/create-clan', clanData, config)
-}
+    return axios.post('/api/clans/create-clan', clanData, config)
+},
+
+  getClan: clanName => axios.get(`/api/clans/${clanName}`)
 
   //getFeedPosts: postData => axios.get('/api/posts/feed-posts', postData)
 

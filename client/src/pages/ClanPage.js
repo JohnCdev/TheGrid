@@ -24,6 +24,10 @@ class ClanPage extends Component {
     static contextType = AuthContext;
 
     componentDidMount = event => {
+        const clan = this.props.match.params.clanName;
+        API.getClan(clan).then(response => {
+           console.log(response) 
+        })
         // api call to get clan feed
         this.reloadPosts();
         // this.setState({
@@ -37,9 +41,9 @@ class ClanPage extends Component {
 
     render() {
         const { isAuthenticated } = this.context;
-        if (!isAuthenticated) {
-            return <Redirect to='/log-in' />
-        }
+        // if (!isAuthenticated) {
+        //     return <Redirect to='/log-in' />
+        // }
 
         return (
 

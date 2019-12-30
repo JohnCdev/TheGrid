@@ -29,6 +29,10 @@ var ClanSchema = new Schema({
   clanPosts: {
     type: Array,
     default: []
+  },
+  clanFeed: {
+    type: Array,
+    default: []
   }
 });
 

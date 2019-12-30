@@ -19,12 +19,17 @@ module.exports = {
               clanTimeZone: req.body.clanTimeZone,
               clanMembers: [req.body.clanFounder]
             })
-              //tell the client their account was successfully created
               .then(res.json({ ClanCreated: true }))
               .catch(err => console.log(err));
           }
         });
       }
     });
+  },
+  getClan: (req, res) => {
+    console.log(req.params.clan)
+    db.Clan.find({ clanName: req.params.clan }).then(data =>
+      res.json({ data })
+    );
   }
 };

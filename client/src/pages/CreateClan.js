@@ -10,6 +10,7 @@ import API from "../utils/API";
 const CreateClan = () => {
   const { isAuthenticated, userData } = useContext(AuthContext);
   const [formData, setFormData] = useState({
+    clanMade: false,
     clanName: "",
     clanTimeZone: "",
     clanDescription: ""
@@ -24,8 +25,10 @@ const CreateClan = () => {
     const payLoad = { ...formData, clanFounder: userData.userName };
     const token = userData.token;
 
-    API.createClan(payLoad, token).then(response => {
-      console.log(response);
+    API.createClan(payLoad, token).then((res) => {
+      setFormData({
+          clanMade: true
+      })
     });
   };
 
