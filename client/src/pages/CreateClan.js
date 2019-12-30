@@ -36,41 +36,44 @@ const CreateClan = () => {
                 <Jumbotron>
                     <Header headerText="Create a New Clan" />
                 </Jumbotron>
-                <section>
-                    <form onSubmit={handleFormSubmit}>
-                        <label htmlFor="clanName">Clan Name</label>
-                        <Input
-                            id="clanName"
-                            name="clanName"
-                            placeholder="Clan Name"
-                            onChange={handleFormChange}
-                            value={formData.clanName}
-                        />
-                        <label htmlFor="clanTimeZone">Active Time Zone</label>
-                        <Input
-                            id="clanTimeZone"
-                            name="clanTimeZone"
-                            placeholder="Time Zone"
-                            onChange={handleFormChange}
-                            value={formData.clanTimeZone}
-                        />
-                        <label htmlFor="clanDescription">Clan Description</label>
-                        <TextArea
-                            id="clanDescription"
-                            name="clanDescription"
-                            placeholder="Clan Description"
-                            onChange={handleFormChange}
-                            value={formData.clanDescription}
-                            rows="5"
-                        />
-                        <FormBtn
-                            className="btn btn-success"
-                            type="submit"
-                        >
-                            Create Clan
+                <form onSubmit={handleFormSubmit}>
+                    <label htmlFor="clanName">Clan Name</label>
+                    <Input
+                        id="clanName"
+                        name="clanName"
+                        placeholder="Clan Name"
+                        onChange={handleFormChange}
+                        value={formData.clanName}
+                        required
+                        pattern=".{3,20}"
+                        title="Name must be 3 to 20 characters long"
+                    />
+                    <label htmlFor="clanTimeZone">Active Time Zone</label>
+                    <Input
+                        id="clanTimeZone"
+                        name="clanTimeZone"
+                        placeholder="Time Zone"
+                        onChange={handleFormChange}
+                        value={formData.clanTimeZone}
+                        required
+                    />
+                    <label htmlFor="clanDescription">Clan Description</label>
+                    <TextArea
+                        id="clanDescription"
+                        name="clanDescription"
+                        placeholder="Clan Description"
+                        onChange={handleFormChange}
+                        value={formData.clanDescription}
+                        rows="5"
+                        required
+                    />
+                    <FormBtn
+                        className="btn btn-success"
+                        type="submit"
+                    >
+                        Create Clan
                     </FormBtn>
-                    </form>
-                </section>
+                </form>
             </Container>
         </main>
     );
