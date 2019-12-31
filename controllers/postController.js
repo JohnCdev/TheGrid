@@ -21,25 +21,23 @@ module.exports = {
             .catch(err => console.log(err))
     },
 
-    getFeed: (req, res) => {
+     getFeed: async (req, res) => {
+        const friendList = req.body.friendList
         const feed = []
-        db.Profile.find({ userName: req.body.userName })
-            .then(data => {
-                var friendList = data[0].friendList
-                for (var i = 0; i < friendList.length; i++) {
-                    db.Post.find({ userName: friendList[i] })
-                        .then(data => {
-                            for (var i = 0; i < data.length; i++)
-                            {
-                                feed.push(data[i])
-                            }
-                        })
-                        .catch(err => console.log(err))
+        for (var i = 0; i < friendList.length; i++)
+        {
+            await db.Post.find({userName: friendList[i]})
+            .then(posts => {
+                for (var j=0; j < posts.length; j++)
+                {
+                    feed.push(posts[j])
                 }
-                res.json(feed)
+                
             })
             .catch(err => console.log(err))
-
+        }
+        const sortedFeed = feed.sort((a,b) => b.timeStamp - a.timeStamp)
+        res.json(sortedFeed)
     }
 
 

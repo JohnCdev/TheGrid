@@ -18,18 +18,21 @@ const FeedPage = () => {
     ]);
 
     useEffect(() => {
-        API.getFeedPosts({ userName: sessionStorage.getItem('project3username') })
+        API.getAllyList({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
-                console.log(data)
-                setFeed(data.data)
+                API.getFeedPosts({friendList: data.data})
+                .then(data => setFeed(data.data))
+                .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
     }, [])
 
     const reloadPosts = () => {
-        API.getFeedPosts({ userName: sessionStorage.getItem('project3username') })
+        API.getAllyList({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
-                setFeed(data.data)
+                API.getFeedPosts({friendList: data.data})
+                .then(data => setFeed(data.data))
+                .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
     }
