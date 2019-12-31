@@ -1,4 +1,19 @@
 .allies-icon {
     display: inline-block;
-    border: 1px solid #CCC;
+    border: 1px #CCC;
+    margin: 2px;
+    border: solid;
+    border-color: white;
+    text-align: center;
+    text-decoration: none;
+    width: 180px;
+    padding-top: 10px;
+    transition: all .2s ease-in-out
+}
+
+.allies-icon:hover {
+    background-color:#04dac6;
+    cursor: pointer;
+    transform: scale(1.1);
+    
 }

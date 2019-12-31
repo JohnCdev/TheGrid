@@ -3,6 +3,7 @@ import AlliesBarIcon from '../AlliesBarIcon/AlliesBarIcon';
 import './alliesBar.css';
 import API from "../../utils/API";
 
+
 const AlliesBar = () => {
     const [allies, setAllies] = useState([
         { key: "key", userName: "userName", firstName: "firstName" },
@@ -33,7 +34,6 @@ const AlliesBar = () => {
 
     return (
         <div id="allies-bar">
-            <h1>Allies Bar</h1>
             {allies.map(ally => (
                 <AlliesBarIcon
                     key={ally.key}

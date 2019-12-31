@@ -39,7 +39,7 @@ const Nav = () => {
         </ul>
         {/* Switch || to && to check to auth state for notifications */}
         {isAuthenticated && <Notifications className="mr-auto"/>}
-        {isAuthenticated && <ProfileIcon img={null} large={true}/>}
+        <Link to="/profile">{isAuthenticated && <ProfileIcon img={null} large={true}/>}</Link>
         <LogInOutBtn />
       </nav>
     </div>
