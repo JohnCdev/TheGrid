@@ -17,7 +17,14 @@ var PostSchema = new Schema({
     timeStamp: {
         type: Date,
         required: true,
-    }
+    },
+
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref:"Comment"
+        }
+    ]
 
 });
 

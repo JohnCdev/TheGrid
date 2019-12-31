@@ -18,4 +18,7 @@ router.route('/profile')
     .post(profileController.getProfile)
     .put(profileController.updateProfile)
 
+router.route('/friend-list')
+    .post(profileController.getAllyList)
+
 module.exports = router
