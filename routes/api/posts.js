@@ -7,7 +7,7 @@ router.route('/new-post')
 router.route('/user-posts')
     .post(postController.getUser);
 
-/*router.route('/feed-posts')
-.get(postController.getFeed);*/
+router.route('/feed-posts')
+    .post(postController.getFeed);
 
 module.exports = router;

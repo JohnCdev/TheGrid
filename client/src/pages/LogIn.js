@@ -67,7 +67,7 @@ export default function LogIn() {
     };
 
     if (isAuthenticated) {
-        return <Redirect to='/profile' />
+        return <Redirect to='/feed' />
     }
 
     return (

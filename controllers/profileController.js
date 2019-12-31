@@ -190,5 +190,10 @@ module.exports = {
     )
       .then(data => res.json({ data }))
       .catch(err => console.log(err));
+  },
+  getAllyList: (req,res) => {
+    db.Profile.find({userName: req.body.userName})
+    .then(data => res.json(data[0].friendList))
+    .catch(err => console.log(err))
   }
 };
