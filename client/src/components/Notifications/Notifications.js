@@ -26,8 +26,11 @@ const Notifications = props => {
           {props.notifications.map(noti => {
             return (
               <Notification
+                key={noti.id}
+                id={noti.id}
                 update={noti.update}
                 userInvolved={noti.userInvolved}
+                markNoteAsRead={props.markNoteAsRead}
                 type={noti.type}
               />
             );

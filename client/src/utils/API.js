@@ -42,13 +42,15 @@ export default {
   ///profiles
   getUserProfile: profile => axios.get(`/api/profiles/get-profile/${profile}`),
 
-  getProfile: userData => axios.post('api/profiles/profile', userData),
+  getProfile: userData => axios.post('/api/profiles/profile', userData),
 
   updateProfile: userData => axios.put('/api/profiles/profile', userData),
 
-  getAllyList: allyData => axios.post('api/profiles/friend-list', allyData),
+  getAllyList: allyData => axios.post('/api/profiles/friend-list', allyData),
 
-  getNotifications: userName => axios.get(`api/profiles/get-notifications/${userName}`),
+  getNotifications: userName => axios.get(`/api/profiles/get-notifications/${userName}`),
+
+  markNotificationAsRead: notificationData => axios.post('/api/profiles/mark-notification-as-read', notificationData),
 
   ///posts
   createPost: postData => axios.post('/api/posts/new-post', postData),

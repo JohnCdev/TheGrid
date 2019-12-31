@@ -1,5 +1,7 @@
-import React from 'react'
-import './Notification.css'
+import React, { useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
+import './Notification.css';
+import '../../utils/API';
 
 const btnStyle = {
     position: "absolute",
@@ -21,13 +23,14 @@ const aStyle = {
 }
 
 export default function Notification(props) {
+    const { userData } = useContext(AuthContext);
     return (
         <div style={{position: 'relative', marginTop:'10px', width: '400px'}}>
         <a className="dropdown-item" style={aStyle}
         >
             {`${props.update}`}
         </a>
-        <button style={btnStyle}>x</button>
+        <button onClick={() => {props.markNoteAsRead({ user: userData.userName, notification: props.id })}} style={btnStyle}>x</button>
         <hr />
     </div>
     )

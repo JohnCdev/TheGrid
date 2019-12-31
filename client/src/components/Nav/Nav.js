@@ -20,6 +20,13 @@ const Nav = () => {
     }
   }, []);
 
+  const markNoteAsRead = noteInfo => {
+    API.markNotificationAsRead(noteInfo)
+      .then(response => {
+        console.log(response)
+      })
+  }
+
   const homeLink = () => {
     const currentLink = isAuthenticated ? "/feed" : "/";
 
@@ -59,7 +66,7 @@ const Nav = () => {
           </li>
         </ul>
         {/* Switch || to && to check to auth state for notifications */}
-        {isAuthenticated && <Notifications notifications={notifications} className="mr-auto" />}
+        {isAuthenticated && <Notifications notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
         <Link to="/profile">
           {isAuthenticated && <ProfileIcon img={null} large={true} />}
         </Link>

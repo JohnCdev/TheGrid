@@ -264,5 +264,8 @@ module.exports = {
       });
       res.json({ unReadNotifications });
     });
+  },
+  markNoteAsRead: (req, res) => {
+    console.log(req.body)
   }
 };

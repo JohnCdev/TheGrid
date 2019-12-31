@@ -24,4 +24,7 @@ router.route('/friend-list')
 router.route('/get-notifications/:userName')
     .get(profileController.getNotifications)    
 
+router.route('/mark-notification-as-read')
+    .post(profileController.markNoteAsRead)
+
 module.exports = router
