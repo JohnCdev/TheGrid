@@ -8,6 +8,29 @@ import { Redirect } from 'react-router';
 import AddFriend from '../components/AddFriend/AddFriend';
 import Header from '../components/Header/Header';
 import { AuthContext } from '../context/AuthContext';
+import default1 from '../images/profileImages/default1.jpg';
+import default2 from '../images/profileImages/default2.jpeg';
+import default3 from '../images/profileImages/default3.jpg';
+import default4 from '../images/profileImages/default4.jpg';
+import default5 from '../images/profileImages/default5.jpg';
+import default6 from '../images/profileImages/default6.jpeg';
+import default7 from '../images/profileImages/default7.png';
+import default8 from '../images/profileImages/default8.jpeg';
+import default9 from '../images/profileImages/default9.jpg';
+import default10 from '../images/profileImages/default10.webp';
+
+const imgArray = [
+    { name: "default1", src: default1 },
+    { name: "default2", src: default2 },
+    { name: "default3", src: default3 },
+    { name: "default4", src: default4 },
+    { name: "default5", src: default5 },
+    { name: "default6", src: default6 },
+    { name: "default7", src: default7 },
+    { name: "default8", src: default8 },
+    { name: "default9", src: default9 },
+    { name: "default10", src: default10 }
+]
 
 export default class EditProfile extends Component {
     state = {
@@ -24,7 +47,9 @@ export default class EditProfile extends Component {
         originIGN: "",
         profileImg: "",
         addGame: "",
-        favGames: []
+        favGames: [],
+        profilePic: '',
+        selectedPic: ''
     }
     static contextType = AuthContext;
 
@@ -82,6 +107,40 @@ export default class EditProfile extends Component {
         this.setState({
             favGames: tempGames
         })
+    }
+
+    clearPic = () => {
+        this.setState({
+            selectedPic: ''
+        })
+    }
+
+    updatePicHandler = e => {
+        const name = e.target.name ? e.target.name : this.state.profilePic;
+        switch (name) {
+            case "default1":
+                return this.setState({ profilePic: name, selectedPic: default1 })
+            case "default2":
+                return this.setState({ profilePic: name, selectedPic: default2 })
+            case "default3":
+                return this.setState({ profilePic: name, selectedPic: default3 })
+            case "default4":
+                return this.setState({ profilePic: name, selectedPic: default4 })
+            case "default5":
+                return this.setState({ profilePic: name, selectedPic: default5 })
+            case "default6":
+                return this.setState({ profilePic: name, selectedPic: default6 })
+            case "default7":
+                return this.setState({ profilePic: name, selectedPic: default7 })
+            case "default8":
+                return this.setState({ profilePic: name, selectedPic: default8 })
+            case "default9":
+                return this.setState({ profilePic: name, selectedPic: default9 })
+            case "default10":
+                return this.setState({ profilePic: name, selectedPic: default10 })
+            default:
+                return this.setState({ selectedPic: '' })
+        }
     }
 
     render() {
@@ -146,7 +205,7 @@ export default class EditProfile extends Component {
                             id="profileImg"
                             name="profileImg"
                         />
-                        <hr />
+                        <hr style={{ 'borderColor': '#e2e2e2' }} />
                         <h3>Game Services User Names</h3>
                         <label htmlFor="steamIGN">Steam Name</label>
                         <Input
@@ -183,7 +242,8 @@ export default class EditProfile extends Component {
                             id="originIGN"
                             name="originIGN"
                         />
-                        <hr />
+                        <hr style={{ 'borderColor': '#e2e2e2' }} />
+
                         <h3>Your Top Games</h3>
                         <label htmlFor="addGame">Your Favorite Games</label>
                         <Input
@@ -192,13 +252,13 @@ export default class EditProfile extends Component {
                             id="addGame"
                             name="addGame"
                         />
-                        <button className="btn btn-primary" type="button" onClick={this.onGameAdd}>
+                        <button className="btn btn-primary mb-3" type="button" onClick={this.onGameAdd}>
                             Add Game
                         </button>
                         <ol>
                             {this.state.favGames.map((game, i) => {
                                 return (
-                                    <li key={i}>
+                                    <li key={i} className="mb-2">
                                         {game}
                                         <button className="btn btn-primary" type="button" id={i} onClick={this.deleteGame}>
                                             X
@@ -207,8 +267,42 @@ export default class EditProfile extends Component {
                                 );
                             })}
                         </ol>
+                        <hr />
+
+                        <h3>Update Your Profile Picture</h3>
+                        <div className="picSelector">
+                            <div className="selectedPic mb-3">
+                                {this.state.selectedPic ?
+                                    <>
+                                        <img src={this.state.selectedPic} />
+                                        <button
+                                            type="button"
+                                            className="btn btn-primary"
+                                            onClick={this.clearPic}
+                                        >
+                                            X
+                                        </button>
+                                    </> :
+                                    <span>Select a Picture</span>
+                                }
+                            </div>
+                            <div className="picGrid">
+                                {imgArray.map((img, i) => {
+                                    return (
+                                        <img
+                                            key={i}
+                                            className="img-thumbnail"
+                                            name={img.name}
+                                            src={img.src}
+                                            onClick={this.updatePicHandler}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        </div>
+
                         <FormBtn
-                            className="btn btn-success"
+                            className="btn btn-success mt-3"
                             type="submit"
                         >
                             Submit Changes

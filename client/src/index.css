@@ -61,3 +61,48 @@ main {
     margin-top: 50px;
     margin-bottom: 200px;
 }
+
+.selectedPic {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border: 2px solid #e2e2e2;
+    margin: auto;
+}
+
+.selectedPic span {
+    display: table;
+    margin: 0 auto;
+}
+
+.selectedPic img {
+    width: 100%;
+    height: 100%;
+}
+
+.selectedPic Button {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+}
+
+.picGrid {
+    height: 450px;
+    width: 100%;
+    border: 2px solid #e2e2e2;
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+}
+
+.picGrid img {
+    height: 250px;
+    width: 23%;
+    margin: 10px;
+    border-Radius: 10px;
+}
+
+hr {
+    border-color: #e2e2e2;
+}
