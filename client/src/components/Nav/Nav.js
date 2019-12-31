@@ -13,9 +13,11 @@ const Nav = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    API.getNotifications(userData.userName).then(response => {
-      console.log(response);
-    });
+    if (isAuthenticated) {
+      API.getNotifications(userData.userName).then(response => {
+        setNotifications(response.data.unReadNotifications)
+      });
+    }
   }, []);
 
   const homeLink = () => {
