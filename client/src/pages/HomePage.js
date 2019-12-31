@@ -21,6 +21,11 @@ export default class HomePage extends Component {
                         Sign Up!
                     </button>
                 </Link>
+                <Link to="/create-clan">
+                    <button type="button" className="btn btn-primary">
+                        Make Clan
+                    </button>
+                </Link>
             </Header>
             </>
 
