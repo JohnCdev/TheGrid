@@ -1,6 +1,7 @@
 const db = require("../models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const uuidv1 = require('uuid/v1');
 
 module.exports = {
   requestFriend: (req, res) => {
@@ -27,6 +28,7 @@ module.exports = {
               {
                 $push: {
                   updates: {
+                    uuidv1: uuidv1(),
                     update: `${req.body.sender} is now your friend`,
                     userInvolved: req.body.sender,
                     type: "friend request",
@@ -66,6 +68,7 @@ module.exports = {
                 $push: {
                   receivedFriendRequests: req.body.sender,
                   updates: {
+                    id: uuidv1(),
                     update: `${req.body.sender} sent you a friend request`,
                     userInvolved: req.body.sender,
                     type: "friend request",
@@ -166,6 +169,7 @@ module.exports = {
             {
               $push: {
                 updates: {
+                  uuidv1: uuidv1(),
                   update: `${accepter} is now your friend`,
                   userInvolved: accepter,
                   type: "friend request",
@@ -198,6 +202,7 @@ module.exports = {
                 {
                   $push: {
                     updates: {
+                      uuidv1: uuidv1(),
                       update: `${requester} is now your friend`,
                       userInvolved: requester,
                       type: "friend request",
