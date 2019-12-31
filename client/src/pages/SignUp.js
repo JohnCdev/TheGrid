@@ -12,6 +12,7 @@ import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import Header from '../components/Header/Header';
+import Nav from "../components/Nav/Nav";
 import { AuthContext } from '../context/AuthContext';
 
 export default class SignUp extends Component {
@@ -115,6 +116,8 @@ export default class SignUp extends Component {
     }
 
     return (
+      <>
+      <Nav />
       <main>
         <Container>
           <Jumbotron>
@@ -209,6 +212,7 @@ export default class SignUp extends Component {
           </form>
         </Container>
       </main>
+      </>
     )
   }
 }

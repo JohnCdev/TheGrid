@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header/Header';
 import { Link } from 'react-router-dom';
+import Nav from "../components/Nav/Nav";
 
 export default class HomePage extends Component {
     state = {
@@ -9,6 +10,8 @@ export default class HomePage extends Component {
 
     render() {
         return (
+            <>
+            <Nav />
             <Header headerText="Landing Page">
                 <div>
                     <h2>Hello World</h2>
@@ -19,7 +22,7 @@ export default class HomePage extends Component {
                     </button>
                 </Link>
             </Header>
-
+            </>
 
         )
     }

@@ -19,7 +19,6 @@ function App() {
     <AuthContext >
     <Router>
       <div>
-        <Nav />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path='/new-user' component={SignUp} />

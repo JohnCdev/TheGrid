@@ -4,6 +4,7 @@ import { Container, Row, Col } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Header from "../components/Header/Header";
 import Feed from "../components/Feed/Feed";
+import Nav from "../components/Nav/Nav";
 import ProfileIcon from "../components/ProfileIcon/ProfileIcon";
 import { AuthContext } from "../context/AuthContext";
 import { Redirect, Link, withRouter } from "react-router-dom";
@@ -68,6 +69,7 @@ class ClanPage extends Component {
 
     return this.state._id === null ? (
       <>
+      <Nav />
         <Header headerText={404} />
         <Jumbotron>
           <h1>User Not Found</h1>
@@ -80,6 +82,7 @@ class ClanPage extends Component {
       </>
     ) : (
       <Container className="mt-4">
+        <Nav />
         <Row>
           <div className="col-sm-12 col-md-3">
             <Jumbotron>

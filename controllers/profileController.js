@@ -249,5 +249,12 @@ module.exports = {
     db.Profile.find({ userName: req.body.userName })
       .then(data => res.json(data[0].friendList))
       .catch(err => console.log(err));
+  },
+  getNotifications: (req, res) => {
+    console.log(req.parms)
+    db.Profile.find({ userName: req.params.userName})
+      .then(data => {
+        console.log(data)
+      })
   }
 };

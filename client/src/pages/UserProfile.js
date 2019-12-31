@@ -5,6 +5,7 @@ import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import ProfilePicture from "../components/ProfilePicture/ProfilePicture";
 import AddFriend from "../components/AddFriend/AddFriend";
+import Nav from "../components/Nav/Nav";
 import Header from "../components/Header/Header";
 import { AuthContext } from "../context/AuthContext";
 
@@ -105,6 +106,7 @@ class ViewUserProfile extends Component {
 
     return this.state._id === null ? (
       <>
+      <Nav />
         <Header headerText={404} />
         <Jumbotron>
           <h1>User Not Found</h1>
@@ -117,6 +119,7 @@ class ViewUserProfile extends Component {
       </>
     ) : (
       <>
+      <Nav />
         <Header headerText={`${this.state.username}'s Profile`} />
         <Jumbotron>
           <h1>{this.state.userName}</h1>

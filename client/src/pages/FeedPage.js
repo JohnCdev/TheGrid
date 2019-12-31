@@ -2,7 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { Container } from "../components/Grid/Grid";
 import AlliesBar from "../components/AlliesBar/AlliesBar";
 import Feed from "../components/Feed/Feed";
-import PostForm from "../components/PostForm/PostForm"
+import PostForm from "../components/PostForm/PostForm";
+import Nav from "../components/Nav/Nav";
 import API from "../utils/API";
 import Header from "../components/Header/Header";
 import {AuthContext} from '../context/AuthContext';
@@ -42,6 +43,8 @@ const FeedPage = () => {
     }
 
     return (
+        <>
+        <Nav />
         <main style={{ "height": "100%", "marginBottom": "200px" }}>
             <Header headerText="Your Feed" />
             <AlliesBar />
@@ -52,6 +55,7 @@ const FeedPage = () => {
                     <h1>You have no feed</h1>}
             </Container>
         </main>
+        </>
     )
 }
 
