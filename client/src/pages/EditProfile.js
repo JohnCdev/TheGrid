@@ -48,7 +48,7 @@ export default class EditProfile extends Component {
         profileImg: "",
         addGame: "",
         favGames: [],
-        profilePic: '',
+        profilePic: 'default1',
         selectedPic: ''
     }
     static contextType = AuthContext;
@@ -74,6 +74,7 @@ export default class EditProfile extends Component {
                     age: user.age,
                     currentCity: user.currentCity
                 })
+                this.updatePicHandler(this.state.profilePic);
             })
             .catch(err => console.log(err))
     }
@@ -116,7 +117,7 @@ export default class EditProfile extends Component {
     }
 
     updatePicHandler = e => {
-        const name = e.target.name ? e.target.name : this.state.profilePic;
+        const name = e.target ? e.target.name : e;
         switch (name) {
             case "default1":
                 return this.setState({ profilePic: name, selectedPic: default1 })
