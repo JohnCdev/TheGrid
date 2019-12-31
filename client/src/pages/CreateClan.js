@@ -8,36 +8,59 @@ import { Container } from "../components/Grid/Grid";
 import API from "../utils/API";
 
 const CreateClan = () => {
-  const { isAuthenticated, userData } = useContext(AuthContext);
-  const [formData, setFormData] = useState({
-    clanMade: false,
-    clanName: "",
-    clanTimeZone: "",
-    clanDescription: ""
-  });
-
-  // if (!isAuthenticated) {
-  //     return <Redirect to='/log-in' />
-  // }
-
-  const handleFormSubmit = e => {
-    e.preventDefault();
-    const payLoad = { ...formData, clanFounder: userData.userName };
-    const token = userData.token;
-
-    API.createClan(payLoad, token).then((res) => {
-      setFormData({
-          clanMade: true
-      })
+    const { isAuthenticated, userData } = useContext(AuthContext);
+    const [formData, setFormData] = useState({
+        clanMade: false,
+        clanName: "",
+        clanTimeZone: "",
+        clanDescription: "",
+        clanDiscord: "",
+        addedGame: "",
+        clanGames: []
     });
-  };
 
-  const handleFormChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+    // if (!isAuthenticated) {
+    //     return <Redirect to='/log-in' />
+    // }
+
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        const payLoad = { ...formData, clanFounder: userData.userName };
+        const token = userData.token;
+
+        API.createClan(payLoad, token).then((res) => {
+            setFormData({
+                ...formData,
+                clanMade: true
+            })
+        });
+    };
+
+    const handleFormChange = e => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const addGame = () => {
+        if (formData.addedGame.length > 0) {
+            setFormData({
+                ...formData,
+                clanGames: [...formData.clanGames, formData.addedGame],
+                addedGame: ""
+            })
+        }
+    }
+
+    const deleteGame = e => {
+        const tempGames = formData.clanGames
+        tempGames.splice(e.target.id, 1)
+        setFormData({
+            ...formData,
+            clanGames: tempGames
+        })
+    }
 
     return (
         <main>
@@ -54,8 +77,8 @@ const CreateClan = () => {
                         onChange={handleFormChange}
                         value={formData.clanName}
                         required
-                        pattern=".{3,20}"
-                        title="Name must be 3 to 20 characters long"
+                        pattern=".{3,15}"
+                        title="Name must be 3 to 15 characters long"
                     />
                     <label htmlFor="clanTimeZone">Active Time Zone</label>
                     <Input
@@ -76,6 +99,35 @@ const CreateClan = () => {
                         rows="5"
                         required
                     />
+                    <label htmlFor="clanDiscord">Clan Discord</label>
+                    <Input
+                        id="clanDiscord"
+                        name="clanDiscord"
+                        placeholder="Discord Link"
+                        onChange={handleFormChange}
+                        value={formData.clanDiscord}
+                    />
+                    <label htmlFor="addedGame">Clan's Active Games</label>
+                    <Input
+                        id="addedGame"
+                        name="addedGame"
+                        onChange={handleFormChange}
+                        value={formData.addedGame}
+                    />
+                    <button className="btn btn-primary" type="button" onClick={addGame}>Add Game</button>
+                    <ul>
+                        {formData.clanGames.map((game, i) => {
+                            return (
+                                <li key={i}>
+                                    {game}
+                                    <button className="btn btn-primary" type="button" id={i} onClick={deleteGame}>
+                                        X
+                                    </button>
+                                </li>
+                            );
+                        })}
+                    </ul>
+
                     <FormBtn
                         className="btn btn-success"
                         type="submit"

@@ -16,7 +16,14 @@ export default class EditProfile extends Component {
         lastName: "",
         age: "",
         currentCity: "",
-        friendList: []
+        friendList: [],
+        steamIGN: "",
+        discordIGN: "",
+        battleNetIGN: "",
+        epicIGN: "",
+        originIGN: "",
+        addGame: "",
+        favGames: []
     }
     static contextType = AuthContext;
 
@@ -57,6 +64,23 @@ export default class EditProfile extends Component {
         }).then(res => console.log(res))
             .catch(err => console.log(err))
     };
+
+    onGameAdd = () => {
+        if (this.state.addGame.length > 0) {
+            this.setState({
+                favGames: [...this.state.favGames, this.state.addGame],
+                addGame: ""
+            })
+        }
+    }
+
+    deleteGame = e => {
+        const tempGames = this.state.favGames;
+        tempGames.splice(e.target.id, 1);
+        this.setState({
+            favGames: tempGames
+        })
+    }
 
     render() {
 
@@ -112,6 +136,31 @@ export default class EditProfile extends Component {
                             pattern=".{2,}"
                             title="Enter a valid value"
                         />
+                        <label>Chose a Profile Image</label>
+                        {/* <label htmlFor="steamIGN">Steam Name</label> */}
+
+                        <label htmlFor="addGame">Your Favorite Games</label>
+                        <Input
+                            value={this.state.addGame}
+                            onChange={this.handleInputChange}
+                            id="addGame"
+                            name="addGame"
+                        />
+                        <button className="btn btn-primary" type="button" onClick={this.onGameAdd}>
+                            Add Game
+                        </button>
+                        <ol>
+                            {this.state.favGames.map((game, i) => {
+                                return (
+                                    <li key={i}>
+                                        {game}
+                                        <button className="btn btn-primary" type="button" id={i} onClick={this.deleteGame}>
+                                            X
+                                        </button>
+                                    </li>
+                                );
+                            })}
+                        </ol>
                         <FormBtn
                             className="btn btn-success"
                             type="submit"

@@ -42,66 +42,26 @@ export default class SignUp extends Component {
 
       return false;
     }
-  };
-
-  alphabet = inputtxt => {
-    const letter = /^[a-zA-Z]+$/;
-    if (inputtxt.match(letter)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  numeric = inputtxt => {
-    const letterNumber = /^[0-9]+$/;
-    if (inputtxt.match(letterNumber)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  emailValidator = inputtxt => {
-    const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (inputtxt.match(email)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (
-      this.state.userName &&
-      this.alphanumeric(this.state.userName) &&
-      this.state.email &&
-      this.emailValidator(this.state.email) &&
-      this.state.password &&
-      this.alphanumeric(this.state.password) &&
-      this.numeric(this.state.age) &&
-      this.alphabet(this.state.firstName) &&
-      this.alphabet(this.state.lastName) &&
-      this.alphabet(this.state.currentCity)
-    ) {
-      //add a blank profile element
-      API.saveUser({
-        userName: this.state.userName,
-        email: this.state.email,
-        password: this.state.password,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        age: this.state.age,
-        currentCity: this.state.currentCity
-      })
-        .then(
-          this.setState(() => ({
-            isNewAccount: true
-          }))
-        )
-        .catch(err => console.log(err));
-    }
+    //add a blank profile element
+    API.saveUser({
+      userName: this.state.userName,
+      email: this.state.email,
+      password: this.state.password,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      age: this.state.age,
+      currentCity: this.state.currentCity
+    })
+      .then(
+        this.setState(() => ({
+          isNewAccount: true
+        }))
+      )
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -130,8 +90,8 @@ export default class SignUp extends Component {
               name="userName"
               placeholder="User Name"
               required
-              pattern=".{3,20}"
-              title="User name must be between 3 and 20 characters"
+              pattern=".{3,15}"
+              title="User name must be between 3 and 15 characters"
             />
             <label htmlFor="email">Email</label>
             <InputEmail
@@ -163,8 +123,8 @@ export default class SignUp extends Component {
               name="firstName"
               placeholder="First Name"
               required
-              pattern=".{2,}"
-              title="Enter a valid value"
+              pattern="^[A-Za-z -]+$"
+              title="Enter a valid value. Cannot contain numbers"
             />
             <label htmlFor="lastName">Last Name</label>
             <Input
@@ -174,8 +134,8 @@ export default class SignUp extends Component {
               name="lastName"
               placeholder="Last Name"
               required
-              pattern=".{2,}"
-              title="Enter a valid value"
+              pattern="^[A-Za-z -]+$"
+              title="Enter a valid value. Cannot contain numbers"
             />
             <label htmlFor="age">Age</label>
             <Input
@@ -196,8 +156,8 @@ export default class SignUp extends Component {
               name="currentCity"
               placeholder="City"
               required
-              pattern=".{2,}"
-              title="Enter a valid value"
+              pattern="^[A-Za-z -]+$"
+              title="Enter a valid value. Cannot contain numbers"
             />
             <FormBtn
               //  disabled={!(this.state.userName && this.state.email && this.state.password)}
