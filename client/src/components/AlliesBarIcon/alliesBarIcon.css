@@ -12,7 +12,7 @@
 }
 
 .allies-icon:hover {
-    background-color:yellow;
+    background-color:#04dac6;
     cursor: pointer;
     transform: scale(1.1);
     
