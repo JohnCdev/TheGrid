@@ -21,7 +21,7 @@ router.route('/profile')
 router.route('/friend-list')
     .post(profileController.getAllyList)
 
-router.route('get-notifications/:userName')
+router.route('/get-notifications/:userName')
     .get(profileController.getNotifications)    
 
 module.exports = router

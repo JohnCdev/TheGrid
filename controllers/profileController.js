@@ -160,11 +160,11 @@ module.exports = {
             {
               $set: {
                 sentFriendRequests: newFriendRequests,
-                friendList: friendList,
+                friendList: friendList
               }
             },
-              { 
-                $push: {
+            {
+              $push: {
                 updates: {
                   update: `${accepter} is now your friend`,
                   userInvolved: accepter,
@@ -194,7 +194,7 @@ module.exports = {
                     friendList: friendList,
                     receivedFriendRequests: receivedFriendRequests
                   }
-                }, 
+                },
                 {
                   $push: {
                     updates: {
@@ -251,10 +251,13 @@ module.exports = {
       .catch(err => console.log(err));
   },
   getNotifications: (req, res) => {
-    console.log(req.parms)
-    db.Profile.find({ userName: req.params.userName})
-      .then(data => {
-        console.log(data)
-      })
+    console.log(req.params);
+    db.Profile.find({ userName: req.params.userName }).then(data => {
+      const unReadNotifications = [];
+      data[0].updates.forEach(update => {
+        if (update.viewed === false) unReadNotifications.push(update);
+      });
+      res.json({ unReadNotifications });
+    });
   }
 };
