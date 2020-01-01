@@ -1,41 +1,42 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./profileIcon.css"
-import default1 from "../../images/profileImages/default1.jpg";
-import default2 from "../../images/profileImages/default2.jpeg";
-import default3 from "../../images/profileImages/default3.jpg";
-import default4 from "../../images/profileImages/default4.jpg";
-import default5 from "../../images/profileImages/default5.jpg";
-import default6 from "../../images/profileImages/default6.jpeg";
-import default7 from "../../images/profileImages/default7.png";
-import default8 from "../../images/profileImages/default8.jpeg";
-import default9 from "../../images/profileImages/default9.jpg";
-import default10 from "../../images/profileImages/default10.webp";
+import Default1 from "../../images/profileImages/Default1.jpg";
+import Default2 from "../../images/profileImages/Default2.jpg";
+import Default3 from "../../images/profileImages/Default3.jpg";
+import Default4 from "../../images/profileImages/Default4.jpg";
+import Default5 from "../../images/profileImages/Default5.jpg";
+import Default6 from "../../images/profileImages/Default6.jpg";
+import Default7 from "../../images/profileImages/Default7.jpg";
+import Default8 from "../../images/profileImages/Default8.jpg";
+import Default9 from "../../images/profileImages/Default9.jpg";
+import Default10 from "../../images/profileImages/Default10.jpg";
+
 
 let imgRef="";
 
 const reRender = profileImg => {
   switch (profileImg) {
-    case "default1":
-      return imgRef = default1;
-    case "default2":
-      return imgRef = default2;
-    case "default3":
-      return imgRef = default3;
-    case "default4":
-      return imgRef = default4;
-    case "default5":
-      return imgRef = default5;
-    case "default6":
-      return imgRef = default6;
-    case "default7":
-      return imgRef = default7;
-    case "default8":
-      return imgRef = default8;
-    case "default9":
-      return imgRef = default9;
-    case "default10":
-      return imgRef = default10;
+    case "Default1":
+      return imgRef = Default1;
+    case "Default2":
+      return imgRef = Default2;
+    case "Default3":
+      return imgRef = Default3;
+    case "Default4":
+      return imgRef = Default4;
+    case "Default5":
+      return imgRef = Default5;
+    case "Default6":
+      return imgRef = Default6;
+    case "Default7":
+      return imgRef = Default7;
+    case "Default8":
+      return imgRef = Default8;
+    case "Default9":
+      return imgRef = Default9;
+    case "Default10":
+      return imgRef = Default10;
     default:
       return imgRef="";
   }

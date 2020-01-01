@@ -6,28 +6,28 @@ import { Redirect } from "react-router";
 import { Input, TextArea, FormBtn } from "../components/Form/Form";
 import { Container } from "../components/Grid/Grid";
 import API from "../utils/API";
-import default1 from '../images/profileImages/default1.jpg';
-import default2 from '../images/profileImages/default2.jpeg';
-import default3 from '../images/profileImages/default3.jpg';
-import default4 from '../images/profileImages/default4.jpg';
-import default5 from '../images/profileImages/default5.jpg';
-import default6 from '../images/profileImages/default6.jpeg';
-import default7 from '../images/profileImages/default7.png';
-import default8 from '../images/profileImages/default8.jpeg';
-import default9 from '../images/profileImages/default9.jpg';
-import default10 from '../images/profileImages/default10.webp';
+import Default1 from '../images/profileImages/Default1.jpg';
+import Default2 from '../images/profileImages/Default2.jpg';
+import Default3 from '../images/profileImages/Default3.jpg';
+import Default4 from '../images/profileImages/Default4.jpg';
+import Default5 from '../images/profileImages/Default5.jpg';
+import Default6 from '../images/profileImages/Default6.jpg';
+import Default7 from '../images/profileImages/Default7.jpg';
+import Default8 from '../images/profileImages/Default8.jpg';
+import Default9 from '../images/profileImages/Default9.jpg';
+import Default10 from '../images/profileImages/Default10.jpg';
 
 const imgArray = [
-    { name: "default1", src: default1 },
-    { name: "default2", src: default2 },
-    { name: "default3", src: default3 },
-    { name: "default4", src: default4 },
-    { name: "default5", src: default5 },
-    { name: "default6", src: default6 },
-    { name: "default7", src: default7 },
-    { name: "default8", src: default8 },
-    { name: "default9", src: default9 },
-    { name: "default10", src: default10 }
+    { name: "Default1", src: Default1 },
+    { name: "Default2", src: Default2 },
+    { name: "Default3", src: Default3 },
+    { name: "Default4", src: Default4 },
+    { name: "Default5", src: Default5 },
+    { name: "Default6", src: Default6 },
+    { name: "Default7", src: Default7 },
+    { name: "Default8", src: Default8 },
+    { name: "Default9", src: Default9 },
+    { name: "Default10", src: Default10 }
 ]
 
 const CreateClan = () => {
@@ -98,26 +98,26 @@ const CreateClan = () => {
     const updatePicHandler = e => {
         const name = e.target.name ? e.target.name : formData.clanPic;
         switch (name) {
-            case "default1":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default1 })
-            case "default2":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default2 })
-            case "default3":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default3 })
-            case "default4":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default4 })
-            case "default5":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default5 })
-            case "default6":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default6 })
-            case "default7":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default7 })
-            case "default8":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default8 })
-            case "default9":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default9 })
-            case "default10":
-                return setFormData({ ...formData, clanPic: name, selectedPic: default10 })
+            case "Default1":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default1 })
+            case "Default2":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default2 })
+            case "Default3":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default3 })
+            case "Default4":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default4 })
+            case "Default5":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default5 })
+            case "Default6":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default6 })
+            case "Default7":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default7 })
+            case "Default8":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default8 })
+            case "Default9":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default9 })
+            case "Default10":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Default10 })
             default:
                 return setFormData({ selectedPic: '' })
         }
