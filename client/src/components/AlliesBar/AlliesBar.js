@@ -10,27 +10,27 @@ const AlliesBar = () => {
         { key: "2", userName: "userName", firstName: "firstName", profileImg: "Default2" }
     ]);
 
-    // useEffect(() => {
-    //     API.getAllyList({ userName: sessionStorage.getItem('project3username') })
-    //         .then(data => {
-    //             var allies = data.data
-    //             var allyList = []
-    //             for (var i = 0; i < allies.length; i++) {
-    //                 API.getProfile({ userName: allies[i] })
-    //                     .then(data => {
-    //                         var ally = {
-    //                             key: data.data.data[0]._id,
-    //                             userName: data.data.data[0].userName,
-    //                             firstName: data.data.data[0].firstName,
-    //                         }
-    //                         allyList.push(ally)
-    //                     })
-    //                     .catch(err => console.log(err))
-    //             }
-    //             setAllies(allyList)
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [])
+    useEffect(() => {
+        API.getAllyList({ userName: sessionStorage.getItem('project3username') })
+            .then(data => {
+                var allies = data.data
+                var allyList = []
+                for (var i = 0; i < allies.length; i++) {
+                    API.getProfile({ userName: allies[i] })
+                        .then(data => {
+                            var ally = {
+                                key: data.data.data[0]._id,
+                                userName: data.data.data[0].userName,
+                                firstName: data.data.data[0].firstName,
+                            }
+                            allyList.push(ally)
+                        })
+                        .catch(err => console.log(err))
+                }
+                setAllies(allyList)
+            })
+            .catch(err => console.log(err))
+    }, [])
 
     return (
         <div id="allies-bar">

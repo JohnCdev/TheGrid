@@ -17,15 +17,15 @@ const FeedPage = () => {
         { id: 4, userName: "Tripp", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "Default4" }
     ]);
 
-    // useEffect(() => {
-    //     API.getAllyList({ userName: sessionStorage.getItem('project3username') })
-    //         .then(data => {
-    //             API.getFeedPosts({friendList: data.data})
-    //             .then(data => setFeed(data.data))
-    //             .catch(err => console.log(err))
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [])
+    useEffect(() => {
+        API.getAllyList({ userName: sessionStorage.getItem('project3username') })
+            .then(data => {
+                API.getFeedPosts({friendList: data.data})
+                .then(data => setFeed(data.data))
+                .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
+    }, [])
 
     const reloadPosts = () => {
         API.getAllyList({ userName: sessionStorage.getItem('project3username') })
