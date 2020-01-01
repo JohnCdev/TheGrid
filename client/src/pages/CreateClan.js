@@ -6,28 +6,18 @@ import { Redirect } from "react-router";
 import { Input, TextArea, FormBtn } from "../components/Form/Form";
 import { Container } from "../components/Grid/Grid";
 import API from "../utils/API";
-import Default1 from '../images/profileImages/Default1.jpg';
-import Default2 from '../images/profileImages/Default2.jpg';
-import Default3 from '../images/profileImages/Default3.jpg';
-import Default4 from '../images/profileImages/Default4.jpg';
-import Default5 from '../images/profileImages/Default5.jpg';
-import Default6 from '../images/profileImages/Default6.jpg';
-import Default7 from '../images/profileImages/Default7.jpg';
-import Default8 from '../images/profileImages/Default8.jpg';
-import Default9 from '../images/profileImages/Default9.jpg';
-import Default10 from '../images/profileImages/Default10.jpg';
+import Clan1 from '../images/clanImages/Clan1.jpg';
+import Clan2 from '../images/clanImages/Clan2.jpg';
+import Clan3 from '../images/clanImages/Clan3.jpg';
+import Clan4 from '../images/clanImages/Clan4.jpg';
+import Clan5 from '../images/clanImages/Clan5.jpg';
 
 const imgArray = [
-    { name: "Default1", src: Default1 },
-    { name: "Default2", src: Default2 },
-    { name: "Default3", src: Default3 },
-    { name: "Default4", src: Default4 },
-    { name: "Default5", src: Default5 },
-    { name: "Default6", src: Default6 },
-    { name: "Default7", src: Default7 },
-    { name: "Default8", src: Default8 },
-    { name: "Default9", src: Default9 },
-    { name: "Default10", src: Default10 }
+    { name: "Clan1", src: Clan1 },
+    { name: "Clan2", src: Clan2 },
+    { name: "Clan3", src: Clan3 },
+    { name: "Clan4", src: Clan4 },
+    { name: "Clan5", src: Clan5 },
 ]
 
 const CreateClan = () => {
@@ -98,26 +88,16 @@ const CreateClan = () => {
     const updatePicHandler = e => {
         const name = e.target.name ? e.target.name : formData.clanPic;
         switch (name) {
-            case "Default1":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default1 })
-            case "Default2":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default2 })
-            case "Default3":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default3 })
-            case "Default4":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default4 })
-            case "Default5":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default5 })
-            case "Default6":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default6 })
-            case "Default7":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default7 })
-            case "Default8":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default8 })
-            case "Default9":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default9 })
-            case "Default10":
-                return setFormData({ ...formData, clanPic: name, selectedPic: Default10 })
+            case "Clan1":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan1 })
+            case "Clan2":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan2 })
+            case "Clan3":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan3 })
+            case "Clan4":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan4 })
+            case "Clan5":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan5 })
             default:
                 return setFormData({ selectedPic: '' })
         }

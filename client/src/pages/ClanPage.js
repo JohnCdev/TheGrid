@@ -20,7 +20,7 @@ class ClanPage extends Component {
     clanMembers: "",
     clanTimeZone: "",
     clanFounded: "",
-    clanImg: "Default5"
+    clanImg: "Clan5"
   };
   static contextType = AuthContext;
 
