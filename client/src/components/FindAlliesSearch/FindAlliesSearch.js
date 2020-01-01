@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Jumbotron from '../Jumbotron/Jumbotron';
 import { Input, FormBtn } from '../Form/Form';
-import { List, ListItem } from '../List/List';
 import './discoverListSearch.css';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import { Link } from 'react-router-dom';
+import API from '../../utils/API';
 
 const FindAlliesSearch = () => {
     const [allySearch, setSearch] = useState('');
@@ -24,8 +24,13 @@ const FindAlliesSearch = () => {
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         console.log(allySearch);
-        const sessionName = sessionStorage.getItem('project3username');
+        API.searchForUsers(allySearch)
+            .then(response => {
+                console.log(response)
+            })
+        const sessionName = sessionStorage.getItem('project3username')
     }
+    
     const onChangeHandler = (e) => {
         setSearch(e.target.value);
     }
