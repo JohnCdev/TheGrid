@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
@@ -22,7 +22,8 @@ class ViewUserProfile extends Component {
     friendList: [],
     sentFriendRequests: [],
     receivedFriendRequests: [],
-    friendContext: ""
+    friendContext: "",
+    profileImg: "Default5"
   };
 
   componentDidMount() {
@@ -58,6 +59,12 @@ class ViewUserProfile extends Component {
   }
 
   render() {
+
+    // need links for it to work first (discover page)
+    const { isAuthenticated } = this.context;
+    // if (!isAuthenticated) {
+    //   return <Redirect to='/log-in' />
+    // }
 
     //this.setState({friendContext})
     const helloWorld = (command, value) => {
@@ -126,6 +133,7 @@ class ViewUserProfile extends Component {
           <ProfilePicture
             location={this.state.currentCity}
             age={this.state.age}
+            profileImg={this.state.profileImg}
           />
           <AddFriend
             friendContext={this.state.friendContext}

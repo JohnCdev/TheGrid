@@ -17,13 +17,14 @@ const PostForm = ({ reloadPosts, clan = false }) => {
                 timeStamp: Date.now()
             }).then(data => {
                 console.log(data)
+                setPost('')
                 reloadPosts()
             })
                 .catch(err => console.log(err))
         } else {
             console.log("clan post api")
         }
-
+        
     }
 
     const handleClickCancel = (e) => {

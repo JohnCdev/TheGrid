@@ -1,0 +1,30 @@
+.clanPage {
+
+}
+
+.clanSidebar {
+    /* border-radius: 20px !important;
+    border: 0px solid black !important; */
+    border-radius: 10px !important;
+    background-color: #3c4042;
+    padding: 0;
+}
+
+.clanSidebarInfo h4 {
+    margin-bottom: 0;
+    padding-bottom: .5em;
+    padding-left: 1em;
+    background-color: #3c4042;
+}
+
+.clanSidebarInfo ul {
+    padding-bottom: 1em;
+    background-color: #3c4042;
+}
+
+.clanHeader {
+    margin-top: 1em;
+    text-align: center;
+    min-height: 350px;
+    background-color: #3c4042;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import FeedCard from '../FeedCard/FeedCard';
 
-const Feed = ({ feed, name }) => {
+const Feed = ({ feed, name}) => {
 
     useEffect(() => {
         console.log(feed)
