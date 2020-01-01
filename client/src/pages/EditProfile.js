@@ -20,16 +20,16 @@ import Default9 from '../images/profileImages/Default9.jpg';
 import Default10 from '../images/profileImages/Default10.jpg';
 
 const imgArray = [
-    { name: "default1", src: Default1 },
-    { name: "default2", src: Default2 },
-    { name: "default3", src: Default3 },
-    { name: "default4", src: Default4 },
-    { name: "default5", src: Default5 },
-    { name: "default6", src: Default6 },
-    { name: "default7", src: Default7 },
-    { name: "default8", src: Default8 },
-    { name: "default9", src: Default9 },
-    { name: "default10", src: Default10 }
+    { name: "Default1", src: Default1 },
+    { name: "Default2", src: Default2 },
+    { name: "Default3", src: Default3 },
+    { name: "Default4", src: Default4 },
+    { name: "Default5", src: Default5 },
+    { name: "Default6", src: Default6 },
+    { name: "Default7", src: Default7 },
+    { name: "Default8", src: Default8 },
+    { name: "Default9", src: Default9 },
+    { name: "Default10", src: Default10 }
 ]
 
 export default class EditProfile extends Component {

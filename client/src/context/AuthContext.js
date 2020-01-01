@@ -17,7 +17,7 @@ class AuthContextProvider extends Component {
           sentFriendRequests: client.sentFriendRequests,
           receivedFriendRequests: client.receivedFriendRequests,
           token: client.token,
-          profileImg: "default8"
+          profileImg: "Default8"
         }
       });
     },

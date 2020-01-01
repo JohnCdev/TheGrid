@@ -23,7 +23,7 @@ class ViewUserProfile extends Component {
     sentFriendRequests: [],
     receivedFriendRequests: [],
     friendContext: "",
-    profileImg: "default5"
+    profileImg: "Default5"
   };
 
   componentDidMount() {
