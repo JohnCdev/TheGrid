@@ -6,11 +6,13 @@ import API from "../../utils/API";
 
 const AlliesBar = () => {
     const [allies, setAllies] = useState([
-        { key: "key", userName: "userName", firstName: "firstName" },
-        { key: "key2", userName: "userName", firstName: "firstName" }
+        // { key: "1", userName: "userName", firstName: "firstName", profileImg: "Default3" },
+        // { key: "2", userName: "userName", firstName: "firstName", profileImg: "Default2" }
     ]);
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
+        setIsLoading(true)
         API.getAllyList({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
                 var allies = data.data
@@ -24,24 +26,33 @@ const AlliesBar = () => {
                                 firstName: data.data.data[0].firstName,
                             }
                             allyList.push(ally)
+
                         })
                         .catch(err => console.log(err))
                 }
                 setAllies(allyList)
+                setIsLoading(false)
             })
             .catch(err => console.log(err))
     }, [])
 
     return (
         <div id="allies-bar">
-            {allies.map(ally => (
-                <AlliesBarIcon
-                    key={ally.key}
-                    name={ally.userName}
-                    status={ally.firstName}
-                //profileImg={ally.profileImg}
-                />
-            ))}
+            {isLoading ?
+                <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+                :
+                allies.map(ally => (
+                    <AlliesBarIcon
+                        key={ally.key}
+                        name={ally.userName}
+                        status={ally.firstName}
+                        profileImg={ally.profileImg}
+                    />
+                ))}
         </div>
     );
 }

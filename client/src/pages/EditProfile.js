@@ -8,28 +8,28 @@ import { Redirect } from 'react-router';
 import AddFriend from '../components/AddFriend/AddFriend';
 import Header from '../components/Header/Header';
 import { AuthContext } from '../context/AuthContext';
-import default1 from '../images/profileImages/default1.jpg';
-import default2 from '../images/profileImages/default2.jpeg';
-import default3 from '../images/profileImages/default3.jpg';
-import default4 from '../images/profileImages/default4.jpg';
-import default5 from '../images/profileImages/default5.jpg';
-import default6 from '../images/profileImages/default6.jpeg';
-import default7 from '../images/profileImages/default7.png';
-import default8 from '../images/profileImages/default8.jpeg';
-import default9 from '../images/profileImages/default9.jpg';
-import default10 from '../images/profileImages/default10.webp';
+import Default2 from '../images/profileImages/Default2.jpg';
+import Default3 from '../images/profileImages/Default3.jpg';
+import Default4 from '../images/profileImages/Default4.jpg';
+import Default5 from '../images/profileImages/Default5.jpg';
+import Default1 from '../images/profileImages/Default1.jpg';
+import Default6 from '../images/profileImages/Default6.jpg';
+import Default7 from '../images/profileImages/Default7.jpg';
+import Default8 from '../images/profileImages/Default8.jpg';
+import Default9 from '../images/profileImages/Default9.jpg';
+import Default10 from '../images/profileImages/Default10.jpg';
 
 const imgArray = [
-    { name: "default1", src: default1 },
-    { name: "default2", src: default2 },
-    { name: "default3", src: default3 },
-    { name: "default4", src: default4 },
-    { name: "default5", src: default5 },
-    { name: "default6", src: default6 },
-    { name: "default7", src: default7 },
-    { name: "default8", src: default8 },
-    { name: "default9", src: default9 },
-    { name: "default10", src: default10 }
+    { name: "Default1", src: Default1 },
+    { name: "Default2", src: Default2 },
+    { name: "Default3", src: Default3 },
+    { name: "Default4", src: Default4 },
+    { name: "Default5", src: Default5 },
+    { name: "Default6", src: Default6 },
+    { name: "Default7", src: Default7 },
+    { name: "Default8", src: Default8 },
+    { name: "Default9", src: Default9 },
+    { name: "Default10", src: Default10 }
 ]
 
 export default class EditProfile extends Component {
@@ -48,7 +48,7 @@ export default class EditProfile extends Component {
         profileImg: "",
         addGame: "",
         favGames: [],
-        profilePic: 'default1',
+        profilePic: 'Default1',
         selectedPic: ''
     }
     static contextType = AuthContext;
@@ -119,26 +119,26 @@ export default class EditProfile extends Component {
     updatePicHandler = e => {
         const name = e.target ? e.target.name : e;
         switch (name) {
-            case "default1":
-                return this.setState({ profilePic: name, selectedPic: default1 })
-            case "default2":
-                return this.setState({ profilePic: name, selectedPic: default2 })
-            case "default3":
-                return this.setState({ profilePic: name, selectedPic: default3 })
-            case "default4":
-                return this.setState({ profilePic: name, selectedPic: default4 })
-            case "default5":
-                return this.setState({ profilePic: name, selectedPic: default5 })
-            case "default6":
-                return this.setState({ profilePic: name, selectedPic: default6 })
-            case "default7":
-                return this.setState({ profilePic: name, selectedPic: default7 })
-            case "default8":
-                return this.setState({ profilePic: name, selectedPic: default8 })
-            case "default9":
-                return this.setState({ profilePic: name, selectedPic: default9 })
-            case "default10":
-                return this.setState({ profilePic: name, selectedPic: default10 })
+            case "Default1":
+                return this.setState({ profilePic: name, selectedPic: Default1 })
+            case "Default2":
+                return this.setState({ profilePic: name, selectedPic: Default2 })
+            case "Default3":
+                return this.setState({ profilePic: name, selectedPic: Default3 })
+            case "Default4":
+                return this.setState({ profilePic: name, selectedPic: Default4 })
+            case "Default5":
+                return this.setState({ profilePic: name, selectedPic: Default5 })
+            case "Default6":
+                return this.setState({ profilePic: name, selectedPic: Default6 })
+            case "Default7":
+                return this.setState({ profilePic: name, selectedPic: Default7 })
+            case "Default8":
+                return this.setState({ profilePic: name, selectedPic: Default8 })
+            case "Default9":
+                return this.setState({ profilePic: name, selectedPic: Default9 })
+            case "Default10":
+                return this.setState({ profilePic: name, selectedPic: Default10 })
             default:
                 return this.setState({ selectedPic: '' })
         }
