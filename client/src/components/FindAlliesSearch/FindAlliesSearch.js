@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Jumbotron from '../Jumbotron/Jumbotron';
 import { Input, FormBtn } from '../Form/Form';
+import API from '../../utils/API';
 
 
 
@@ -11,6 +12,10 @@ const FindAlliesSearch = () => {
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
+        API.searchForUsers(allieSearch)
+            .then(response => {
+                console.log(response)
+            })
         const sessionName = sessionStorage.getItem('project3username')
         
     }
