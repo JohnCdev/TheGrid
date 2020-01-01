@@ -250,7 +250,8 @@ module.exports = {
       .catch(err => console.log(err));
   },
   getNotifications: (req, res) => {
-    console.log(req.params);
+    console.log('getNotifications is running')
+    console.log(`Notifications params ${req.params}`);
     db.Profile.find({ userName: req.params.userName }).then(data => {
       const unReadNotifications = [];
       data[0].updates.forEach(update => {

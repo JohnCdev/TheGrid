@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import Notification from "../Notification/Notification";
 import "./notifications.css";
 
 const Notifications = props => {
-  const [hasNotify, setHasNotify] = useState(true);
-
-  return (
+    console.log(props.notifications)
+  
+      const noNotifications = (
+      <>
+        <button className="btn btn-secondary" type="button">
+          No Notifications
+        </button>
+      </>
+      )
+   const haveNotifications = ( 
     <>
-      {hasNotify && <i className="material-icons mr-2">notifications_active</i>}
+      <i className="material-icons mr-2">notifications_active</i>
       <div className="dropdown mr-2">
         <button
           className="btn btn-secondary dropdown-toggle"
@@ -38,7 +45,9 @@ const Notifications = props => {
         </div>
       </div>
     </>
-  );
+    )
+    let notificationsButton = props.notifications.length === 0 ? noNotifications : haveNotifications
+    return notificationsButton
 };
 
 export default Notifications;
