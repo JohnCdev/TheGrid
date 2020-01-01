@@ -24,6 +24,7 @@ const Nav = () => {
     API.markNotificationAsRead(noteInfo)
       .then(response => {
         console.log(response)
+        setNotifications(response.data.newNotifications)
       })
   }
 

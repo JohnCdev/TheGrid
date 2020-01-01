@@ -23,12 +23,10 @@ module.exports = {
                 $set: {
                   sentFriendRequests: newSentRequests,
                   friendList: newFriendList
-                }
-              },
-              {
+                },
                 $push: {
                   updates: {
-                    uuidv1: uuidv1(),
+                    id: uuidv1(),
                     update: `${req.body.sender} is now your friend`,
                     userInvolved: req.body.sender,
                     type: "friend request",
@@ -164,12 +162,10 @@ module.exports = {
               $set: {
                 sentFriendRequests: newFriendRequests,
                 friendList: friendList
-              }
-            },
-            {
+              },
               $push: {
                 updates: {
-                  uuidv1: uuidv1(),
+                  id: uuidv1(),
                   update: `${accepter} is now your friend`,
                   userInvolved: accepter,
                   type: "friend request",
@@ -197,12 +193,10 @@ module.exports = {
                   $set: {
                     friendList: friendList,
                     receivedFriendRequests: receivedFriendRequests
-                  }
-                },
-                {
+                  },
                   $push: {
                     updates: {
-                      uuidv1: uuidv1(),
+                      id: uuidv1(),
                       update: `${requester} is now your friend`,
                       userInvolved: requester,
                       type: "friend request",
@@ -267,5 +261,15 @@ module.exports = {
   },
   markNoteAsRead: (req, res) => {
     console.log(req.body)
+    //user, notification
+
+    db.Profile.find({userName: req.body.user})
+      .then(user => {
+        const newNotifications = user[0].updates.filter(update => update.id !== req.body.notification)
+        db.Profile.updateOne({userName: req.body.user}, { $set: {updates: newNotifications}})
+          .then(res.json({ newNotifications }))
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
   }
 };
