@@ -11,6 +11,7 @@ import { Redirect } from 'react-router';
 
 const DiscoverPage = () => {
     const { isAuthenticated } = useContext(AuthContext);
+    const [picSearch, setPickSearch] = useState();
 
     if (!isAuthenticated) {
         return <Redirect to='/log-in' />
