@@ -274,8 +274,17 @@ module.exports = {
       .catch(err => console.log(err))
   },
   searchForUsers: (req, res) => {
-    console.log(req.params)
-    const hello = 'hello'
-    res.json(hello)
+    const input = req.params.searchQuery
+    db.Profile.find({userName: new RegExp(input, "i")})
+      .then(users => {
+        const searchResults = users.map(user => {
+          return{
+            _id: user._id,
+            userName: user.userName,
+            profileImage: 'user image goes here',
+          }
+        })
+        res.json(searchResults)
+      });
   }
 };
