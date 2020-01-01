@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
@@ -59,6 +59,12 @@ class ViewUserProfile extends Component {
   }
 
   render() {
+
+    // need links for it to work first (discover page)
+    const { isAuthenticated } = this.context;
+    // if (!isAuthenticated) {
+    //   return <Redirect to='/log-in' />
+    // }
 
     //this.setState({friendContext})
     const helloWorld = (command, value) => {
