@@ -1,15 +1,17 @@
 import React from "react";
 import './alliesBarIcon.css';
+import ProfileIcon from "../ProfileIcon/ProfileIcon";
+import { Link } from "react-router-dom";
+
 
 const AlliesBarIcon = ({ name, status, profileImg }) => {
     return (
-        <div className="allies-icon">
-            <ul>
-                <li>{name}</li>
-                <li>{status}</li>
-                <li>{profileImg}</li>
-            </ul>
-        </div>
+        <Link to={`/user-profile/${name}`}>
+            <div className="allies-icon">
+                <ProfileIcon profileImg={profileImg}/>
+                <p>{name}</p>
+            </div>
+        </Link>
     );
 }
 

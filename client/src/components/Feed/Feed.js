@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import FeedCard from '../FeedCard/FeedCard';
 
-const Feed = ({ feed }) => {
+const Feed = ({ feed, name}) => {
 
     useEffect(() => {
         console.log(feed)
@@ -9,7 +9,7 @@ const Feed = ({ feed }) => {
 
     return (
         <div>
-            <h1>Your Feed Goes Here</h1>
+            <h1>{`${name}'s Feed Goes Here`}</h1>
             {feed.map(post => (
                 <FeedCard
                     key={post._id}

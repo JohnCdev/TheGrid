@@ -5,7 +5,6 @@ export const AuthContext = createContext();
 class AuthContextProvider extends Component {
   state = {
     logInFunction: userObject => {
-      console.log(userObject.user.user);
       const client = userObject.user;
       this.setState({
         isAuthenticated: true,
@@ -17,7 +16,8 @@ class AuthContextProvider extends Component {
           friendList: client.friendList,
           sentFriendRequests: client.sentFriendRequests,
           receivedFriendRequests: client.receivedFriendRequests,
-          token: client.token
+          token: client.token,
+          profileImg: "Default8"
         }
       });
     },
@@ -36,7 +36,12 @@ class AuthContextProvider extends Component {
 
   toggleAuth = () => {
     console.log("auth toggle");
-    this.setState({ isAuthenticated: !this.state.isAuthenticated });
+    sessionStorage.removeItem('project3user')
+    sessionStorage.removeItem('project3username')
+    this.setState({ 
+      isAuthenticated: false,
+      userData: {}
+     });
   };
 
   componentDidMount(){
@@ -55,7 +60,6 @@ class AuthContextProvider extends Component {
             sentFriendRequests: user.sentFriendRequests,
             receivedFriendRequests: user.receivedFriendRequests,
             token: user.token,
-           // userName: user.userName
           }
         };
         this.state.logInFunction(userObject);

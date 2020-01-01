@@ -129,25 +129,28 @@ module.exports = {
       } else {
         db.Profile.find({ userName: requester }).then(result => {
           const oldFriendRequests = result[0].sentFriendRequests;
+          console.log(`Requester Old Friend Requests: ${oldFriendRequests}`)
           const newFriendRequests = oldFriendRequests.filter(
             request => request !== accepter
           );
+          console.log(`Requester New Friend Requests ${newFriendRequests}`)
+          friendList = [...result[0].friendList, accepter]
           db.Profile.findOneAndUpdate(
             { userName: requester },
-            { $push: { friendList: accepter } },
-            { $set: { sentFriendRequests: newFriendRequests } }
+            { $set: { sentFriendRequests: newFriendRequests, friendList: friendList } }
           ).then(result => {
             db.Profile.find({ userName: accepter }).then(result => {
               const oldFriendRequests = result[0].receivedFriendRequests;
+              console.log(`Accepter Old received Friend Requests: ${oldFriendRequests}`)
               const receivedFriendRequests = oldFriendRequests.filter(
                 request => request !== requester
               );
+              console.log(`Accepter new received Friend Requests: ${receivedFriendRequests}`)
               const friendList = [...result[0].friendList, requester];
-              const sentFriendRequests = [...result[0].sentFriendRequests];
+              const sentFriendRequests = result[0].sentFriendRequests;
               db.Profile.findOneAndUpdate(
                 { userName: accepter },
-                { $set: { friendList: friendList } },
-                { $set: { receivedFriendRequests: receivedFriendRequests } }
+                { $set: { friendList: friendList, receivedFriendRequests: receivedFriendRequests } }
               ).then(result =>
                 res.json({
                   receivedFriendRequests,
@@ -187,5 +190,10 @@ module.exports = {
     )
       .then(data => res.json({ data }))
       .catch(err => console.log(err));
+  },
+  getAllyList: (req,res) => {
+    db.Profile.find({userName: req.body.userName})
+    .then(data => res.json(data[0].friendList))
+    .catch(err => console.log(err))
   }
 };

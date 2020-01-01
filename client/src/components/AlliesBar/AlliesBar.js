@@ -1,24 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AlliesBarIcon from '../AlliesBarIcon/AlliesBarIcon';
 import './alliesBar.css';
+import API from "../../utils/API";
+
 
 const AlliesBar = () => {
     const [allies, setAllies] = useState([
-        { id: 1, name: "John", status: "Active", profileImg: "http://imagegoeshere" },
-        { id: 2, name: "Shawn", status: "Busy", profileImg: "http://imagegoeshere" }
+        // { key: "1", userName: "userName", firstName: "firstName", profileImg: "Default3" },
+        // { key: "2", userName: "userName", firstName: "firstName", profileImg: "Default2" }
     ]);
+    const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        setIsLoading(true)
+        API.getAllyList({ userName: sessionStorage.getItem('project3username') })
+            .then(data => {
+                var allies = data.data
+                var allyList = []
+                for (var i = 0; i < allies.length; i++) {
+                    API.getProfile({ userName: allies[i] })
+                        .then(data => {
+                            var ally = {
+                                key: data.data.data[0]._id,
+                                userName: data.data.data[0].userName,
+                                firstName: data.data.data[0].firstName,
+                            }
+                            allyList.push(ally)
+
+                        })
+                        .catch(err => console.log(err))
+                }
+                setAllies(allyList)
+                setIsLoading(false)
+            })
+            .catch(err => console.log(err))
+    }, [])
 
     return (
         <div id="allies-bar">
-            <h1>Allies Bar</h1>
-            {allies.map(ally => (
-                <AlliesBarIcon
-                    key={ally.id}
-                    name={ally.name}
-                    status={ally.status}
-                    profileImg={ally.profileImg}
-                />
-            ))}
+            {isLoading ?
+                <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+                :
+                allies.map(ally => (
+                    <AlliesBarIcon
+                        key={ally.key}
+                        name={ally.userName}
+                        status={ally.firstName}
+                        profileImg={ally.profileImg}
+                    />
+                ))}
         </div>
     );
 }
