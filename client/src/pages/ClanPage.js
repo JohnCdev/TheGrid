@@ -9,18 +9,11 @@ import ProfileIcon from "../components/ProfileIcon/ProfileIcon";
 import { AuthContext } from "../context/AuthContext";
 import { Redirect, Link, withRouter } from "react-router-dom";
 import PostForm from "../components/PostForm/PostForm";
+import ClanPicture from '../components/ClanPicture/ClanPicture';
+import './clanPage.css';
 
 class ClanPage extends Component {
   state = {
-    // clanName: 'That Clan',
-    // clanImg: '',
-    // clanTimeZone: 'EST',
-    // clanFeed: [
-    //     { id: 1, userName: "John", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
-    //     { id: 2, userName: "Shawn", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
-    //     { id: 3, userName: "Charles", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
-    //     { id: 4, userName: "Tripp", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" }
-    // ]
     _id: "",
     clanName: "",
     clanDescription: "",
@@ -28,7 +21,8 @@ class ClanPage extends Component {
     clanFounder: "",
     clanMembers: "",
     clanTimeZone: "",
-    clanFounded: ""
+    clanFounded: "",
+    clanImg: "Clan5"
   };
   static contextType = AuthContext;
 
@@ -40,15 +34,15 @@ class ClanPage extends Component {
       clan === undefined
         ? this.setState({ _id: null })
         : this.setState({
-            _id: clan._id,
-            clanName: clan.clanName,
-            clanDescription: clan.clanDescription,
-            clanFeed: clan.clanFeed,
-            clanFounder: clan.clanFounder,
-            clanMembers: clan.clanMembers,
-            clanTimeZone: clan.clanTimeZone,
-            clanFounded: clan.clanFounded
-          });
+          _id: clan._id,
+          clanName: clan.clanName,
+          clanDescription: clan.clanDescription,
+          clanFeed: clan.clanFeed,
+          clanFounder: clan.clanFounder,
+          clanMembers: clan.clanMembers,
+          clanTimeZone: clan.clanTimeZone,
+          clanFounded: clan.clanFounded
+        });
     });
     // api call to get clan feed
     this.reloadPosts();

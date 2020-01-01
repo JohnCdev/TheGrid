@@ -272,5 +272,10 @@ module.exports = {
           .catch(err => console.log(err))
       })
       .catch(err => console.log(err))
+  },
+  searchForUsers: (req, res) => {
+    console.log(req.params)
+    const hello = 'hello'
+    res.json(hello)
   }
 };

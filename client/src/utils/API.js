@@ -59,6 +59,8 @@ export default {
 
   getFeedPosts: postData => axios.post('/api/posts/feed-posts', postData),
 
+  searchForUsers: searchQuery => axios.get(`/api/profiles/search/${searchQuery}`),
+
   
   ///clans
   createClan: (clanData, token) => {

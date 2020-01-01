@@ -22,9 +22,12 @@ router.route('/friend-list')
     .post(profileController.getAllyList)
 
 router.route('/get-notifications/:userName')
-    .get(profileController.getNotifications)    
+    .get(profileController.getNotifications)   
 
 router.route('/mark-notification-as-read')
     .post(profileController.markNoteAsRead)
+
+router.route('/search/:searchQuery')
+    .get(profileController.searchForUsers)
 
 module.exports = router

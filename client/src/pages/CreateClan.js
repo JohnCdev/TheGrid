@@ -7,6 +7,19 @@ import { Redirect } from "react-router";
 import { Input, TextArea, FormBtn } from "../components/Form/Form";
 import { Container } from "../components/Grid/Grid";
 import API from "../utils/API";
+import Clan1 from '../images/clanImages/Clan1.jpg';
+import Clan2 from '../images/clanImages/Clan2.jpg';
+import Clan3 from '../images/clanImages/Clan3.jpg';
+import Clan4 from '../images/clanImages/Clan4.jpg';
+import Clan5 from '../images/clanImages/Clan5.jpg';
+
+const imgArray = [
+    { name: "Clan1", src: Clan1 },
+    { name: "Clan2", src: Clan2 },
+    { name: "Clan3", src: Clan3 },
+    { name: "Clan4", src: Clan4 },
+    { name: "Clan5", src: Clan5 },
+]
 
 const CreateClan = () => {
     const { isAuthenticated, userData } = useContext(AuthContext);
@@ -17,7 +30,9 @@ const CreateClan = () => {
         clanDescription: "",
         clanDiscord: "",
         addedGame: "",
-        clanGames: []
+        clanGames: [],
+        clanPic: '',
+        selectedPic: ''
     });
 
     // if (!isAuthenticated) {
@@ -26,6 +41,7 @@ const CreateClan = () => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
+        console.log(formData)
         const payLoad = { ...formData, clanFounder: userData.userName };
         const token = userData.token;
 
@@ -61,6 +77,31 @@ const CreateClan = () => {
             ...formData,
             clanGames: tempGames
         })
+    }
+
+    const clearPic = () => {
+        setFormData({
+            ...formData,
+            selectedPic: ''
+        })
+    }
+
+    const updatePicHandler = e => {
+        const name = e.target.name ? e.target.name : formData.clanPic;
+        switch (name) {
+            case "Clan1":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan1 })
+            case "Clan2":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan2 })
+            case "Clan3":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan3 })
+            case "Clan4":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan4 })
+            case "Clan5":
+                return setFormData({ ...formData, clanPic: name, selectedPic: Clan5 })
+            default:
+                return setFormData({ selectedPic: '' })
+        }
     }
 
     return (
@@ -117,22 +158,55 @@ const CreateClan = () => {
                         onChange={handleFormChange}
                         value={formData.addedGame}
                     />
-                    <button className="btn btn-primary" type="button" onClick={addGame}>Add Game</button>
+                    <button className="btn btn-primary mb-3" type="button" onClick={addGame}>Add Game</button>
                     <ul>
-                        {formData.clanGames.map((game, i) => {
+                        {formData.clanGames ? formData.clanGames.map((game, i) => {
                             return (
-                                <li key={i}>
+                                <li key={i} className="mb-2">
                                     {game}
                                     <button className="btn btn-primary" type="button" id={i} onClick={deleteGame}>
                                         X
                                     </button>
                                 </li>
                             );
-                        })}
+                        }) : null}
                     </ul>
+                    <hr />
+
+                    <h3>Select Your Clan ProfileImage</h3>
+                    <div className="picSelector">
+                        <div className="selectedPic mb-3">
+                            {formData.selectedPic ?
+                                <>
+                                    <img src={formData.selectedPic} />
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary"
+                                        onClick={clearPic}
+                                    >
+                                        X
+                                        </button>
+                                </> :
+                                <span>Select a Picture</span>
+                            }
+                        </div>
+                        <div className="picGrid">
+                            {imgArray.map((img, i) => {
+                                return (
+                                    <img
+                                        key={i}
+                                        className="img-thumbnail"
+                                        name={img.name}
+                                        src={img.src}
+                                        onClick={updatePicHandler}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
 
                     <FormBtn
-                        className="btn btn-success"
+                        className="btn btn-success mt-3"
                         type="submit"
                     >
                         Create Clan

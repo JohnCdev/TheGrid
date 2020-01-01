@@ -1,14 +1,56 @@
 import React from "react";
 import "./ProfilePicture.css";
+import Default1 from "../../images/profileImages/Default1.jpg";
+import Default2 from "../../images/profileImages/Default2.jpg";
+import Default3 from "../../images/profileImages/Default3.jpg";
+import Default4 from "../../images/profileImages/Default4.jpg";
+import Default5 from "../../images/profileImages/Default5.jpg";
+import Default6 from "../../images/profileImages/Default6.jpg";
+import Default7 from "../../images/profileImages/Default7.jpg";
+import Default8 from "../../images/profileImages/Default8.jpg";
+import Default9 from "../../images/profileImages/Default9.jpg";
+import Default10 from "../../images/profileImages/Default10.jpg";
 
-export default function ProfilePicture(props) {
+let imgRef="";
+
+const reRender = profileImg => {
+  switch (profileImg) {
+    case "Default1":
+      return imgRef = Default1;
+    case "Default2":
+      return imgRef = Default2;
+    case "Default3":
+      return imgRef = Default3;
+    case "Default4":
+      return imgRef = Default4;
+    case "Default5":
+      return imgRef = Default5;
+    case "Default6":
+      return imgRef = Default6;
+    case "Default7":
+      return imgRef = Default7;
+    case "Default8":
+      return imgRef = Default8;
+    case "Default9":
+      return imgRef = Default9;
+    case "Default10":
+      return imgRef = Default10;
+    default:
+      return imgRef="";
+  }
+}
+
+export default function ProfilePicture({ location, age, profileImg }) {
+
+  reRender(profileImg);
+
   return (
     <div className="ProfilePicture">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTstj276Y44IUaixarTbd_LZdGy8gleEjW7v9gRo0LPVzgQE0pamA&s" />
+      <img src={imgRef} />
       <ul>
         <li>Status: Offline</li>
-        <li>Location: {props.location}</li>
-        <li>Age: {props.age}</li>
+        <li>Location: {location}</li>
+        <li>Age: {age}</li>
       </ul>
     </div>
   );
