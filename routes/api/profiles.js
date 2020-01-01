@@ -21,4 +21,10 @@ router.route('/profile')
 router.route('/friend-list')
     .post(profileController.getAllyList)
 
+router.route('/get-notifications/:userName')
+    .get(profileController.getNotifications)    
+
+router.route('/mark-notification-as-read')
+    .post(profileController.markNoteAsRead)
+
 module.exports = router

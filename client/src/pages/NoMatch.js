@@ -1,10 +1,13 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
+import Nav from "../components/Nav/Nav";
 import Header from '../components/Header/Header';
 
 function NoMatch() {
   return (
+    <>
+    <Nav />
     <Container fluid>
       <Header headerText={404}/>
       <Row>
@@ -20,6 +23,7 @@ function NoMatch() {
         </Col>
       </Row>
     </Container>
+    </>
   );
 }
 
