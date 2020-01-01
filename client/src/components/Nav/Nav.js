@@ -7,7 +7,7 @@ import ProfileIcon from "../ProfileIcon/ProfileIcon";
 import Notifications from "../Notifications/Notifications";
 
 const Nav = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, userData } = useContext(AuthContext);
 
   const homeLink = () => {
     const currentLink = isAuthenticated ? '/feed' : '/';
@@ -39,7 +39,7 @@ const Nav = () => {
         </ul>
         {/* Switch || to && to check to auth state for notifications */}
         {isAuthenticated && <Notifications className="mr-auto"/>}
-        <Link to="/profile">{isAuthenticated && <ProfileIcon img={null} large={true}/>}</Link>
+        <Link to="/profile">{isAuthenticated && <ProfileIcon profileImg={userData.profileImg} large={true}/>}</Link>
         <LogInOutBtn />
       </nav>
     </div>

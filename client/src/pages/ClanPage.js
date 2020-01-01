@@ -4,22 +4,14 @@ import { Container, Row, Col } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Header from "../components/Header/Header";
 import Feed from "../components/Feed/Feed";
-import ProfileIcon from "../components/ProfileIcon/ProfileIcon";
 import { AuthContext } from "../context/AuthContext";
 import { Redirect, Link, withRouter } from "react-router-dom";
 import PostForm from "../components/PostForm/PostForm";
+import ClanPicture from '../components/ClanPicture/ClanPicture';
+import './clanPage.css';
 
 class ClanPage extends Component {
   state = {
-    // clanName: 'That Clan',
-    // clanImg: '',
-    // clanTimeZone: 'EST',
-    // clanFeed: [
-    //     { id: 1, userName: "John", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
-    //     { id: 2, userName: "Shawn", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
-    //     { id: 3, userName: "Charles", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" },
-    //     { id: 4, userName: "Tripp", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "https://pbs.twimg.com/profile_images/897250392022540288/W1T-QjML_400x400.jpg" }
-    // ]
     _id: "",
     clanName: "",
     clanDescription: "",
@@ -27,7 +19,8 @@ class ClanPage extends Component {
     clanFounder: "",
     clanMembers: "",
     clanTimeZone: "",
-    clanFounded: ""
+    clanFounded: "",
+    clanImg: "default5"
   };
   static contextType = AuthContext;
 
@@ -39,15 +32,15 @@ class ClanPage extends Component {
       clan === undefined
         ? this.setState({ _id: null })
         : this.setState({
-            _id: clan._id,
-            clanName: clan.clanName,
-            clanDescription: clan.clanDescription,
-            clanFeed: clan.clanFeed,
-            clanFounder: clan.clanFounder,
-            clanMembers: clan.clanMembers,
-            clanTimeZone: clan.clanTimeZone,
-            clanFounded: clan.clanFounded
-          });
+          _id: clan._id,
+          clanName: clan.clanName,
+          clanDescription: clan.clanDescription,
+          clanFeed: clan.clanFeed,
+          clanFounder: clan.clanFounder,
+          clanMembers: clan.clanMembers,
+          clanTimeZone: clan.clanTimeZone,
+          clanFounded: clan.clanFounded
+        });
     });
     // api call to get clan feed
     this.reloadPosts();
@@ -79,50 +72,47 @@ class ClanPage extends Component {
         </Jumbotron>
       </>
     ) : (
-      <Container className="mt-4">
-        <Row>
-          <div className="col-sm-12 col-md-3">
-            <Jumbotron>
-              <Header headerText={`${this.state.clanName}`} />
-              <ProfileIcon large={false} />
-              <p>
-                {this.state.clanDescription}
-              </p>
-            </Jumbotron>
-            <section>
-              <h3>{`${this.state.clanName}'s Active Timezone: ${this.state.clanTimeZone}`}</h3>
-              <h3>{`${this.state.clanName}'s Active Games:`}</h3>
-              <ol>
-                <li>Halo</li>
-                <li>Pokemans</li>
-                <li>CS</li>
-                <li>Halo</li>
-                <li>Pokemans</li>
-                <li>CS</li>
-                <li>Halo</li>
-                <li>Pokemans</li>
-                <li>CS</li>
-              </ol>
-            </section>
-            <Link to="/create-clan">
-              <button type="button" className="btn btn-primary">
-                Create a Clan
-              </button>
-            </Link>
-          </div>
-          <div className="col-sm-12 col-md-9">
-            <section>
-              <PostForm reloadPosts={this.reloadPosts} clan={true} />
-              {this.state.clanFeed.length > 0 ? (
-                <Feed feed={this.state.clanFeed} name={this.state.clanName} />
-              ) : (
-                <h2>This clan has no feed.(Yet!)</h2>
-              )}
-            </section>
-          </div>
-        </Row>
-      </Container>
-    );
+        <main className="clanPage">
+          <Container className="mt-4">
+            <Row>
+              <div className="clanSidebar rounded col-sm-12 col-md-3">
+                <div className="clanHeader rounded pb-3">
+                  <Header headerText={`${this.state.clanName}`} />
+                  <ClanPicture clanImg={this.state.clanImg} large={false} />
+                  <p>
+                    {this.state.clanDescription}
+                  </p>
+                </div>
+                <div className="clanSidebarInfo">
+                  <h4>{`${this.state.clanName}'s Active Timezone: ${this.state.clanTimeZone}`}</h4>
+                  <h4>{`${this.state.clanName}'s Active Games:`}</h4>
+                  <ul>
+                    <li>Halo</li>
+                    <li>Pokemans</li>
+                    <li>CS</li>
+                    <li>Halo</li>
+                    <li>Pokemans</li>
+                    <li>CS</li>
+                    <li>Halo</li>
+                    <li>Pokemans</li>
+                    <li>CS</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="col-sm-12 col-md-9">
+                <section>
+                  <PostForm reloadPosts={this.reloadPosts} clan={true} />
+                  {this.state.clanFeed.length > 0 ? (
+                    <Feed feed={this.state.clanFeed} name={this.state.clanName} />
+                  ) : (
+                      <h2>This clan has no feed.(Yet!)</h2>
+                    )}
+                </section>
+              </div>
+            </Row>
+          </Container >
+        </main>
+      );
   }
 }
 

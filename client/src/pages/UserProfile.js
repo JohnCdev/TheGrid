@@ -22,7 +22,8 @@ class ViewUserProfile extends Component {
     friendList: [],
     sentFriendRequests: [],
     receivedFriendRequests: [],
-    friendContext: ""
+    friendContext: "",
+    profileImg: "default5"
   };
 
   componentDidMount() {
@@ -126,6 +127,7 @@ class ViewUserProfile extends Component {
           <ProfilePicture
             location={this.state.currentCity}
             age={this.state.age}
+            profileImg={this.state.profileImg}
           />
           <AddFriend
             friendContext={this.state.friendContext}

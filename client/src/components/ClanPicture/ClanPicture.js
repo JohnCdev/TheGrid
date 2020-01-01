@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import "./profileIcon.css"
+import React from "react";
+import "./clanPicture.css";
 import default1 from "../../images/profileImages/default1.jpg";
 import default2 from "../../images/profileImages/default2.jpeg";
 import default3 from "../../images/profileImages/default3.jpg";
@@ -41,17 +40,13 @@ const reRender = profileImg => {
   }
 }
 
-const ProfileIcon = ({ profileImg, large = false }) => {
-  const imgSize = large ? 50 : 25;
+export default function ClanPicture({ clanImg }) {
 
-  reRender(profileImg)
+  reRender(clanImg);
 
   return (
-
-    <img
-      style={{ borderRadius: 50, width: imgSize, height: imgSize }}
-      src={imgRef}
-    />
-  )
+    <div className="clanProfilePicture">
+      <img className="img-thumbnail" src={imgRef} />
+    </div>
+  );
 }
-export default ProfileIcon;

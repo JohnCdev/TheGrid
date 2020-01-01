@@ -6,8 +6,8 @@ import API from "../../utils/API";
 
 const AlliesBar = () => {
     const [allies, setAllies] = useState([
-        { key: "key", userName: "userName", firstName: "firstName" },
-        { key: "key2", userName: "userName", firstName: "firstName" }
+        { key: "1", userName: "userName", firstName: "firstName", profileImg: "default3" },
+        { key: "2", userName: "userName", firstName: "firstName", profileImg: "default2" }
     ]);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const AlliesBar = () => {
                     key={ally.key}
                     name={ally.userName}
                     status={ally.firstName}
-                //profileImg={ally.profileImg}
+                    profileImg={ally.profileImg}
                 />
             ))}
         </div>
