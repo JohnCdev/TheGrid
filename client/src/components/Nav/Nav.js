@@ -76,6 +76,7 @@ const Nav = () => {
         <Link to="/profile">
           {isAuthenticated && <ProfileIcon img={null} large={true} />}
         </Link>
+
         <LogInOutBtn />
       </nav>
     </div>
