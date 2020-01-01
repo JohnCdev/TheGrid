@@ -1,0 +1,13 @@
+.card-header {
+    background-color: #231f20;
+}
+.card-title {
+    background-color: #3c4042 !important
+}
+.card-body {
+    background-color: #3c4042 !important
+}
+.timeStamp {
+    float: right;
+    font-size: 13px;
+}
