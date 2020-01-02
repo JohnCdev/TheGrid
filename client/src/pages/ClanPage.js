@@ -16,6 +16,7 @@ class ClanPage extends Component {
   state = {
     _id: "",
     clanName: "",
+    clanReferenceName: "",
     clanDescription: "",
     clanFeed: "",
     clanFounder: "",
@@ -36,6 +37,7 @@ class ClanPage extends Component {
         : this.setState({
           _id: clan._id,
           clanName: clan.clanName,
+          clanReferenceName: clan.clanReferenceName,
           clanDescription: clan.clanDescription,
           clanFeed: clan.clanFeed,
           clanFounder: clan.clanFounder,
