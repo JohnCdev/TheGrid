@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Header from "../components/Header/Header";
+import Nav from "../components/Nav/Nav";
 import { Redirect } from "react-router";
 import { Input, TextArea, FormBtn } from "../components/Form/Form";
 import { Container } from "../components/Grid/Grid";
@@ -104,6 +105,8 @@ const CreateClan = () => {
     }
 
     return (
+      <>
+      <Nav />
         <main>
             <Container>
                 <Jumbotron>
@@ -211,6 +214,7 @@ const CreateClan = () => {
                 </form>
             </Container>
         </main>
+        </>
     );
 }
 

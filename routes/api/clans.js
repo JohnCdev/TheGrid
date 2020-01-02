@@ -8,4 +8,7 @@ router.route('/create-clan')
 router.route(`/:clan`)
     .get(clanController.getClan)
 
+router.route('/search/:searchQuery')
+    .get(clanController.searchForClans)
+
 module.exports = router
