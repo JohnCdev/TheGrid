@@ -18,8 +18,7 @@ function App() {
   return (
     <AuthContext >
     <Router>
-      <div id="pageContainer">
-        <div id="theGridContentWrapper">
+      <div>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path='/new-user' component={SignUp} />
@@ -32,7 +31,6 @@ function App() {
           <Route path = '/user-profile/:userProfile' component={UserProfile} />
           <Route component={NoMatch} />
         </Switch>
-        </div>
         <Footer />
       </div>
     </Router>
