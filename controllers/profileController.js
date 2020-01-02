@@ -218,7 +218,6 @@ module.exports = {
     });
   },
   getUserProfile: (req, res) => {
-    console.log(req.params.profile);
     db.Profile.find({ userName: req.params.profile }).then(data =>
       res.json({ data })
     );
@@ -229,6 +228,7 @@ module.exports = {
     );
   },
   updateProfile: (req, res) => {
+    console.log(req.body)
     db.Profile.updateOne(
       { userName: req.body.userName },
       {
@@ -237,7 +237,13 @@ module.exports = {
           lastName: req.body.lastName,
           age: req.body.age,
           currentCity: req.body.currentCity,
-          lastUpdated: req.body.lastUpdated
+          steamIGN: req.body.steamIGN,
+          discordIGN: req.body.discordIGN,
+          battleNetIGN: req.body.battleNetIGN,
+          epicIGN: req.body.epicIGN,
+          originIGN: req.body.originIGN,
+          profileIMG: req.body.profileIMG,
+          favGames: req.body.favGames
         }
       }
     )
