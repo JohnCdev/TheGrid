@@ -105,9 +105,8 @@ const CreateClan = () => {
     }
 
     return (
-      <>
-      <Nav />
         <main>
+            <Nav />
             <Container>
                 <Jumbotron>
                     <Header headerText="Create a New Clan" />
@@ -214,7 +213,6 @@ const CreateClan = () => {
                 </form>
             </Container>
         </main>
-        </>
     );
 }
 

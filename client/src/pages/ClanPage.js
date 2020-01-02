@@ -65,7 +65,7 @@ class ClanPage extends Component {
 
     return this.state._id === null ? (
       <>
-      <Nav />
+        <Nav />
         <Header headerText={404} />
         <Jumbotron>
           <h1>User Not Found</h1>
@@ -77,51 +77,53 @@ class ClanPage extends Component {
         </Jumbotron>
       </>
     ) : (
-      <Container className="mt-4">
-        <Nav />
-        <Row>
-          <div className="col-sm-12 col-md-3">
-            <Jumbotron>
-              <Header headerText={`${this.state.clanName}`} />
-              <ProfileIcon large={false} />
-              <p>
-                {this.state.clanDescription}
-              </p>
-            </Jumbotron>
-            <section>
-              <h3>{`${this.state.clanName}'s Active Timezone: ${this.state.clanTimeZone}`}</h3>
-              <h3>{`${this.state.clanName}'s Active Games:`}</h3>
-              <ol>
-                <li>Halo</li>
-                <li>Pokemans</li>
-                <li>CS</li>
-                <li>Halo</li>
-                <li>Pokemans</li>
-                <li>CS</li>
-                <li>Halo</li>
-                <li>Pokemans</li>
-                <li>CS</li>
-              </ol>
-            </section>
-            <Link to="/create-clan">
-              <button type="button" className="btn btn-primary">
-                Create a Clan
+        <>
+          <Nav />
+          <Container className="mt-4">
+            <Row>
+              <div className="col-sm-12 col-md-3">
+                <Jumbotron>
+                  <Header headerText={`${this.state.clanName}`} />
+                  <ProfileIcon large={false} />
+                  <p>
+                    {this.state.clanDescription}
+                  </p>
+                </Jumbotron>
+                <section>
+                  <h3>{`${this.state.clanName}'s Active Timezone: ${this.state.clanTimeZone}`}</h3>
+                  <h3>{`${this.state.clanName}'s Active Games:`}</h3>
+                  <ol>
+                    <li>Halo</li>
+                    <li>Pokemans</li>
+                    <li>CS</li>
+                    <li>Halo</li>
+                    <li>Pokemans</li>
+                    <li>CS</li>
+                    <li>Halo</li>
+                    <li>Pokemans</li>
+                    <li>CS</li>
+                  </ol>
+                </section>
+                <Link to="/create-clan">
+                  <button type="button" className="btn btn-primary">
+                    Create a Clan
               </button>
-            </Link>
-          </div>
-          <div className="col-sm-12 col-md-9">
-            <section>
-              <PostForm reloadPosts={this.reloadPosts} clan={true} />
-              {this.state.clanFeed.length > 0 ? (
-                <Feed feed={this.state.clanFeed} name={this.state.clanName} />
-              ) : (
-                <h2>This clan has no feed.(Yet!)</h2>
-              )}
-            </section>
-          </div>
-        </Row>
-      </Container>
-    );
+                </Link>
+              </div>
+              <div className="col-sm-12 col-md-9">
+                <section>
+                  <PostForm reloadPosts={this.reloadPosts} clan={true} />
+                  {this.state.clanFeed.length > 0 ? (
+                    <Feed feed={this.state.clanFeed} name={this.state.clanName} />
+                  ) : (
+                      <h2>This clan has no feed.(Yet!)</h2>
+                    )}
+                </section>
+              </div>
+            </Row>
+          </Container>
+        </>
+      );
   }
 }
 

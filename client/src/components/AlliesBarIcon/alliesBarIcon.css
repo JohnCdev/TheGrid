@@ -8,12 +8,15 @@
     text-decoration: none;
     width: 180px;
     padding-top: 10px;
-    transition: all .3s ease-in-out
+    transition: all .3s ease-in-out;
+    border-radius: .25rem;
 }
 
 .allies-icon:hover {
     background-color:#04dac6;
     cursor: pointer;
     transform: scale(1.1);
-    
+}
+p {
+    color: #e1e1e1;
 }

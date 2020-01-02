@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import React from "react";
 import "./profileIcon.css"
 import Default1 from "../../images/profileImages/Default1.jpg";
 import Default2 from "../../images/profileImages/Default2.jpg";
@@ -11,9 +10,13 @@ import Default7 from "../../images/profileImages/Default7.jpg";
 import Default8 from "../../images/profileImages/Default8.jpg";
 import Default9 from "../../images/profileImages/Default9.jpg";
 import Default10 from "../../images/profileImages/Default10.jpg";
+import Clan1 from "../../images/clanImages/Clan1.jpg";
+import Clan2 from "../../images/clanImages/Clan2.jpg";
+import Clan3 from "../../images/clanImages/Clan3.jpg";
+import Clan4 from "../../images/clanImages/Clan4.jpg";
+import Clan5 from "../../images/clanImages/Clan5.jpg";
 
-
-let imgRef="";
+let imgRef = "";
 
 const reRender = profileImg => {
   switch (profileImg) {
@@ -37,8 +40,18 @@ const reRender = profileImg => {
       return imgRef = Default9;
     case "Default10":
       return imgRef = Default10;
+    case "Clan1":
+      return imgRef = Clan1;
+    case "Clan2":
+      return imgRef = Clan2;
+    case "Clan3":
+      return imgRef = Clan3;
+    case "Clan4":
+      return imgRef = Clan4;
+    case "Clan5":
+      return imgRef = Clan5;
     default:
-      return imgRef="";
+      return imgRef = "";
   }
 }
 

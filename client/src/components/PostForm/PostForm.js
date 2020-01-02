@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import { TextArea, FormBtn } from '../Form/Form';
 import { AuthContext } from "../../context/AuthContext";
 import API from '../../utils/API';
+import "./PostForm.css";
+
 
 const PostForm = ({ reloadPosts, clan = false }) => {
     const { userData } = useContext(AuthContext);
@@ -36,10 +38,10 @@ const PostForm = ({ reloadPosts, clan = false }) => {
     }
 
     return (
-        <section>
-            <form onSubmit={handlePostSubmit}>
-                <label htmlFor="postComment">Post</label>
-                <TextArea
+        <section style={{'marginBottom':'50px'}}>
+            <form id="postBackground" onSubmit={handlePostSubmit}>
+                <label id="postTitle" htmlFor="postComment">Create Post</label>
+                <TextArea 
                     id="postComment"
                     name="postComment"
                     onChange={onChangeHandler}
