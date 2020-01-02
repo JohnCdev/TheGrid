@@ -33,13 +33,15 @@ class ViewUserProfile extends Component {
       const { userData } = this.context;
       let friendContext;
       const userProfile = res.data.data[0];
-      userProfile.friendList.includes(userData.userName)
+      if(userProfile){
+        userProfile.friendList.includes(userData.userName)
         ? friendContext = "friend"
         : userProfile.sentFriendRequests.includes(userData.userName)
         ? friendContext = "their-sent-request-pending"
         : userProfile.receivedFriendRequests.includes(userData.userName)
         ? friendContext = "their-received-request-pending"
         : friendContext = "not-a-friend";
+      }
 
       //if user profile is not returned, set id equal to null otherwise fill out the state
       userProfile === undefined

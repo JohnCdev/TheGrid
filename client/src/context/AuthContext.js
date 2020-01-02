@@ -17,7 +17,13 @@ class AuthContextProvider extends Component {
           sentFriendRequests: client.sentFriendRequests,
           receivedFriendRequests: client.receivedFriendRequests,
           token: client.token,
-          profileImg: "Default8"
+          profileImg: client.profileIMG,
+          steamIGN: client.steamIGN,
+          discordIGN: client.discordIGN,
+          battleNetIGN: client.battleNetIGN,
+          epicIGN: client.epicIGN,
+          originIGN: client.originIGN,
+          favGames: client.favGames
         }
       });
     },

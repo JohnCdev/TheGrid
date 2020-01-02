@@ -57,6 +57,13 @@ export default function LogIn() {
                         friendList: client[0].friendList,
                         sentFriendRequests: client[0].sentFriendRequests,
                         receivedFriendRequests: client[0].receivedFriendRequests,
+                        profileIMG: client[0].profileIMG,
+                        steamIGN: client[0].steamIGN,
+                        discordIGN: client[0].discordIGN,
+                        battleNetIGN: client[0].battleNetIGN,
+                        epicIGN: client[0].epicIGN,
+                        originIGN: client[0].originIGN,
+                        favGames: client[0].favGames,
                         token: client[1]
                     }
                     sessionStorage.setItem('project3user', JSON.stringify(resObj));
