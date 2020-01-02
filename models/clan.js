@@ -7,6 +7,10 @@ var ClanSchema = new Schema({
     type: String,
     required: true
   },
+  clanReferenceName: {
+    type: String,
+    required: true
+  },
   clanFounded: {
     type: Date,
     default: Date.now

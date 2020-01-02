@@ -14,6 +14,7 @@ module.exports = {
           } else {
             db.Clan.create({
               clanName: req.body.clanName,
+              clanReferenceName: req.body.clanName.replace(/\s/g, ''),
               clanFounder: req.body.clanFounder,
               clanDescription: req.body.clanDescription,
               clanTimeZone: req.body.clanTimeZone,
