@@ -23,6 +23,11 @@ var ClanSchema = new Schema({
     type: String,
     default: "No Description given."
   },
+  clanProfileImage: {
+    type: String,
+    default: "Default" + Math.floor(Math.random() * 10 + 1),
+    required: true
+  },
   clanDiscord: {
     type: String
   },

@@ -27,6 +27,7 @@ var ProfileSchema = new Schema({
     },
     profileImage: {
         type: String,
+        default: "Default" + Math.floor(Math.random() * 10 + 1),
         required: true
     },
     discordName: {
