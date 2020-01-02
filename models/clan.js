@@ -19,6 +19,13 @@ var ClanSchema = new Schema({
     type: String,
     default: "No Description given."
   },
+  clanDiscord: {
+    type: String
+  },
+  clanActiveGame: {
+    type: Array,
+    default: []
+  },
   clanFounder: {
       type: String
   },

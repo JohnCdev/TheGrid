@@ -25,6 +25,25 @@ var ProfileSchema = new Schema({
         type: String,
         required: true
     },
+    profileImage: {
+        type: String,
+        required: true
+    },
+    discordName: {
+        type: String,
+    },
+    battleNetId: {
+        type: String,
+    },
+    epicGamesName: {
+        type: String,
+    },
+    originName: {
+        type: String
+    },
+    topGames: {
+        type: Array
+    },
     lastUpdated: {
         type: Date
     },
