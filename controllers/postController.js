@@ -15,7 +15,10 @@ module.exports = {
     },
 
     getUser: (req, res) => {
-        db.Post.find({ userName: req.body.userName }).sort({ timeStamp: -1 })
+        db.Post.find({
+            userName: req.body.userName,
+            clanName: ""
+        }).sort({ timeStamp: -1 })
             .then(data => {
                 res.json(data)
             })
