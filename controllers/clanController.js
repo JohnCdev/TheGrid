@@ -31,5 +31,19 @@ module.exports = {
     db.Clan.find({ clanName: req.params.clan }).then(data =>
       res.json({ data })
     );
+  },
+  searchForClans: (req, res) => {
+    const input = req.params.searchQuery
+    db.Clan.find({clanName: new RegExp(input, "i")})
+      .then(users => {
+        const searchResults = users.map(clan => {
+          return{
+            _id: clan._id,
+            clanName: clan.clanName,
+            profileImage: 'Default1',
+          }
+        })
+        res.json(searchResults)
+      });
   }
 };

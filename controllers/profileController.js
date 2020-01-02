@@ -262,8 +262,6 @@ module.exports = {
   },
   markNoteAsRead: (req, res) => {
     console.log(req.body)
-    //user, notification
-
     db.Profile.find({userName: req.body.user})
       .then(user => {
         const newNotifications = user[0].updates.filter(update => update.id !== req.body.notification)
