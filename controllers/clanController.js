@@ -12,10 +12,12 @@ module.exports = {
           if (err) {
             res.sendStatus(403);
           } else {
+            const profileImg = req.body.clanProfileImage || "Default" + Math.floor(Math.random() * 10 + 1)
             db.Clan.create({
               clanName: req.body.clanName,
               clanReferenceName: req.body.clanName.replace(/\s/g, ''),
               clanFounder: req.body.clanFounder,
+              clanProfileImage: profileImg,
               clanDescription: req.body.clanDescription,
               clanTimeZone: req.body.clanTimeZone,
               clanMembers: [req.body.clanFounder]
