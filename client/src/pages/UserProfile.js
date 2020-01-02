@@ -167,7 +167,7 @@ class ViewUserProfile extends Component {
           </Jumbotron>
           <Container>
             {this.state.userFeed.length > 0 ? (
-              <Feed feed={this.state.userFeed} reloadPosts={this.reloadPosts} />
+              <Feed feed={this.state.userFeed} reloadPosts={this.reloadPosts} name={this.state.userName} />
             ) : (
                 <h2>This user has no feed.(Yet!)</h2>
               )}</Container>
