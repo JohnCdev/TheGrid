@@ -29,14 +29,14 @@ export function InputEmail(props) {
 export function TextArea(props) {
   return (
     <div className="form-group">
-      <textarea className="form-control" rows="20" {...props} />
+      <textarea placeholder="Share info, builds, raid times, memes etc." className="form-control" rows="20" {...props} />
     </div>
   );
 }
 
 export function FormBtn(props) {
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }}>
+    <button {...props} style={{ float: "right", marginBottom: 10, lineHeight: 1 }}>
       {props.children}
     </button>
   );

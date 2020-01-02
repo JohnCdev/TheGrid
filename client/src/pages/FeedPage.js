@@ -52,9 +52,9 @@ const FeedPage = () => {
         <>
         <Nav />
         <main style={{ "height": "100%", "marginBottom": "200px" }}>
-            <Header headerText="Your Feed" />
             <AlliesBar />
             <Container>
+            <Header headerText="Info Board" />
                 {feedLoading ?
                     null
                     :
