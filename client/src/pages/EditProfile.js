@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Input, TextArea, FormBtn, InputPassword, InputEmail } from "../components/Form/Form";
+import { Input, FormBtn } from "../components/Form/Form";
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Nav from "../components/Nav/Nav";
 import { Redirect } from 'react-router';
-import AddFriend from '../components/AddFriend/AddFriend';
 import Header from '../components/Header/Header';
 import { AuthContext } from '../context/AuthContext';
 import Default2 from '../images/profileImages/Default2.jpg';

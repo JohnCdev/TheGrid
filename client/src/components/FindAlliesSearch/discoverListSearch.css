@@ -9,6 +9,7 @@
     width: 100%;
     border: 2px solid #e2e2e2;
     margin-bottom: 10px;
+    box-shadow: 5px 4px 4px #202124;
 }
 
 .discoverListItem > div {

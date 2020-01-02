@@ -125,3 +125,7 @@ hr {
       height: 1rem;
       border-width: .2em;
   }
+
+  .box-shadow-dark {
+      box-shadow: 4px 2px 2px #333333; 
+  }
