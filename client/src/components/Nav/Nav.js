@@ -28,7 +28,7 @@ const Nav = () => {
   }
 
   const homeLink = () => {
-    const currentLink = isAuthenticated ? "/feed" : "/";
+    const currentLink = isAuthenticated ? `/user-profile/${userData.userName}` : "/";
 
     return (
       <Link to={currentLink} className="navbar-brand">
@@ -52,7 +52,7 @@ const Nav = () => {
           </li>
           <li className="nav-item">
             {isAuthenticated ? (
-              <Link to="/clans" className="nav-link">
+              <Link to="/clan" className="nav-link">
                 Clans
               </Link>
             ) : null}
