@@ -10,7 +10,7 @@ const Feed = ({ feed, name}) => {
 
     return (
         <div>
-            <h1 className="feedTitle">{`${name}'s sources`}</h1>
+            <h1 className="feedTitle">{`${name}'s Sources`}</h1>
             {feed.map(post => (
                 <FeedCard
                     key={post._id}
