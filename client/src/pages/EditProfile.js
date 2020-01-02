@@ -4,6 +4,7 @@ import { Input, TextArea, FormBtn, InputPassword, InputEmail } from "../componen
 import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
+import Nav from "../components/Nav/Nav";
 import { Redirect } from 'react-router';
 import AddFriend from '../components/AddFriend/AddFriend';
 import Header from '../components/Header/Header';
@@ -152,6 +153,8 @@ export default class EditProfile extends Component {
         }
 
         return (
+            <>
+            <Nav />
             <main>
                 <Container>
                     <Jumbotron>
@@ -311,6 +314,7 @@ export default class EditProfile extends Component {
                     </form>
                 </Container>
             </main>
+            </>
         )
     }
 }

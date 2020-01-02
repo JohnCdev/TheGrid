@@ -20,7 +20,6 @@ function App() {
     <Router>
       <div>
         <div id="theGridContentWrapper">
-        <Nav />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path='/new-user' component={SignUp} />

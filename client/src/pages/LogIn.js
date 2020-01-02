@@ -4,6 +4,7 @@ import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
+import Nav from "../components/Nav/Nav";
 import { AuthContext } from '../context/AuthContext';
 import Header from '../components/Header/Header';
 
@@ -71,6 +72,8 @@ export default function LogIn() {
     }
 
     return (
+        <>
+        <Nav />
         <main>
             <Container>
                 <Jumbotron>
@@ -107,5 +110,6 @@ export default function LogIn() {
                 </form>
             </Container >
         </main>
+        </>
     )
 }
