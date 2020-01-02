@@ -9,30 +9,59 @@ import API from '../../utils/API';
 const FindAlliesSearch = () => {
     const [allySearch, setSearch] = useState('');
     const [allyResult, setAllyResult] = useState([
-        { id: 1, name: "John", pic: "Default1" },
-        { id: 2, name: "Shawn", pic: "Default2" },
-        { id: 3, name: "Charles", pic: "Default3" },
-        { id: 4, name: "John", pic: "Default1" },
-        { id: 5, name: "Shawn", pic: "Default2" },
-        { id: 6, name: "Charles", pic: "Default3" },
-        { id: 7, name: "John", pic: "Default1" },
-        { id: 8, name: "Shawn", pic: "Default2" },
-        { id: 9, name: "Charles", pic: "Default3" }
+        // { _id: 1, userName: "John", profileImage: "Default1" },
+        // { _id: 2, userName: "Shawn", profileImage: "Default2" },
+        // { _id: 3, userName: "Charles", profileImage: "Default3" },
+        // { _id: 4, userName: "John", profileImage: "Default1" },
+        // { _id: 5, userName: "Shawn", profileImage: "Default2" },
+        // { _id: 6, userName: "Charles", profileImage: "Default3" },
+        // { _id: 7, userName: "John", profileImage: "Default1" },
+        // { _id: 8, userName: "Shawn", profileImage: "Default2" },
+        // { _id: 9, userName: "Charles", profileImage: "Default3" }
     ]);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSearchSubmit = (e) => {
+        setIsLoading(true)
         e.preventDefault();
-        console.log(allySearch);
         API.searchForUsers(allySearch)
             .then(response => {
-                console.log(response)
+                setIsLoading(false)
+                console.log(isLoading)
+                setAllyResult(response.data)
             })
-        const sessionName = sessionStorage.getItem('project3username')
+            .catch(er => setIsLoading(false))
     }
-    
+
     const onChangeHandler = (e) => {
         setSearch(e.target.value);
+    }
+
+    const searchResult = () => {
+        return (
+            <>
+                {allyResult.length > 0 ?
+                    allyResult.map((result) => {
+                        return (
+                            <div className="discoverListItem rounded" key={result._id}>
+                                <div style={{ 'textAlign': 'right', 'marginRight': '1em' }}>
+                                    <ProfileIcon large={true} profileImg={result.profileImage} />
+                                </div>
+                                <div style={{ 'textAlign': 'left' }}>
+                                    <span>{result.userName}</span>
+                                </div>
+                                <div style={{ 'textAlign': 'left' }}>
+                                    <Link to={`/user-profile/${result.userName}`}>
+                                        <button className="btn btn-primary">Go to Profile</button>
+                                    </Link>
+                                </div>
+                            </div>
+                        )
+                    })
+                    :
+                    <h3>No Results</h3>}
+            </>
+        );
     }
 
     return (
@@ -48,31 +77,19 @@ const FindAlliesSearch = () => {
                             onChange={onChangeHandler}
                             value={allySearch}
                         />
-                        <FormBtn type="submit">Search</FormBtn>
+                        <FormBtn className="btn btn-primary" type="submit">Search</FormBtn>
                     </form>
                 </div>
             </Jumbotron>
             <div className="discoverList">
-                {allyResult.length > 0 ?
-                    allyResult.map((result) => {
-                        return (
-                            <div className="discoverListItem rounded" key={result.id}>
-                                <div style={{'textAlign': 'right', 'marginRight':'1em'}}>
-                                    <ProfileIcon large={true} profileImg={result.pic} />
-                                </div>
-                                <div style={{'textAlign': 'left'}}>
-                                    <span>{result.name}</span>
-                                </div>
-                                <div style={{'textAlign': 'left'}}>
-                                    <Link to={`/user-profile/${result.name}`}>
-                                        <button className="btn btn-primary">Go to Profile</button>
-                                    </Link>
-                                </div>
-                            </div>
-                        )
-                    })
+                {isLoading ?
+                    <div className="d-flex justify-content-center">
+                        <div className="spinner-border" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    </div>
                     :
-                    <h3>No Results</h3>
+                    searchResult()
                 }
             </div>
         </section>

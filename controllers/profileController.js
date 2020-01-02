@@ -281,7 +281,7 @@ module.exports = {
           return{
             _id: user._id,
             userName: user.userName,
-            profileImage: 'user image goes here',
+            profileImage: 'Default1',
           }
         })
         res.json(searchResults)
