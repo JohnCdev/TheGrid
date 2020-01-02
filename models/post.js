@@ -24,7 +24,11 @@ var PostSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref:"Comment"
         }
-    ]
+    ],
+    
+    clanName: {
+        type: String,
+    }
 
 });
 

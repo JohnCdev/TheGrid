@@ -18,7 +18,7 @@ class ClanPage extends Component {
     clanName: "",
     clanReferenceName: "",
     clanDescription: "",
-    clanFeed: "",
+    clanFeed: [],
     clanFounder: "",
     clanMembers: "",
     clanTimeZone: "",
@@ -45,9 +45,9 @@ class ClanPage extends Component {
           clanTimeZone: clan.clanTimeZone,
           clanFounded: clan.clanFounded
         });
+      // api call to get clan feed
+      this.reloadPosts();
     });
-    // api call to get clan feed
-    this.reloadPosts();
     // this.setState({
     //     clanFeed: []
     // })
@@ -55,6 +55,13 @@ class ClanPage extends Component {
 
   reloadPosts = () => {
     console.log("API to reload posts");
+    API.getClanPosts({ clanName: this.props.match.params.clanName })
+      .then(response => {
+        this.setState({
+          clanFeed: response.data
+        })
+      })
+      .catch(err => console.log(err))
   };
 
   render() {
@@ -112,7 +119,7 @@ class ClanPage extends Component {
               </div>
               <div className="col-sm-12 col-md-9">
                 <section>
-                  <PostForm reloadPosts={this.reloadPosts} clan={true} />
+                  <PostForm reloadPosts={this.reloadPosts} clan={true} name={this.state.clanName} />
                   {this.state.clanFeed.length > 0 ? (
                     <Feed feed={this.state.clanFeed} name={this.state.clanName} />
                   ) : (

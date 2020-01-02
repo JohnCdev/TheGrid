@@ -8,6 +8,8 @@ import AddFriend from "../components/AddFriend/AddFriend";
 import Nav from "../components/Nav/Nav";
 import Header from "../components/Header/Header";
 import { AuthContext } from "../context/AuthContext";
+import PostForm from "../components/PostForm/PostForm";
+import Feed from "../components/Feed/Feed";
 
 class ViewUserProfile extends Component {
   static contextType = AuthContext;
@@ -24,42 +26,59 @@ class ViewUserProfile extends Component {
     sentFriendRequests: [],
     receivedFriendRequests: [],
     friendContext: "",
-    profileImg: "Default5"
+    profileImg: "Default5",
+    userFeed: []
   };
 
-  componentDidMount() {
+  componentDidMount = event => {
     const profile = this.props.match.params.userProfile;
     API.getUserProfile(profile).then(res => {
       const { userData } = this.context;
       let friendContext;
       const userProfile = res.data.data[0];
-      if(userProfile){
+      if (userProfile) {
         userProfile.friendList.includes(userData.userName)
-        ? friendContext = "friend"
-        : userProfile.sentFriendRequests.includes(userData.userName)
-        ? friendContext = "their-sent-request-pending"
-        : userProfile.receivedFriendRequests.includes(userData.userName)
-        ? friendContext = "their-received-request-pending"
-        : friendContext = "not-a-friend";
+          ? friendContext = "friend"
+          : userProfile.sentFriendRequests.includes(userData.userName)
+            ? friendContext = "their-sent-request-pending"
+            : userProfile.receivedFriendRequests.includes(userData.userName)
+              ? friendContext = "their-received-request-pending"
+              : friendContext = "not-a-friend";
       }
 
       //if user profile is not returned, set id equal to null otherwise fill out the state
       userProfile === undefined
         ? this.setState({ _id: null })
         : this.setState({
-            _id: userProfile._id,
-            currentCity: userProfile.currentCity,
-            firstName: userProfile.firstName,
-            lastName: userProfile.lastName,
-            userName: userProfile.userName,
-            age: userProfile.age,
-            friendList: userProfile.friendList,
-            sentFriendRequests: userProfile.sentFriendRequests,
-            receivedFriendRequests: userProfile.receivedFriendRequests,
-            friendContext: friendContext
-          });
+          _id: userProfile._id,
+          currentCity: userProfile.currentCity,
+          firstName: userProfile.firstName,
+          lastName: userProfile.lastName,
+          userName: userProfile.userName,
+          age: userProfile.age,
+          friendList: userProfile.friendList,
+          sentFriendRequests: userProfile.sentFriendRequests,
+          receivedFriendRequests: userProfile.receivedFriendRequests,
+          friendContext: friendContext
+        });
+      this.reloadPosts();
     });
   }
+
+  reloadPosts = () => {
+    console.log("API to reload posts");
+    API.getUserPosts({
+      userName: this.state.userName,
+      clanName: ""
+    })
+      .then(response => {
+        this.setState({
+          userFeed: response.data
+        })
+      })
+      .catch(err => console.log(err))
+  };
+
 
   render() {
 
@@ -115,7 +134,7 @@ class ViewUserProfile extends Component {
 
     return this.state._id === null ? (
       <>
-      <Nav />
+        <Nav />
         <Header headerText={404} />
         <Jumbotron>
           <h1>User Not Found</h1>
@@ -127,28 +146,33 @@ class ViewUserProfile extends Component {
         </Jumbotron>
       </>
     ) : (
-      <>
-      <Nav />
-        <Header headerText={`${this.state.username}'s Profile`} />
-        <Jumbotron>
-          <h1>{this.state.userName}</h1>
-          <h3>Latest Status Update?</h3>
-          <h3>About? What clans/games they play?</h3>
-          <h3>Last logged in?</h3>
-          <ProfilePicture
-            location={this.state.currentCity}
-            age={this.state.age}
-            profileImg={this.state.profileImg}
-          />
-          <AddFriend
-            friendContext={this.state.friendContext}
-            viewedProfile={this.state.userName}
-            helloWorld={helloWorld}
-          />
-        </Jumbotron>
-        <Container>{this.state.userName}</Container>
-      </>
-    );
+        <>
+          <Nav />
+          <Header headerText={`${this.state.username}'s Profile`} />
+          <Jumbotron>
+            <h1>{this.state.userName}</h1>
+            <h3>Latest Status Update?</h3>
+            <h3>About? What clans/games they play?</h3>
+            <h3>Last logged in?</h3>
+            <ProfilePicture
+              location={this.state.currentCity}
+              age={this.state.age}
+              profileImg={this.state.profileImg}
+            />
+            <AddFriend
+              friendContext={this.state.friendContext}
+              viewedProfile={this.state.userName}
+              helloWorld={helloWorld}
+            />
+          </Jumbotron>
+          <Container>
+            {this.state.userFeed.length > 0 ? (
+              <Feed feed={this.state.userFeed} reloadPosts={this.reloadPosts} name={this.state.userName} />
+            ) : (
+                <h2>This user has no feed.(Yet!)</h2>
+              )}</Container>
+        </>
+      );
   }
 }
 
