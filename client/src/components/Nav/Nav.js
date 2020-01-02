@@ -13,13 +13,8 @@ const Nav = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    console.log('nav use effect is running')
-    console.log(isAuthenticated)
     if (isAuthenticated) {
-      console.log(API.getNotifications)
       API.getNotifications(userData.userName).then(response => {
-        console.log(response.data)
-        console.log(response)
         setNotifications(response.data.unReadNotifications)
       });
     }
@@ -28,7 +23,6 @@ const Nav = () => {
   const markNoteAsRead = noteInfo => {
     API.markNotificationAsRead(noteInfo)
       .then(response => {
-        console.log(response)
         setNotifications(response.data.newNotifications)
       })
   }

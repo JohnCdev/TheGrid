@@ -65,6 +65,13 @@ export default class EditProfile extends Component {
         API.getProfile({
             userName: this.state.userName
         })
+
+        // battleNetIGN: "",
+        // epicIGN: "",
+        // originIGN: "",
+        // profileImg: "",
+        // addGame: "",
+        // favGames: [],
             .then(res => {
                 const user = res.data.data[0]
                 this.setState({
@@ -72,7 +79,15 @@ export default class EditProfile extends Component {
                     firstName: user.firstName,
                     lastName: user.lastName,
                     age: user.age,
-                    currentCity: user.currentCity
+                    currentCity: user.currentCity,
+                    steamIGN: user.steamIGN,
+                    discordIGN: user.discordIGN,
+                    battleNetIGN: user.battleNetIGN,
+                    epicIGN: user.epicIGN,
+                    originIGN: user.originIGN,
+                    profileIMG: user.profileIMG,
+                    favGames: user.favGames
+
                 })
                 this.updatePicHandler(this.state.profilePic);
             })
@@ -81,6 +96,14 @@ export default class EditProfile extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+
+        // steamIGN: user.steamIGN,
+        // discordIGN: user.discordIGN,
+        // battleNetIGN: user.battleNetIGN,
+        // epicIGN: user.epicIGN,
+        // originIGN: user.originIGN,
+        // profileIMG: user.profileIMG,
+        // favGames: user.favGames
         console.log(this.state)
         API.updateProfile({
             userName: this.state.userName,
@@ -88,6 +111,13 @@ export default class EditProfile extends Component {
             lastName: this.state.lastName,
             age: this.state.age,
             currentCity: this.state.currentCity,
+            steamIGN: this.state.steamIGN,
+            discordIGN: this.state.discordIGN,
+            battleNetIGN: this.state.battleNetIGN,
+            epicIGN: this.state.epicIGN,
+            originIGN: this.state.originIGN,
+            profileIMG: this.state.selectedPic,
+            favGames: this.state.favGames,
             lastUpdated: Date.now()
         }).then(res => console.log(res))
             .catch(err => console.log(err))

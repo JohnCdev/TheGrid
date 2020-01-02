@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import FeedCard from '../FeedCard/FeedCard';
+import './feed.css'
 
 const Feed = ({ feed, name}) => {
 
@@ -9,7 +10,7 @@ const Feed = ({ feed, name}) => {
 
     return (
         <div>
-            <h1>{`${name}'s Feed Goes Here`}</h1>
+            <h1 className="feedTitle">{`${name}'s Sources`}</h1>
             {feed.map(post => (
                 <FeedCard
                     key={post._id}

@@ -58,7 +58,7 @@ div[data-reactroot] {
 }
 
 main {
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 200px;
 }
 
@@ -128,4 +128,8 @@ hr {
 
   .box-shadow-dark {
       box-shadow: 4px 2px 2px #333333; 
+  }
+
+  #infoBoard h1 {
+    background-color: #231f20 !important;
   }
