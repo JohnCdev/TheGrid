@@ -98,7 +98,6 @@ module.exports = {
         res.sendStatus(403);
       } else {
         const requester = req.body.sender;
-        console.log(req.body);
         const accepter = req.body.receiver;
 
         db.Profile.find({ userName: accepter }).then(result => {
@@ -110,11 +109,9 @@ module.exports = {
             { $set: { friendList: newFriendList } }
           ).then(result => {
             db.Profile.find({ userName: requester }).then(result => {
-              console.log(result[0].friendList);
               const friendList = result[0].friendList.filter(
                 friend => friend !== accepter
               );
-              console.log(friendList);
               db.Profile.findOneAndUpdate(
                 { userName: requester },
                 {
@@ -150,11 +147,9 @@ module.exports = {
       } else {
         db.Profile.find({ userName: requester }).then(result => {
           const oldFriendRequests = result[0].sentFriendRequests;
-          console.log(`Requester Old Friend Requests: ${oldFriendRequests}`);
           const newFriendRequests = oldFriendRequests.filter(
             request => request !== accepter
           );
-          console.log(`Requester New Friend Requests ${newFriendRequests}`);
           friendList = [...result[0].friendList, accepter];
           db.Profile.findOneAndUpdate(
             { userName: requester },
@@ -176,14 +171,8 @@ module.exports = {
           ).then(result => {
             db.Profile.find({ userName: accepter }).then(result => {
               const oldFriendRequests = result[0].receivedFriendRequests;
-              console.log(
-                `Accepter Old received Friend Requests: ${oldFriendRequests}`
-              );
               const receivedFriendRequests = oldFriendRequests.filter(
                 request => request !== requester
-              );
-              console.log(
-                `Accepter new received Friend Requests: ${receivedFriendRequests}`
               );
               const friendList = [...result[0].friendList, requester];
               const sentFriendRequests = result[0].sentFriendRequests;
@@ -228,7 +217,6 @@ module.exports = {
     );
   },
   updateProfile: (req, res) => {
-    console.log(req.body)
     db.Profile.updateOne(
       { userName: req.body.userName },
       {
@@ -256,8 +244,6 @@ module.exports = {
       .catch(err => console.log(err));
   },
   getNotifications: (req, res) => {
-    console.log('getNotifications is running')
-    console.log(`Notifications params ${req.params}`);
     db.Profile.find({ userName: req.params.userName }).then(data => {
       const unReadNotifications = [];
       data[0].updates.forEach(update => {
@@ -267,7 +253,6 @@ module.exports = {
     });
   },
   markNoteAsRead: (req, res) => {
-    console.log(req.body)
     db.Profile.find({userName: req.body.user})
       .then(user => {
         const newNotifications = user[0].updates.filter(update => update.id !== req.body.notification)
