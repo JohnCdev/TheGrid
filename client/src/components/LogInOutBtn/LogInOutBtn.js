@@ -10,7 +10,7 @@ export default function LogInOutBtn() {
       <Link to="/log-in">Log In</Link>
     </button>
   ) : (
-      <button className="btn my-2 my-sm-0"
+      <button className="btn my-2 my-sm-0 logInOutBtn"
       onClick={toggleAuth}
       style={{marginLeft: 10}}>
         <Link to="/log-in">Log Out</Link>
