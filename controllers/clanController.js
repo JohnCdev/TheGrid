@@ -41,6 +41,7 @@ module.exports = {
           return{
             _id: clan._id,
             clanName: clan.clanName,
+            clanReferenceName: clan.clanReferenceName,
             profileImage: 'Default1',
           }
         })
