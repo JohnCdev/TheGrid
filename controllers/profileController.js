@@ -1,11 +1,12 @@
 const db = require("../models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const uuidv1 = require('uuid/v1');
 
 module.exports = {
   requestFriend: (req, res) => {
     const requestData = JSON.parse(JSON.stringify(req.body));
-    jwt.verify(req.token, "secretkey", (err, authData) => {
+    jwt.verify(req.token, process.env.JWT, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       } else {
@@ -22,6 +23,15 @@ module.exports = {
                 $set: {
                   sentFriendRequests: newSentRequests,
                   friendList: newFriendList
+                },
+                $push: {
+                  updates: {
+                    id: uuidv1(),
+                    update: `${req.body.sender} is now your friend`,
+                    userInvolved: req.body.sender,
+                    type: "friend request",
+                    viewed: false
+                  }
                 }
               }
             ).then(
@@ -52,7 +62,18 @@ module.exports = {
             //otherwise simply push to the arrays and send the new sentRequests array back to client
             db.Profile.findOneAndUpdate(
               { userName: req.body.receiver },
-              { $push: { receivedFriendRequests: req.body.sender } }
+              {
+                $push: {
+                  receivedFriendRequests: req.body.sender,
+                  updates: {
+                    id: uuidv1(),
+                    update: `${req.body.sender} sent you a friend request`,
+                    userInvolved: req.body.sender,
+                    type: "friend request",
+                    viewed: false
+                  }
+                }
+              }
             ).then(result => {
               db.Profile.findOneAndUpdate(
                 { userName: req.body.sender },
@@ -72,7 +93,7 @@ module.exports = {
     });
   },
   removeFriend: (req, res) => {
-    jwt.verify(req.token, "secretkey", (err, authData) => {
+    jwt.verify(req.token, process.env.JWT, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       } else {
@@ -123,31 +144,66 @@ module.exports = {
   acceptFriend: (req, res) => {
     const accepter = req.body.sender;
     const requester = req.body.receiver;
-    jwt.verify(req.token, "secretkey", (err, authData) => {
+    jwt.verify(req.token, process.env.JWT, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       } else {
         db.Profile.find({ userName: requester }).then(result => {
           const oldFriendRequests = result[0].sentFriendRequests;
+          console.log(`Requester Old Friend Requests: ${oldFriendRequests}`);
           const newFriendRequests = oldFriendRequests.filter(
             request => request !== accepter
           );
+          console.log(`Requester New Friend Requests ${newFriendRequests}`);
+          friendList = [...result[0].friendList, accepter];
           db.Profile.findOneAndUpdate(
             { userName: requester },
-            { $push: { friendList: accepter } },
-            { $set: { sentFriendRequests: newFriendRequests } }
+            {
+              $set: {
+                sentFriendRequests: newFriendRequests,
+                friendList: friendList
+              },
+              $push: {
+                updates: {
+                  id: uuidv1(),
+                  update: `${accepter} is now your friend`,
+                  userInvolved: accepter,
+                  type: "friend request",
+                  viewed: false
+                }
+              }
+            }
           ).then(result => {
             db.Profile.find({ userName: accepter }).then(result => {
               const oldFriendRequests = result[0].receivedFriendRequests;
+              console.log(
+                `Accepter Old received Friend Requests: ${oldFriendRequests}`
+              );
               const receivedFriendRequests = oldFriendRequests.filter(
                 request => request !== requester
               );
+              console.log(
+                `Accepter new received Friend Requests: ${receivedFriendRequests}`
+              );
               const friendList = [...result[0].friendList, requester];
-              const sentFriendRequests = [...result[0].sentFriendRequests];
+              const sentFriendRequests = result[0].sentFriendRequests;
               db.Profile.findOneAndUpdate(
                 { userName: accepter },
-                { $set: { friendList: friendList } },
-                { $set: { receivedFriendRequests: receivedFriendRequests } }
+                {
+                  $set: {
+                    friendList: friendList,
+                    receivedFriendRequests: receivedFriendRequests
+                  },
+                  $push: {
+                    updates: {
+                      id: uuidv1(),
+                      update: `${requester} is now your friend`,
+                      userInvolved: requester,
+                      type: "friend request",
+                      viewed: false
+                    }
+                  }
+                }
               ).then(result =>
                 res.json({
                   receivedFriendRequests,
@@ -187,5 +243,46 @@ module.exports = {
     )
       .then(data => res.json({ data }))
       .catch(err => console.log(err));
+  },
+  getAllyList: (req, res) => {
+    db.Profile.find({ userName: req.body.userName })
+      .then(data => res.json(data[0].friendList))
+      .catch(err => console.log(err));
+  },
+  getNotifications: (req, res) => {
+    console.log('getNotifications is running')
+    console.log(`Notifications params ${req.params}`);
+    db.Profile.find({ userName: req.params.userName }).then(data => {
+      const unReadNotifications = [];
+      data[0].updates.forEach(update => {
+        if (update.viewed === false) unReadNotifications.push(update);
+      });
+      res.json({ unReadNotifications });
+    });
+  },
+  markNoteAsRead: (req, res) => {
+    console.log(req.body)
+    db.Profile.find({userName: req.body.user})
+      .then(user => {
+        const newNotifications = user[0].updates.filter(update => update.id !== req.body.notification)
+        db.Profile.updateOne({userName: req.body.user}, { $set: {updates: newNotifications}})
+          .then(res.json({ newNotifications }))
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
+  },
+  searchForUsers: (req, res) => {
+    const input = req.params.searchQuery
+    db.Profile.find({userName: new RegExp(input, "i")})
+      .then(users => {
+        const searchResults = users.map(user => {
+          return{
+            _id: user._id,
+            userName: user.userName,
+            profileImage: 'Default1',
+          }
+        })
+        res.json(searchResults)
+      });
   }
 };

@@ -21,7 +21,7 @@ export function InputPassword(props) {
 export function InputEmail(props) {
   return (
     <div className="form-group">
-    <input className="form-control" {...props} />
+    <input className="form-control" type="email" {...props} />
   </div>
   )
 }
@@ -36,8 +36,13 @@ export function TextArea(props) {
 
 export function FormBtn(props) {
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+    <button {...props} style={{ float: "right", marginBottom: 10 }}>
       {props.children}
     </button>
   );
 }
+
+//Need to add selector form element that can accept options as props
+// export function Selection() {
+
+// }

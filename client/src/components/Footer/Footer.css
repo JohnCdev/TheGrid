@@ -1,13 +1,14 @@
 .footer {
     min-height: 50px;
-    background: #EB6864;
+    background: #bb86fc;
     position: fixed;
     left: 0;
-    bottom: 0; width: 100%
+    bottom: 0;
+    width: 100%;
 }
 
 .footer span {
-    color: white;
+    color: #231f20;
     font-weight: bold;
     position: absolute;
     bottom: 0;

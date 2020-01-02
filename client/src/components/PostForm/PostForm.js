@@ -3,19 +3,28 @@ import { TextArea, FormBtn } from '../Form/Form';
 import { AuthContext } from "../../context/AuthContext";
 import API from '../../utils/API';
 
-const PostForm = () => {
+const PostForm = ({ reloadPosts, clan = false }) => {
     const { userData } = useContext(AuthContext);
     const [post, setPost] = useState('');
 
     const handlePostSubmit = (e) => {
         e.preventDefault();
-        const sessionName = sessionStorage.getItem('project3username')
-        API.createPost({
-            userName: sessionName,
-            content: post,
-            timeStamp: Date.now()
-        }).then(data => console.log(data))
-            .catch(err => console.log(err))
+        if (!clan) {
+            const sessionName = sessionStorage.getItem('project3username')
+            API.createPost({
+                userName: sessionName,
+                content: post,
+                timeStamp: Date.now()
+            }).then(data => {
+                console.log(data)
+                setPost('')
+                reloadPosts()
+            })
+                .catch(err => console.log(err))
+        } else {
+            console.log("clan post api")
+        }
+        
     }
 
     const handleClickCancel = (e) => {
@@ -35,9 +44,22 @@ const PostForm = () => {
                     name="postComment"
                     onChange={onChangeHandler}
                     value={post}
+                    rows="5"
+                    required
                 />
-                <FormBtn type="button" onClick={handleClickCancel}>Cancel Post</FormBtn>
-                <FormBtn type="submit">Submit Post</FormBtn>
+                <FormBtn
+                    className="btn btn-danger ml-2"
+                    type="button"
+                    onClick={handleClickCancel}
+                >
+                    Cancel Post
+                </FormBtn>
+                <FormBtn
+                    className="btn btn-success"
+                    type="submit"
+                >
+                    Submit Post
+                </FormBtn>
             </form>
         </section>
     );

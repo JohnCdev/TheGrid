@@ -4,6 +4,7 @@ import API from "../utils/API";
 import { Container } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
+import Nav from "../components/Nav/Nav";
 import { AuthContext } from '../context/AuthContext';
 import Header from '../components/Header/Header';
 
@@ -12,13 +13,6 @@ export default function LogIn() {
     const [formData, setFormData] = useState(
         { userName: '', password: '' }
     )
-
-    const apiTest = (e) => {
-        e.preventDefault()
-
-        API.authTest(userData.token)
-            .then(res => console.log(res))
-    }
 
     const handleUserNameChange = event => {
         const { value } = event.target;
@@ -38,7 +32,15 @@ export default function LogIn() {
 
     const handleFormSubmit = event => {
         event.preventDefault();
-        if (formData.userName && formData.password) {
+        const alphanumeric = inputtxt => {
+            const letterNumber = /^[0-9a-zA-Z]+$/;
+            if (inputtxt.match(letterNumber)) {
+                return true;
+            } else {
+              return false;
+            }
+        };
+        if (formData.userName && formData.password && alphanumeric(formData.userName) && alphanumeric(formData.password)) {
 
             API.userLogIn({
                 userName: formData.userName,
@@ -58,7 +60,7 @@ export default function LogIn() {
                         token: client[1]
                     }
                     sessionStorage.setItem('project3user', JSON.stringify(resObj));
-                    sessionStorage.setItem('project3username', resObj.user);
+                    sessionStorage.setItem('project3username', resObj.userName);
                     logInFunction({ user: resObj })
                 })
                 .catch(err => console.log(err));
@@ -66,35 +68,48 @@ export default function LogIn() {
     };
 
     if (isAuthenticated) {
-        return <Redirect to='/profile' />
+        return <Redirect to='/feed' />
     }
 
     return (
-        <Container>
-            <Jumbotron>
-                <Header headerText={'Log In'}/>
-            </Jumbotron>
-            <form>
-                <Input
-                    value={formData.userName}
-                    onChange={handleUserNameChange}
-                    name="userName"
-                    placeholder="User Name"
-                />
-                <InputPassword
-                    value={formData.password}
-                    onChange={handlePasswordChange}
-                    name="password"
-                    placeholder="Password"
-                />
-                <FormBtn
-                    //  disabled={!(this.state.userName && this.state.email && this.state.password)}
-                    onClick={handleFormSubmit}
-                >
-                    Submit
+        <>
+        <Nav />
+        <main>
+            <Container>
+                <Jumbotron>
+                    <Header headerText={'Log In'} />
+                </Jumbotron>
+                <form onSubmit={handleFormSubmit}>
+                    <label htmlFor="userName">User Name</label>
+                    <Input
+                        value={formData.userName}
+                        onChange={handleUserNameChange}
+                        id="userName"
+                        name="userName"
+                        placeholder="User Name"
+                        required
+                        pattern=".{3,20}"
+                        title="User name must be between 3 and 20 characters"
+                    />
+                    <label htmlFor="password">Password</label>
+                    <InputPassword
+                        value={formData.password}
+                        onChange={handlePasswordChange}
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                    />
+                    <FormBtn
+                        //  disabled={!(this.state.userName && this.state.email && this.state.password)}
+                        className="btn btn-success"
+                        type="submit"
+                    >
+                        Submit
                     </FormBtn>
-                <button onClick={apiTest}>api test</button>
-            </form>
-        </Container >
+                </form>
+            </Container >
+        </main>
+        </>
     )
 }
