@@ -29,7 +29,8 @@ var ClanSchema = new Schema({
     required: true
   },
   clanDiscord: {
-    type: String
+    type: String,
+    default: "No Discord Provided"
   },
   clanActiveGame: {
     type: Array,

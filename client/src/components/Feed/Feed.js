@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import FeedCard from '../FeedCard/FeedCard';
-import './Feed.css'
+import './feed.css'
 
 const Feed = ({ feed, name}) => {
 
