@@ -18,7 +18,7 @@ function App() {
   return (
     <AuthContext >
     <Router>
-      <div>
+      <div id="pageContainer">
         <div id="theGridContentWrapper">
         <Switch>
           <Route exact path="/" component={HomePage} />

@@ -1,10 +1,9 @@
 .footer {
-    min-height: 50px;
+    position: fixed;
     background: #bb86fc;
     left: 0;
     bottom: 0;
     width: 100%;
-    flex-shrink: 0;
     text-align: center;
 }
 

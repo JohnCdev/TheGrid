@@ -62,9 +62,6 @@ main {
     margin-bottom: 200px;
 }
 
-#theGridContentWrapper {
-    flex: 1 0 auto;
-}
 .selectedPic {
     position: relative;
     width: 250px;
