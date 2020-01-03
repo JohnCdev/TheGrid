@@ -196,11 +196,11 @@ class ViewUserProfile extends Component {
                   />
                 </div>
                 <div className="col-sm-12 col-md-9">
-                  <section>
+                  <section className="rounded pt-3 pl-1 pr-1 pb-1">
                     {this.state.userFeed.length > 0 ? (
                       <Feed feed={this.state.userFeed} reloadPosts={this.reloadPosts} name={this.state.userName} />
                     ) : (
-                        <h2>{`${this.state.userName} has no feed. (Yet!)`}</h2>
+                        <h2 style={{'backgroundColor':'#3c4042','textAlign':'center'}}>{`${this.state.userName} has no feed. (Yet!)`}</h2>
                       )}
                   </section>
                 </div>
