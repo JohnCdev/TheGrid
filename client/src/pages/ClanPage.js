@@ -105,7 +105,7 @@ class ClanPage extends Component {
                 <h4>{`Discord: ${this.state.clanDiscord}`}</h4>
                 <h4>{`${this.state.clanName}'s Active Games:`}</h4>
                 <ol>
-                  {this.state.clanGames.map(game => (<li>{game}</li>))}
+                  {this.state.clanGames.map((game, i) => (<li key={i}>{game}</li>))}
                 </ol>
                 <h4>{`Clan Founder: ${this.state.clanFounder}`}</h4>
                 <Link to="/create-clan">
