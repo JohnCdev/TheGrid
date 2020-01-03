@@ -13,6 +13,7 @@ class AuthContextProvider extends Component {
           firstName: client.firstName,
           lastName: client.lastName,
           age: client.age,
+          clans: client.clans,
           friendList: client.friendList,
           sentFriendRequests: client.sentFriendRequests,
           receivedFriendRequests: client.receivedFriendRequests,
@@ -27,9 +28,14 @@ class AuthContextProvider extends Component {
         }
       });
     },
+    joinedClan: clanName => {
+      const userDataCopy = {...this.state.userData}
+      userDataCopy.clans = userDataCopy.clans.push(clanName)
+      sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
+      this.setState({ userData: userDataCopy });
+    },
     updateFriendRequests: (payLoad) => {
       const userDataCopy = {...this.state.userData}
-      console.log(payLoad)
           userDataCopy.sentFriendRequests = payLoad.sentFriendRequests;
           userDataCopy.friendList = payLoad.friendList;
           userDataCopy.receivedFriendRequests = payLoad.receivedFriendRequests

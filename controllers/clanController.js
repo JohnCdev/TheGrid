@@ -39,9 +39,20 @@ module.exports = {
     );
   },
   joinClan: (req, res) => {
-    let hello = 'hello'
-    console.log(req.body.payLoad)
-    res.json({hello})
+    const clanName = req.body.clanName;
+    const user = req.body.userName;
+    db.Clan.find({ clanName }).then(clan => {
+      if(clan[0].clanMembers.includes(user)) {
+        const alreadyAMember = "user is already a member"
+        res.json(alreadyAMember)
+      } else {
+        db.Profile.updateOne({userName: user}, { $push: {clans: clanName}}).then(data => {
+          db.Clan.updateOne({ clanName }, { $push: {clanMembers: user }}).then(clan => {
+            res.json(clan)
+          })
+        })
+      }
+    })
   },
   searchForClans: (req, res) => {
     const input = req.params.searchQuery
