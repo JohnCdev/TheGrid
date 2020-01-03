@@ -25,6 +25,5 @@ export default function JoinClan(props) {
     );
   } else button = ""
 
-
   return button;
 }
