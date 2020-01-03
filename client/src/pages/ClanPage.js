@@ -9,6 +9,7 @@ import { AuthContext } from "../context/AuthContext";
 import { Redirect, Link, withRouter } from "react-router-dom";
 import PostForm from "../components/PostForm/PostForm";
 import ClanPicture from '../components/ClanPicture/ClanPicture';
+import JoinClan from '../components/JoinClan/JoinClan';
 import './clanPage.css';
 
 class ClanPage extends Component {
@@ -85,8 +86,19 @@ class ClanPage extends Component {
       })
   }
 
+  leaveClan = () => {
+    const { userData, leftClan } = this.context;
+    const payLoad = { userName: userData.userName, clanName: this.state.clanName }
+    API.leaveClan(payLoad)
+      .then(response => {
+        console.log(response)
+        leftClan(this.state.clanName)
+      })
+  }
+
   render() {
-    const { isAuthenticated } = this.context;
+    const { isAuthenticated, userData } = this.context;
+    const member = this.state.clanMembers.includes(userData.userName) ? true : false
     // if (!isAuthenticated) {
     //     return <Redirect to='/log-in' />
     // }
@@ -131,7 +143,7 @@ class ClanPage extends Component {
                     Create a Clan
               </button>
                 </Link>
-                <button type="button" className="btn btn-primary" onClick={() => this.joinClan()}>Join Clan</button>
+               <JoinClan member={member} joinClan={this.joinClan} leaveClan={this.leaveClan} />
               </div>
               <div className="col-sm-12 col-md-9">
                 <section>

@@ -53,6 +53,22 @@ module.exports = {
       }
     })
   },
+  leaveClan: (req, res) => {
+    const clanName = req.body.clanName;
+    const userName =  req.body.userName;
+    db.Clan.find({ clanName }).then(clan => {
+      const newMembers = clan[0].clanMembers.filter(member => member !== userName)
+      db.Clan.updateOne({ clanName }, { $set: {clanMembers: newMembers }}).then(data => {
+        db.Profile.find({ userName }).then(data => {
+          const newClans = data[0].clans.filter(clan => clan !== clanName)
+          console.log('new clans: ' + newClans)
+          db.Profile.updateOne({ userName }, { $set: {clans: newClans }}).then(data => {
+            res.json(data)
+          })
+        })
+      })
+    })
+  },
   searchForClans: (req, res) => {
     const input = req.params.searchQuery
     db.Clan.find({clanName: new RegExp(input, "i")})
