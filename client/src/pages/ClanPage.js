@@ -97,11 +97,7 @@ class ClanPage extends Component {
   }
 
   render() {
-    const { isAuthenticated, userData } = this.context;
-    const member = this.state.clanMembers.includes(userData.userName) ? true : false
-    // if (!isAuthenticated) {
-    //     return <Redirect to='/log-in' />
-    // }
+    const { isAuthenticated} = this.context;
 
     // console.log(this.state)
 
@@ -143,7 +139,7 @@ class ClanPage extends Component {
                     Create a Clan
               </button>
                 </Link>
-               <JoinClan member={member} joinClan={this.joinClan} leaveClan={this.leaveClan} />
+              <JoinClan joinClan={this.joinClan} clanName={this.state.clanName} leaveClan={this.leaveClan} />
               </div>
               <div className="col-sm-12 col-md-9">
                 <section>

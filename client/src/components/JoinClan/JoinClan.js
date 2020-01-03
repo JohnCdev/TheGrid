@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import {AuthContext} from '../../context/AuthContext';
 
 export default function JoinClan(props) {
-  const button = !props.member ? (
+  const {userData} = useContext(AuthContext)
+  const member = userData.clans.includes(props.clanName)
+  const button = !member ? (
     <button
       type="button"
       className="btn btn-primary"
