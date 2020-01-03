@@ -11,6 +11,14 @@
     font-family: 'PTSans';
     src: local('PTSans'), url(./fonts/PTSans-Regular.ttf) format('truetype');
 } */
+body {
+    background-image: url(./images/Logos/grid-bg.png);
+    background-size: cover;
+    background-position: center top;
+    background-color: #202124;
+
+}
+
 
 input {
     background-color: #e2e2e2;
@@ -22,8 +30,8 @@ body, h1, h2, h3, h4, h5, li, ul, a, button {
 
 body, h1, h2, h3, h4, h5 {
     color: #e1e1e1;
-    background-color: #202124;
 }
+
 
 .btn-primary {
     font-family: Poppins, sans-serif;
@@ -107,6 +115,25 @@ hr {
     border-color: #e2e2e2;
 }
 
+.logo {
+    height: 650px;
+    width: 650px;
+}
+
+.brand {
+    height: 162px;
+    width: 412px;
+}
+
+.icon {
+    height:30px;
+    width: 30px;
+}
+
+nav > button > a {
+    color: #000;
+}
+
 @keyframes spinner-border {
     to { transform: rotate(360deg); }
   } 
@@ -131,5 +158,5 @@ hr {
   }
 
   #infoBoard h1 {
-    background-color: #231f20 !important;
+    background-color: #202124;
   }

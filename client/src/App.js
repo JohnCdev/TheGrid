@@ -14,6 +14,7 @@ import ClanPage from "./pages/ClanPage";
 import CreateClan from "./pages/CreateClan";
 import YourClansPage from "./pages/YourClansPage";
 
+
 function App() {
   return (
     <AuthContext >
