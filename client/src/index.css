@@ -123,7 +123,10 @@ hr {
     width: 412px;
 }
 
-
+.icon {
+    height:30px;
+    width: 30px;
+}
 
 @keyframes spinner-border {
     to { transform: rotate(360deg); }

@@ -22,38 +22,37 @@ export default class HomePage extends Component {
     render() {
         return (
             <>
-            <Nav />
-            <Container>
-                
-        <Row>
-            <Col size="md-6">
-            <img src={Brand} className="brand"/>
+            <Nav/>
+                <Container>
+                    <Row>
+                        <Col size="md-6">
+                            <img src={Brand} className="brand" />
 
-            <Header>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <Link to="/new-user">
-                    <button type="button" className="btn btn-primary">
-                        Sign Up!
+                            <Header headerText="">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <Link to="/new-user">
+                                    <button type="button" className="btn btn-primary">
+                                        Sign Up!
                     </button>
-                </Link>
-                <Link to="/create-clan">
-                    <button type="button" className="btn btn-primary">
-                        Make Clan
+                                </Link>
+                                <Link to="/create-clan">
+                                    <button type="button" className="btn btn-primary">
+                                        Make Clan
                     </button>
-                </Link>
-            </Header>
-           </Col>
-            <Col size="md-6">
+                                </Link>
+                            </Header>
+                        </Col>
+                        <Col size="md-6">
 
-            <img src={Logo} className="logo"/>
-            </Col>
+                            <img src={Logo} className="logo" />
+                        </Col>
 
-            </Row>
+                    </Row>
 
-            </Container>
+                </Container>
             </>
-            
 
-        ) 
+
+        )
     }
 }
