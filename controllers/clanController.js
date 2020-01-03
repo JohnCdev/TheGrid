@@ -37,6 +37,11 @@ module.exports = {
       res.json({ data })
     );
   },
+  getClanList: (req, res) => {
+    console.log(req.body)
+    const hello = 'hello';
+    res.json(hello)
+  },
   joinClan: (req, res) => {
     const clanName = req.body.clanName;
     const user = req.body.userName;

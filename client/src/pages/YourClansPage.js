@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import {AuthContext} from '../context/AuthContext';
 import { Container } from '../components/Grid/Grid';
 import Header from '../components/Header/Header';
 import Nav from '../components/Nav/Nav';
 import ProfileIcon from '../components/ProfileIcon/ProfileIcon';
 import { Link } from "react-router-dom";
+import API from '../utils/API';
 
 const YourClansPage = () => {
+    const {userData} = useContext(AuthContext)
     const [yourClans, setYourClans] = useState([
         { _id: "1", clanName: "Noob Slayers", clanReferenceName: "NoobSlayers", clanProfileImage: "Clan1" },
         { _id: "2", clanName: "Rekt", clanReferenceName: "Rekt", clanProfileImage: "Clan2" },
@@ -14,7 +17,10 @@ const YourClansPage = () => {
     ])
 
     useEffect(() => {
-        console.log("api call goes here")
+        API.getClanList({userName: userData.userName, clans: userData.clans})
+            .then(response => {
+                console.log(response)
+            })
     }, []);
 
     return (
