@@ -26,7 +26,6 @@ const FindAlliesSearch = () => {
         e.preventDefault();
         API.searchForUsers(allySearch)
             .then(response => {
-                console.log(response.data)
                 setIsLoading(false)
                 setAllyResult(response.data)
             })

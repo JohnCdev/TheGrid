@@ -26,7 +26,6 @@ const FindClansSearch = () => {
         setIsLoading(true)
         API.searchForClans(clanSearch)
             .then(response => {
-                console.log(response.data)
                 setIsLoading(false)
                 setClanResult(response.data)
             })
