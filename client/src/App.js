@@ -14,6 +14,7 @@ import DiscoverPage from "./pages/DiscoverPage";
 import ClanPage from "./pages/ClanPage";
 import CreateClan from "./pages/CreateClan"
 
+
 function App() {
   return (
     <AuthContext >

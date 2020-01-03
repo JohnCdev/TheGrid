@@ -174,7 +174,7 @@ const CreateClan = () => {
 
                     <h3>Select Your Clan ProfileImage</h3>
                     <div className="picSelector">
-                        <div className="selectedPic mb-3">
+                        <div className="selectedPic mb-2">
                             {formData.selectedPic ?
                                 <>
                                     <img src={formData.selectedPic} />
