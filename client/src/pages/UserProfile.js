@@ -26,13 +26,14 @@ class ViewUserProfile extends Component {
     sentFriendRequests: [],
     receivedFriendRequests: [],
     friendContext: "",
-    profileImg: "Default5",
+    profileImg: "",
     userFeed: []
   };
 
   componentDidMount = event => {
     const profile = this.props.match.params.userProfile;
     API.getUserProfile(profile).then(res => {
+      console.log(res.data)
       const { userData } = this.context;
       let friendContext;
       const userProfile = res.data.data[0];
@@ -88,6 +89,8 @@ class ViewUserProfile extends Component {
     //   return <Redirect to='/log-in' />
     // }
 
+    // console.log(this.state)
+
     //this.setState({friendContext})
     const helloWorld = (command, value) => {
       console.log(this);
@@ -126,12 +129,6 @@ class ViewUserProfile extends Component {
 
     //if no user returned say no user found, otherwise render the profile page.
 
-    console.log(`this friendList: ${this.state.friendList}`);
-    console.log(`this sentFriendRequests: ${this.state.sentFriendRequests}`);
-    console.log(
-      `this receivedFriendRequests: ${this.state.receivedFriendRequests}`
-    );
-
     return this.state._id === null ? (
       <>
         <Nav />
@@ -151,9 +148,12 @@ class ViewUserProfile extends Component {
           <Header headerText={`${this.state.username}'s Profile`} />
           <Jumbotron>
             <h1>{this.state.userName}</h1>
-            <h3>Latest Status Update?</h3>
-            <h3>About? What clans/games they play?</h3>
-            <h3>Last logged in?</h3>
+            {/* <h3>Latest Status Update?</h3> */}
+            <h4>{`${this.state.userName} Favorite Games:`}</h4>
+            <ol>
+              {/* {this.state.} */}
+            </ol>
+            {/* <h3>Last logged in?</h3> */}
             <ProfilePicture
               location={this.state.currentCity}
               age={this.state.age}
