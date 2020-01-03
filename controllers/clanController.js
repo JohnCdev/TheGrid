@@ -38,6 +38,11 @@ module.exports = {
       res.json({ data })
     );
   },
+  joinClan: (req, res) => {
+    let hello = 'hello'
+    console.log(req.body.payLoad)
+    res.json({hello})
+  },
   searchForClans: (req, res) => {
     const input = req.params.searchQuery
     db.Clan.find({clanName: new RegExp(input, "i")})

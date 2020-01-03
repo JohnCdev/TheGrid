@@ -67,6 +67,15 @@ class ClanPage extends Component {
       .catch(err => console.log(err))
   };
 
+  joinClan = () => {
+    const { userData } = this.context;
+    const payLoad = { userName: userData.userName, clanName: this.state.clanName }
+    API.joinClan(payLoad)
+      .then(response => {
+        console.log(response.data)
+      })
+  }
+
   render() {
     const { isAuthenticated } = this.context;
     // if (!isAuthenticated) {
@@ -113,6 +122,7 @@ class ClanPage extends Component {
                     Create a Clan
               </button>
                 </Link>
+                <button type="button" className="btn btn-primary" onClick={() => this.joinClan()}>Join Clan</button>
               </div>
               <div className="col-sm-12 col-md-9">
                 <section>

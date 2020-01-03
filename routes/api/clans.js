@@ -11,4 +11,7 @@ router.route(`/:clan`)
 router.route('/search/:searchQuery')
     .get(clanController.searchForClans)
 
+router.route('/join-clan')
+    .post(clanController.joinClan)
+
 module.exports = router
