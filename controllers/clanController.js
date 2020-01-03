@@ -33,7 +33,6 @@ module.exports = {
     });
   },
   getClan: (req, res) => {
-    console.log(req.params.clan)
     db.Clan.find({ clanReferenceName: req.params.clan }).then(data =>
       res.json({ data })
     );

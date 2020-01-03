@@ -49,7 +49,6 @@ export default function LogIn() {
                 password: formData.password
             })
                 .then((res) => {
-                    console.log(res.data)
                     const client = res.data.data
                     const resObj = {
                         userName: client[0].userName,

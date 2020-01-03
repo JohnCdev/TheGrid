@@ -68,14 +68,16 @@ class ClanPage extends Component {
   };
 
   joinClan = () => {
-    const { userData } = this.context;
+    const { userData, joinedClan } = this.context;
     const payLoad = { userName: userData.userName, clanName: this.state.clanName }
     API.joinClan(payLoad)
       .then(response => {
+        console.log(response.data)
         if(response.data.alreadyAMember){
           console.log('already a member')
         } else if (response.data.nModified === 1) {
-          
+          console.log(this.state.clanName)
+          joinedClan(this.state.clanName)
         } else {
           //error occured
         }
