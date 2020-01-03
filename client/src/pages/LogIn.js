@@ -7,12 +7,14 @@ import { Redirect } from 'react-router';
 import Nav from "../components/Nav/Nav";
 import { AuthContext } from '../context/AuthContext';
 import Header from '../components/Header/Header';
+import SuccessMessage from "../components/SuccessMessage/SuccessMessage";
 
 export default function LogIn() {
     const { isAuthenticated, logInFunction, userData } = useContext(AuthContext);
     const [formData, setFormData] = useState(
         { userName: '', password: '' }
     )
+    const [loginFailed, setLoginFailed] = useState(false)
 
     const handleUserNameChange = event => {
         const { value } = event.target;
@@ -37,7 +39,7 @@ export default function LogIn() {
             if (inputtxt.match(letterNumber)) {
                 return true;
             } else {
-              return false;
+                return false;
             }
         };
         if (formData.userName && formData.password && alphanumeric(formData.userName) && alphanumeric(formData.password)) {
@@ -70,7 +72,10 @@ export default function LogIn() {
                     sessionStorage.setItem('project3username', resObj.userName);
                     logInFunction({ user: resObj })
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err)
+                    setLoginFailed(true)
+                });
         }
     };
 
@@ -80,43 +85,44 @@ export default function LogIn() {
 
     return (
         <>
-        <Nav />
-        <main>
-            <Container>
-                <Jumbotron>
-                    <Header headerText={'Log In'} />
-                </Jumbotron>
-                <form onSubmit={handleFormSubmit}>
-                    <label htmlFor="userName">User Name</label>
-                    <Input
-                        value={formData.userName}
-                        onChange={handleUserNameChange}
-                        id="userName"
-                        name="userName"
-                        placeholder="User Name"
-                        required
-                        pattern=".{3,20}"
-                        title="User name must be between 3 and 20 characters"
-                    />
-                    <label htmlFor="password">Password</label>
-                    <InputPassword
-                        value={formData.password}
-                        onChange={handlePasswordChange}
-                        id="password"
-                        name="password"
-                        placeholder="Password"
-                        required
-                    />
-                    <FormBtn
-                        //  disabled={!(this.state.userName && this.state.email && this.state.password)}
-                        className="btn btn-success"
-                        type="submit"
-                    >
-                        Submit
+            <Nav />
+            <main>
+                <Container>
+                    <Jumbotron>
+                        <Header headerText={'Log In'} />
+                    </Jumbotron>
+                    <form onSubmit={handleFormSubmit}>
+                        <label htmlFor="userName">User Name</label>
+                        <Input
+                            value={formData.userName}
+                            onChange={handleUserNameChange}
+                            id="userName"
+                            name="userName"
+                            placeholder="User Name"
+                            required
+                            pattern=".{3,20}"
+                            title="User name must be between 3 and 20 characters"
+                        />
+                        <label htmlFor="password">Password</label>
+                        <InputPassword
+                            value={formData.password}
+                            onChange={handlePasswordChange}
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                            required
+                        />
+                        <FormBtn
+                            //  disabled={!(this.state.userName && this.state.email && this.state.password)}
+                            className="btn btn-success"
+                            type="submit"
+                        >
+                            Submit
                     </FormBtn>
-                </form>
-            </Container >
-        </main>
+                    </form>
+                    {loginFailed ? <SuccessMessage success={false} /> : null}
+                </Container >
+            </main>
         </>
     )
 }

@@ -18,6 +18,7 @@ import Default7 from '../images/profileImages/Default7.jpg';
 import Default8 from '../images/profileImages/Default8.jpg';
 import Default9 from '../images/profileImages/Default9.jpg';
 import Default10 from '../images/profileImages/Default10.jpg';
+import SuccessMessage from '../components/SuccessMessage/SuccessMessage';
 
 const imgArray = [
     { name: "Default1", src: Default1 },
@@ -48,7 +49,8 @@ export default class EditProfile extends Component {
         addGame: "",
         favGames: [],
         profileIMG: '',
-        selectedPic: ''
+        selectedPic: '',
+        submitSuccess: false
     }
     static contextType = AuthContext;
 
@@ -117,7 +119,12 @@ export default class EditProfile extends Component {
             profileIMG: this.state.profileIMG,
             favGames: this.state.favGames,
             lastUpdated: Date.now()
-        }).then(res => console.log(res))
+        }).then(res => {
+            console.log(res)
+            this.setState({
+                submitSuccess: true
+            })
+        })
             .catch(err => console.log(err))
     };
 
@@ -339,6 +346,7 @@ export default class EditProfile extends Component {
                             Submit Changes
                         </FormBtn>
                     </form>
+                    {this.state.submitSuccess ? <SuccessMessage success={true}/> : null}
                 </Container>
             </main>
             </>
