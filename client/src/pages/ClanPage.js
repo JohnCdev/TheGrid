@@ -5,7 +5,6 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Header from "../components/Header/Header";
 import Feed from "../components/Feed/Feed";
 import Nav from "../components/Nav/Nav";
-import ProfileIcon from "../components/ProfileIcon/ProfileIcon";
 import { AuthContext } from "../context/AuthContext";
 import { Redirect, Link, withRouter } from "react-router-dom";
 import PostForm from "../components/PostForm/PostForm";
@@ -23,14 +22,16 @@ class ClanPage extends Component {
     clanMembers: "",
     clanTimeZone: "",
     clanFounded: "",
-    clanImg: "Clan5"
+    clanImg: "",
+    clanGames: [],
+    clanDiscord: ""
   };
   static contextType = AuthContext;
 
   componentDidMount = event => {
     const clan = this.props.match.params.clanName;
     API.getClan(clan).then(response => {
-      console.log(response);
+      console.log(response)
       const clan = response.data.data[0];
       clan === undefined
         ? this.setState({ _id: null })
@@ -43,7 +44,10 @@ class ClanPage extends Component {
           clanFounder: clan.clanFounder,
           clanMembers: clan.clanMembers,
           clanTimeZone: clan.clanTimeZone,
-          clanFounded: clan.clanFounded
+          clanFounded: clan.clanFounded,
+          clanImg: clan.clanProfileImage,
+          clanGames: clan.clanActiveGame,
+          clanDiscord: clan.clanDiscord
         });
       // api call to get clan feed
       this.reloadPosts();
@@ -54,7 +58,6 @@ class ClanPage extends Component {
   };
 
   reloadPosts = () => {
-    console.log("API to reload posts");
     API.getClanPosts({ clanName: this.props.match.params.clanName })
       .then(response => {
         this.setState({
@@ -69,6 +72,8 @@ class ClanPage extends Component {
     // if (!isAuthenticated) {
     //     return <Redirect to='/log-in' />
     // }
+
+    // console.log(this.state)
 
     return this.state._id === null ? (
       <>
@@ -89,28 +94,20 @@ class ClanPage extends Component {
           <Container className="mt-4">
             <Row>
               <div className="col-sm-12 col-md-3">
-                <Jumbotron>
+                <div>
                   <Header headerText={`${this.state.clanName}`} />
-                  <ProfileIcon large={false} />
+                  <ClanPicture clanImg={this.state.clanImg} />
                   <p>
                     {this.state.clanDescription}
                   </p>
-                </Jumbotron>
-                <section>
-                  <h3>{`${this.state.clanName}'s Active Timezone: ${this.state.clanTimeZone}`}</h3>
-                  <h3>{`${this.state.clanName}'s Active Games:`}</h3>
-                  <ol>
-                    <li>Halo</li>
-                    <li>Pokemans</li>
-                    <li>CS</li>
-                    <li>Halo</li>
-                    <li>Pokemans</li>
-                    <li>CS</li>
-                    <li>Halo</li>
-                    <li>Pokemans</li>
-                    <li>CS</li>
-                  </ol>
-                </section>
+                </div>
+                <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>
+                <h4>{`Discord: ${this.state.clanDiscord}`}</h4>
+                <h4>{`${this.state.clanName}'s Active Games:`}</h4>
+                <ul>
+                  {this.state.clanGames.map((game, i) => (<li key={i}>{game}</li>))}
+                </ul>
+                <h4>{`Clan Founder: ${this.state.clanFounder}`}</h4>
                 <Link to="/create-clan">
                   <button type="button" className="btn btn-primary">
                     Create a Clan

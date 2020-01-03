@@ -93,8 +93,8 @@ export default class SignUp extends Component {
               name="userName"
               placeholder="User Name"
               required
-              pattern=".{3,15}"
-              title="User name must be between 3 and 15 characters"
+              pattern="^\w{3,15}$"
+              title="User name must be between 3 to 15 characters and contain no spaces."
             />
             <label htmlFor="email">Email</label>
             <InputEmail
