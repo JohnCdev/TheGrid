@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Container } from '../components/Grid/Grid';
 import Header from '../components/Header/Header';
 import Nav from '../components/Nav/Nav';
-import Jumbotron from '../components/Jumbotron/Jumbotron';
 import ProfileIcon from '../components/ProfileIcon/ProfileIcon';
 import { Link } from "react-router-dom";
 
