@@ -56,18 +56,7 @@ class AuthContextProvider extends Component {
       console.log(user)
   
       if (user !== undefined && user !== null) {
-        const userObject = {
-          user: {
-            userName: user.userName,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            age: user.age,
-            friendList: user.friendList,
-            sentFriendRequests: user.sentFriendRequests,
-            receivedFriendRequests: user.receivedFriendRequests,
-            token: user.token,
-          }
-        };
+        const userObject = { user };
         this.state.logInFunction(userObject);
       }
     }

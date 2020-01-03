@@ -51,7 +51,7 @@ const FindClansSearch = () => {
                                     <span>{result.clanName}</span>
                                 </div>
                                 <div style={{ 'textAlign': 'left' }}>
-                                    <Link to={`/clans/${result.clanName}`}>
+                                    <Link to={`/clans/${result.clanReferenceName}`}>
                                         <button className="btn btn-primary">Go to Clan's Page</button>
                                     </Link>
                                 </div>
