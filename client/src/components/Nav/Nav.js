@@ -68,7 +68,7 @@ const Nav = () => {
         {/* Switch || to && to check to auth state for notifications */}
         {isAuthenticated && <Notifications notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
         <Link to="/profile">
-          {isAuthenticated && <ProfileIcon img={null} large={true} />}
+          {isAuthenticated && <ProfileIcon img={userData.profileImg} large={true} />}
         </Link>
         <LogInOutBtn />
       </nav>
