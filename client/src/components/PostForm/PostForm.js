@@ -2,8 +2,10 @@ import React, { useState, useContext } from 'react';
 import { TextArea, FormBtn } from '../Form/Form';
 import { AuthContext } from "../../context/AuthContext";
 import API from '../../utils/API';
+import "./PostForm.css";
 
-const PostForm = ({ reloadPosts, clan = false }) => {
+
+const PostForm = ({ reloadPosts, clan = false, name }) => {
     const { userData } = useContext(AuthContext);
     const [post, setPost] = useState('');
 
@@ -14,7 +16,8 @@ const PostForm = ({ reloadPosts, clan = false }) => {
             API.createPost({
                 userName: sessionName,
                 content: post,
-                timeStamp: Date.now()
+                timeStamp: Date.now(),
+                clanName: ""
             }).then(data => {
                 console.log(data)
                 setPost('')
@@ -22,9 +25,23 @@ const PostForm = ({ reloadPosts, clan = false }) => {
             })
                 .catch(err => console.log(err))
         } else {
-            console.log("clan post api")
+            const sessionName = sessionStorage.getItem('project3username')
+            API.createPost({
+                userName: sessionName,
+                content: post,
+                timeStamp: Date.now(),
+                clanName: name
+
+            })
+                .then(data => {
+                    console.log(name)
+                    console.log(data)
+                    setPost('')
+                    reloadPosts()
+                })
+                .catch(err => console.log(err))
+
         }
-        
     }
 
     const handleClickCancel = (e) => {
@@ -36,9 +53,9 @@ const PostForm = ({ reloadPosts, clan = false }) => {
     }
 
     return (
-        <section>
-            <form onSubmit={handlePostSubmit}>
-                <label htmlFor="postComment">Post</label>
+        <section style={{ 'marginBottom': '50px' }}>
+            <form id="postBackground" onSubmit={handlePostSubmit}>
+                <label id="postTitle" htmlFor="postComment">Create Post</label>
                 <TextArea
                     id="postComment"
                     name="postComment"

@@ -37,6 +37,9 @@ const FindAlliesSearch = () => {
     }
 
     const searchResult = () => {
+
+        console.log(allyResult)
+
         return (
             <>
                 {allyResult.length > 0 ?

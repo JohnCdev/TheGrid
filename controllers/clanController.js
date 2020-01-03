@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   create: (req, res) => {
-    db.Clan.find({ clanName: req.body.clanName }).then(dbModel => {
+    const reference = req.body.clanName.replace(/\s/g, '')
+    db.Clan.find({ clanName: reference }).then(dbModel => {
       //if any show up tell the client their account cannot be created
       if (dbModel.length > 0) res.sendStatus(400);
       else {
@@ -12,9 +13,14 @@ module.exports = {
           if (err) {
             res.sendStatus(403);
           } else {
+            const profileImg = req.body.clanPic || "Default" + Math.floor(Math.random() * 10 + 1)
             db.Clan.create({
               clanName: req.body.clanName,
+              clanReferenceName: req.body.clanName.replace(/\s/g, '-'),
               clanFounder: req.body.clanFounder,
+              clanProfileImage: profileImg,
+              clanDiscord: req.body.clanDiscord,
+              clanActiveGame: req.body.clanGames,
               clanDescription: req.body.clanDescription,
               clanTimeZone: req.body.clanTimeZone,
               clanMembers: [req.body.clanFounder]
@@ -28,7 +34,7 @@ module.exports = {
   },
   getClan: (req, res) => {
     console.log(req.params.clan)
-    db.Clan.find({ clanName: req.params.clan }).then(data =>
+    db.Clan.find({ clanReferenceName: req.params.clan }).then(data =>
       res.json({ data })
     );
   },
@@ -40,7 +46,8 @@ module.exports = {
           return{
             _id: clan._id,
             clanName: clan.clanName,
-            profileImage: 'Default1',
+            clanReferenceName: clan.clanReferenceName,
+            profileImage: clan.profileImage,
           }
         })
         res.json(searchResults)

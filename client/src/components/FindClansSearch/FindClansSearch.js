@@ -9,15 +9,15 @@ import API from '../../utils/API';
 const FindClansSearch = () => {
     const [clanSearch, setSearch] = useState('');
     const [clanResult, setClanResult] = useState([
-        { _id: 1, userName: "Expo", profileImage: "Clan1" },
-        { _id: 2, userName: "Shawn", profileImage: "Clan2" },
-        { _id: 3, userName: "Charles", profileImage: "Clan3" },
-        { _id: 4, userName: "John", profileImage: "Clan1" },
-        { _id: 5, userName: "Shawn", profileImage: "Clan2" },
-        { _id: 6, userName: "Charles", profileImage: "Clan3" },
-        { _id: 7, userName: "John", profileImage: "Clan1" },
-        { _id: 8, userName: "Shawn", profileImage: "Clan2" },
-        { _id: 9, userName: "Charles", profileImage: "Clan3" }
+        // { _id: 1, clanName: "Expo", profileImg: "Clan1" },
+        // { _id: 2, clanName: "Shawn", profileImg: "Clan2" },
+        // { _id: 3, clanName: "Charles", profileImg: "Clan3" },
+        // { _id: 4, clanName: "John", profileImg: "Clan1" },
+        // { _id: 5, clanName: "Shawn", profileImg: "Clan2" },
+        // { _id: 6, clanName: "Charles", profileImg: "Clan3" },
+        // { _id: 7, clanName: "John", profileImg: "Clan1" },
+        // { _id: 8, clanName: "Shawn", profileImg: "Clan2" },
+        // { _id: 9, clanName: "Charles", profileImg: "Clan3" }
     ]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -26,9 +26,8 @@ const FindClansSearch = () => {
         setIsLoading(true)
         API.searchForClans(clanSearch)
             .then(response => {
-                console.log(response.data)
-                // setIsLoading(false)
-                // setAllyResult(response.data)
+                setIsLoading(false)
+                setClanResult(response.data)
             })
             .catch(er => setIsLoading(false))
     }
@@ -38,6 +37,7 @@ const FindClansSearch = () => {
     }
 
     const searchResult = () => {
+        console.log(clanResult)
         return (
             <>
                 {clanResult.length > 0 ?
@@ -45,13 +45,13 @@ const FindClansSearch = () => {
                         return (
                             <div className="discoverListItem rounded" key={result._id}>
                                 <div style={{ 'textAlign': 'right', 'marginRight': '1em' }}>
-                                    <ProfileIcon large={true} profileImg={result.profileImage} />
+                                    <ProfileIcon large={true} profileImg={result.profileImg} />
                                 </div>
                                 <div style={{ 'textAlign': 'left' }}>
-                                    <span>{result.userName}</span>
+                                    <span>{result.clanName}</span>
                                 </div>
                                 <div style={{ 'textAlign': 'left' }}>
-                                    <Link to={`/clans/${result.userName}`}>
+                                    <Link to={`/clans/${result.clanReferenceName}`}>
                                         <button className="btn btn-primary">Go to Clan's Page</button>
                                     </Link>
                                 </div>
@@ -77,7 +77,7 @@ const FindClansSearch = () => {
                             onChange={onChangeHandler}
                             value={clanSearch}
                         />
-                        <FormBtn type="submit">Search</FormBtn>
+                        <FormBtn className="btn btn-primary" type="submit">Search</FormBtn>
                     </form>
                 </div>
             </Jumbotron>

@@ -60,6 +60,8 @@ export default {
 
   getFeedPosts: postData => axios.post("/api/posts/feed-posts", postData),
 
+  getClanPosts: postData => axios.post("/api/posts/clan-posts", postData),
+
   searchForUsers: searchQuery =>
     axios.get(`/api/profiles/search/${searchQuery}`),
 

@@ -12,11 +12,11 @@ const Header = ({ children, headerText, headingLevel = 1 }) => {
     }, []);
 
     return (
-        <section>
+        <section id="infoBoard">
             <Helmet>
                 <title>{`${headerText} | The Grid`}</title>
             </Helmet>
-            <H ref={headingRef} tabIndex="-1">
+            <H ref={headingRef} tabIndex="-1" style={{'textAlign':'center'}}>
                 {headerText}
             </H>
             {children}

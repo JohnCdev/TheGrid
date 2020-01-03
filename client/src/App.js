@@ -6,13 +6,13 @@ import UserProfile from './pages/UserProfile';
 import LogIn from './pages/LogIn';
 import EditProfile from './pages/EditProfile';
 import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
 import FeedPage from "./pages/FeedPage";
 import DiscoverPage from "./pages/DiscoverPage";
 import ClanPage from "./pages/ClanPage";
-import CreateClan from "./pages/CreateClan"
+import CreateClan from "./pages/CreateClan";
+import YourClansPage from "./pages/YourClansPage";
 
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
           <Route exact path='/profile' component={EditProfile} />
           <Route exact path='/feed' component={FeedPage} />
           <Route exact path='/discover' component={DiscoverPage} />
+          <Route exact path='/clan' component={YourClansPage} />
           <Route path='/clans/:clanName' component={ClanPage} />
           <Route exact path='/create-clan' component={CreateClan} />
           <Route path = '/user-profile/:userProfile' component={UserProfile} />

@@ -10,4 +10,7 @@ router.route('/user-posts')
 router.route('/feed-posts')
     .post(postController.getFeed);
 
+router.route('/clan-posts')
+    .post(postController.getClanFeed)
+
 module.exports = router;
