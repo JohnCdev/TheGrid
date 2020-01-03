@@ -47,7 +47,7 @@ module.exports = {
             _id: clan._id,
             clanName: clan.clanName,
             clanReferenceName: clan.clanReferenceName,
-            profileImage: clan.profileImage,
+            profileImg: clan.clanProfileImage,
           }
         })
         res.json(searchResults)
