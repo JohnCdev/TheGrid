@@ -45,10 +45,9 @@ export default class EditProfile extends Component {
         battleNetIGN: "",
         epicIGN: "",
         originIGN: "",
-        profileImg: "",
         addGame: "",
         favGames: [],
-        profilePic: 'Default1',
+        profileIMG: '',
         selectedPic: ''
     }
     static contextType = AuthContext;
@@ -86,10 +85,9 @@ export default class EditProfile extends Component {
                     epicIGN: user.epicIGN,
                     originIGN: user.originIGN,
                     profileIMG: user.profileIMG,
-                    favGames: user.favGames
-
+                    favGames: user.favGames,
                 })
-                this.updatePicHandler(this.state.profilePic);
+                this.updatePicHandler(this.state.profileIMG);
             })
             .catch(err => console.log(err))
     }
@@ -116,7 +114,7 @@ export default class EditProfile extends Component {
             battleNetIGN: this.state.battleNetIGN,
             epicIGN: this.state.epicIGN,
             originIGN: this.state.originIGN,
-            profileIMG: this.state.selectedPic,
+            profileIMG: this.state.profileIMG,
             favGames: this.state.favGames,
             lastUpdated: Date.now()
         }).then(res => console.log(res))
@@ -150,25 +148,25 @@ export default class EditProfile extends Component {
         const name = e.target ? e.target.name : e;
         switch (name) {
             case "Default1":
-                return this.setState({ profilePic: name, selectedPic: Default1 })
+                return this.setState({ profileIMG: name, selectedPic: Default1 })
             case "Default2":
-                return this.setState({ profilePic: name, selectedPic: Default2 })
+                return this.setState({ profileIMG: name, selectedPic: Default2 })
             case "Default3":
-                return this.setState({ profilePic: name, selectedPic: Default3 })
+                return this.setState({ profileIMG: name, selectedPic: Default3 })
             case "Default4":
-                return this.setState({ profilePic: name, selectedPic: Default4 })
+                return this.setState({ profileIMG: name, selectedPic: Default4 })
             case "Default5":
-                return this.setState({ profilePic: name, selectedPic: Default5 })
+                return this.setState({ profileIMG: name, selectedPic: Default5 })
             case "Default6":
-                return this.setState({ profilePic: name, selectedPic: Default6 })
+                return this.setState({ profileIMG: name, selectedPic: Default6 })
             case "Default7":
-                return this.setState({ profilePic: name, selectedPic: Default7 })
+                return this.setState({ profileIMG: name, selectedPic: Default7 })
             case "Default8":
-                return this.setState({ profilePic: name, selectedPic: Default8 })
+                return this.setState({ profileIMG: name, selectedPic: Default8 })
             case "Default9":
-                return this.setState({ profilePic: name, selectedPic: Default9 })
+                return this.setState({ profileIMG: name, selectedPic: Default9 })
             case "Default10":
-                return this.setState({ profilePic: name, selectedPic: Default10 })
+                return this.setState({ profileIMG: name, selectedPic: Default10 })
             default:
                 return this.setState({ selectedPic: '' })
         }
@@ -231,13 +229,13 @@ export default class EditProfile extends Component {
                             pattern=".{2,}"
                             title="Enter a valid value"
                         />
-                        <label htmlFor="profileImg">Chose a Profile Image</label>
+                        {/* <label htmlFor="profileImg">Chose a Profile Image</label>
                         <Input
                             value={this.state.profileImg}
                             onChange={this.handleInputChange}
                             id="profileImg"
                             name="profileImg"
-                        />
+                        /> */}
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
                         <h3>Game Services User Names</h3>
                         <label htmlFor="steamIGN">Steam Name</label>
