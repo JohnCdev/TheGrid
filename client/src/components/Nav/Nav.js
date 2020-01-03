@@ -32,7 +32,11 @@ const Nav = () => {
 
     return (
       <Link to={currentLink} className="navbar-brand">
-        BASE
+        <img
+        src="https://i.ibb.co/wyZcs2t/icon.png"
+        className="icon"
+        alt="Grid Icon"
+      />
       </Link>
     );
   };
