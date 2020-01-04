@@ -2,6 +2,7 @@ img{
 
     height: 160px;
     width: 160px;
+
 }
 
 .ProfilePicture{
@@ -15,11 +16,13 @@ img{
     width: 100%;
     text-align: center;
 
+
 }
 .ProfilePicture ul{
     padding: 0px;
     width: 160px;
     margin: 0px;
+    
 }
 
 .ProfilePicture li{

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../components/Form/Form";
 import API from "../utils/API";
-import { Container } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Nav from "../components/Nav/Nav";
 import { Redirect } from 'react-router';
@@ -194,9 +194,13 @@ export default class EditProfile extends Component {
             <Nav />
             <main>
                 <Container>
-                    <Jumbotron>
+                    {/* <Jumbotron>
                         <Header headerText="Edit Profile" />
-                    </Jumbotron>
+                    </Jumbotron> */}
+                    <Row>
+                    <Col size="md-3">
+                        </Col>
+                        <Col size="md-6">
                     <form onSubmit={this.handleFormSubmit}>
                         <h3>Profile Information</h3>
                         <label htmlFor="firstName">First Name</label>
@@ -308,6 +312,7 @@ export default class EditProfile extends Component {
                                 );
                             })}
                         </ol>
+                        
                         <hr />
 
                         <h3>Update Your Profile Picture</h3>
@@ -350,7 +355,11 @@ export default class EditProfile extends Component {
                         </FormBtn>
                     </form>
                     {this.state.submitSuccess ? <SuccessMessage success={true}/> : null}
-                </Container>
+                    </Col>
+
+                    </Row>
+
+                    </Container>
             </main>
             </>
         )
