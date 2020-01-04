@@ -129,11 +129,29 @@ class ClanPage extends Component {
                   </p>
                 </div>
                 <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>
+                <hr />
+                { !this.state.clanDiscord === "" ? 
+                <>
                 <h4>{`Discord: ${this.state.clanDiscord}`}</h4>
+                <hr />
+                </>
+                :
+                <>
+                <h4>No current Discord</h4>
+                <hr />
+                </>
+
+                }
+                { this.state.clanGames.length !== 0 ? 
+                <> 
                 <h4>{`${this.state.clanName}'s Active Games:`}</h4>
                 <ul>
                   {this.state.clanGames.map((game, i) => (<li key={i}>{game}</li>))}
                 </ul>
+                <hr />
+                </>
+                :
+                null}
                 <h4>{`Clan Founder: ${this.state.clanFounder}`}</h4>
                 <JoinClan joinClan={this.joinClan} clanName={this.state.clanName} leaveClan={this.leaveClan} />
               </div>
