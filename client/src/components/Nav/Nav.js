@@ -33,10 +33,10 @@ const Nav = () => {
     return (
       <Link to={currentLink} className="navbar-brand">
         <img
-        src="https://i.ibb.co/wyZcs2t/icon.png"
-        className="icon"
-        alt="Grid Icon"
-      />
+          src="https://i.ibb.co/wyZcs2t/icon.png"
+          className="icon"
+          alt="Grid Icon"
+        />
       </Link>
     );
   };
@@ -72,7 +72,7 @@ const Nav = () => {
         {/* Switch || to && to check to auth state for notifications */}
         {isAuthenticated && <Notifications notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
         <Link to="/profile">
-          {isAuthenticated && <ProfileIcon img={userData.profileImg} large={true} />}
+          {isAuthenticated && <ProfileIcon profileImg={userData.profileImg} large={true} />}
         </Link>
         <LogInOutBtn />
       </nav>
