@@ -45,7 +45,6 @@ const Nav = () => {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-primary">
         {homeLink()}
-        {/* add "active" to the nav-item className for what is active */}
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             {isAuthenticated ? (
