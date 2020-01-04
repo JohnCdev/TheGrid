@@ -12,7 +12,7 @@ const Header = ({ children, headerText, headingLevel = 1 }) => {
     }, []);
 
     return (
-        <section id="infoBoard">
+        <section id="controlHeader">
             <Helmet>
                 <title>{`${headerText} | The Grid`}</title>
             </Helmet>

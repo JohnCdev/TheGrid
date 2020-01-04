@@ -270,7 +270,7 @@ module.exports = {
           return{
             _id: user._id,
             userName: user.userName,
-            profileImage: user.profileImage,
+            profileImage: user.profileIMG,
           }
         })
         res.json(searchResults)

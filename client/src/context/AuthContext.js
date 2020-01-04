@@ -13,6 +13,7 @@ class AuthContextProvider extends Component {
           firstName: client.firstName,
           lastName: client.lastName,
           age: client.age,
+          clans: client.clans,
           friendList: client.friendList,
           sentFriendRequests: client.sentFriendRequests,
           receivedFriendRequests: client.receivedFriendRequests,
@@ -27,9 +28,20 @@ class AuthContextProvider extends Component {
         }
       });
     },
+    joinedClan: clanName => {
+      const userDataCopy = {...this.state.userData}
+      userDataCopy.clans = [...userDataCopy.clans, clanName]
+      sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
+      this.setState({ userData: userDataCopy });
+    },
+    leftClan: clanName => {
+      const userDataCopy = {...this.state.userData};
+      userDataCopy.clans = userDataCopy.clans.filter(clan => clan !== clanName);
+      sessionStorage.setItem('project3user', JSON.stringify(userDataCopy));
+      this.setState({ userData: userDataCopy });
+    },
     updateFriendRequests: (payLoad) => {
       const userDataCopy = {...this.state.userData}
-      console.log(payLoad)
           userDataCopy.sentFriendRequests = payLoad.sentFriendRequests;
           userDataCopy.friendList = payLoad.friendList;
           userDataCopy.receivedFriendRequests = payLoad.receivedFriendRequests
@@ -41,7 +53,6 @@ class AuthContextProvider extends Component {
   };
 
   toggleAuth = () => {
-    console.log("auth toggle");
     sessionStorage.removeItem('project3user')
     sessionStorage.removeItem('project3username')
     this.setState({ 
@@ -53,21 +64,8 @@ class AuthContextProvider extends Component {
   componentDidMount(){
     if (!this.state.isAuthenticated) {
       const user = JSON.parse(sessionStorage.getItem("project3user"));
-      console.log(user)
-  
       if (user !== undefined && user !== null) {
-        const userObject = {
-          user: {
-            userName: user.userName,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            age: user.age,
-            friendList: user.friendList,
-            sentFriendRequests: user.sentFriendRequests,
-            receivedFriendRequests: user.receivedFriendRequests,
-            token: user.token,
-          }
-        };
+        const userObject = { user };
         this.state.logInFunction(userObject);
       }
     }
