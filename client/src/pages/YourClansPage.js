@@ -10,10 +10,10 @@ import API from '../utils/API';
 const YourClansPage = () => {
     const {userData} = useContext(AuthContext)
     const [yourClans, setYourClans] = useState([
-        { _id: "1", clanName: "Noob Slayers", clanReferenceName: "NoobSlayers", clanProfileImage: "Clan1" },
-        { _id: "2", clanName: "Rekt", clanReferenceName: "Rekt", clanProfileImage: "Clan2" },
-        { _id: "3", clanName: "Shawn Suxs", clanReferenceName: "ShawnSuxs", clanProfileImage: "Clan3" },
-        { _id: "4", clanName: "Average", clanReferenceName: "Average", clanProfileImage: "Clan4" },
+        // { _id: "1", clanName: "Noob Slayers", clanReferenceName: "NoobSlayers", clanProfileImage: "Clan1" },
+        // { _id: "2", clanName: "Rekt", clanReferenceName: "Rekt", clanProfileImage: "Clan2" },
+        // { _id: "3", clanName: "Shawn Suxs", clanReferenceName: "ShawnSuxs", clanProfileImage: "Clan3" },
+        // { _id: "4", clanName: "Average", clanReferenceName: "Average", clanProfileImage: "Clan4" },
     ])
 
     useEffect(() => {

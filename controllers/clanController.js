@@ -69,9 +69,6 @@ module.exports = {
         .catch(err => console.log(err));
     }
     res.json(clanListReturn);
-
-    const hello = "hello";
-    res.json(hello);
   },
   joinClan: (req, res) => {
     const clanName = req.body.clanName;
