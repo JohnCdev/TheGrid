@@ -36,14 +36,15 @@ module.exports = {
                 userName: friendList[i],
                 clanName: ""
             })
-                .then(posts => {
+                .then(async posts => {
                     for (var j = 0; j < posts.length; j++) {
-                        db.Comment.find({postID: posts[j]._id})
-                        .then(commentArr => {
-                            console.log(commentArr)
-                            posts[j].comments.push(commentArr)
-                        })
-                        .catch(err => console.log(err))
+                        console.log(posts[j]._id)
+                        await db.Comment.find({ postID: posts[j]._id })
+                            .then(commentArr => {
+                                console.log(commentArr)
+                                posts[j].comments = commentArr
+                            })
+                            .catch(err => console.log(err))
                         feed.push(posts[j])
                     }
 
@@ -60,33 +61,32 @@ module.exports = {
                 res.json(data)
             })
             .catch(err => console.log(err))
-<<<<<<< HEAD
     },
 
     createComment: (req, res) => {
         db.Comment.create({
             userName: req.body.userName,
-            profileIMG: req.body.profileImg,
-            postId: req.body._id,
+            profileIMG: req.body.profileIMG,
+            postID: req.body.postID,
             body: req.body.body
         })
             .then(comment => {
+                db.Post.findByIdAndUpdate({_id: req.body.postID},{ $inc: {
+                    numComments: 1
+                }})
                 console.log(comment)
-                db.Post.findOneAndUpdate({ _id: req.body._id }, {
-                    $push: {
-                        comments: comment._id
-                    }
-                },
-                    { new: true })
-                    .then(data => {
-                        console.log(data)
-                        res.json({comment: true})
-                    })
-                    .catch(err => console.log(err))
+                res.json({ comment: true })
             })
-        }
+    },
 
-=======
+    getComments: (req, res) => {
+
+        db.Comment.find({ postID: req.body.postID })
+            .then(comments => {
+                console.log(comments)
+                res.json({ foundComments: true })
+            })
+            .catch(err => console.log(err))
     }
->>>>>>> 648550bca8dc83a5bfeca31f9ad40bd6bf19231f
+
 }

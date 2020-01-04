@@ -26,6 +26,12 @@ var PostSchema = new Schema({
             default: []
         }
     ],
+
+    numComments: {
+        type: Number,
+        default: 0
+    },
+    
     clanName: {
         type: String,
     }

@@ -16,4 +16,7 @@ router.route('/clan-posts')
 router.route('/new-comment')
     .post(postController.createComment)
 
+router.route('/get-comments')
+    .post(postController.getComments)
+
 module.exports = router;

@@ -31,7 +31,7 @@ const FeedCard = ({ id, userName, timeStamp, content, profileImg }) => {
             <div className="card-body">
                 <h5 className="card-title">{content}</h5>
             </div>
-            <button href="#" className="btn btn-primary" style={{ "lineHeight": 1 }} data-id={id}>Comment</button>
+            <button href="#" className="btn btn-primary" style={{ "lineHeight": 1 }} data-id={id} onClick={() => API.getComments({postID: id})}>Comment</button>
             <form onSubmit={handleCommentSubmit}>
                 <Input id={id}
                     name="commentInput"
