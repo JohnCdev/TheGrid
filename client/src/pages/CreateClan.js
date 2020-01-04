@@ -52,7 +52,7 @@ const CreateClan = () => {
                 clanMade: true
             })
             joinedClan(formData.clanName)
-            setSubmitSuccess(true);
+            setSubmitSuccess(true)     
         });
     };
 
@@ -106,6 +106,10 @@ const CreateClan = () => {
                 return setFormData({ selectedPic: '' })
         }
     }
+
+    if (submitSuccess) {
+        return <Redirect to="/clan" />;
+      }
 
     return (
         <>

@@ -178,14 +178,17 @@ export default class EditProfile extends Component {
                 return this.setState({ selectedPic: '' })
         }
     }
-
+    
     render() {
-
+        
         const { isAuthenticated } = this.context;
         if (!isAuthenticated) {
             return <Redirect to='/log-in' />
         }
-
+        if (this.state.submitSuccess) {
+            return <Redirect to={`/user-profile/${this.state.userName}`} />
+        }
+        
         return (
             <>
             <Nav />

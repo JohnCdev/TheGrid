@@ -160,7 +160,7 @@ class ViewUserProfile extends Component {
             <Container className="mt-4">
               <Row>
                 <div className="cold-sm-12 col-md-3">
-                  <div style={{ 'width': '100%', 'height': '300px' }}>
+                  <div style={{ 'width': '100%', 'height': '250px', 'textAlign': "left" }}>
                     <Header headerText={`${this.state.userName}`} />
                     <ProfilePicture
                       location={this.state.currentCity}
@@ -171,21 +171,50 @@ class ViewUserProfile extends Component {
                   <div>
                     {/* <h3>Latest Status Update?</h3> */}
                     {/* <h3>Last logged in?</h3> */}
-                    <hr />
-                    <h4>{`Steam: ${this.state.steamIGN}`}</h4>
-                    <hr />
+                    { this.state.steamIGN !== "" ? 
+                    <>
+                      <h4>{`Steam: ${this.state.steamIGN}`}</h4>
+                      <hr />
+                    </>
+                    :
+                    null}
+                    { this.state.discordIGN !== "" ? 
+                    <>
                     <h4>{`Discord: ${this.state.discordIGN}`}</h4>
                     <hr />
+                    </> 
+                    :
+                    null}
+                    { this.state.epicIGN !== "" ? 
+                    <>
                     <h4>{`Epic: ${this.state.epicIGN}`}</h4>
                     <hr />
+                    </>
+                    :
+                    null}
+                    { this.state.battleNetIGN !== "" ?
+                    <>
                     <h4>{`BattleNet: ${this.state.battleNetIGN}`}</h4>
                     <hr />
+                    </>
+                    :
+                    null}
+                    { this.state.originIGN !== "" ? 
+                    <>
                     <h4>{`Origin: ${this.state.originIGN}`}</h4>
                     <hr />
+                    </>
+                    :
+                    null}
+                    { this.state.favGames.length !== 0 ?
+                    <>
                     <h4>{`${this.state.userName}'s Favorite Games:`}</h4>
                     <ol>
                       {this.state.favGames.map((game, i) => <li key={i}>{game}</li>)}
                     </ol>
+                    </>
+                    :
+                    null}
                   </div>
                   <AddFriend
                     friendContext={this.state.friendContext}
