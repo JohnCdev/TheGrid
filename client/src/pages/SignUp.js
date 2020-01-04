@@ -85,12 +85,12 @@ export default class SignUp extends Component {
         <main>
           <Container-fluid>
             <Row>
-            <Col size="md-1">               </Col>
-
-              <Col size="md-1"> 
-              <img src={SignUpTitle} className="signuptitle" />
+              <Col size="md-1">
               </Col>
-                <Col size="md-4">
+              <Col size="md-1">
+                <img src={SignUpTitle} className="signuptitle" />
+              </Col>
+              <Col size="md-4">
                 {/* <Jumbotron>
                   <Header headerText={'Sign Up'} />
                 </Jumbotron> */}
@@ -185,10 +185,10 @@ export default class SignUp extends Component {
               </Col>
               <Col size="md-5">
 
-                            <img src={Logo} className="logo" />
-                        </Col>
+                <img src={Logo} className="logo" />
+              </Col>
 
-                    
+
             </Row>
           </Container-fluid>
         </main>

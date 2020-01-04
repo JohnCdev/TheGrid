@@ -145,6 +145,10 @@ nav > button > a {
     width: 100px;
 }
 
+.LoginTitle {
+    height:100%;
+    width: 100%;
+}
 
 @keyframes spinner-border {
     to { transform: rotate(360deg); }
