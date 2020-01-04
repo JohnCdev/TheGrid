@@ -8,7 +8,7 @@ import {
   InputEmail
 } from "../components/Form/Form";
 import API from "../utils/API";
-import { Container } from "../components/Grid/Grid";
+import { Container, Row, Col} from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import Header from '../components/Header/Header';
@@ -80,9 +80,12 @@ export default class SignUp extends Component {
       <Nav />
       <main>
         <Container>
-          <Jumbotron>
+         <Row>
+            <Col size="md-6"> 
+            <Jumbotron>
             <Header headerText={'Sign Up'} />
           </Jumbotron>
+          
           <form onSubmit={this.handleFormSubmit}>
             <h3>Account Information</h3>
             <label htmlFor="userName">User Name</label>
@@ -93,8 +96,8 @@ export default class SignUp extends Component {
               name="userName"
               placeholder="User Name"
               required
-              pattern=".{3,15}"
-              title="User name must be between 3 and 15 characters"
+              pattern="^\w{3,15}$"
+              title="User name must be between 3 to 15 characters and contain no spaces."
             />
             <label htmlFor="email">Email</label>
             <InputEmail
@@ -170,6 +173,8 @@ export default class SignUp extends Component {
               Submit
             </FormBtn>
           </form>
+          </Col>
+          </Row>
         </Container>
       </main>
       </>

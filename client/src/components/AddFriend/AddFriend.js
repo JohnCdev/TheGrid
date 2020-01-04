@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext, userData } from "../../context/AuthContext";
 import "./AddFriend.css";
 import API from "../../utils/API";
 
 export default function AddFriend(props) {
   const { userData, updateFriendRequests } = useContext(AuthContext);
-  if (props.viewedProfile) {
+  if (props.viewedProfile && props.viewedProfile !== userData.userName) {
     let button;
     const removeFriendButton = (
       <button
@@ -75,6 +75,6 @@ export default function AddFriend(props) {
           sendFriendRequestButton;
     return button;
   } else {
-    return <button>This isn't working</button>;
+    return ""
   }
 }

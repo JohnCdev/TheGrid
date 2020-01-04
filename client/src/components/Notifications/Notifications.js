@@ -3,8 +3,6 @@ import Notification from "../Notification/Notification";
 import "./notifications.css";
 
 const Notifications = props => {
-    console.log(props.notifications)
-  
       const noNotifications = (
       <>
         <button className="btn btn-secondary notificationsBtn" type="button">

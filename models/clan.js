@@ -7,6 +7,10 @@ var ClanSchema = new Schema({
     type: String,
     required: true
   },
+  clanReferenceName: {
+    type: String,
+    required: true
+  },
   clanFounded: {
     type: Date,
     default: Date.now
@@ -18,6 +22,19 @@ var ClanSchema = new Schema({
   clanDescription: {
     type: String,
     default: "No Description given."
+  },
+  clanProfileImage: {
+    type: String,
+    default: "Default" + Math.floor(Math.random() * 10 + 1),
+    required: true
+  },
+  clanDiscord: {
+    type: String,
+    default: "No Discord Provided"
+  },
+  clanActiveGame: {
+    type: Array,
+    default: []
   },
   clanFounder: {
       type: String

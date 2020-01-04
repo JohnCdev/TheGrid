@@ -13,13 +13,8 @@ const Nav = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    console.log('nav use effect is running')
-    console.log(isAuthenticated)
     if (isAuthenticated) {
-      console.log(API.getNotifications)
       API.getNotifications(userData.userName).then(response => {
-        console.log(response.data)
-        console.log(response)
         setNotifications(response.data.unReadNotifications)
       });
     }
@@ -28,17 +23,20 @@ const Nav = () => {
   const markNoteAsRead = noteInfo => {
     API.markNotificationAsRead(noteInfo)
       .then(response => {
-        console.log(response)
         setNotifications(response.data.newNotifications)
       })
   }
 
   const homeLink = () => {
-    const currentLink = isAuthenticated ? "/feed" : "/";
+    const currentLink = isAuthenticated ? `/user-profile/${userData.userName}` : "/";
 
     return (
       <Link to={currentLink} className="navbar-brand">
-        BASE
+        <img
+        src="https://i.ibb.co/wyZcs2t/icon.png"
+        className="icon"
+        alt="Grid Icon"
+      />
       </Link>
     );
   };
@@ -58,7 +56,7 @@ const Nav = () => {
           </li>
           <li className="nav-item">
             {isAuthenticated ? (
-              <Link to="/clans" className="nav-link">
+              <Link to="/clan" className="nav-link">
                 Clans
               </Link>
             ) : null}
@@ -74,7 +72,7 @@ const Nav = () => {
         {/* Switch || to && to check to auth state for notifications */}
         {isAuthenticated && <Notifications notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
         <Link to="/profile">
-          {isAuthenticated && <ProfileIcon img={null} large={true} />}
+          {isAuthenticated && <ProfileIcon img={userData.profileImg} large={true} />}
         </Link>
         <LogInOutBtn />
       </nav>
