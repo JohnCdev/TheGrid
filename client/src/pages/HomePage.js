@@ -22,14 +22,20 @@ export default class HomePage extends Component {
     render() {
         return (
             <>
-            <Nav/>
+                <Nav />
                 <Container>
                     <Row>
                         <Col size="md-6">
                             <img src={Brand} className="brand" />
 
                             <Header headerText="">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <h3>Discover the Grid</h3>
+                                <p>Recruit Allies<br></br> 
+                                Add your closest friends and find new ones. Share your strats, builds, wins , memes, and all things worthy. Use your profile to show off your favorite games, and various gaming usernames to join up!</p>
+                                <p>Clans!<br></br>
+                                Create or find clans with popular game interest with close allies or vast war parties to share everything !</p>
+                                <p>Info Board<br></br>
+                                See what your allies are posting about and use them as your source to find new paths to glory!</p>
                                 <Link to="/new-user">
                                     <button type="button" className="btn btn-primary">
                                         Sign Up!

@@ -23,9 +23,10 @@ const FeedPage = () => {
         setFeedLoading(true)
         API.getAllyList({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
+                console.log(data)
                 API.getFeedPosts({ friendList: data.data })
                     .then(data => {
-                        console.log(data.data)
+                        // console.log(data.data)
                         setFeed(data.data)
                         setFeedLoading(false)
                     })

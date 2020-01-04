@@ -42,7 +42,7 @@ const YourClansPage = () => {
                                                 <span>{clan.clanName}</span>
                                             </div>
                                             <div style={{ 'textAlign': 'left' }}>
-                                                <Link to={`/user-profile/${clan.clanReferenceName}`}>
+                                                <Link to={`/clans/${clan.clanReferenceName}`}>
                                                     <button className="btn btn-primary">Go to Profile</button>
                                                 </Link>
                                             </div>
@@ -51,7 +51,7 @@ const YourClansPage = () => {
                                 })
                                 :
                                 <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>You're not a member of any clans.</h3>}
-                            <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>Wanna Make a New Clan?</h3>
+                            <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>Want to Make a New Clan?</h3>
                             <Link to="/create-clan">
                                 <button type="button" className="btn btn-primary">Click Here</button>
                             </Link>

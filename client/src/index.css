@@ -152,6 +152,9 @@ nav > button > a {
       height: 1rem;
       border-width: .2em;
   }
+  #controlHeader h1 {
+    background-color: #231f20 !important;
+  }
 
   .box-shadow-dark {
       box-shadow: 4px 2px 2px #333333; 
