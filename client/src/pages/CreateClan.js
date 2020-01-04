@@ -5,7 +5,7 @@ import Header from "../components/Header/Header";
 import Nav from "../components/Nav/Nav";
 import { Redirect } from "react-router";
 import { Input, TextArea, FormBtn } from "../components/Form/Form";
-import { Container } from "../components/Grid/Grid";
+import { Grid, Container, Row, Col } from "../components/Grid/Grid";
 import SuccessMessage from '../components/SuccessMessage/SuccessMessage';
 import API from "../utils/API";
 import Clan1 from '../images/clanImages/Clan1.jpg';
@@ -112,9 +112,11 @@ const CreateClan = () => {
         <Nav />
         <main>
             <Container>
-                <Jumbotron>
+                {/* <Jumbotron>
                     <Header headerText="Create a New Clan" />
-                </Jumbotron>
+                </Jumbotron> */}
+                 <Row>
+                        <Col size="md-6">
                 <form onSubmit={handleFormSubmit}>
                     <label htmlFor="clanName">Clan Name</label>
                     <Input
@@ -216,6 +218,8 @@ const CreateClan = () => {
                     </FormBtn>
                 </form>
                 {submitSuccess ? <SuccessMessage success={true}/>: null}
+                </Col>
+                </Row>
             </Container>
         </main>
         </>
