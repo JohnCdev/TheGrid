@@ -153,7 +153,7 @@ nav > button > a {
       border-width: .2em;
   }
   #controlHeader h1 {
-    background-color: #231f20 !important;
+    background-color: transparent !important;
   }
 
   .box-shadow-dark {

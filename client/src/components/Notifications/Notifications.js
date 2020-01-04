@@ -12,7 +12,6 @@ const Notifications = props => {
       )
    const haveNotifications = ( 
     <>
-      <i className="material-icons mr-2">notifications_active</i>
       <div className="dropdown mr-2">
         <button
           className="btn btn-secondary notificationsBtn dropdown-toggle"
