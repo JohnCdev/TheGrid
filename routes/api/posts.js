@@ -10,4 +10,13 @@ router.route('/user-posts')
 router.route('/feed-posts')
     .post(postController.getFeed);
 
+router.route('/clan-posts')
+    .post(postController.getClanFeed)
+
+router.route('/new-comment')
+    .post(postController.createComment)
+
+router.route('/get-comments')
+    .post(postController.getComments)
+
 module.exports = router;

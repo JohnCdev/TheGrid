@@ -23,10 +23,9 @@ const AlliesBar = () => {
                             var ally = {
                                 key: data.data.data[0]._id,
                                 userName: data.data.data[0].userName,
-                                firstName: data.data.data[0].firstName,
+                                profileImg: data.data.data[0].profileIMG
                             }
                             allyList.push(ally)
-
                         })
                         .catch(err => console.log(err))
                 }
@@ -48,8 +47,7 @@ const AlliesBar = () => {
                 allies.map(ally => (
                     <AlliesBarIcon
                         key={ally.key}
-                        name={ally.userName}
-                        status={ally.firstName}
+                        userName={ally.userName}
                         profileImg={ally.profileImg}
                     />
                 ))}

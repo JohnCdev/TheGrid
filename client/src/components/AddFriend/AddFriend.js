@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext, userData } from "../../context/AuthContext";
 import "./AddFriend.css";
 import API from "../../utils/API";
 
 export default function AddFriend(props) {
   const { userData, updateFriendRequests } = useContext(AuthContext);
-  if (props.viewedProfile) {
+  if (props.viewedProfile && props.viewedProfile !== userData.userName) {
     let button;
     const removeFriendButton = (
-      <button
+      <button className="btn btn-primary addFriend"
         onClick={() => {
           API.friendRequest(
             "remove-friend",
@@ -24,9 +24,9 @@ export default function AddFriend(props) {
         Remove Ally
       </button>
     );
-    const requestSentButton = <button>Request Sent</button>;
+    const requestSentButton = <button className="btn btn-primary">Request Sent</button>;
     const theirRequestPendingButton = (
-      <button
+      <button className="btn btn-primary addFriend"
         onClick={() => {
           API.friendRequest(
             "accept-friend-request",
@@ -44,7 +44,7 @@ export default function AddFriend(props) {
     );
 
     const sendFriendRequestButton = (
-      <button
+      <button className="btn btn-primary addFriend"
         onClick={() => {
           API.friendRequest(
             "request-friend",
@@ -75,6 +75,6 @@ export default function AddFriend(props) {
           sendFriendRequestButton;
     return button;
   } else {
-    return <button>This isn't working</button>;
+    return ""
   }
 }

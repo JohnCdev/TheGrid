@@ -8,11 +8,16 @@ import {
   InputEmail
 } from "../components/Form/Form";
 import API from "../utils/API";
-import { Container } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import Header from '../components/Header/Header';
+import Nav from "../components/Nav/Nav";
 import { AuthContext } from '../context/AuthContext';
+import Logo from "../images/Logos/G.png";
+import SignUpTitle from "../images/Logos/signup.png";
+
+
 
 export default class SignUp extends Component {
   state = {
@@ -75,100 +80,119 @@ export default class SignUp extends Component {
     }
 
     return (
-      <main>
-        <Container>
-          <Jumbotron>
-            <Header headerText={'Sign Up'} />
-          </Jumbotron>
-          <form onSubmit={this.handleFormSubmit}>
-            <h3>Account Information</h3>
-            <label htmlFor="userName">User Name</label>
-            <Input
-              value={this.state.userName}
-              onChange={this.handleInputChange}
-              id="userName"
-              name="userName"
-              placeholder="User Name"
-              required
-              pattern=".{3,15}"
-              title="User name must be between 3 and 15 characters"
-            />
-            <label htmlFor="email">Email</label>
-            <InputEmail
-              value={this.state.email}
-              onChange={this.handleInputChange}
-              id="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
-            <label htmlFor="password">Password</label>
-            <InputPassword
-              value={this.state.password}
-              onChange={this.handleInputChange}
-              id="password"
-              name="password"
-              placeholder="Password"
-              required
-              pattern=".{5,20}"
-              title="Password must be at-least 5 characters long"
-            />
-            <hr />
-            <h3>Profile Information</h3>
-            <label htmlFor="firstName">First Name</label>
-            <Input
-              value={this.state.firstName}
-              onChange={this.handleInputChange}
-              id="firstName"
-              name="firstName"
-              placeholder="First Name"
-              required
-              pattern="^[A-Za-z -]+$"
-              title="Enter a valid value. Cannot contain numbers"
-            />
-            <label htmlFor="lastName">Last Name</label>
-            <Input
-              value={this.state.lastName}
-              onChange={this.handleInputChange}
-              id="lastName"
-              name="lastName"
-              placeholder="Last Name"
-              required
-              pattern="^[A-Za-z -]+$"
-              title="Enter a valid value. Cannot contain numbers"
-            />
-            <label htmlFor="age">Age</label>
-            <Input
-              value={this.state.age}
-              onChange={this.handleInputChange}
-              id="age"
-              name="age"
-              placeholder="Age"
-              required
-              type="number"
-              min="1"
-            />
-            <label htmlFor="currentCity">City</label>
-            <Input
-              value={this.state.currentCity}
-              onChange={this.handleInputChange}
-              id="currentCity"
-              name="currentCity"
-              placeholder="City"
-              required
-              pattern="^[A-Za-z -]+$"
-              title="Enter a valid value. Cannot contain numbers"
-            />
-            <FormBtn
-              //  disabled={!(this.state.userName && this.state.email && this.state.password)}
-              className="btn btn-success"
-              type="submit"
-            >
-              Submit
+      <>
+        <Nav />
+        <main>
+          <Container-fluid>
+            <Row>
+              <Col size="md-1">
+              </Col>
+              <Col size="md-1">
+                <img src={SignUpTitle} className="signuptitle" />
+              </Col>
+              <Col size="md-4">
+                {/* <Jumbotron>
+                  <Header headerText={'Sign Up'} />
+                </Jumbotron> */}
+
+                <form onSubmit={this.handleFormSubmit}>
+                  <h3>Account Information</h3>
+                  <label htmlFor="userName">User Name</label>
+                  <Input
+                    value={this.state.userName}
+                    onChange={this.handleInputChange}
+                    id="userName"
+                    name="userName"
+                    placeholder="User Name"
+                    required
+                    pattern="^\w{3,15}$"
+                    title="User name must be between 3 to 15 characters and contain no spaces."
+                  />
+                  <label htmlFor="email">Email</label>
+                  <InputEmail
+                    value={this.state.email}
+                    onChange={this.handleInputChange}
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                  <label htmlFor="password">Password</label>
+                  <InputPassword
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    pattern=".{5,20}"
+                    title="Password must be at-least 5 characters long"
+                  />
+                  <hr />
+                  <h3>Profile Information</h3>
+                  <label htmlFor="firstName">First Name</label>
+                  <Input
+                    value={this.state.firstName}
+                    onChange={this.handleInputChange}
+                    id="firstName"
+                    name="firstName"
+                    placeholder="First Name"
+                    required
+                    pattern="^[A-Za-z -]+$"
+                    title="Enter a valid value. Cannot contain numbers"
+                  />
+                  <label htmlFor="lastName">Last Name</label>
+                  <Input
+                    value={this.state.lastName}
+                    onChange={this.handleInputChange}
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Last Name"
+                    required
+                    pattern="^[A-Za-z -]+$"
+                    title="Enter a valid value. Cannot contain numbers"
+                  />
+                  <label htmlFor="age">Age</label>
+                  <Input
+                    value={this.state.age}
+                    onChange={this.handleInputChange}
+                    id="age"
+                    name="age"
+                    placeholder="Age"
+                    required
+                    type="number"
+                    min="1"
+                  />
+                  <label htmlFor="currentCity">City</label>
+                  <Input
+                    value={this.state.currentCity}
+                    onChange={this.handleInputChange}
+                    id="currentCity"
+                    name="currentCity"
+                    placeholder="City"
+                    required
+                    pattern="^[A-Za-z -]+$"
+                    title="Enter a valid value. Cannot contain numbers"
+                  />
+                  <FormBtn
+                    //  disabled={!(this.state.userName && this.state.email && this.state.password)}
+                    className="btn btn-success"
+                    type="submit"
+                  >
+                    Submit
             </FormBtn>
-          </form>
-        </Container>
-      </main>
+                </form>
+              </Col>
+              <Col size="md-5">
+
+                <img src={Logo} className="logo" />
+              </Col>
+
+
+            </Row>
+          </Container-fluid>
+        </main>
+      </>
     )
   }
 }

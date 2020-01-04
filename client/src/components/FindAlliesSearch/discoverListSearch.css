@@ -1,0 +1,19 @@
+.discoverList {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.discoverListItem {
+    height: 80px;
+    width: 100%;
+    border: 2px solid #e2e2e2;
+    margin-bottom: 10px;
+    box-shadow: 5px 4px 4px #202124;
+}
+
+.discoverListItem > div {
+    display: inline-block;
+    width: 30%;
+    padding-top: 15px;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Helmet from 'react-helmet';
 
-const Header = ({ children, headerText, headingLevel = 1 }) => {
+const Header = ({ children, headerText, headingLevel = 1, alignment = "center" }) => {
 
     const H = `h${headingLevel}`
 
@@ -12,11 +12,11 @@ const Header = ({ children, headerText, headingLevel = 1 }) => {
     }, []);
 
     return (
-        <section>
+        <section id="controlHeader">
             <Helmet>
                 <title>{`${headerText} | The Grid`}</title>
             </Helmet>
-            <H ref={headingRef} tabIndex="-1">
+            <H ref={headingRef} tabIndex="-1" style={{'textAlign': alignment}}>
                 {headerText}
             </H>
             {children}

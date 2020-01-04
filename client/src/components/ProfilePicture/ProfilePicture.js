@@ -11,7 +11,7 @@ import Default8 from "../../images/profileImages/Default8.jpg";
 import Default9 from "../../images/profileImages/Default9.jpg";
 import Default10 from "../../images/profileImages/Default10.jpg";
 
-let imgRef="";
+let imgRef = "";
 
 const reRender = profileImg => {
   switch (profileImg) {
@@ -36,7 +36,7 @@ const reRender = profileImg => {
     case "Default10":
       return imgRef = Default10;
     default:
-      return imgRef="";
+      return imgRef = "";
   }
 }
 
@@ -46,12 +46,12 @@ export default function ProfilePicture({ location, age, profileImg }) {
 
   return (
     <div className="ProfilePicture">
-      <img src={imgRef} />
-      <ul>
+      <img className="img-thumbnail" src={imgRef} />
+      {/* <ul>
         <li>Status: Offline</li>
         <li>Location: {location}</li>
         <li>Age: {age}</li>
-      </ul>
+      </ul> */}
     </div>
   );
 }

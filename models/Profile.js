@@ -8,7 +8,6 @@ var ProfileSchema = new Schema({
         type: String,
         required: true
     },
-
     firstName: {
         type: String,
         required: true
@@ -25,12 +24,45 @@ var ProfileSchema = new Schema({
         type: String,
         required: true
     },
+    profileIMG: {
+        type: String,
+        default: "Default" + Math.floor(Math.random() * 10 + 1),
+        required: true
+    },
+    steamIGN: {
+        type: String,
+        default: ''
+    },
+    discordIGN: {
+        type: String,
+        default: ''
+    },
+    battleNetIGN: {
+        type: String,
+        default: ''
+    },
+    epicIGN: {
+        type: String,
+        default: ''
+    },
+    originIGN: {
+        type: String,
+        default: ''
+    },
+    favGames: {
+        type: Array,
+        default: []
+    },
     lastUpdated: {
         type: Date
     },
     friendList: {
          type: Array, 
          default: [] 
+    },
+    clans: {
+        type: Array,
+        default: []
     },
     sentFriendRequests: {
         type: Array,

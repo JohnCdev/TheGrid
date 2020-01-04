@@ -8,24 +8,33 @@ var PostSchema = new Schema({
         type: String,
         required: true
     },
-
+    profileImg:{ 
+        type: String,
+        required: true
+    },
     content: {
         type: String,
         required: true
     },
-
     timeStamp: {
         type: Date,
         required: true,
     },
-
     comments: [
         {
-            type: Schema.Types.ObjectId,
-            ref:"Comment"
+            type: Array,
+            default: []
         }
-    ]
+    ],
 
+    numComments: {
+        type: Number,
+        default: 0
+    },
+    
+    clanName: {
+        type: String,
+    }
 });
 
 var Post = mongoose.model("Post", PostSchema);

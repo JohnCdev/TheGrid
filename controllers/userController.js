@@ -52,8 +52,16 @@ module.exports = {
               age: client.age,
               lastUpdated: client.lastUpdated,
               friendList: client.friendList,
+              clans: client.clans,
               sentFriendRequests: client.sentFriendRequests,
-              receivedFriendRequests: client.receivedFriendRequests
+              receivedFriendRequests: client.receivedFriendRequests,
+              profileIMG: client.profileIMG,
+              steamIGN: client.steamIGN,
+              discordIGN: client.discordIGN,
+              battleNetIGN: client.battleNetIGN,
+              epicIGN: client.epicIGN,
+              originIGN: client.originIGN,
+              favGames: client.favGames
             };
             //assign a token to this user and send the user information and token back to the user
             jwt.sign({ user }, process.env.JWT, (err, token) => {

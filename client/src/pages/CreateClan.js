@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Header from "../components/Header/Header";
+import Nav from "../components/Nav/Nav";
 import { Redirect } from "react-router";
 import { Input, TextArea, FormBtn } from "../components/Form/Form";
 import { Container } from "../components/Grid/Grid";
+import SuccessMessage from '../components/SuccessMessage/SuccessMessage';
 import API from "../utils/API";
 import Clan1 from '../images/clanImages/Clan1.jpg';
 import Clan2 from '../images/clanImages/Clan2.jpg';
@@ -21,7 +23,7 @@ const imgArray = [
 ]
 
 const CreateClan = () => {
-    const { isAuthenticated, userData } = useContext(AuthContext);
+    const { isAuthenticated, userData, joinedClan } = useContext(AuthContext);
     const [formData, setFormData] = useState({
         clanMade: false,
         clanName: "",
@@ -33,6 +35,7 @@ const CreateClan = () => {
         clanPic: '',
         selectedPic: ''
     });
+    const [submitSuccess, setSubmitSuccess] = useState(false);
 
     // if (!isAuthenticated) {
     //     return <Redirect to='/log-in' />
@@ -40,7 +43,6 @@ const CreateClan = () => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        console.log(formData)
         const payLoad = { ...formData, clanFounder: userData.userName };
         const token = userData.token;
 
@@ -49,6 +51,8 @@ const CreateClan = () => {
                 ...formData,
                 clanMade: true
             })
+            joinedClan(formData.clanName)
+            setSubmitSuccess(true)     
         });
     };
 
@@ -103,7 +107,13 @@ const CreateClan = () => {
         }
     }
 
+    if (submitSuccess) {
+        return <Redirect to="/clan" />;
+      }
+
     return (
+        <>
+        <Nav />
         <main>
             <Container>
                 <Jumbotron>
@@ -172,7 +182,7 @@ const CreateClan = () => {
 
                     <h3>Select Your Clan ProfileImage</h3>
                     <div className="picSelector">
-                        <div className="selectedPic mb-3">
+                        <div className="selectedPic mb-2">
                             {formData.selectedPic ?
                                 <>
                                     <img src={formData.selectedPic} />
@@ -209,8 +219,10 @@ const CreateClan = () => {
                         Create Clan
                     </FormBtn>
                 </form>
+                {submitSuccess ? <SuccessMessage success={true}/>: null}
             </Container>
         </main>
+        </>
     );
 }
 
