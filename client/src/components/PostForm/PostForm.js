@@ -8,6 +8,7 @@ import "./PostForm.css";
 const PostForm = ({ reloadPosts, clan = false, name }) => {
     const { userData } = useContext(AuthContext);
     const [post, setPost] = useState('');
+    const [makePost, postSet] = useState(false);
 
     const handlePostSubmit = (e) => {
         e.preventDefault();
@@ -44,7 +45,7 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
         }
     }
 
-    const handleClickCancel = (e) => {
+    const handleClickCancel = () => {
         setPost('');
     }
 
@@ -52,8 +53,18 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
         setPost(e.target.value);
     }
 
+
+    const handleToggle = () => {
+        handleClickCancel();
+        postSet(makePost => !makePost)
+    }
+
     return (
-        <section style={{ 'marginBottom': '50px' }}>
+        <div style={{ 'marginBottom': '60px' }}>
+            {!makePost ?
+        <button className="btn btn-success" onClick={handleToggle}>{makePost ? "Send It!!" : "Make a Post"}</button>
+            
+            :
             <form id="postBackground" onSubmit={handlePostSubmit}>
                 <label id="postTitle" htmlFor="postComment">Create Post</label>
                 <TextArea
@@ -67,7 +78,7 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
                 <FormBtn
                     className="btn btn-danger ml-2"
                     type="button"
-                    onClick={handleClickCancel}
+                    onClick={handleToggle}
                 >
                     Cancel Post
                 </FormBtn>
@@ -78,7 +89,8 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
                     Submit Post
                 </FormBtn>
             </form>
-        </section>
+            }
+        </div>
     );
 }
 
