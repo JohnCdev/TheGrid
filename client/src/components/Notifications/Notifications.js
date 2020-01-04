@@ -5,7 +5,7 @@ import "./notifications.css";
 const Notifications = props => {
       const noNotifications = (
       <>
-        <button className="btn btn-secondary" type="button">
+        <button className="btn btn-secondary notificationsBtn" type="button">
           No Notifications
         </button>
       </>
@@ -15,7 +15,7 @@ const Notifications = props => {
       <i className="material-icons mr-2">notifications_active</i>
       <div className="dropdown mr-2">
         <button
-          className="btn btn-secondary dropdown-toggle"
+          className="btn btn-secondary notificationsBtn dropdown-toggle"
           type="button"
           id="dropdownMenuButton"
           data-toggle="dropdown"
