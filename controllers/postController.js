@@ -4,8 +4,10 @@ const jwt = require("jsonwebtoken");
 module.exports = {
 
     create: (req, res) => {
+        console.log(req.body)
         db.Post.create({
             userName: req.body.userName,
+            profileImg: req.body.profileImg,
             content: req.body.content,
             timeStamp: Date.now(),
             clanName: req.body.clanName
@@ -58,6 +60,7 @@ module.exports = {
                 res.json(data)
             })
             .catch(err => console.log(err))
+<<<<<<< HEAD
     },
 
     createComment: (req, res) => {
@@ -83,4 +86,7 @@ module.exports = {
             })
         }
 
+=======
+    }
+>>>>>>> 648550bca8dc83a5bfeca31f9ad40bd6bf19231f
 }

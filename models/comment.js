@@ -8,6 +8,14 @@ const CommentSchema = new Schema({
         type: String,
         required: true
     },
+    profileIMG: {
+        type: String,
+        required: true
+    },
+    postID: {
+        type: String,
+        required: true
+    },
 
     body: {
         type: String,

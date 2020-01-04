@@ -18,7 +18,7 @@ class AuthContextProvider extends Component {
           sentFriendRequests: client.sentFriendRequests,
           receivedFriendRequests: client.receivedFriendRequests,
           token: client.token,
-          profileImg: client.profileImg,
+          profileImg: client.profileIMG,
           steamIGN: client.steamIGN,
           discordIGN: client.discordIGN,
           battleNetIGN: client.battleNetIGN,
