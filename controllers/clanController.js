@@ -27,7 +27,11 @@ module.exports = {
               clanTimeZone: req.body.clanTimeZone,
               clanMembers: [req.body.clanFounder]
             })
-              .then(res.json({ ClanCreated: true }))
+              .then( response => {
+                db.Profile.updateOne({userName: req.body.clanFounder}, { $push: {clans: req.body.clanName }}).then(user => {
+                  res.json({ ClanCreated: true });
+                })
+              })
               .catch(err => console.log(err));
           }
         });
@@ -41,17 +45,6 @@ module.exports = {
   },
   getClanList: async (req, res) => {
     const clanListReturn = [];
-    // req.body.clans.forEach(clan => {
-    //   await db.Clan.find({clanName: clan}).then(clanI => {
-    //     const returnItem = {
-    //       _id: clanI[0]._id,
-    //       clanName: clanI[0].clanName,
-    //       clanReferenceName: clanI[0].clanReferenceName,
-    //       clanProfileImage: clanI[0].clanProfileImage
-    //     }
-    //    return clanListReturn.push(returnItem)
-    //   })
-    // })
     for (var i = 0; i < req.body.clans.length; i++) {
       await db.Clan.find({
         clanName: req.body.clans[i]

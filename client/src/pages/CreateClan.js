@@ -23,7 +23,7 @@ const imgArray = [
 ]
 
 const CreateClan = () => {
-    const { isAuthenticated, userData } = useContext(AuthContext);
+    const { isAuthenticated, userData, joinedClan } = useContext(AuthContext);
     const [formData, setFormData] = useState({
         clanMade: false,
         clanName: "",
@@ -52,6 +52,7 @@ const CreateClan = () => {
                 ...formData,
                 clanMade: true
             })
+            joinedClan(formData.clanName)
             setSubmitSuccess(true);
         });
     };
