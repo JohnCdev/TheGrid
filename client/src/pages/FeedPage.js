@@ -24,7 +24,10 @@ const FeedPage = () => {
         API.getAllyList({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
                 console.log(data)
-                API.getFeedPosts({ friendList: data.data })
+                API.getFeedPosts({
+                    friendList: data.data,
+                    userName: sessionStorage.getItem('project3username')
+                })
                     .then(data => {
                         // console.log(data.data)
                         setFeed(data.data)
@@ -38,7 +41,10 @@ const FeedPage = () => {
     const reloadPosts = () => {
         API.getAllyList({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
-                API.getFeedPosts({ friendList: data.data })
+                API.getFeedPosts({
+                    friendList: data.data,
+                    userName: sessionStorage.getItem('project3username')
+                })
                     .then(data => setFeed(data.data))
                     .catch(err => console.log(err))
             })
@@ -51,26 +57,26 @@ const FeedPage = () => {
 
     return (
         <>
-        <Nav />
-        <main style={{ "height": "100%", "marginBottom": "200px" }}>
-            <AlliesBar />
-            <Container>
-            <Header headerText="Info Board" />
-                {feedLoading ?
-                    null
-                    :
-                    <PostForm reloadPosts={reloadPosts} />
-                }
-                {feed.length > 0 && !feedLoading ?
-                    <Feed feed={feed} name={sessionStorage.getItem('project3username')} /> :
-                    null
-                }
-                {feed.length === 0 && !feedLoading ?
-                    <h1>You have no feed</h1> :
-                    null
-                }
-            </Container>
-        </main>
+            <Nav />
+            <main style={{ "height": "100%", "marginBottom": "200px" }}>
+                <AlliesBar />
+                <Container>
+                    <Header headerText="Info Board" />
+                    {feedLoading ?
+                        null
+                        :
+                        <PostForm reloadPosts={reloadPosts} />
+                    }
+                    {feed.length > 0 && !feedLoading ?
+                        <Feed feed={feed} name={sessionStorage.getItem('project3username')} /> :
+                        null
+                    }
+                    {feed.length === 0 && !feedLoading ?
+                        <h1>You have no feed</h1> :
+                        null
+                    }
+                </Container>
+            </main>
         </>
     )
 }
