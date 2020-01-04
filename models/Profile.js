@@ -60,6 +60,10 @@ var ProfileSchema = new Schema({
          type: Array, 
          default: [] 
     },
+    clans: {
+        type: Array,
+        default: []
+    },
     sentFriendRequests: {
         type: Array,
         default: []
