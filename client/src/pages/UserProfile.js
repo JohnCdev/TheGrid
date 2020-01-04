@@ -106,7 +106,6 @@ class ViewUserProfile extends Component {
 
     //this.setState({friendContext})
     const helloWorld = (command, value) => {
-      console.log(this);
       switch (command) {
         case "request-friend":
           const receivedFriendRequests = [

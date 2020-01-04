@@ -43,7 +43,6 @@ const CreateClan = () => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        console.log(formData)
         const payLoad = { ...formData, clanFounder: userData.userName };
         const token = userData.token;
 
