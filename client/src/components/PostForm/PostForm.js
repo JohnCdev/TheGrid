@@ -13,12 +13,12 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
     const handlePostSubmit = (e) => {
         e.preventDefault();
         if (!clan) {
-            const sessionName = sessionStorage.getItem('project3username')
             API.createPost({
-                userName: sessionName,
+                userName: userData.userName,
+                profileImg: userData.profileImg,
                 content: post,
                 timeStamp: Date.now(),
-                clanName: ""
+                clanName: "",
             }).then(data => {
                 console.log(data)
                 setPost('')
@@ -26,9 +26,9 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
             })
                 .catch(err => console.log(err))
         } else {
-            const sessionName = sessionStorage.getItem('project3username')
             API.createPost({
-                userName: sessionName,
+                userName: userData.userName,
+                profileImg: userData.profileImg,
                 content: post,
                 timeStamp: Date.now(),
                 clanName: name
