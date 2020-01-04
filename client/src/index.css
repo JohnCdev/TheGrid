@@ -125,6 +125,6 @@ hr {
       height: 1rem;
       border-width: .2em;
   }
-  #infoBoard h1 {
+  #controlHeader h1 {
     background-color: #231f20 !important;
   }
