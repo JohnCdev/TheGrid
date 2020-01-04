@@ -27,6 +27,7 @@ module.exports = {
 
     getFeed: async (req, res) => {
         const friendList = req.body.friendList
+        friendList.push(req.body.userName)
         const feed = []
         for (var i = 0; i < friendList.length; i++) {
             await db.Post.find({
