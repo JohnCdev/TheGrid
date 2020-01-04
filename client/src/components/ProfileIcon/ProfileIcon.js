@@ -63,7 +63,8 @@ const ProfileIcon = ({ profileImg, large = false }) => {
   return (
 
     <img
-      style={{ borderRadius: 50, width: imgSize, height: imgSize }}
+      className="ml-2"
+      style={{ 'borderRadius': '50px', 'width': imgSize, 'height': imgSize }}
       src={imgRef}
     />
   )

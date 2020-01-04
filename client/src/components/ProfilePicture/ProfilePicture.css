@@ -6,12 +6,13 @@ img{
 
 .ProfilePicture{
     padding: 5px;
+    padding-right: 0;
     float: left;
     position: absolute;
     top: 60px;
     left: 5px;
     height: 250px;
-    width: 170px;
+    width: 100%;
     text-align: center;
 
 }

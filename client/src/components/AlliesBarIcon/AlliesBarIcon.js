@@ -4,12 +4,12 @@ import ProfileIcon from "../ProfileIcon/ProfileIcon";
 import { Link } from "react-router-dom";
 
 
-const AlliesBarIcon = ({ name, status, profileImg }) => {
+const AlliesBarIcon = ({ userName, profileImg }) => {
     return (
-        <Link to={`/user-profile/${name}`}>
+        <Link to={`/user-profile/${userName}`}>
             <div className="allies-icon">
-                <ProfileIcon profileImg={profileImg}/>
-                <p>{name}</p>
+                <ProfileIcon profileImg={profileImg} />
+                <p>{userName}</p>
             </div>
         </Link>
     );

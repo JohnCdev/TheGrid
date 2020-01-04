@@ -14,7 +14,7 @@ const SuccessMessage = ({success}) => {
 
     return (
         <div className="rounded" style={divStyle}>
-            <span style={{'color':`${messageStyle}`}}>{success ? "Submit Success" : "Login Failed"}</span>
+            <span style={{'fontSize':'2em', 'color':`${messageStyle}`}}>{success ? "Submit Success" : "Login Failed"}</span>
         </div>
     );
 }

@@ -38,6 +38,7 @@ body, h1, h2, h4, h5 {
 h3 {
     color: #04dac6;
     font-size: 1.5rem;
+    background-color: transparent !important;
 }
 .btn-primary {
     font-family: Poppins, sans-serif;
@@ -169,7 +170,7 @@ nav > button > a {
       border-width: .2em;
   }
   #controlHeader h1 {
-    background-color: #231f20 !important;
+    background-color: transparent !important;
   }
 
   .box-shadow-dark {
@@ -179,3 +180,4 @@ nav > button > a {
   #infoBoard h1 {
     background-color: #202124;
   }
+

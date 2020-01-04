@@ -8,7 +8,7 @@ export default function AddFriend(props) {
   if (props.viewedProfile && props.viewedProfile !== userData.userName) {
     let button;
     const removeFriendButton = (
-      <button
+      <button className="btn btn-primary addFriend"
         onClick={() => {
           API.friendRequest(
             "remove-friend",
@@ -24,9 +24,9 @@ export default function AddFriend(props) {
         Remove Ally
       </button>
     );
-    const requestSentButton = <button>Request Sent</button>;
+    const requestSentButton = <button className="btn btn-primary">Request Sent</button>;
     const theirRequestPendingButton = (
-      <button
+      <button className="btn btn-primary addFriend"
         onClick={() => {
           API.friendRequest(
             "accept-friend-request",
@@ -44,7 +44,7 @@ export default function AddFriend(props) {
     );
 
     const sendFriendRequestButton = (
-      <button
+      <button className="btn btn-primary addFriend"
         onClick={() => {
           API.friendRequest(
             "request-friend",

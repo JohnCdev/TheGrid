@@ -7,7 +7,7 @@ const FeedCard = ({ id, userName, timeStamp, content, profileImg }) => {
     return (
         <div className="card mb-2">
             {/* <a className="card-text">{timeStamp}</a> */}
-            <h5 className="card-header"><ProfileIcon profileImg={profileImg} />{userName}<a className="timeStamp"><Moment fromNow>{timeStamp}</Moment></a></h5>
+            <h5 className="card-header"><ProfileIcon profileImg={profileImg}/><span className="ml-2">{userName}</span><a className="timeStamp"><Moment fromNow>{timeStamp}</Moment></a></h5>
         <div className="card-body">
             <h5 className="card-title">{content}</h5>
         </div>
