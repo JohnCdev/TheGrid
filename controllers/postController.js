@@ -36,6 +36,12 @@ module.exports = {
             })
                 .then(posts => {
                     for (var j = 0; j < posts.length; j++) {
+                        db.Comment.find({postID: posts[j]._id})
+                        .then(commentArr => {
+                            console.log(commentArr)
+                            posts[j].comments.push(commentArr)
+                        })
+                        .catch(err => console.log(err))
                         feed.push(posts[j])
                     }
 
@@ -52,7 +58,29 @@ module.exports = {
                 res.json(data)
             })
             .catch(err => console.log(err))
-    }
+    },
 
+    createComment: (req, res) => {
+        db.Comment.create({
+            userName: req.body.userName,
+            profileIMG: req.body.profileImg,
+            postId: req.body._id,
+            body: req.body.body
+        })
+            .then(comment => {
+                console.log(comment)
+                db.Post.findOneAndUpdate({ _id: req.body._id }, {
+                    $push: {
+                        comments: comment._id
+                    }
+                },
+                    { new: true })
+                    .then(data => {
+                        console.log(data)
+                        res.json({comment: true})
+                    })
+                    .catch(err => console.log(err))
+            })
+        }
 
 }

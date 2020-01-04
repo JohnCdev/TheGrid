@@ -62,6 +62,8 @@ export default {
 
   getClanPosts: postData => axios.post("/api/posts/clan-posts", postData),
 
+  createComment: commentData => axios.post("/api/posts/new-comment", commentData),
+
   searchForUsers: searchQuery =>
     axios.get(`/api/profiles/search/${searchQuery}`),
 
