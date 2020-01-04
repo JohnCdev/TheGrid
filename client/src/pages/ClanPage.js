@@ -117,6 +117,7 @@ class ClanPage extends Component {
     ) : (
         <>
           <Nav />
+          <main>
           <Container className="mt-4">
             <Row>
               <div className="col-sm-12 col-md-3">
@@ -148,6 +149,7 @@ class ClanPage extends Component {
               </div>
             </Row>
           </Container>
+          </main>
         </>
       );
   }

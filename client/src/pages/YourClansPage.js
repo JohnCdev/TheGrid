@@ -29,7 +29,7 @@ const YourClansPage = () => {
             <main>
                 <Container>
                     <Header headerText="Your Clans" />
-                    <section className="box-shadow-dark rounded">
+                    <section className="rounded">
                         <div className="discoverList">
                             {yourClans.length > 0 ?
                                 yourClans.map((clan) => {
@@ -50,7 +50,13 @@ const YourClansPage = () => {
                                     );
                                 })
                                 :
-                                <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>You're not a member of any clans.</h3>}
+                                <>
+                                <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>You're not a member of any clans.</h3>
+                                <Link to="/discover">
+                                <button type="button" className="btn btn-primary">Find one</button>
+                                </Link>
+                                </>
+                                }
                             <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>Want to Make a New Clan?</h3>
                             <Link to="/create-clan">
                                 <button type="button" className="btn btn-primary">Click Here</button>
