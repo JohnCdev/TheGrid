@@ -78,5 +78,11 @@ export default {
 
   getClan: clanName => axios.get(`/api/clans/${clanName}`),
 
+  getClanList: payLoad => axios.post('/api/clans/get-clan-list', payLoad),
+
+  joinClan: payLoad => axios.post('/api/clans/join-clan', payLoad),
+
+  leaveClan: payLoad => axios.post ('/api/clans/leave-clan', payLoad),
+
   searchForClans: searchQuery => axios.get(`/api/clans/search/${searchQuery}`)
 };

@@ -52,6 +52,7 @@ module.exports = {
               age: client.age,
               lastUpdated: client.lastUpdated,
               friendList: client.friendList,
+              clans: client.clans,
               sentFriendRequests: client.sentFriendRequests,
               receivedFriendRequests: client.receivedFriendRequests,
               profileIMG: client.profileIMG,

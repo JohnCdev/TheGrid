@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   create: (req, res) => {
-    const reference = req.body.clanName.replace(/\s/g, '')
+    const reference = req.body.clanName.replace(/\s/g, "");
     db.Clan.find({ clanName: reference }).then(dbModel => {
       //if any show up tell the client their account cannot be created
       if (dbModel.length > 0) res.sendStatus(400);
@@ -13,10 +13,12 @@ module.exports = {
           if (err) {
             res.sendStatus(403);
           } else {
-            const profileImg = req.body.clanPic || "Default" + Math.floor(Math.random() * 10 + 1)
+            const profileImg =
+              req.body.clanPic ||
+              "Default" + Math.floor(Math.random() * 10 + 1);
             db.Clan.create({
               clanName: req.body.clanName,
-              clanReferenceName: req.body.clanName.replace(/\s/g, '-'),
+              clanReferenceName: req.body.clanName.replace(/\s/g, "-"),
               clanFounder: req.body.clanFounder,
               clanProfileImage: profileImg,
               clanDiscord: req.body.clanDiscord,
@@ -33,24 +35,102 @@ module.exports = {
     });
   },
   getClan: (req, res) => {
-    console.log(req.params.clan)
     db.Clan.find({ clanReferenceName: req.params.clan }).then(data =>
       res.json({ data })
     );
   },
-  searchForClans: (req, res) => {
-    const input = req.params.searchQuery
-    db.Clan.find({clanName: new RegExp(input, "i")})
-      .then(users => {
-        const searchResults = users.map(clan => {
-          return{
-            _id: clan._id,
-            clanName: clan.clanName,
-            clanReferenceName: clan.clanReferenceName,
-            profileImage: clan.profileImage,
-          }
+  getClanList: async (req, res) => {
+    const clanListReturn = [];
+    // req.body.clans.forEach(clan => {
+    //   await db.Clan.find({clanName: clan}).then(clanI => {
+    //     const returnItem = {
+    //       _id: clanI[0]._id,
+    //       clanName: clanI[0].clanName,
+    //       clanReferenceName: clanI[0].clanReferenceName,
+    //       clanProfileImage: clanI[0].clanProfileImage
+    //     }
+    //    return clanListReturn.push(returnItem)
+    //   })
+    // })
+    for (var i = 0; i < req.body.clans.length; i++) {
+      await db.Clan.find({
+        clanName: req.body.clans[i]
+      })
+        .then(clan => {
+          const returnItem = {
+            _id: clan[0]._id,
+            clanName: clan[0].clanName,
+            clanReferenceName: clan[0].clanReferenceName,
+            clanProfileImage: clan[0].clanProfileImage
+          };
+          clanListReturn.push(returnItem);
+          console.log(clanListReturn)
         })
-        res.json(searchResults)
+        .catch(err => console.log(err));
+    }
+    res.json(clanListReturn);
+
+    const hello = "hello";
+    res.json(hello);
+  },
+  joinClan: (req, res) => {
+    const clanName = req.body.clanName;
+    const user = req.body.userName;
+    db.Clan.find({ clanName }).then(clan => {
+      if (clan[0].clanMembers.includes(user)) {
+        const alreadyAMember = "user is already a member";
+        res.json(alreadyAMember);
+      } else {
+        db.Profile.updateOne(
+          { userName: user },
+          { $push: { clans: clanName } }
+        ).then(data => {
+          db.Clan.updateOne(
+            { clanName },
+            { $push: { clanMembers: user } }
+          ).then(clan => {
+            res.json(clan);
+          });
+        });
+      }
+    });
+  },
+  leaveClan: (req, res) => {
+    const clanName = req.body.clanName;
+    const userName = req.body.userName;
+    db.Clan.find({ clanName }).then(clan => {
+      const newMembers = clan[0].clanMembers.filter(
+        member => member !== userName
+      );
+      db.Clan.updateOne(
+        { clanName },
+        { $set: { clanMembers: newMembers } }
+      ).then(data => {
+        db.Profile.find({ userName }).then(data => {
+          const newClans = data[0].clans.filter(clan => clan !== clanName);
+          console.log("new clans: " + newClans);
+          db.Profile.updateOne(
+            { userName },
+            { $set: { clans: newClans } }
+          ).then(data => {
+            res.json(data);
+          });
+        });
       });
+    });
+  },
+  searchForClans: (req, res) => {
+    const input = req.params.searchQuery;
+    db.Clan.find({ clanName: new RegExp(input, "i") }).then(users => {
+      const searchResults = users.map(clan => {
+        return {
+          _id: clan._id,
+          clanName: clan.clanName,
+          clanReferenceName: clan.clanReferenceName,
+          profileImg: clan.clanProfileImage
+        };
+      });
+      res.json(searchResults);
+    });
   }
 };

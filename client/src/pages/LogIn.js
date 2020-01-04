@@ -49,7 +49,6 @@ export default function LogIn() {
                 password: formData.password
             })
                 .then((res) => {
-                    console.log(res.data)
                     const client = res.data.data
                     const resObj = {
                         userName: client[0].userName,
@@ -57,6 +56,7 @@ export default function LogIn() {
                         lastName: client[0].lastName,
                         age: client[0].age,
                         friendList: client[0].friendList,
+                        clans: client[0].clans,
                         sentFriendRequests: client[0].sentFriendRequests,
                         receivedFriendRequests: client[0].receivedFriendRequests,
                         profileIMG: client[0].profileIMG,
