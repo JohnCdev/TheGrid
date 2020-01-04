@@ -19,7 +19,7 @@ const YourClansPage = () => {
     useEffect(() => {
         API.getClanList({userName: userData.userName, clans: userData.clans})
             .then(response => {
-                console.log(response)
+                setYourClans(response.data)
             })
     }, []);
 
