@@ -11,11 +11,15 @@
     font-family: 'PTSans';
     src: local('PTSans'), url(./fonts/PTSans-Regular.ttf) format('truetype');
 } */
+
+
 body {
     background-image: url(./images/Logos/grid-bg.png);
     background-size: cover;
     background-position: center top;
     background-color: #202124;
+    z-index: -1;
+
 
 }
 
@@ -28,11 +32,13 @@ body, h1, h2, h3, h4, h5, li, ul, a, button {
     font-family: Poppins, sans-serif;
 }
 
-body, h1, h2, h3, h4, h5 {
+body, h1, h2, h4, h5 {
     color: #e1e1e1;
 }
-
-
+h3 {
+    color: #04dac6;
+    font-size: 1.5rem;
+}
 .btn-primary {
     font-family: Poppins, sans-serif;
     color: #231f20;
@@ -133,6 +139,12 @@ hr {
 nav > button > a {
     color: #000;
 }
+
+.signuptitle {
+    height:500px;
+    width: 100px;
+}
+
 
 @keyframes spinner-border {
     to { transform: rotate(360deg); }
