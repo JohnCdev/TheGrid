@@ -74,7 +74,7 @@ class ClanPage extends Component {
     API.joinClan(payLoad)
       .then(response => {
         console.log(response.data)
-        if(response.data.alreadyAMember){
+        if (response.data.alreadyAMember) {
           console.log('already a member')
         } else if (response.data.nModified === 1) {
           console.log(this.state.clanName)
@@ -82,7 +82,7 @@ class ClanPage extends Component {
         } else {
           //error occured
         }
-        
+
       })
   }
 
@@ -97,7 +97,7 @@ class ClanPage extends Component {
   }
 
   render() {
-    const { isAuthenticated} = this.context;
+    const { isAuthenticated } = this.context;
 
     // console.log(this.state)
 
@@ -134,12 +134,7 @@ class ClanPage extends Component {
                   {this.state.clanGames.map((game, i) => (<li key={i}>{game}</li>))}
                 </ul>
                 <h4>{`Clan Founder: ${this.state.clanFounder}`}</h4>
-                <Link to="/create-clan">
-                  <button type="button" className="btn btn-primary">
-                    Create a Clan
-              </button>
-                </Link>
-              <JoinClan joinClan={this.joinClan} clanName={this.state.clanName} leaveClan={this.leaveClan} />
+                <JoinClan joinClan={this.joinClan} clanName={this.state.clanName} leaveClan={this.leaveClan} />
               </div>
               <div className="col-sm-12 col-md-9">
                 <section>
