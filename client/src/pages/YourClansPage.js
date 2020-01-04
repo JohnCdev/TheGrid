@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {AuthContext} from '../context/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 import { Container } from '../components/Grid/Grid';
 import Header from '../components/Header/Header';
 import Nav from '../components/Nav/Nav';
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import API from '../utils/API';
 
 const YourClansPage = () => {
-    const {userData} = useContext(AuthContext)
+    const { userData } = useContext(AuthContext)
     const [yourClans, setYourClans] = useState([
         // { _id: "1", clanName: "Noob Slayers", clanReferenceName: "NoobSlayers", clanProfileImage: "Clan1" },
         // { _id: "2", clanName: "Rekt", clanReferenceName: "Rekt", clanProfileImage: "Clan2" },
@@ -17,11 +17,19 @@ const YourClansPage = () => {
     ])
 
     useEffect(() => {
-        API.getClanList({userName: userData.userName, clans: userData.clans})
+        getClans()
+    }, []);
+
+    useEffect(() => {
+        getClans()
+    }, [userData]);
+
+    const getClans = () => {
+        API.getClanList({ userName: userData.userName, clans: userData.clans })
             .then(response => {
                 setYourClans(response.data)
             })
-    }, []);
+    }
 
     return (
         <>

@@ -118,6 +118,7 @@ class ClanPage extends Component {
         <>
           <Nav />
           <main>
+<<<<<<< HEAD
           <Container className="mt-4">
             <Row>
               <div className="col-sm-12 col-md-3">
@@ -167,6 +168,39 @@ class ClanPage extends Component {
               </div>
             </Row>
           </Container>
+=======
+            <Container className="mt-4">
+              <Row>
+                <div className="col-sm-12 col-md-3">
+                  <div>
+                    <Header headerText={`${this.state.clanName}`} />
+                    <ClanPicture clanImg={this.state.clanImg} />
+                    <p>
+                      {this.state.clanDescription}
+                    </p>
+                  </div>
+                  <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>
+                  <h4>{`Discord: ${this.state.clanDiscord}`}</h4>
+                  <h4>{`${this.state.clanName}'s Active Games:`}</h4>
+                  <ul>
+                    {this.state.clanGames.map((game, i) => (<li key={i}>{game}</li>))}
+                  </ul>
+                  <h4>{`Clan Founder: ${this.state.clanFounder}`}</h4>
+                  <JoinClan joinClan={this.joinClan} clanName={this.state.clanName} leaveClan={this.leaveClan} />
+                </div>
+                <div className="col-sm-12 col-md-9">
+                  <section>
+                    <PostForm reloadPosts={this.reloadPosts} clan={true} name={this.state.clanName} />
+                    {this.state.clanFeed.length > 0 ? (
+                      <Feed feed={this.state.clanFeed} name={this.state.clanName} />
+                    ) : (
+                        <h2>This clan has no feed.(Yet!)</h2>
+                      )}
+                  </section>
+                </div>
+              </Row>
+            </Container>
+>>>>>>> bd01b63a059d9364a50573da743b320f5f593c87
           </main>
         </>
       );
