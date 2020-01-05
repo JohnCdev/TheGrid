@@ -43,8 +43,10 @@ class ViewUserProfile extends Component {
     API.getUserProfile(profile, { client: userData.userName }).then(res => {
       let friendContext;
       const userProfile = res.data.data[0];
+
       const   setTheState = (obj, friendContextValue) => {
-        if(friendContextValue === 'friend'){
+
+        //if(friendContextValue === 'friend' || profile === userData.userName){
           this.setState({
             _id: obj._id,
             currentCity: obj.currentCity,
@@ -65,37 +67,15 @@ class ViewUserProfile extends Component {
             originIGN: obj.originIGN,
             friendRenderContext: friendContextValue
           });
-        } else {
-          this.setState({
-            _id: obj._id,
-            currentCity: '',
-            firstName: '',
-            lastName: '',
-            userName: obj.userName,
-            age: '',
-            friendList: obj.friendList,
-            sentFriendRequests: obj.sentFriendRequests,
-            receivedFriendRequests: obj.receivedFriendRequests,
-            friendContext: friendContext,
-            profileImg: obj.profileIMG,
-            favGames: '',
-            steamIGN: '',
-            discordIGN: '',
-            battleNetIGN: '',
-            epicIGN: '',
-            originIGN: '',
-            friendRenderContext: friendContextValue
-          });
-        }
+
       };
 
       if (userProfile) {
         const { userData } = this.context;
-        console.log(userProfile.receivedFriendRequests)
-        console.log(userData.userName)
-        console.log(userProfile.receivedFriendRequests.includes(userData.userName))
+        const profile = this.props.match.params.userProfile;
+        
         switch (true) {
-          case userProfile.friendList.includes(userData.userName):
+          case userProfile.friendList.includes(userData.userName) || profile === userData.userName:
             friendContext = "friend";
             setTheState(userProfile, "friend");
             return this.reloadPosts();
@@ -162,7 +142,8 @@ class ViewUserProfile extends Component {
           return this.setState({
             sentFriendRequests,
             friendList: newFriendList,
-            friendContext: "friend"
+            friendContext: "friend",
+            friendRenderContext: 'friend'
           });
 
         case "remove-friend":
@@ -171,7 +152,8 @@ class ViewUserProfile extends Component {
           );
           return this.setState({
             friendList: updatedFriendList,
-            friendContext: "not-a-friend"
+            friendContext: "not-a-friend",
+            friendRenderContext: 'not-friend'
           });
       }
     };
