@@ -94,12 +94,9 @@ export default class SignUp extends Component {
             <Row>
               <Col size="md-1">
               </Col>
-              <Col size="md-1">
-                <img src={SignUpTitle} className="signuptitle" />
-              </Col>
               <Col size="md-4">
-                <Header headerText="Sign Up" display={falseQ} />
-
+                <Header headerText="Sign Up" display={false} />
+                <img src={SignUpTitle} className="signuptitle" />
                 <form onSubmit={this.handleFormSubmit}>
                   <h3>Account Information</h3>
                   <label htmlFor="userName">User Name</label>
@@ -187,10 +184,12 @@ export default class SignUp extends Component {
                     Submit
                   </FormBtn>
                   {this.state.isError ?
-                  <SuccessMessage errMessage="User Name Exists" success={false}/>
-                  :
-                  null}
+                    <SuccessMessage errMessage="User Name Exists" success={false} />
+                    :
+                    null}
                 </form>
+              </Col>
+              <Col size="md-1">
               </Col>
               <Col size="md-5">
 

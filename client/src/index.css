@@ -27,9 +27,7 @@ body {
     background-color: #666;
 }
 
-img.ml-2 {
-    border: 2px solid #04dac6;
-}
+
 
 input {
     background-color: #e2e2e2;
@@ -101,6 +99,10 @@ div[data-reactroot] {
 main {
     margin-top: 10px;
     margin-bottom: 200px;
+}
+
+.mr-5 {
+    margin-right: 1.5rem !important;
 }
 
 .selectedPic {
@@ -187,13 +189,16 @@ nav > button > a {
 }
 
 .signuptitle {
-    height:500px;
-    width: 100px;
+    height:100px;
+    width: 500px;
+    /* margin-bottom: 10px;
+    margin-top: 10px; */
 }
 
 .LoginTitle {
     height:100%;
     width: 100%;
+
 }
 
 @keyframes spinner-border {
@@ -226,3 +231,6 @@ nav > button > a {
     background-color: #202124;
   }
 
+
+
+  

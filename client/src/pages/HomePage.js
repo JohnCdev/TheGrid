@@ -42,6 +42,7 @@ export default class HomePage extends Component {
                                         Sign Up!
                     </button>
                                 </Link>
+                                
                                 <Link to="/log-in">
                                     <button type="button" className="btn btn-success">
                                         Log In
