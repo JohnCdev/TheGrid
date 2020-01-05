@@ -56,7 +56,7 @@ const reRender = profileImg => {
 }
 
 const ProfileIcon = ({ profileImg, large = false }) => {
-  const imgSize = large ? 50 : 25;
+  const imgSize = large ? 50 : 35;
 
   reRender(profileImg)
 

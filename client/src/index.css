@@ -23,6 +23,13 @@ body {
 
 }
 
+.card {
+    background-color: #666;
+}
+
+img.ml-2 {
+    border: 2px solid #04dac6;
+}
 
 input {
     background-color: #e2e2e2;
@@ -36,6 +43,10 @@ body, h1, h2, h4, h5 {
     color: #e1e1e1;
 }
 
+
+
+
+
 p {
     font-size: .95rem;
 
@@ -45,6 +56,15 @@ h3 {
     color: #04dac6;
     font-size: 1.5rem;
     background-color: transparent !important;
+}
+
+h4 {
+    font-size: .95rem;
+}
+
+h5 {
+  
+    font-size: .9rem;
 }
 .btn-primary {
     font-family: Poppins, sans-serif;
@@ -140,6 +160,7 @@ main {
     border-radius: 100px;
     max-width: 100%;
     height: auto;
+    
 }
 
 hr {
