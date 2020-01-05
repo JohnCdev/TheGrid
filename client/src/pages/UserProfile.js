@@ -43,7 +43,9 @@ class ViewUserProfile extends Component {
     API.getUserProfile(profile, { client: userData.userName }).then(res => {
       let friendContext;
       const userProfile = res.data.data[0];
+
       const   setTheState = (obj, friendContextValue) => {
+
         if(friendContextValue === 'friend' || profile === userData.userName){
           this.setState({
             _id: obj._id,
@@ -92,9 +94,7 @@ class ViewUserProfile extends Component {
       if (userProfile) {
         const { userData } = this.context;
         const profile = this.props.match.params.userProfile;
-        console.log(userProfile.receivedFriendRequests)
-        console.log(userData.userName)
-        console.log(userProfile.receivedFriendRequests.includes(userData.userName))
+        
         switch (true) {
           case userProfile.friendList.includes(userData.userName) || profile === userData.userName:
             friendContext = "friend";

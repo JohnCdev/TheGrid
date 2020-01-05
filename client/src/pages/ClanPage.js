@@ -25,7 +25,8 @@ class ClanPage extends Component {
     clanFounded: "",
     clanImg: "",
     clanGames: [],
-    clanDiscord: ""
+    clanDiscord: "",
+    clanRenderMemberContext: ""
   };
   static contextType = AuthContext;
 
@@ -34,22 +35,77 @@ class ClanPage extends Component {
     API.getClan(clan).then(response => {
       console.log(response)
       const clan = response.data.data[0];
-      clan === undefined
-        ? this.setState({ _id: null })
-        : this.setState({
+
+      const setTheState = (obj, clanMemberContext) => {
+        if(clanMemberContext === 'member') {
+          this.setState({
           _id: clan._id,
-          clanName: clan.clanName,
-          clanReferenceName: clan.clanReferenceName,
-          clanDescription: clan.clanDescription,
-          clanFeed: clan.clanFeed,
-          clanFounder: clan.clanFounder,
-          clanMembers: clan.clanMembers,
-          clanTimeZone: clan.clanTimeZone,
-          clanFounded: clan.clanFounded,
-          clanImg: clan.clanProfileImage,
-          clanGames: clan.clanActiveGame,
-          clanDiscord: clan.clanDiscord
-        });
+          clanName: obj.clanName,
+          clanReferenceName: obj.clanReferenceName,
+          clanDescription: obj.clanDescription,
+          clanFeed: obj.clanFeed,
+          clanFounder: obj.clanFounder,
+          clanMembers: obj.clanMembers,
+          clanTimeZone: obj.clanTimeZone,
+          clanFounded: obj.clanFounded,
+          clanImg: obj.clanProfileImage,
+          clanGames: obj.clanActiveGame,
+          clanDiscord: obj.clanDiscord,
+          clanRenderMemberContext: clanMemberContext
+          })
+        } else {
+          this.setState({
+            _id: clan._id,
+            clanName: clan.clanName,
+            clanReferenceName: clan.clanReferenceName,
+            clanDescription: clan.clanDescription,
+            clanFeed: '',
+            clanFounder: clan.clanFounder,
+            clanMembers: clan.clanMembers,
+            clanTimeZone: clan.clanTimeZone,
+            clanFounded: clan.clanFounded,
+            clanImg: clan.clanProfileImage,
+            clanGames: clan.clanActiveGame,
+            clanDiscord: ''
+          })
+        }
+      }
+
+      if(clan) {
+        const {userData} = this.context;
+        const clan = response.data.data[0];
+          if (clan.clanMembers.includes(userData.userName)){
+            setTheState(clan, 'member');
+          } else {
+            setTheState(clan, 'not-member')
+          }
+        } else {
+          this.setState({_id: null})
+        }
+      
+
+
+
+
+
+
+
+      // clan === undefined
+      //   ? this.setState({ _id: null })
+      //   : this.setState({
+      //     _id: clan._id,
+      //     clanName: clan.clanName,
+      //     clanReferenceName: clan.clanReferenceName,
+      //     clanDescription: clan.clanDescription,
+      //     clanFeed: clan.clanFeed,
+      //     clanFounder: clan.clanFounder,
+      //     clanMembers: clan.clanMembers,
+      //     clanTimeZone: clan.clanTimeZone,
+      //     clanFounded: clan.clanFounded,
+      //     clanImg: clan.clanProfileImage,
+      //     clanGames: clan.clanActiveGame,
+      //     clanDiscord: clan.clanDiscord
+      //   });
       // api call to get clan feed
       this.reloadPosts();
     });
@@ -114,7 +170,7 @@ class ClanPage extends Component {
           </h1>
         </Jumbotron>
       </>
-    ) : (
+    ) : this.state.clanRenderMemberContext === 'member' ? (
         <>
           <Nav />
           <main>
@@ -169,7 +225,40 @@ class ClanPage extends Component {
           </Container>
           </main>
         </>
-      );
+      ): (
+        <>
+        <Nav />
+        <main>
+        <Container className="mt-4">
+          <Row>
+            <div className="col-sm-12 col-md-3">
+              <div>
+                <Header headerText={`${this.state.clanName}`} />
+                <ClanPicture clanImg={this.state.clanImg} />
+                <p>
+                  {this.state.clanDescription}
+                </p>
+              </div>
+              <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>
+              <hr />
+              { this.state.clanGames.length !== 0 ? 
+              <> 
+              <h4>{`${this.state.clanName}'s Active Games:`}</h4>
+              <ul>
+                {this.state.clanGames.map((game, i) => (<li key={i}>{game}</li>))}
+              </ul>
+              <hr />
+              </>
+              :
+              null}
+              <h4>{`Clan Founder: ${this.state.clanFounder}`}</h4>
+              <JoinClan joinClan={this.joinClan} clanName={this.state.clanName} leaveClan={this.leaveClan} />
+            </div>
+          </Row>
+        </Container>
+        </main>
+      </>
+      )
   }
 }
 
