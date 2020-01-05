@@ -41,10 +41,12 @@ class AuthContextProvider extends Component {
       this.setState({ userData: userDataCopy });
     },
     updateFriendRequests: (payLoad) => {
+      const profilePic = this.state.userData.profileImg
       const userDataCopy = {...this.state.userData}
           userDataCopy.sentFriendRequests = payLoad.sentFriendRequests;
           userDataCopy.friendList = payLoad.friendList;
-          userDataCopy.receivedFriendRequests = payLoad.receivedFriendRequests
+          userDataCopy.receivedFriendRequests = payLoad.receivedFriendRequests;
+          userDataCopy.profileIMG = profilePic;
           sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
           this.setState({ userData: userDataCopy });
     },

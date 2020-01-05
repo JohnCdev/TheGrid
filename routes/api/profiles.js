@@ -12,7 +12,7 @@ router.route('/accept-friend')
     .post(verifyToken, profileController.acceptFriend)
 
 router.route('/get-profile/:profile')
-    .get(profileController.getUserProfile)
+    .post(profileController.getUserProfile)
 
 router.route('/profile')
     .post(profileController.getProfile)

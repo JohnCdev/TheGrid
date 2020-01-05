@@ -39,7 +39,7 @@ export default {
   userLogIn: userData => axios.post("/api/users/login", userData),
 
   ///profiles
-  getUserProfile: profile => axios.get(`/api/profiles/get-profile/${profile}`),
+  getUserProfile: (profile, client) => axios.post(`/api/profiles/get-profile/${profile}`, client),
 
   getProfile: userData => axios.post("/api/profiles/profile", userData),
 
@@ -64,7 +64,7 @@ export default {
 
   createComment: commentData => axios.post("/api/posts/new-comment", commentData),
 
-  getComments: commentData => axios.post("api/posts/get-comments", commentData),
+  getComments: commentData => axios.post("/api/posts/get-comments", commentData),
 
   searchForUsers: searchQuery =>
     axios.get(`/api/profiles/search/${searchQuery}`),

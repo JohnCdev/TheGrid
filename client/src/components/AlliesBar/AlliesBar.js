@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import AlliesBarIcon from '../AlliesBarIcon/AlliesBarIcon';
 import './alliesBar.css';
 import API from "../../utils/API";
+import Spinner from '../Spinner/Spinner';
 
 
 const AlliesBar = () => {
-    const [allies, setAllies] = useState([
-        // { key: "1", userName: "userName", firstName: "firstName", profileImg: "Default3" },
-        // { key: "2", userName: "userName", firstName: "firstName", profileImg: "Default2" }
-    ]);
+    const [allies, setAllies] = useState([]);
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
@@ -38,11 +36,7 @@ const AlliesBar = () => {
     return (
         <div id="allies-bar">
             {isLoading ?
-                <div className="d-flex justify-content-center">
-                    <div className="spinner-border" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </div>
+                <Spinner />
                 :
                 allies.map(ally => (
                     <AlliesBarIcon

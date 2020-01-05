@@ -2,9 +2,7 @@ const db = require('../models');
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-
     create: (req, res) => {
-        console.log(req.body)
         db.Post.create({
             userName: req.body.userName,
             profileImg: req.body.profileImg,
@@ -15,7 +13,6 @@ module.exports = {
             .then(res.json({ postCreated: true }))
             .catch(err => console.log(err));
     },
-
     getUser: (req, res) => {
         db.Post.find({
             userName: req.body.userName,
@@ -26,7 +23,6 @@ module.exports = {
             })
             .catch(err => console.log(err))
     },
-
     getFeed: async (req, res) => {
         const friendList = req.body.friendList
         friendList.push(req.body.userName)
@@ -38,10 +34,8 @@ module.exports = {
             })
                 .then(async posts => {
                     for (var j = 0; j < posts.length; j++) {
-                        console.log(posts[j]._id)
                         await db.Comment.find({ postID: posts[j]._id })
                             .then(commentArr => {
-                                console.log(commentArr)
                                 posts[j].comments = commentArr
                             })
                             .catch(err => console.log(err))
@@ -54,7 +48,6 @@ module.exports = {
         const sortedFeed = feed.sort((a, b) => b.timeStamp - a.timeStamp)
         res.json(sortedFeed)
     },
-
     getClanFeed: (req, res) => {
         db.Post.find({ clanName: req.body.clanName }).sort({ timeStamp: -1 })
             .then(data => {
@@ -71,20 +64,16 @@ module.exports = {
             body: req.body.body
         })
             .then(comment => {
-                db.Post.findByIdAndUpdate({_id: req.body.postID},{ $inc: {
-                    numComments: 1
-                }})
-                console.log(comment)
-                res.json({ comment: true })
+                db.Post.findOneAndUpdate({ _id: req.body.postID },{$inc : {numComments: 1}})
+                    .then(res.json({ comment: true }))
+                    .catch(err => console.log(err))
             })
     },
 
     getComments: (req, res) => {
-
         db.Comment.find({ postID: req.body.postID })
             .then(comments => {
-                console.log(comments)
-                res.json({ foundComments: true })
+                res.json(comments)
             })
             .catch(err => console.log(err))
     }
