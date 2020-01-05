@@ -9,17 +9,10 @@ import Moment from 'react-moment';
 const Comments = ({ handleToggle, postID }) => {
     const { userData } = useContext(AuthContext)
     const [commentBody, setComment] = useState('')
-    const [commentArray, setCommentArray] = useState([
-        { _id: "1", timeStamp: "2020-01-05 17:01:15.358Z", userName: "John", profileIMG: "Default1", body: "awoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdoawoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdoawoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdoawoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdoawoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdoawoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdoawoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdoawoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdoawoidjaoid jpdjawoid j idjwoidaj owidj wdja wowidj aowjwdo" },
-        { _id: "2", timeStamp: "2020-01-05 17:01:15.358Z", userName: "John", profileIMG: "Default1", body: "Test Post" },
-        { _id: "3", timeStamp: "2020-01-05 17:01:15.358Z", userName: "John", profileIMG: "Default1", body: "Test Post" },
-        { _id: "4", timeStamp: "2020-01-05 17:01:15.358Z", userName: "John", profileIMG: "Default1", body: "Test Post" },
-        { _id: "5", timeStamp: "2020-01-05 17:01:15.358Z", userName: "John", profileIMG: "Default1", body: "Test Post" },
-        { _id: "6", timeStamp: "2020-01-05 17:01:15.358Z", userName: "John", profileIMG: "Default1", body: "Test Post" },
-    ])
+    const [commentArray, setCommentArray] = useState([])
 
     useEffect(() => {
-        // loadCommments()
+        loadCommments()
     }, []);
 
     const onChangeHandler = (e) => {
@@ -34,14 +27,18 @@ const Comments = ({ handleToggle, postID }) => {
             postID: postID,
             body: commentBody
         })
-            .then(res => loadCommments())
+            .then(res => {
+                loadCommments()
+                setComment('')
+            })
             .catch(err => console.log(err))
     }
 
     const loadCommments = () => {
-        API.getComments(postID)
+        API.getComments({'postID': postID})
             .then(res => {
                 console.log(res)
+                setCommentArray(res.data)
             })
             .catch(err => console.log(err))
     }
