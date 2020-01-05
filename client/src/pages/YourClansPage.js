@@ -6,15 +6,13 @@ import Nav from '../components/Nav/Nav';
 import ProfileIcon from '../components/ProfileIcon/ProfileIcon';
 import { Link } from "react-router-dom";
 import API from '../utils/API';
+import Spinner from '../components/Spinner/Spinner';
 
 const YourClansPage = () => {
     const { userData } = useContext(AuthContext)
-    const [yourClans, setYourClans] = useState([
-        // { _id: "1", clanName: "Noob Slayers", clanReferenceName: "NoobSlayers", clanProfileImage: "Clan1" },
-        // { _id: "2", clanName: "Rekt", clanReferenceName: "Rekt", clanProfileImage: "Clan2" },
-        // { _id: "3", clanName: "Shawn Suxs", clanReferenceName: "ShawnSuxs", clanProfileImage: "Clan3" },
-        // { _id: "4", clanName: "Average", clanReferenceName: "Average", clanProfileImage: "Clan4" },
-    ])
+    const [yourClans, setYourClans] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
 
     useEffect(() => {
         getClans()
@@ -25,9 +23,11 @@ const YourClansPage = () => {
     }, [userData]);
 
     const getClans = () => {
+        setIsLoading(true)
         API.getClanList({ userName: userData.userName, clans: userData.clans })
             .then(response => {
                 setYourClans(response.data)
+                setIsLoading(false)
             })
     }
 
@@ -39,7 +39,12 @@ const YourClansPage = () => {
                     <Header headerText="Your Clans" />
                     <section className="rounded">
                         <div className="discoverList">
-                            {yourClans.length > 0 ?
+                            {isLoading ?
+                                <Spinner />
+                                :
+                                null
+                            }
+                            {yourClans.length > 0 && !isLoading ?
                                 yourClans.map((clan) => {
                                     return (
                                         <div className="discoverListItem rounded" key={clan._id}>
@@ -58,13 +63,17 @@ const YourClansPage = () => {
                                     );
                                 })
                                 :
+                                null
+                            }
+                            {yourClans.length === 0 && !isLoading ?
                                 <>
-                                <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>You're not a member of any clans.</h3>
-                                <Link to="/discover">
-                                <button type="button" className="btn btn-primary">Find one</button>
-                                </Link>
+                                    <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>You're not a member of any clans.</h3>
+                                    <Link to="/discover">
+                                        <button type="button" className="btn btn-primary">Find one</button>
+                                    </Link>
                                 </>
-                                }
+                                :
+                                null}
                             <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>Want to Make a New Clan?</h3>
                             <Link to="/create-clan">
                                 <button type="button" className="btn btn-primary">Click Here</button>
