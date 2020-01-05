@@ -25,14 +25,22 @@ module.exports = {
     },
     getFeed: async (req, res) => {
         const friendList = req.body.friendList
+        friendList.push(req.body.userName)
         const feed = []
         for (var i = 0; i < friendList.length; i++) {
             await db.Post.find({
                 userName: friendList[i],
                 clanName: ""
             })
-                .then(posts => {
+                .then(async posts => {
                     for (var j = 0; j < posts.length; j++) {
+                        console.log(posts[j]._id)
+                        await db.Comment.find({ postID: posts[j]._id })
+                            .then(commentArr => {
+                                console.log(commentArr)
+                                posts[j].comments = commentArr
+                            })
+                            .catch(err => console.log(err))
                         feed.push(posts[j])
                     }
 
@@ -48,5 +56,32 @@ module.exports = {
                 res.json(data)
             })
             .catch(err => console.log(err))
+    },
+
+    createComment: (req, res) => {
+        db.Comment.create({
+            userName: req.body.userName,
+            profileIMG: req.body.profileIMG,
+            postID: req.body.postID,
+            body: req.body.body
+        })
+            .then(comment => {
+                db.Post.findByIdAndUpdate({_id: req.body.postID},{ $inc: {
+                    numComments: 1
+                }})
+                console.log(comment)
+                res.json({ comment: true })
+            })
+    },
+
+    getComments: (req, res) => {
+
+        db.Comment.find({ postID: req.body.postID })
+            .then(comments => {
+                console.log(comments)
+                res.json({ foundComments: true })
+            })
+            .catch(err => console.log(err))
     }
+
 }
