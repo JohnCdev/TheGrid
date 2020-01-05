@@ -32,7 +32,6 @@ class ClanPage extends Component {
   componentDidMount = event => {
     const clan = this.props.match.params.clanName;
     API.getClan(clan).then(response => {
-      console.log(response)
       const clan = response.data.data[0];
       clan === undefined
         ? this.setState({ _id: null })
@@ -73,11 +72,8 @@ class ClanPage extends Component {
     const payLoad = { userName: userData.userName, clanName: this.state.clanName }
     API.joinClan(payLoad)
       .then(response => {
-        console.log(response.data)
         if (response.data.alreadyAMember) {
-          console.log('already a member')
         } else if (response.data.nModified === 1) {
-          console.log(this.state.clanName)
           joinedClan(this.state.clanName)
         } else {
           //error occured
@@ -91,7 +87,6 @@ class ClanPage extends Component {
     const payLoad = { userName: userData.userName, clanName: this.state.clanName }
     API.leaveClan(payLoad)
       .then(response => {
-        console.log(response)
         leftClan(this.state.clanName)
       })
   }
@@ -99,7 +94,7 @@ class ClanPage extends Component {
   render() {
     const { isAuthenticated } = this.context;
 
-    // console.log(this.state)
+    console.log(this.state)
 
     return this.state._id === null ? (
       <>
@@ -118,55 +113,56 @@ class ClanPage extends Component {
         <>
           <Nav />
           <main>
-          <Container className="mt-4">
-            <Row>
-              <div className="col-sm-12 col-md-3">
-                <div>
-                  <Header headerText={`${this.state.clanName}`} />
-                  <ClanPicture clanImg={this.state.clanImg} />
-                  <p>
-                    {this.state.clanDescription}
-                  </p>
+            <Container className="mt-4">
+              <Row>
+                <div className="col-sm-12 col-md-3">
+                  <div style={{'wordWrap':'breakWord'}}>
+                    <Header headerText={`${this.state.clanName}`} />
+                    <ClanPicture clanImg={this.state.clanImg} />
+                    <p style={{'wordWrap':'break-word'}}>
+                      {this.state.clanDescription}
+                    </p>
+                  </div>
+                  <div>
+                    <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>
+                    <hr />
+                    {this.state.clanDiscord !== "" ?
+                      <>
+                        <h4>{`Discord: ${this.state.clanDiscord}`}</h4>
+                        <hr />
+                      </>
+                      :
+                      <>
+                        <h4>No current Discord</h4>
+                        <hr />
+                      </>
+                    }
+                    {this.state.clanGames.length !== 0 ?
+                      <>
+                        <h4>{`${this.state.clanName}'s Active Games:`}</h4>
+                        <ul>
+                          {this.state.clanGames.map((game, i) => (<li key={i}>{game}</li>))}
+                        </ul>
+                        <hr />
+                      </>
+                      :
+                      null}
+                    <h4>{`Clan Founder: ${this.state.clanFounder}`}</h4>
+                  </div>
+                  <JoinClan joinClan={this.joinClan} clanName={this.state.clanName} leaveClan={this.leaveClan} />
                 </div>
-                <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>
-                <hr />
-                { !this.state.clanDiscord === "" ? 
-                <>
-                <h4>{`Discord: ${this.state.clanDiscord}`}</h4>
-                <hr />
-                </>
-                :
-                <>
-                <h4>No current Discord</h4>
-                <hr />
-                </>
-
-                }
-                { this.state.clanGames.length !== 0 ? 
-                <> 
-                <h4>{`${this.state.clanName}'s Active Games:`}</h4>
-                <ul>
-                  {this.state.clanGames.map((game, i) => (<li key={i}>{game}</li>))}
-                </ul>
-                <hr />
-                </>
-                :
-                null}
-                <h4>{`Clan Founder: ${this.state.clanFounder}`}</h4>
-                <JoinClan joinClan={this.joinClan} clanName={this.state.clanName} leaveClan={this.leaveClan} />
-              </div>
-              <div className="col-sm-12 col-md-9">
-                <section>
-                  <PostForm reloadPosts={this.reloadPosts} clan={true} name={this.state.clanName} />
-                  {this.state.clanFeed.length > 0 ? (
-                    <Feed feed={this.state.clanFeed} name={this.state.clanName} />
-                  ) : (
-                      <h2>This clan has no feed.(Yet!)</h2>
-                    )}
-                </section>
-              </div>
-            </Row>
-          </Container>
+                <div className="col-sm-12 col-md-9">
+                  <section>
+                    <PostForm reloadPosts={this.reloadPosts} clan={true} name={this.state.clanName} />
+                    {this.state.clanFeed.length > 0 ? (
+                      <Feed feed={this.state.clanFeed} name={this.state.clanName} />
+                    ) : (
+                        <h2>This clan has no feed.(Yet!)</h2>
+                      )}
+                  </section>
+                </div>
+              </Row>
+            </Container>
           </main>
         </>
       );
