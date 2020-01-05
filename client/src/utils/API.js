@@ -39,7 +39,7 @@ export default {
   userLogIn: userData => axios.post("/api/users/login", userData),
 
   ///profiles
-  getUserProfile: profile => axios.get(`/api/profiles/get-profile/${profile}`),
+  getUserProfile: (profile, client) => axios.post(`/api/profiles/get-profile/${profile}`, client),
 
   getProfile: userData => axios.post("/api/profiles/profile", userData),
 

@@ -207,8 +207,9 @@ module.exports = {
     });
   },
   getUserProfile: (req, res) => {
-    db.Profile.find({ userName: req.params.profile }).then(data =>
-      res.json({ data })
+    db.Profile.find({ userName: req.params.profile }).then(data =>{
+        res.json({ data })
+    }
     );
   },
   getProfile: (req, res) => {
