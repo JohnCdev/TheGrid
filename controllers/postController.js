@@ -34,10 +34,8 @@ module.exports = {
             })
                 .then(async posts => {
                     for (var j = 0; j < posts.length; j++) {
-                        console.log(posts[j]._id)
                         await db.Comment.find({ postID: posts[j]._id })
                             .then(commentArr => {
-                                console.log(commentArr)
                                 posts[j].comments = commentArr
                             })
                             .catch(err => console.log(err))

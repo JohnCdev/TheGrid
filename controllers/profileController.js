@@ -1,7 +1,7 @@
 const db = require("../models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require("uuid/v1");
 
 module.exports = {
   requestFriend: (req, res) => {
@@ -217,25 +217,43 @@ module.exports = {
     );
   },
   updateProfile: (req, res) => {
-    db.Profile.updateOne(
-      { userName: req.body.userName },
-      {
-        $set: {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          age: req.body.age,
-          currentCity: req.body.currentCity,
-          steamIGN: req.body.steamIGN,
-          discordIGN: req.body.discordIGN,
-          battleNetIGN: req.body.battleNetIGN,
-          epicIGN: req.body.epicIGN,
-          originIGN: req.body.originIGN,
-          profileIMG: req.body.profileIMG,
-          favGames: req.body.favGames
-        }
-      }
-    )
-      .then(data => res.json({ data }))
+    db.Post.find({ userName: req.body.userName })
+      .then(posts => {
+        posts.forEach(async post => {
+          await db.Post.update(
+            { _id: post._id },
+            { $set: { profileImg: req.body.profileIMG } }
+          );
+        });
+        db.Comment.find({ userName: req.body.userName }).then(comments => {
+          comments.forEach(async comment => {
+            await db.Comment.update(
+              { _id: comment._id },
+              { $set: { profileIMG: req.body.profileIMG } }
+            );
+          });
+        });
+        db.Profile.updateOne(
+          { userName: req.body.userName },
+          {
+            $set: {
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
+              age: req.body.age,
+              currentCity: req.body.currentCity,
+              steamIGN: req.body.steamIGN,
+              discordIGN: req.body.discordIGN,
+              battleNetIGN: req.body.battleNetIGN,
+              epicIGN: req.body.epicIGN,
+              originIGN: req.body.originIGN,
+              profileIMG: req.body.profileIMG,
+              favGames: req.body.favGames
+            }
+          }
+        )
+          .then(data => res.json({ data }))
+          .catch(err => console.log(err));
+      })
       .catch(err => console.log(err));
   },
   getAllyList: (req, res) => {
@@ -253,27 +271,31 @@ module.exports = {
     });
   },
   markNoteAsRead: (req, res) => {
-    db.Profile.find({userName: req.body.user})
+    db.Profile.find({ userName: req.body.user })
       .then(user => {
-        const newNotifications = user[0].updates.filter(update => update.id !== req.body.notification)
-        db.Profile.updateOne({userName: req.body.user}, { $set: {updates: newNotifications}})
+        const newNotifications = user[0].updates.filter(
+          update => update.id !== req.body.notification
+        );
+        db.Profile.updateOne(
+          { userName: req.body.user },
+          { $set: { updates: newNotifications } }
+        )
           .then(res.json({ newNotifications }))
-          .catch(err => console.log(err))
+          .catch(err => console.log(err));
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   },
   searchForUsers: (req, res) => {
-    const input = req.params.searchQuery
-    db.Profile.find({userName: new RegExp(input, "i")})
-      .then(users => {
-        const searchResults = users.map(user => {
-          return{
-            _id: user._id,
-            userName: user.userName,
-            profileImage: user.profileIMG,
-          }
-        })
-        res.json(searchResults)
+    const input = req.params.searchQuery;
+    db.Profile.find({ userName: new RegExp(input, "i") }).then(users => {
+      const searchResults = users.map(user => {
+        return {
+          _id: user._id,
+          userName: user.userName,
+          profileImage: user.profileIMG
+        };
       });
+      res.json(searchResults);
+    });
   }
 };
