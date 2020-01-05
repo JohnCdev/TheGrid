@@ -44,7 +44,7 @@ class ViewUserProfile extends Component {
       let friendContext;
       const userProfile = res.data.data[0];
       const   setTheState = (obj, friendContextValue) => {
-        if(friendContextValue === 'friend'){
+        if(friendContextValue === 'friend' || profile === userData.userName){
           this.setState({
             _id: obj._id,
             currentCity: obj.currentCity,
@@ -91,11 +91,12 @@ class ViewUserProfile extends Component {
 
       if (userProfile) {
         const { userData } = this.context;
+        const profile = this.props.match.params.userProfile;
         console.log(userProfile.receivedFriendRequests)
         console.log(userData.userName)
         console.log(userProfile.receivedFriendRequests.includes(userData.userName))
         switch (true) {
-          case userProfile.friendList.includes(userData.userName):
+          case userProfile.friendList.includes(userData.userName) || profile === userData.userName:
             friendContext = "friend";
             setTheState(userProfile, "friend");
             return this.reloadPosts();
