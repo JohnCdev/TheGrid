@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext, userData } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import "./AddFriend.css";
 import API from "../../utils/API";
 

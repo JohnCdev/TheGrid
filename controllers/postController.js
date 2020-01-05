@@ -64,20 +64,16 @@ module.exports = {
             body: req.body.body
         })
             .then(comment => {
-                db.Post.findByIdAndUpdate({_id: req.body.postID},{ $inc: {
-                    numComments: 1
-                }})
-                console.log(comment)
-                res.json({ comment: true })
+                db.Post.findOneAndUpdate({ _id: req.body.postID },{$inc : {numComments: 1}})
+                    .then(res.json({ comment: true }))
+                    .catch(err => console.log(err))
             })
     },
 
     getComments: (req, res) => {
-
         db.Comment.find({ postID: req.body.postID })
             .then(comments => {
-                console.log(comments)
-                res.json({ foundComments: true })
+                res.json(comments)
             })
             .catch(err => console.log(err))
     }
