@@ -61,12 +61,12 @@ const ProfileIcon = ({ profileImg, large = false }) => {
   reRender(profileImg)
 
   return (
-
     <img
       className=""
       style={{ 'borderRadius': '50px', 'width': imgSize, 'height': imgSize }}
       src={imgRef}
     />
   )
+
 }
 export default ProfileIcon;
