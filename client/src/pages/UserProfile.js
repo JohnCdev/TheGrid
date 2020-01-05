@@ -91,9 +91,6 @@ class ViewUserProfile extends Component {
 
       if (userProfile) {
         const { userData } = this.context;
-        console.log(userProfile.receivedFriendRequests)
-        console.log(userData.userName)
-        console.log(userProfile.receivedFriendRequests.includes(userData.userName))
         switch (true) {
           case userProfile.friendList.includes(userData.userName):
             friendContext = "friend";

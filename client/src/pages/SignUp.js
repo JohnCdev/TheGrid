@@ -9,7 +9,6 @@ import {
 } from "../components/Form/Form";
 import API from "../utils/API";
 import { Container, Row, Col } from "../components/Grid/Grid";
-import Jumbotron from "../components/Jumbotron/Jumbotron";
 import { Redirect } from 'react-router';
 import Header from '../components/Header/Header';
 import Nav from "../components/Nav/Nav";
@@ -83,6 +82,7 @@ export default class SignUp extends Component {
       <>
         <Nav />
         <main>
+          <Header headerText="Sign Up" dispaly={false}/>
           <Container-fluid>
             <Row>
               <Col size="md-1">

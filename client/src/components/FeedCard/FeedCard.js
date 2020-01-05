@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import './feedCard.css'
 import Comments from '../Comments/Comments';
 
-const FeedCard = ({ id, userName, timeStamp, content, profileImg }) => {
+const FeedCard = ({ id, userName, timeStamp, content, profileImg, numComments }) => {
     const [commentToggle, setCommentToggle] = useState(false)
 
     const handleCommentToggle = () => {
@@ -32,7 +32,7 @@ const FeedCard = ({ id, userName, timeStamp, content, profileImg }) => {
                 // onClick={() => API.getComments({ postID: id })}
                 onClick={handleCommentToggle}
             >
-                {commentToggle ? "Close Comments" : "Comments"}
+                {commentToggle ? "Close Comments" : `Comments ${numComments}`}
             </button>
             {commentToggle ?
                 <Comments

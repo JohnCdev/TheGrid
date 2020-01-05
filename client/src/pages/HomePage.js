@@ -37,12 +37,12 @@ export default class HomePage extends Component {
                                 <p>Info Board<br></br>
                                 See what your allies are posting about and use them as your source to find new paths to glory!</p>
                                 <Link to="/new-user">
-                                    <button type="button" className="btn btn-primary">
+                                    <button type="button" className="btn btn-success">
                                         Sign Up!
                     </button>
                                 </Link>
                                 <Link to="/log-in">
-                                    <button type="button" className="btn btn-primary">
+                                    <button type="button" className="btn btn-success">
                                         Log In
                     </button>
                                 </Link>
