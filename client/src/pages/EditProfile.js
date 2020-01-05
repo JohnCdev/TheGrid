@@ -34,6 +34,7 @@ const imgArray = [
 ]
 
 export default class EditProfile extends Component {
+    static contextType = AuthContext;
     state = {
         userName: "",
         firstName: "",
@@ -95,6 +96,7 @@ export default class EditProfile extends Component {
     }
 
     handleFormSubmit = event => {
+        const { userData,logInFunction } = this.context;
         event.preventDefault();
 
         // steamIGN: user.steamIGN,
@@ -120,6 +122,26 @@ export default class EditProfile extends Component {
             favGames: this.state.favGames,
             lastUpdated: Date.now()
         }).then(res => {
+
+            const user = {
+                user: userData
+            }
+            const client = user.user
+            console.log()
+            
+            client.profileIMG = this.state.profileIMG;
+            client.firstName = this.state.firstName;
+            client.lastName = this.state.lastName;
+            client.age = this.state.age;
+            client.currentCity = this.state.currentCity;
+            client.steamIGN = this.state.steamIGN;
+            client.discordIGN = this.state.discordIGN;
+            client.battleNetIGN = this.state.battleNetIGN;
+            client.epicIGN = this.state.epicIGN;
+            client.favGames = this.state.favGames
+
+            logInFunction(user)
+
             console.log(res)
             this.setState({
                 submitSuccess: true
