@@ -33,50 +33,90 @@ class ViewUserProfile extends Component {
     originIGN: "",
     steamIGN: "",
     favGames: [],
-    userFeed: []
+    userFeed: [],
+    friendRenderContext: ""
   };
 
   componentDidMount = event => {
+    const { userData } = this.context;
     const profile = this.props.match.params.userProfile;
-    API.getUserProfile(profile).then(res => {
-      const { userData } = this.context;
+    API.getUserProfile(profile, { client: userData.userName }).then(res => {
       let friendContext;
       const userProfile = res.data.data[0];
-      if (userProfile) {
-        userProfile.friendList.includes(userData.userName)
-          ? friendContext = "friend"
-          : userProfile.sentFriendRequests.includes(userData.userName)
-            ? friendContext = "their-sent-request-pending"
-            : userProfile.receivedFriendRequests.includes(userData.userName)
-              ? friendContext = "their-received-request-pending"
-              : friendContext = "not-a-friend";
-      }
+      const   setTheState = (obj, friendContextValue) => {
+        if(friendContextValue === 'friend'){
+          this.setState({
+            _id: obj._id,
+            currentCity: obj.currentCity,
+            firstName: obj.firstName,
+            lastName: obj.lastName,
+            userName: obj.userName,
+            age: obj.age,
+            friendList: obj.friendList,
+            sentFriendRequests: obj.sentFriendRequests,
+            receivedFriendRequests: obj.receivedFriendRequests,
+            friendContext: friendContext,
+            profileImg: obj.profileIMG,
+            favGames: obj.favGames,
+            steamIGN: obj.steamIGN,
+            discordIGN: obj.discordIGN,
+            battleNetIGN: obj.battleNetIGN,
+            epicIGN: obj.epicIGN,
+            originIGN: obj.originIGN,
+            friendRenderContext: friendContextValue
+          });
+        } else {
+          this.setState({
+            _id: obj._id,
+            currentCity: '',
+            firstName: '',
+            lastName: '',
+            userName: obj.userName,
+            age: '',
+            friendList: obj.friendList,
+            sentFriendRequests: obj.sentFriendRequests,
+            receivedFriendRequests: obj.receivedFriendRequests,
+            friendContext: friendContext,
+            profileImg: obj.profileIMG,
+            favGames: '',
+            steamIGN: '',
+            discordIGN: '',
+            battleNetIGN: '',
+            epicIGN: '',
+            originIGN: '',
+            friendRenderContext: friendContextValue
+          });
+        }
+      };
 
-      //if user profile is not returned, set id equal to null otherwise fill out the state
-      userProfile === undefined
-        ? this.setState({ _id: null })
-        : this.setState({
-          _id: userProfile._id,
-          currentCity: userProfile.currentCity,
-          firstName: userProfile.firstName,
-          lastName: userProfile.lastName,
-          userName: userProfile.userName,
-          age: userProfile.age,
-          friendList: userProfile.friendList,
-          sentFriendRequests: userProfile.sentFriendRequests,
-          receivedFriendRequests: userProfile.receivedFriendRequests,
-          friendContext: friendContext,
-          profileImg: userProfile.profileIMG,
-          favGames: userProfile.favGames,
-          steamIGN: userProfile.steamIGN,
-          discordIGN: userProfile.discordIGN,
-          battleNetIGN: userProfile.battleNetIGN,
-          epicIGN: userProfile.epicIGN,
-          originIGN: userProfile.originIGN,
-        });
-      this.reloadPosts();
+      if (userProfile) {
+        const { userData } = this.context;
+        console.log(userProfile.receivedFriendRequests)
+        console.log(userData.userName)
+        console.log(userProfile.receivedFriendRequests.includes(userData.userName))
+        switch (true) {
+          case userProfile.friendList.includes(userData.userName):
+            friendContext = "friend";
+            setTheState(userProfile, "friend");
+            return this.reloadPosts();
+
+          case userProfile.sentFriendRequests.includes(userData.userName):
+            friendContext = "their-sent-request-pending";
+            return setTheState(userProfile, "not-friend");
+
+          case userProfile.receivedFriendRequests.includes(userData.userName):
+            friendContext = "their-received-request-pending";
+            return setTheState(userProfile, "not-friend");
+
+          default:
+            friendContext = "not-a-friend";
+            return setTheState(userProfile, "not-friend");
+        }
+      } else {
+        this.setState({ _id: null });
+      }
     });
-  }
+  };
 
   reloadPosts = () => {
     console.log("API to reload posts");
@@ -87,14 +127,12 @@ class ViewUserProfile extends Component {
       .then(response => {
         this.setState({
           userFeed: response.data
-        })
+        });
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   };
 
-
   render() {
-
     // need links for it to work first (discover page)
     const { isAuthenticated } = this.context;
     // if (!isAuthenticated) {
@@ -153,89 +191,123 @@ class ViewUserProfile extends Component {
           </h1>
         </Jumbotron>
       </>
-    ) : (
-        <>
-          <Nav />
-          <main>
-            <Container className="mt-4">
-              <Row>
-                <div className="cold-sm-12 col-md-3">
-                  <div style={{ 'width': '100%', 'height': '250px', 'textAlign': "left" }}>
-                    <Header headerText={`${this.state.userName}`} />
-                    <ProfilePicture
-                      location={this.state.currentCity}
-                      age={this.state.age}
-                      profileImg={this.state.profileImg}
-                    />
-                  </div>
-                  <div>
-                    {/* <h3>Latest Status Update?</h3> */}
-                    {/* <h3>Last logged in?</h3> */}
-                    { this.state.steamIGN !== "" ? 
+    ) : this.state.friendRenderContext === "friend" ? (
+      <>
+        <Nav />
+        <main>
+          <Container className="mt-4">
+            <Row>
+              <div className="cold-sm-12 col-md-3">
+                <div
+                  style={{ width: "100%", height: "250px", textAlign: "left" }}
+                >
+                  <Header headerText={`${this.state.userName}`} />
+                  <ProfilePicture
+                    location={this.state.currentCity}
+                    age={this.state.age}
+                    profileImg={this.state.profileImg}
+                  />
+                </div>
+                <div>
+                  {/* <h3>Latest Status Update?</h3> */}
+                  {/* <h3>Last logged in?</h3> */}
+                  {this.state.steamIGN !== "" ? (
                     <>
                       <h4>{`Steam: ${this.state.steamIGN}`}</h4>
                       <hr />
                     </>
-                    :
-                    null}
-                    { this.state.discordIGN !== "" ? 
+                  ) : null}
+                  {this.state.discordIGN !== "" ? (
                     <>
-                    <h4>{`Discord: ${this.state.discordIGN}`}</h4>
-                    <hr />
-                    </> 
-                    :
-                    null}
-                    { this.state.epicIGN !== "" ? 
-                    <>
-                    <h4>{`Epic: ${this.state.epicIGN}`}</h4>
-                    <hr />
+                      <h4>{`Discord: ${this.state.discordIGN}`}</h4>
+                      <hr />
                     </>
-                    :
-                    null}
-                    { this.state.battleNetIGN !== "" ?
+                  ) : null}
+                  {this.state.epicIGN !== "" ? (
                     <>
-                    <h4>{`BattleNet: ${this.state.battleNetIGN}`}</h4>
-                    <hr />
+                      <h4>{`Epic: ${this.state.epicIGN}`}</h4>
+                      <hr />
                     </>
-                    :
-                    null}
-                    { this.state.originIGN !== "" ? 
+                  ) : null}
+                  {this.state.battleNetIGN !== "" ? (
                     <>
-                    <h4>{`Origin: ${this.state.originIGN}`}</h4>
-                    <hr />
+                      <h4>{`BattleNet: ${this.state.battleNetIGN}`}</h4>
+                      <hr />
                     </>
-                    :
-                    null}
-                    { this.state.favGames.length !== 0 ?
+                  ) : null}
+                  {this.state.originIGN !== "" ? (
                     <>
-                    <h4>{`${this.state.userName}'s Favorite Games:`}</h4>
-                    <ol>
-                      {this.state.favGames.map((game, i) => <li key={i}>{game}</li>)}
-                    </ol>
+                      <h4>{`Origin: ${this.state.originIGN}`}</h4>
+                      <hr />
                     </>
-                    :
-                    null}
-                  </div>
-                  <AddFriend
-                    friendContext={this.state.friendContext}
-                    viewedProfile={this.state.userName}
-                    helloWorld={helloWorld}
+                  ) : null}
+                  {this.state.favGames.length !== 0 ? (
+                    <>
+                      <h4>{`${this.state.userName}'s Favorite Games:`}</h4>
+                      <ol>
+                        {this.state.favGames.map((game, i) => (
+                          <li key={i}>{game}</li>
+                        ))}
+                      </ol>
+                    </>
+                  ) : null}
+                </div>
+                <AddFriend
+                  friendContext={this.state.friendContext}
+                  viewedProfile={this.state.userName}
+                  helloWorld={helloWorld}
+                />
+              </div>
+              <div className="col-sm-12 col-md-9">
+                <section className="rounded pt-3 pl-1 pr-1 pb-1">
+                  {this.state.userFeed.length > 0 ? (
+                    <Feed
+                      feed={this.state.userFeed}
+                      reloadPosts={this.reloadPosts}
+                      name={this.state.userName}
+                    />
+                  ) : (
+                    <h2
+                      style={{
+                        backgroundColor: "#3c4042",
+                        textAlign: "center"
+                      }}
+                    >{`${this.state.userName} has no feed. (Yet!)`}</h2>
+                  )}
+                </section>
+              </div>
+            </Row>
+          </Container>
+        </main>
+      </>
+    ) : (
+      <>
+        <Nav />
+        <main>
+          <Container className="mt-4">
+            <Row>
+              <div className="cold-sm-12 col-md-3">
+                <div
+                  style={{ width: "100%", height: "250px", textAlign: "left" }}
+                >
+                  <Header headerText={`${this.state.userName}`} />
+                  <ProfilePicture
+                    location={this.state.currentCity}
+                    age={this.state.age}
+                    profileImg={this.state.profileImg}
                   />
                 </div>
-                <div className="col-sm-12 col-md-9">
-                  <section className="rounded pt-3 pl-1 pr-1 pb-1">
-                    {this.state.userFeed.length > 0 ? (
-                      <Feed feed={this.state.userFeed} reloadPosts={this.reloadPosts} name={this.state.userName} />
-                    ) : (
-                        <h2 style={{'backgroundColor':'#3c4042','textAlign':'center'}}>{`${this.state.userName} has no feed. (Yet!)`}</h2>
-                      )}
-                  </section>
-                </div>
-              </Row>
-            </Container>
-          </main>
-        </>
-      );
+                <AddFriend
+                  friendContext={this.state.friendContext}
+                  viewedProfile={this.state.userName}
+                  helloWorld={helloWorld}
+                />
+              </div>
+            </Row>
+          </Container>
+        </main>
+      </>
+    );
   }
 }
 

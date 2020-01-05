@@ -22,10 +22,16 @@ var PostSchema = new Schema({
     },
     comments: [
         {
-            type: Schema.Types.ObjectId,
-            ref:"Comment"
+            type: Array,
+            default: []
         }
     ],
+
+    numComments: {
+        type: Number,
+        default: 0
+    },
+    
     clanName: {
         type: String,
     }
