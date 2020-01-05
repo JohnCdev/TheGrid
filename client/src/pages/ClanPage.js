@@ -114,6 +114,7 @@ class ClanPage extends Component {
       } else if (response.data.nModified === 1) {
         console.log(this.state.clanName);
         joinedClan(this.state.clanName);
+        this.setState({clanRenderMemberContext: 'member'})
       } else {
         //error occured
       }
@@ -129,6 +130,7 @@ class ClanPage extends Component {
     API.leaveClan(payLoad).then(response => {
       console.log(response);
       leftClan(this.state.clanName);
+      this.setState({clanRenderMemberContext: 'not-member'})
     });
   };
 
