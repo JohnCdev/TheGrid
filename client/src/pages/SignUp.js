@@ -91,9 +91,7 @@ export default class SignUp extends Component {
                 <img src={SignUpTitle} className="signuptitle" />
               </Col>
               <Col size="md-4">
-                {/* <Jumbotron>
-                  <Header headerText={'Sign Up'} />
-                </Jumbotron> */}
+                <Header headerText="Sign Up" display={falseQ} />
 
                 <form onSubmit={this.handleFormSubmit}>
                   <h3>Account Information</h3>
