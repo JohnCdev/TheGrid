@@ -89,6 +89,7 @@ export default function LogIn() {
         <>
             <Nav />
             <main>
+            <Header headerText="Log In" display={false} />
                 <Container>
                     <Row>
                         <Col size="md-4">
@@ -134,7 +135,7 @@ export default function LogIn() {
                             </form>
                         </Col>
                     </Row>
-                    {loginFailed ? <SuccessMessage success={false} /> : null}
+                    {loginFailed ? <SuccessMessage errMessage="Username or Password Incorrect" success={false} /> : null}
                 </Container>
             </main>
         </>

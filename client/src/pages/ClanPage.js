@@ -33,7 +33,6 @@ class ClanPage extends Component {
   componentDidMount = event => {
     const clan = this.props.match.params.clanName;
     API.getClan(clan).then(response => {
-      console.log(response);
       const clan = response.data.data[0];
 
       const setTheState = (obj, clanMemberContext) => {
@@ -104,6 +103,7 @@ class ClanPage extends Component {
 
   joinClan = () => {
     const { userData, joinedClan } = this.context;
+
     const payLoad = {
       userName: userData.userName,
       clanName: this.state.clanName
@@ -138,7 +138,7 @@ class ClanPage extends Component {
   render() {
     const { isAuthenticated } = this.context;
 
-    // console.log(this.state)
+    console.log(this.state)
 
     return this.state._id === null ? (
       <>

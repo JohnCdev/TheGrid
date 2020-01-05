@@ -190,7 +190,7 @@ class ViewUserProfile extends Component {
                     profileImg={this.state.profileImg}
                   />
                 </div>
-                <div>
+                <div style={{'wordWrap':'break-word'}}>
                   {/* <h3>Latest Status Update?</h3> */}
                   {/* <h3>Last logged in?</h3> */}
                   {this.state.steamIGN !== "" ? (
