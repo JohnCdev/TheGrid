@@ -5,6 +5,7 @@ import '../FindAlliesSearch/discoverListSearch.css';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import { Link } from 'react-router-dom';
 import API from '../../utils/API';
+import Spinner from '../Spinner/Spinner';
 
 const FindClansSearch = () => {
     const [clanSearch, setSearch] = useState('');
@@ -83,11 +84,7 @@ const FindClansSearch = () => {
             </Jumbotron>
             <div className="discoverList">
                 {isLoading ?
-                    <div className="d-flex justify-content-center">
-                        <div className="spinner-border" role="status">
-                            <span className="sr-only">Loading...</span>
-                        </div>
-                    </div>
+                    <Spinner />
                     :
                     searchResult()
                 }
