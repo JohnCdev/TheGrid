@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import Helmet from 'react-helmet';
 
-const Header = ({ children, headerText, headingLevel = 1, alignment = "center", display=true }) => {
+const Header = ({ children, headerText, headingLevel = 1, alignment = "center", display = true }) => {
 
     const H = `h${headingLevel}`
 
     const headingRef = useRef(null)
+
+    const displayStyle  = display ? "show" : "none"; 
 
     useEffect(() => {
         headingRef.current.focus();
@@ -16,11 +18,9 @@ const Header = ({ children, headerText, headingLevel = 1, alignment = "center", 
             <Helmet>
                 <title>{`${headerText} | The Grid`}</title>
             </Helmet>
-            {display ? <H ref={headingRef} tabIndex="-1" style={{'textAlign': alignment}}>
+            <H ref={headingRef} tabIndex="-1" style={{ 'textAlign': 'alignment', 'display': displayStyle}}>
                 {headerText}
             </H>
-            :
-            null}
             {children}
         </section>
     );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header/Header';
 import { Link } from 'react-router-dom';
 import Nav from "../components/Nav/Nav";
-import { Grid, Container, Row, Col } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import Logo from "../images/Logos/G.png";
 import Brand from "../images/Logos/grid.png";
 
@@ -23,6 +23,7 @@ export default class HomePage extends Component {
         return (
             <>
                 <Nav />
+                <Header headerText="Landing" display={false} />
                 <Container>
                     <Row>
                         <Col size="md-6">
@@ -37,7 +38,7 @@ export default class HomePage extends Component {
                                 <p>Info Board<br></br>
                                 See what your allies are posting about and use them as your source to find new paths to glory!</p>
                                 <Link to="/new-user">
-                                    <button type="button" className="btn btn-success">
+                                    <button type="button" className="btn btn-success mr-5">
                                         Sign Up!
                     </button>
                                 </Link>
