@@ -64,7 +64,7 @@ export default {
 
   createComment: commentData => axios.post("/api/posts/new-comment", commentData),
 
-  getComments: commentData => axios.post("api/posts/get-comments", commentData),
+  getComments: commentData => axios.post("/api/posts/get-comments", commentData),
 
   searchForUsers: searchQuery =>
     axios.get(`/api/profiles/search/${searchQuery}`),

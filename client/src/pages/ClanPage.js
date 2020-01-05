@@ -92,7 +92,8 @@ class ClanPage extends Component {
   };
 
   reloadPosts = () => {
-    API.getClanPosts({ clanName: this.props.match.params.clanName })
+    console.log(this.state.clanName)
+    API.getClanPosts({ clanName: this.state.clanName })
       .then(response => {
         this.setState({
           clanFeed: response.data
