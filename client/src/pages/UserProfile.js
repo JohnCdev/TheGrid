@@ -67,28 +67,7 @@ class ViewUserProfile extends Component {
             originIGN: obj.originIGN,
             friendRenderContext: friendContextValue
           });
-       // } //else {
-        //   this.setState({
-        //     _id: obj._id,
-        //     currentCity: '',
-        //     firstName: '',
-        //     lastName: '',
-        //     userName: obj.userName,
-        //     age: '',
-        //     friendList: obj.friendList,
-        //     sentFriendRequests: obj.sentFriendRequests,
-        //     receivedFriendRequests: obj.receivedFriendRequests,
-        //     friendContext: friendContext,
-        //     profileImg: obj.profileIMG,
-        //     favGames: '',
-        //     steamIGN: '',
-        //     discordIGN: '',
-        //     battleNetIGN: '',
-        //     epicIGN: '',
-        //     originIGN: '',
-        //     friendRenderContext: friendContextValue
-        //   });
-        // }
+
       };
 
       if (userProfile) {
