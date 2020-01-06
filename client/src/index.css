@@ -12,29 +12,27 @@
     src: local('PTSans'), url(./fonts/PTSans-Regular.ttf) format('truetype');
 } */
 
-
-
 body {
     background-image: url(./images/Logos/grid-bg.png);
     background-size: cover;
     background-position: center top;
     background-color: #202124;
     z-index: -1;
-
-
 }
+
 
 .clanProfilePicture img {
     width: 65%;
     border-radius: 50%;
     margin-top: 20px;
     margin-bottom: 15px;
-
 }
+
 
 .card {
     background-color: #666;
 }
+
 
 .discoverListItem {
     height: 80px;
@@ -43,22 +41,23 @@ body {
     margin-bottom: 10px;
     box-shadow: 5px 4px 4px #202124;
     padding-right: 1rem;
-  
-}
+  }
+
 
 input {
     background-color: #e2e2e2;
 }
 
+
 body, h1, h2, h3, h4, h5, li, ul, a, button {
     font-family: Poppins, sans-serif;
-    
 }
+
 
  h2 {
     background-color: transparent !important;
-    
 }
+
 
 body, h1, h2, h4, h5 {
     color: #e1e1e1;
@@ -67,8 +66,8 @@ body, h1, h2, h4, h5 {
 
 p {
     font-size: .95rem;
-
 }
+
 
 h3 {
     color: #04dac6;
@@ -76,19 +75,24 @@ h3 {
     background-color: transparent !important;
 }
 
+
 h4 {
     font-size: .95rem;
 }
 
+
 h5 {
-  
+    
     font-size: .9rem;
 }
+
 
 .infoboard {
     width: 850px;
     height: 158px;
 }
+
+
 .btn-primary {
     font-family: Poppins, sans-serif;
     color: #231f20;
@@ -96,10 +100,12 @@ h5 {
     border-color: #018577;
 }
 
+
 .btn-primary:hover {
     background-color: #018577;
     border-color: #04dac6;
 }
+
 
 .btn-success {
     font-family: Poppins, sans-serif;
@@ -107,33 +113,35 @@ h5 {
     background-color: #04dac6;
 }
 
+
 .btn-success:hover {
     background-color: #018577;
 }
 
+
 .btn-danger, .btn-secondary {
     font-family: Poppins, sans-serif;
-
 }
+
+
 .btn-danger {
     background-color: #9c4efa;
     border-color: #666;
 }
 
+
 .btn-danger:hover {
     background-color: #4f2680;
     border-color: #666;
-
 }
-
 
 
 .fa-trash:before {
     content: "\f1f8";
     color: #04dac6;
     font-size: 1.25rem;
-    
 }
+
 
 html,
 body,
@@ -145,14 +153,17 @@ div[data-reactroot] {
     margin: 0;
 }
 
+
 main {
     margin-top: 10px;
     margin-bottom: 200px;
 }
 
+
 .mr-5 {
     margin-right: 1.5rem !important;
 }
+
 
 
 .selectedPic {
@@ -162,7 +173,6 @@ main {
     border: 2px solid #e2e2e2;
     margin: auto;
     border-Radius: 10px;
-
 }
 
 /* .selectedPic span {
@@ -177,8 +187,8 @@ main {
     background-color: #04dac6;
     border-Radius: 10px;
 
-
 }
+
 
 .selectedPic Button {
     position: absolute;
@@ -186,9 +196,11 @@ main {
     right: 5%;
 }
 
+
 #postBackground {
     background-color: transparent !important;
 }
+
 
 .picGrid {
     height: 100%;
@@ -199,8 +211,8 @@ main {
     flex-direction: row;
     flex-wrap: wrap; 
     border-Radius: 10px;
-
 }
+
 
 .picGrid img {
     height: 21%;
@@ -209,6 +221,7 @@ main {
     border-Radius: 10px;
 }
 
+
 .img-thumbnail {
     /* padding: 0.25rem; */
     background-color: #04dac6;
@@ -216,17 +229,19 @@ main {
     border-radius: 100px;
     max-width: 100%;
     height: auto;
-    
 }
+
 
 hr {
     border-color: #e2e2e2;
 }
 
+
 .logo {
     height: 650px;
     width: 650px;
 }
+
 
 .brand {
     height: 162px;
@@ -236,14 +251,17 @@ hr {
   margin-right: auto;
 }
 
+
 .icon {
     height:30px;
     width: 30px;
 }
 
+
 nav > button > a {
     color: #000;
 }
+
 
 .signuptitle {
     height:100px;
@@ -252,18 +270,19 @@ nav > button > a {
     margin-top: 10px; */
 }
 
+
 .LoginTitle {
     height:100%;
     width: 100%;
 
 }
 
+
 .allies-header {
-    width:100%;
+    width: 182px;
     color: #fff;
     background-color: #9c4efa;
 }
-
 
 
 @keyframes spinner-border {
@@ -284,17 +303,22 @@ nav > button > a {
       height: 1rem;
       border-width: .2em;
   }
+
+
   #controlHeader h1 {
     background-color: transparent !important;
   }
+
 
   .box-shadow-dark {
       box-shadow: 4px 2px 2px #333333; 
   }
 
+
   #infoBoard h1 {
     background-color: #202124;
   }
+
 
   @media only screen and (max-width: 600px) {
 
