@@ -88,7 +88,8 @@ export default function LogIn() {
     return (
         <>
             <Nav />
-            <main>
+            <main style={{ "height": "50%", "marginTop": "100px" }}>
+
             <Header headerText="Log In" display={false} />
                 <Container>
                     <Row>
