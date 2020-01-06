@@ -7,7 +7,7 @@ import {
   InputEmail
 } from "../components/Form/Form";
 import API from "../utils/API";
-import { Row, Col } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import { Redirect } from 'react-router';
 import Header from '../components/Header/Header';
 import Nav from "../components/Nav/Nav";
@@ -90,11 +90,9 @@ export default class SignUp extends Component {
         <Nav />
         <main>
           <Header headerText="Sign Up" display={false} />
-          <Container-fluid>
+          <Container className="mt-4">
             <Row>
-              <Col size="md-1">
-              </Col>
-              <Col size="md-4">
+              <div className="col-sm-12 col-md-5">
                 <Header headerText="Sign Up" display={false} />
                 <img src={SignUpTitle} className="signuptitle" />
                 <form onSubmit={this.handleFormSubmit}>
@@ -188,7 +186,7 @@ export default class SignUp extends Component {
                     :
                     null}
                 </form>
-              </Col>
+              </div>
               <Col size="md-1">
               </Col>
               <Col size="md-5">
@@ -196,7 +194,7 @@ export default class SignUp extends Component {
                 <img src={Logo} className="logo" />
               </Col>
             </Row>
-          </Container-fluid>
+          </Container>
         </main>
       </>
     )

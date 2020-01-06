@@ -44,36 +44,36 @@ class ViewUserProfile extends Component {
       let friendContext;
       const userProfile = res.data.data[0];
 
-      const   setTheState = (obj, friendContextValue) => {
+      const setTheState = (obj, friendContextValue) => {
 
         //if(friendContextValue === 'friend' || profile === userData.userName){
-          this.setState({
-            _id: obj._id,
-            currentCity: obj.currentCity,
-            firstName: obj.firstName,
-            lastName: obj.lastName,
-            userName: obj.userName,
-            age: obj.age,
-            friendList: obj.friendList,
-            sentFriendRequests: obj.sentFriendRequests,
-            receivedFriendRequests: obj.receivedFriendRequests,
-            friendContext: friendContext,
-            profileImg: obj.profileIMG,
-            favGames: obj.favGames,
-            steamIGN: obj.steamIGN,
-            discordIGN: obj.discordIGN,
-            battleNetIGN: obj.battleNetIGN,
-            epicIGN: obj.epicIGN,
-            originIGN: obj.originIGN,
-            friendRenderContext: friendContextValue
-          });
+        this.setState({
+          _id: obj._id,
+          currentCity: obj.currentCity,
+          firstName: obj.firstName,
+          lastName: obj.lastName,
+          userName: obj.userName,
+          age: obj.age,
+          friendList: obj.friendList,
+          sentFriendRequests: obj.sentFriendRequests,
+          receivedFriendRequests: obj.receivedFriendRequests,
+          friendContext: friendContext,
+          profileImg: obj.profileIMG,
+          favGames: obj.favGames,
+          steamIGN: obj.steamIGN,
+          discordIGN: obj.discordIGN,
+          battleNetIGN: obj.battleNetIGN,
+          epicIGN: obj.epicIGN,
+          originIGN: obj.originIGN,
+          friendRenderContext: friendContextValue
+        });
 
       };
 
       if (userProfile) {
         const { userData } = this.context;
         const profile = this.props.match.params.userProfile;
-        
+
         switch (true) {
           case userProfile.friendList.includes(userData.userName) || profile === userData.userName:
             friendContext = "friend";
@@ -180,17 +180,17 @@ class ViewUserProfile extends Component {
           <Container className="mt-4">
             <Row>
               <div className="cold-sm-12 col-md-3">
-                <div
-                  style={{ width: "100%", height: "250px", textAlign: "left" }}
+                <div style={{ width: "100%", height: "250px", textAlign: "center" }}
                 >
-                  <Header headerText={`${this.state.userName}`} />
+                  <Header headingLevel={3} headerText={`${this.state.userName}`} />
+                  {/* <Header headerText={`${this.state.userName}`} /> */}
                   <ProfilePicture
                     location={this.state.currentCity}
                     age={this.state.age}
                     profileImg={this.state.profileImg}
                   />
                 </div>
-                <div style={{'wordWrap':'break-word'}}>
+                <div style={{ 'wordWrap': 'break-word' }}>
                   {/* <h3>Latest Status Update?</h3> */}
                   {/* <h3>Last logged in?</h3> */}
                   {this.state.steamIGN !== "" ? (
@@ -249,13 +249,13 @@ class ViewUserProfile extends Component {
                       name={this.state.userName}
                     />
                   ) : (
-                    <h2
-                      style={{
-                        backgroundColor: "#3c4042",
-                        textAlign: "center"
-                      }}
-                    >{`${this.state.userName} has no feed. (Yet!)`}</h2>
-                  )}
+                      <h2
+                        style={{
+                          backgroundColor: "#3c4042",
+                          textAlign: "center"
+                        }}
+                      >{`${this.state.userName} has no feed. (Yet!)`}</h2>
+                    )}
                 </section>
               </div>
             </Row>
@@ -263,33 +263,33 @@ class ViewUserProfile extends Component {
         </main>
       </>
     ) : (
-      <>
-        <Nav />
-        <main>
-          <Container className="mt-4">
-            <Row>
-              <div className="cold-sm-12 col-md-3">
-                <div
-                  style={{ width: "100%", height: "250px", textAlign: "left" }}
-                >
-                  <Header headerText={`${this.state.userName}`} />
-                  <ProfilePicture
-                    location={this.state.currentCity}
-                    age={this.state.age}
-                    profileImg={this.state.profileImg}
-                  />
-                </div>
-                <AddFriend
-                  friendContext={this.state.friendContext}
-                  viewedProfile={this.state.userName}
-                  helloWorld={helloWorld}
-                />
-              </div>
-            </Row>
-          </Container>
-        </main>
-      </>
-    );
+          <>
+            <Nav />
+            <main>
+              <Container className="mt-4">
+                <Row>
+                  <div className="cold-sm-12 col-md-3">
+                    <div
+                      style={{ width: "100%", height: "250px", textAlign: "left" }}
+                    >
+                      <Header headerText={`${this.state.userName}`} />
+                      <ProfilePicture
+                        location={this.state.currentCity}
+                        age={this.state.age}
+                        profileImg={this.state.profileImg}
+                      />
+                    </div>
+                    <AddFriend
+                      friendContext={this.state.friendContext}
+                      viewedProfile={this.state.userName}
+                      helloWorld={helloWorld}
+                    />
+                  </div>
+                </Row>
+              </Container>
+            </main>
+          </>
+        );
   }
 }
 

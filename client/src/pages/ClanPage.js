@@ -161,10 +161,11 @@ class ClanPage extends Component {
             <Row>
               <div className="col-sm-12 col-md-3">
                 <div>
-                  <Header headerText={`${this.state.clanName}`} />
+                  <Header headingLevel={3} headerText={`${this.state.clanName}`} />
                   <ClanPicture clanImg={this.state.clanImg} />
                   <p>{this.state.clanDescription}</p>
                 </div>
+                <hr />
                 <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>
                 <hr />
                 {!this.state.clanDiscord === "" ? (

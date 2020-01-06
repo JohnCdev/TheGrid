@@ -66,7 +66,7 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
             
             :
             <form id="postBackground" onSubmit={handlePostSubmit}>
-                <label id="postTitle" htmlFor="postComment">Create Post</label>
+                <label id="postTitle" htmlFor="postComment"><i class="fa fa-pencil"></i> Create Post</label>
                 <TextArea
                     id="postComment"
                     name="postComment"

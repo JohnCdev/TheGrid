@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Container } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import AlliesBar from "../components/AlliesBar/AlliesBar";
 import Feed from "../components/Feed/Feed";
 import PostForm from "../components/PostForm/PostForm";
@@ -8,6 +8,8 @@ import API from "../utils/API";
 import Header from "../components/Header/Header";
 import { AuthContext } from '../context/AuthContext';
 import { Redirect } from 'react-router';
+// import InfoBoard from "../images/Logos/infoboard.png";
+
 
 const FeedPage = () => {
     const { isAuthenticated } = useContext(AuthContext);
@@ -58,10 +60,17 @@ const FeedPage = () => {
     return (
         <>
             <Nav />
-            <main style={{ "height": "100%", "marginBottom": "200px" }}>
-                <AlliesBar />
-                <Container>
-                    <Header headerText="Info Board" />
+            <main>
+
+            {/* <main style={{ "height": "100%", "marginBottom": "200px" }}> */}
+                
+                <Container-fluid>
+                <Row>
+              <div className="col-sm-12 col-md-7 offset-md-1">
+              {/* <img src={InfoBoard} className="infoboard" /> */}
+
+                    
+                    <Header headerText="Info Board" display={false}/>
                     {feedLoading ?
                         null
                         :
@@ -75,7 +84,15 @@ const FeedPage = () => {
                         <h1>You have no feed</h1> :
                         null
                     }
-                </Container>
+                    </div>
+                    <div className="col-sm-12 col-md-4">
+              <AlliesBar />
+            
+              </div>
+
+                  
+                    </Row>
+                </Container-fluid>
             </main>
         </>
     )

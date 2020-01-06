@@ -1,15 +1,16 @@
 .allies-icon {
-    display: inline-block;
+    display:block;
     border: 1px #CCC;
     margin: 2px;
     border: solid;
-    border-color: white;
+    border-color: #666;
     text-align: center;
     text-decoration: none;
     width: 180px;
     padding-top: 10px;
     transition: all .3s ease-in-out;
     border-radius: .25rem;
+
 }
 
 .allies-icon:hover {
