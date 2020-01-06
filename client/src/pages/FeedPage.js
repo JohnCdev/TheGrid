@@ -61,7 +61,7 @@ const FeedPage = () => {
         <>
             <Nav />
             <main>
-                <Container-fluid>
+                <Container className="mt-4">
                     <Row>
                         <div className="col-sm-12 col-md-7 offset-md-1">
                             {/* <img src={InfoBoard} className="infoboard" /> */}
@@ -82,7 +82,8 @@ const FeedPage = () => {
                                 null
                             }
                         </div>
-                        <div className="col-sm-12 col-md-4">
+                        <div className="col-sm-12 col-md-2">
+                        <div class="card-header allies-header"><i class="fa fa-users"></i> Allies</div>
 
                             <AlliesBar />
 
@@ -90,7 +91,7 @@ const FeedPage = () => {
 
 
                     </Row>
-                </Container-fluid>
+                </Container>
             </main>
         </>
     )

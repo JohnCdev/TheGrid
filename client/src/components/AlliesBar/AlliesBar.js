@@ -37,7 +37,7 @@ const AlliesBar = () => {
     return (
         <div id="allies-bar">
            
-           <div class="card-header allies-header"><i class="fa fa-users"></i> Allies</div>
+           {/* <div class="card-header allies-header"><i class="fa fa-users"></i> Allies</div> */}
            
             {/* <hr /> */}
                 {isLoading ?

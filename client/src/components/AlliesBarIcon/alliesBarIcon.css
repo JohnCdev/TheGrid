@@ -6,7 +6,7 @@
     border-color: #666;
     text-align: center;
     text-decoration: none;
-    width: 180px;
+    width: 98%;
     padding-top: 10px;
     transition: all .3s ease-in-out;
     border-radius: .25rem;
@@ -20,4 +20,22 @@
 }
 p {
     color: #e1e1e1;
+}
+
+@media only screen and (max-width: 600px) {
+    .allies-icon {
+        display: inline-block;
+        border: 1px #CCC;
+        margin: 2px;
+        border: solid 1px;
+        border-color: #666;
+        text-align: center;
+        text-decoration: none;
+        width: 50%;
+        padding-top: 10px;
+        transition: all .3s ease-in-out;
+        border-radius: .25rem;
+        overflow:scroll ;
+    
+    }
 }

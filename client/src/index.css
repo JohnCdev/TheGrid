@@ -279,9 +279,10 @@ nav > button > a {
 
 
 .allies-header {
-    width: 182px;
+    width: 100%;
     color: #fff;
     background-color: #9c4efa;
+    margin-top: 6rem;
 }
 
 
@@ -327,7 +328,15 @@ nav > button > a {
         width: 450px;
         text-align: center;
     }
+    .allies-header {
+        width: 100%;
+        color: #fff;
+        background-color: #9c4efa;
+        margin-top: 5rem;
 
+        
+    }
+    
     
   }
 
