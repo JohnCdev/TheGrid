@@ -210,6 +210,7 @@ class ClanPage extends Component {
               </div>
               <div className="col-sm-12 col-md-9">
               <img src={Brand} className="brand" />
+              <hr />
 
                 <section>
                   <PostForm
