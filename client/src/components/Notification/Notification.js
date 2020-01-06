@@ -25,8 +25,6 @@ const aStyle = {
 
 export default function Notification(props) {
     const clickHandler = props.notificationClickHandler ? props.notificationClickHandler : () => { '' }
-    console.log(clickHandler)
-    console.log(props)
     const { userData } = useContext(AuthContext);
     return (
          <div 

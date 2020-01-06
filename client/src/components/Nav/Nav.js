@@ -9,7 +9,6 @@ import API from "../../utils/API";
 import Media from 'react-media';
 
 const Nav = (props) => {
-  console.log()
   const { isAuthenticated, userData } = useContext(AuthContext);
 
   const [notifications, setNotifications] = useState([]);
