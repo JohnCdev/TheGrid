@@ -33,7 +33,14 @@ body {
     background-color: #666;
 }
 
-
+.discoverListItem {
+    height: 80px;
+    width: 100%;
+    border: 1px solid #666;
+    margin-bottom: 10px;
+    box-shadow: 5px 4px 4px #202124;
+    padding-right: 1rem;
+}
 
 input {
     background-color: #e2e2e2;
@@ -61,7 +68,7 @@ p {
 
 h3 {
     color: #04dac6;
-    font-size: 1.75em;
+    font-size: 1.5em;
     background-color: transparent !important;
 }
 

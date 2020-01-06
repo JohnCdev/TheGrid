@@ -115,13 +115,13 @@ const CreateClan = () => {
         <>
         <Nav />
         <main>
-            <Container>
-                {/* <Jumbotron>
-                    <Header headerText="Create a New Clan" />
-                </Jumbotron> */}
+        <Container className="mt-4">
+                    <Header headerText="Create a New Clan"display={false} />
                  <Row>
-                        <Col size="md-6">
+              <div className="col-sm-12 col-md-6 offset-md-3">
                 <form onSubmit={handleFormSubmit}>
+                <h3><i class="fa fa-pencil"></i> Create New Clan</h3>
+
                     <label htmlFor="clanName">Clan Name</label>
                     <Input
                         id="clanName"
@@ -222,7 +222,7 @@ const CreateClan = () => {
                     </FormBtn>
                 </form>
                 {submitSuccess ? <SuccessMessage success={true}/>: null}
-                </Col>
+                </div>
                 </Row>
             </Container>
         </main>

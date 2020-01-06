@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Container } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import Nav from "../components/Nav/Nav";
 import Header from "../components/Header/Header";
 import FindAlliesSearch from "../components/FindAlliesSearch/FindAlliesSearch";
@@ -25,13 +25,19 @@ const DiscoverPage = () => {
             <Nav />
             <main style={{ "height": "100%", "marginBottom": "200px" }}>
                 <Container>
-                    <Header headerText="Discover" />
-                    <button className="btn btn-success" onClick={handleToggle}>{pickSearch ? "Switch to Allies Switch" : "Switch to Clan Search"}</button>
-                    {!pickSearch ?
-                        <FindAlliesSearch />
-                        :
-                        <FindClansSearch />
-                    }
+                    <Row>
+                        <div className="col-sm-12 col-md-6 offset-md-3">
+                            <Header headerText="Discover" display={false} />
+                            <button className="btn btn-success" onClick={handleToggle}>{pickSearch ? "Switch to Allies Switch" : "Switch to Clan Search"}</button>
+                            {!pickSearch ?
+                                <FindAlliesSearch />
+                                :
+                                <FindClansSearch />
+                            }
+                        </div>
+
+
+                    </Row>
                 </Container>
             </main>
         </>

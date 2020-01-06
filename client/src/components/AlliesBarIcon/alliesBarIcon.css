@@ -1,8 +1,8 @@
 .allies-icon {
     display:block;
-    border: 1px #CCC;
+    /* border: 1px #CCC; */
     margin: 2px;
-    border: solid;
+    border: solid 1px;
     border-color: #666;
     text-align: center;
     text-decoration: none;

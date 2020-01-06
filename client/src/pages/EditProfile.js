@@ -216,15 +216,13 @@ export default class EditProfile extends Component {
             <Nav />
             <main>
                 <Container>
-                    {/* <Jumbotron>
-                        <Header headerText="Edit Profile" />
-                    </Jumbotron> */}
+                        <Header headerText="Edit Profile" display={false} />
                     <Row>
                     <Col size="md-3">
                         </Col>
                         <Col size="md-6">
                     <form onSubmit={this.handleFormSubmit}>
-                        <h3>Profile Information</h3>
+                        <h3><i class="fa fa-pencil"></i> Profile Information</h3>
                         <label htmlFor="firstName">First Name</label>
                         <Input
                             value={this.state.firstName}
@@ -273,7 +271,7 @@ export default class EditProfile extends Component {
                             name="profileImg"
                         /> */}
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
-                        <h3>Game Services User Names</h3>
+                        <h3><i class="fa fa-pencil"></i> Game Services User Names</h3>
                         <label htmlFor="steamIGN">Steam Name</label>
                         <Input
                             value={this.state.steamIGN}
@@ -311,7 +309,7 @@ export default class EditProfile extends Component {
                         />
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
 
-                        <h3>Your Top Games</h3>
+                        <h3><i class="fa fa-pencil"></i> Your Top Games</h3>
                         <label htmlFor="addGame">Your Favorite Games</label>
                         <Input
                             value={this.state.addGame}
