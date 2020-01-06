@@ -3,6 +3,7 @@ import Notification from "../Notification/Notification";
 import "./notifications.css";
 
 const Notifications = props => {
+  console.log(props.notificationClickHandler)
       const noNotifications = (
       <>
         <button className="btn btn-secondary notificationsBtn" type="button">
@@ -27,9 +28,11 @@ const Notifications = props => {
           className="dropdown-menu dropdown-menu-right"
           aria-labelledby="dropdownMenuButton"
         >
+          
           {props.notifications.map(noti => {
             return (
               <Notification
+                notificationClickHandler={props.notificationClickHandler}
                 key={noti.id}
                 id={noti.id}
                 update={noti.update}

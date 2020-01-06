@@ -37,9 +37,9 @@ class ViewUserProfile extends Component {
     friendRenderContext: ""
   };
 
-  componentDidMount = event => {
+  loadProfile = userProfile => {
     const { userData } = this.context;
-    const profile = this.props.match.params.userProfile;
+    const profile = userProfile || this.props.match.params.userProfile;
     API.getUserProfile(profile, { client: userData.userName }).then(res => {
       let friendContext;
       const userProfile = res.data.data[0];
@@ -96,6 +96,10 @@ class ViewUserProfile extends Component {
         this.setState({ _id: null });
       }
     });
+  }
+
+  componentDidMount = event => {
+    this.loadProfile()
   };
 
   reloadPosts = () => {
@@ -162,7 +166,7 @@ class ViewUserProfile extends Component {
 
     return this.state._id === null ? (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <Header headerText={404} />
         <Jumbotron>
           <h1>User Not Found</h1>
@@ -175,7 +179,7 @@ class ViewUserProfile extends Component {
       </>
     ) : this.state.friendRenderContext === "friend" ? (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <main>
           <Container className="mt-4">
             <Row>
@@ -264,7 +268,7 @@ class ViewUserProfile extends Component {
       </>
     ) : (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <main>
           <Container className="mt-4">
             <Row>

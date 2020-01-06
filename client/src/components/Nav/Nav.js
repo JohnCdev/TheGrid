@@ -8,7 +8,8 @@ import Notifications from "../Notifications/Notifications";
 import API from "../../utils/API";
 import Media from 'react-media';
 
-const Nav = () => {
+const Nav = (props) => {
+  console.log()
   const { isAuthenticated, userData } = useContext(AuthContext);
 
   const [notifications, setNotifications] = useState([]);
@@ -78,7 +79,7 @@ const Nav = () => {
           }
         </Media>
         {/* Switch || to && to check to auth state for notifications */}
-        {isAuthenticated && <Notifications notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
+        {isAuthenticated && <Notifications notificationClickHandler={props.notificationClickHandler} notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
         <Link to="/profile">
           {isAuthenticated && <ProfileIcon profileImg={userData.profileImg} large={true} />}
         </Link>

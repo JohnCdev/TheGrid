@@ -24,10 +24,12 @@ const aStyle = {
 }
 
 export default function Notification(props) {
+    const clickHandler = props.notificationClickHandler || ''
+    console.log(clickHandler)
     console.log(props)
     const { userData } = useContext(AuthContext);
     return (
-        <div style={{ position: 'relative', marginTop: '10px', width: '400px' }}>
+         <div onClick={()=> {clickHandler(props.userInvolved)}} style={{ position: 'relative', marginTop: '10px', width: '400px' }}>
             <Link to={`/user-profile/${props.userInvolved}`} className="dropdown-item" style={aStyle}
             >
                 {`${props.update}`}
