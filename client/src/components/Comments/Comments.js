@@ -25,7 +25,8 @@ const Comments = ({ handleToggle, postID }) => {
             userName: userData.userName,
             profileIMG: userData.profileImg,
             postID: postID,
-            body: commentBody
+            body: commentBody,
+            timeStamp: new Date()
         })
             .then(res => {
                 loadCommments()
