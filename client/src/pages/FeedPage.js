@@ -8,7 +8,7 @@ import API from "../utils/API";
 import Header from "../components/Header/Header";
 import { AuthContext } from '../context/AuthContext';
 import { Redirect } from 'react-router';
-// import InfoBoard from "../images/Logos/infoboard.png";
+
 
 
 const FeedPage = () => {
@@ -61,36 +61,34 @@ const FeedPage = () => {
         <>
             <Nav />
             <main>
-
-            {/* <main style={{ "height": "100%", "marginBottom": "200px" }}> */}
-                
                 <Container-fluid>
-                <Row>
-              <div className="col-sm-12 col-md-7 offset-md-1">
-              {/* <img src={InfoBoard} className="infoboard" /> */}
+                    <Row>
+                        <div className="col-sm-12 col-md-7 offset-md-1">
+                            {/* <img src={InfoBoard} className="infoboard" /> */}
 
-                    
-                    <Header headerText="Info Board" display={false}/>
-                    {feedLoading ?
-                        null
-                        :
-                        <PostForm reloadPosts={reloadPosts} />
-                    }
-                    {feed.length > 0 && !feedLoading ?
-                        <Feed feed={feed} name={sessionStorage.getItem('project3username')} /> :
-                        null
-                    }
-                    {feed.length === 0 && !feedLoading ?
-                        <h1>You have no feed</h1> :
-                        null
-                    }
-                    </div>
-                    <div className="col-sm-12 col-md-4">
-              <AlliesBar />
-            
-              </div>
 
-                  
+                            <Header headerText="Info Board" display={false} />
+                            {feedLoading ?
+                                null
+                                :
+                                <PostForm reloadPosts={reloadPosts} />
+                            }
+                            {feed.length > 0 && !feedLoading ?
+                                <Feed feed={feed} name={sessionStorage.getItem('project3username')} /> :
+                                null
+                            }
+                            {feed.length === 0 && !feedLoading ?
+                                <h1>You have no feed</h1> :
+                                null
+                            }
+                        </div>
+                        <div className="col-sm-12 col-md-4">
+
+                            <AlliesBar />
+
+                        </div>
+
+
                     </Row>
                 </Container-fluid>
             </main>

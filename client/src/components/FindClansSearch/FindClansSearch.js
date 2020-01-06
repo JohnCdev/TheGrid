@@ -60,7 +60,7 @@ const FindClansSearch = () => {
                         )
                     })
                     :
-                    <h3>No Results</h3>}
+                    <p>No Results</p>}
             </>
         );
     }

@@ -215,14 +215,14 @@ export default class EditProfile extends Component {
             <>
             <Nav />
             <main>
-                <Container>
+            <Container className="mt-4">
+
                         <Header headerText="Edit Profile" display={false} />
                     <Row>
-                    <Col size="md-3">
-                        </Col>
-                        <Col size="md-6">
+                    <div className="col-sm-12 col-md-6 offset-md-3">
+
                     <form onSubmit={this.handleFormSubmit}>
-                        <h3><i class="fa fa-pencil"></i> Profile Information</h3>
+                        <h3><i class="fa fa-pencil"></i> Edit Profile</h3>
                         <label htmlFor="firstName">First Name</label>
                         <Input
                             value={this.state.firstName}
@@ -375,7 +375,7 @@ export default class EditProfile extends Component {
                         </FormBtn>
                     </form>
                     {this.state.submitSuccess ? <SuccessMessage success={true}/> : null}
-                    </Col>
+                    </div>
 
                     </Row>
 

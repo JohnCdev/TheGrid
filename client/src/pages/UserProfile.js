@@ -10,6 +10,10 @@ import Header from "../components/Header/Header";
 import { AuthContext } from "../context/AuthContext";
 import PostForm from "../components/PostForm/PostForm";
 import Feed from "../components/Feed/Feed";
+import Brand from "../images/Logos/grid.png";
+
+
+
 
 class ViewUserProfile extends Component {
   static contextType = AuthContext;
@@ -180,16 +184,23 @@ class ViewUserProfile extends Component {
           <Container className="mt-4">
             <Row>
               <div className="cold-sm-12 col-md-3">
-                <div style={{ width: "100%", height: "250px", textAlign: "center" }}
+                <div style={{ width: "100%", height: "200px", textAlign: "center" }}
                 >
-                  <Header headingLevel={3} headerText={`${this.state.userName}`} />
-                  {/* <Header headerText={`${this.state.userName}`} /> */}
                   <ProfilePicture
                     location={this.state.currentCity}
                     age={this.state.age}
                     profileImg={this.state.profileImg}
                   />
+
                 </div>
+                <div style={{ width: "100%", height: "10", textAlign: "center" }}
+                >
+                  <Header headingLevel={3} headerText={`${this.state.userName}`}
+                  />
+                </div>
+                <hr />
+
+
                 <div style={{ 'wordWrap': 'break-word' }}>
                   {/* <h3>Latest Status Update?</h3> */}
                   {/* <h3>Last logged in?</h3> */}
@@ -241,6 +252,8 @@ class ViewUserProfile extends Component {
                 />
               </div>
               <div className="col-sm-12 col-md-9">
+                <img src={Brand} className="brand" />
+
                 <section className="rounded pt-3 pl-1 pr-1 pb-1">
                   {this.state.userFeed.length > 0 ? (
                     <Feed
@@ -249,12 +262,12 @@ class ViewUserProfile extends Component {
                       name={this.state.userName}
                     />
                   ) : (
-                      <h2
+                      <p
                         style={{
                           backgroundColor: "#3c4042",
                           textAlign: "center"
                         }}
-                      >{`${this.state.userName} has no feed. (Yet!)`}</h2>
+                      >{`${this.state.userName} has no feed. (Yet!)`}</p>
                     )}
                 </section>
               </div>

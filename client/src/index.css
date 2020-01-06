@@ -25,8 +25,11 @@ body {
 }
 
 .clanProfilePicture img {
-    width: 70%;
+    width: 65%;
     border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+
 }
 
 .card {
@@ -68,7 +71,7 @@ p {
 
 h3 {
     color: #04dac6;
-    font-size: 1.5em;
+    font-size: 1.25em;
     background-color: transparent !important;
 }
 
@@ -122,10 +125,12 @@ h5 {
 
 }
 
+
+
 .fa-trash:before {
     content: "\f1f8";
     color: #04dac6;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     
 }
 
@@ -248,6 +253,14 @@ nav > button > a {
     width: 100%;
 
 }
+
+.allies-header {
+    width: 180px;
+    color: #fff;
+    background-color: #9c4efa;
+}
+
+
 
 @keyframes spinner-border {
     to { transform: rotate(360deg); }

@@ -8,12 +8,12 @@ const btnStyle = {
     position: "absolute",
     right: '3px',
     bottom: '20px',
-    background: '',
-    color: '#fff',
-    border: 'none',
+    background: 'transparent',
+    color: '',
+    border: "none",
     padding: '0px 10px',
     marginLeft: '10px',
-    borderRadius: '50%',
+    borderRadius: '',
     cursor: 'pointer'
 }
 
