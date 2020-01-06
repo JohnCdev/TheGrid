@@ -34,7 +34,7 @@ const YourClansPage = () => {
     return (
         <>
             <Nav />
-            <main>
+            <main style={{ "height": "100%", "marginTop": "100px" }}>
                 <Container>
                     <Row>
                         <div className="col-sm-12 col-md-6 offset-md-3">

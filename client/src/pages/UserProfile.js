@@ -253,7 +253,6 @@ class ViewUserProfile extends Component {
               </div>
               <div className="col-sm-12 col-md-9">
                 <img src={Brand} className="brand" alignment="center" />
-                {/* <h3><i class="fa fa-user-circle-o"></i> Personal Feed</h3> */}
                 <hr />
 
                 <section className="rounded pt-3 pl-1 pr-1 pb-1">
