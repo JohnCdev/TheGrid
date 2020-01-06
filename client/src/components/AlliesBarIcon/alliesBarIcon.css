@@ -22,7 +22,7 @@ p {
     color: #e1e1e1;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     .allies-icon {
         display: inline-block;
         border: 1px #CCC;
@@ -31,7 +31,7 @@ p {
         border-color: #666;
         text-align: center;
         text-decoration: none;
-        width: 50%;
+        width: 49%;
         padding-top: 10px;
         transition: all .3s ease-in-out;
         border-radius: .25rem;
