@@ -17,7 +17,7 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
                 userName: userData.userName,
                 profileImg: userData.profileImg,
                 content: post,
-                timeStamp: Date.now(),
+                timeStamp: new Date(),
                 clanName: "",
             }).then(data => {
                 console.log(data)
@@ -30,7 +30,7 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
                 userName: userData.userName,
                 profileImg: userData.profileImg,
                 content: post,
-                timeStamp: Date.now(),
+                timeStamp: new Date(),
                 clanName: name
 
             })
