@@ -1,7 +1,8 @@
 ![GitHub Logo](/client/src/images/Logos/grid.png)
 Format: ![Alt Text](https://github.com/JohnCdev/Project-3)
 ## the Grid
-The Grid is a social hub for the gaming community. 
+The Grid is a social hub for the gaming community. You can sign up, create a profile, 
+add allies, create/join clans, share posts, and comment on them. 
 
 ### Built With
 M,E,R,N  | Description
@@ -30,3 +31,11 @@ Using [Heroku](https://www.heroku.com/).
 * Shawn Galloway - [github](https://github.com/shawngway).
 * Anthony McPherson - [github](https://github.com/AQM28202).
 * Tripp Stringfield - [github](https://github.com/jastring1).
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## Acknowledgements
+* [Bootstrap](https://getbootstrap.com/).
+* [react-media](https://www.npmjs.com/package/react-media).
+* [reac-moment](https://getbootstrap.com/).
