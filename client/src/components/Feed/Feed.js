@@ -18,6 +18,7 @@ const Feed = ({ feed, name}) => {
                     timeStamp={post.timeStamp}
                     content={post.content}
                     profileImg={post.profileImg}
+                    numComments={post.numComments}
                 />
             ))}
         </div>

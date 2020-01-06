@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext, userData } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import "./AddFriend.css";
 import API from "../../utils/API";
 
@@ -24,7 +24,7 @@ export default function AddFriend(props) {
         Remove Ally
       </button>
     );
-    const requestSentButton = <button className="btn btn-primary">Request Sent</button>;
+    const requestSentButton = <button className="btn btn-primary addFriend">Request Sent</button>;
     const theirRequestPendingButton = (
       <button className="btn btn-primary addFriend"
         onClick={() => {

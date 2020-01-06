@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Container } from "../components/Grid/Grid";
-import API from "../utils/API";
 import Nav from "../components/Nav/Nav";
 import Header from "../components/Header/Header";
 import FindAlliesSearch from "../components/FindAlliesSearch/FindAlliesSearch";

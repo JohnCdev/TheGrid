@@ -2,22 +2,19 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {
   Input,
-  TextArea,
   FormBtn,
   InputPassword,
   InputEmail
 } from "../components/Form/Form";
 import API from "../utils/API";
-import { Container, Row, Col } from "../components/Grid/Grid";
-import Jumbotron from "../components/Jumbotron/Jumbotron";
+import { Row, Col } from "../components/Grid/Grid";
 import { Redirect } from 'react-router';
 import Header from '../components/Header/Header';
 import Nav from "../components/Nav/Nav";
 import { AuthContext } from '../context/AuthContext';
 import Logo from "../images/Logos/G.png";
 import SignUpTitle from "../images/Logos/signup.png";
-
-
+import SuccessMessage from "../components/SuccessMessage/SuccessMessage";
 
 export default class SignUp extends Component {
   state = {
@@ -28,7 +25,8 @@ export default class SignUp extends Component {
     lastName: "",
     age: "",
     currentCity: "",
-    isNewAccount: false
+    isNewAccount: false,
+    isError: false
   }
   static contextType = AuthContext;
 
@@ -61,12 +59,20 @@ export default class SignUp extends Component {
       age: this.state.age,
       currentCity: this.state.currentCity
     })
-      .then(
-        this.setState(() => ({
-          isNewAccount: true
-        }))
-      )
-      .catch(err => console.log(err));
+      .then(res => {
+        if (res.status === 400) {
+          throw new Error('your error message here');
+        } else {
+          this.setState(() => ({
+            isNewAccount: true
+          }))
+        }
+      })
+      .catch(err => {
+        this.setState({
+          isError: true
+        })
+      });
   };
 
   render() {
@@ -83,6 +89,7 @@ export default class SignUp extends Component {
       <>
         <Nav />
         <main>
+          <Header headerText="Sign Up" display={false} />
           <Container-fluid>
             <Row>
               <Col size="md-1">
@@ -180,15 +187,17 @@ export default class SignUp extends Component {
                     type="submit"
                   >
                     Submit
-            </FormBtn>
+                  </FormBtn>
+                  {this.state.isError ?
+                  <SuccessMessage errMessage="User Name Exists" success={false}/>
+                  :
+                  null}
                 </form>
               </Col>
               <Col size="md-5">
 
                 <img src={Logo} className="logo" />
               </Col>
-
-
             </Row>
           </Container-fluid>
         </main>
