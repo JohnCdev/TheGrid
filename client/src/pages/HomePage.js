@@ -42,7 +42,7 @@ export default class HomePage extends Component {
 
                                 <Link to="/log-in">
                                     <button type="button" className="btn btn-success">
-                                        <i class="fa fa-lock"></i> Log In
+                                        <i className="fa fa-lock"></i> Log In
                     </button>
                                 </Link>
                             </Header>
