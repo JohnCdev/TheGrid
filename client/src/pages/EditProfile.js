@@ -204,7 +204,7 @@ export default class EditProfile extends Component {
                     <div className="col-sm-12 col-md-6 offset-md-3">
 
                     <form onSubmit={this.handleFormSubmit}>
-                        <h3><i class="fa fa-pencil"></i> Edit Profile</h3>
+                        <h3><i className="fa fa-pencil"></i> Edit Profile</h3>
                         <label htmlFor="firstName">First Name</label>
                         <Input
                             value={this.state.firstName}
@@ -246,7 +246,7 @@ export default class EditProfile extends Component {
                             title="Enter a valid value"
                         />
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
-                        <h3><i class="fa fa-pencil"></i> Game Services User Names</h3>
+                        <h3><i className="fa fa-pencil"></i> Game Services User Names</h3>
                         <label htmlFor="steamIGN">Steam Name</label>
                         <Input
                             value={this.state.steamIGN}
@@ -284,7 +284,7 @@ export default class EditProfile extends Component {
                         />
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
 
-                        <h3><i class="fa fa-pencil"></i> Your Top Games</h3>
+                        <h3><i className="fa fa-pencil"></i> Your Top Games</h3>
                         <label htmlFor="addGame">Your Favorite Games</label>
                         <Input
                             value={this.state.addGame}

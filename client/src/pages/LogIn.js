@@ -36,48 +36,37 @@ export default function LogIn() {
 
     const handleFormSubmit = event => {
         event.preventDefault();
-        const alphanumeric = inputtxt => {
-            const letterNumber = /^[0-9a-zA-Z]+$/;
-            if (inputtxt.match(letterNumber)) {
-                return true;
-            } else {
-                return false;
-            }
-        };
-        if (formData.userName && formData.password && alphanumeric(formData.userName) && alphanumeric(formData.password)) {
-
-            API.userLogIn({
-                userName: formData.userName,
-                password: formData.password
+        API.userLogIn({
+            userName: formData.userName,
+            password: formData.password
+        })
+            .then((res) => {
+                const client = res.data.data
+                const resObj = {
+                    userName: client[0].userName,
+                    firstName: client[0].firstName,
+                    lastName: client[0].lastName,
+                    age: client[0].age,
+                    friendList: client[0].friendList,
+                    clans: client[0].clans,
+                    sentFriendRequests: client[0].sentFriendRequests,
+                    receivedFriendRequests: client[0].receivedFriendRequests,
+                    profileIMG: client[0].profileIMG,
+                    steamIGN: client[0].steamIGN,
+                    discordIGN: client[0].discordIGN,
+                    battleNetIGN: client[0].battleNetIGN,
+                    epicIGN: client[0].epicIGN,
+                    originIGN: client[0].originIGN,
+                    favGames: client[0].favGames,
+                    token: client[1]
+                }
+                sessionStorage.setItem('project3user', JSON.stringify(resObj));
+                sessionStorage.setItem('project3username', resObj.userName);
+                logInFunction({ user: resObj })
             })
-                .then((res) => {
-                    const client = res.data.data
-                    const resObj = {
-                        userName: client[0].userName,
-                        firstName: client[0].firstName,
-                        lastName: client[0].lastName,
-                        age: client[0].age,
-                        friendList: client[0].friendList,
-                        clans: client[0].clans,
-                        sentFriendRequests: client[0].sentFriendRequests,
-                        receivedFriendRequests: client[0].receivedFriendRequests,
-                        profileIMG: client[0].profileIMG,
-                        steamIGN: client[0].steamIGN,
-                        discordIGN: client[0].discordIGN,
-                        battleNetIGN: client[0].battleNetIGN,
-                        epicIGN: client[0].epicIGN,
-                        originIGN: client[0].originIGN,
-                        favGames: client[0].favGames,
-                        token: client[1]
-                    }
-                    sessionStorage.setItem('project3user', JSON.stringify(resObj));
-                    sessionStorage.setItem('project3username', resObj.userName);
-                    logInFunction({ user: resObj })
-                })
-                .catch(err => {
-                    setLoginFailed(true)
-                });
-        }
+            .catch(err => {
+                setLoginFailed(true)
+            });
     };
 
     if (isAuthenticated) {
@@ -88,16 +77,16 @@ export default function LogIn() {
         <>
             <Nav />
             <main style={{ "height": "50%", "marginTop": "100px" }}>
-            <Container className="mt-4">
-            <Header headerText="Log-In" display={false} />
+                <Container className="mt-4">
+                    <Header headerText="Log-In" display={false} />
                     <Row>
-                    <div className="col-sm-12 col-md-4 offset-md-4">
+                        <div className="col-sm-12 col-md-4 offset-md-4">
                             <img src={LoginTitle} className="LoginTitle" />
 
                         </div>
                     </Row>
                     <Row>
-                    <div className="col-sm-12 col-md-4 offset-md-4">
+                        <div className="col-sm-12 col-md-4 offset-md-4">
 
                             <Header headerText={''} />
                             <form onSubmit={handleFormSubmit}>
