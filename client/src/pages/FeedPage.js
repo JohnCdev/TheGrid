@@ -13,25 +13,18 @@ import { Redirect } from 'react-router';
 
 const FeedPage = () => {
     const { isAuthenticated } = useContext(AuthContext);
-    const [feed, setFeed] = useState([
-        // { id: 1, userName: "John", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "Default1" },
-        // { id: 2, userName: "Shawn", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "Default2" },
-        // { id: 3, userName: "Charles", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "Default3" },
-        // { id: 4, userName: "Tripp", timeStamp: "12:12:12", content: "Yo, this is an awesome post.", profileImg: "Default4" }
-    ]);
+    const [feed, setFeed] = useState([]);
     const [feedLoading, setFeedLoading] = useState(false)
 
     useEffect(() => {
         setFeedLoading(true)
         API.getAllyList({ userName: sessionStorage.getItem('project3username') })
             .then(data => {
-                console.log(data)
                 API.getFeedPosts({
                     friendList: data.data,
                     userName: sessionStorage.getItem('project3username')
                 })
                     .then(data => {
-                        // console.log(data.data)
                         setFeed(data.data)
                         setFeedLoading(false)
                     })

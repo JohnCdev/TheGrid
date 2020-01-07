@@ -18,7 +18,6 @@ import Brand from "../images/Logos/grid.png";
 class ViewUserProfile extends Component {
   static contextType = AuthContext;
 
-  //initial state
   state = {
     _id: "",
     currentCity: "",
@@ -41,9 +40,9 @@ class ViewUserProfile extends Component {
     friendRenderContext: ""
   };
 
-  componentDidMount = event => {
+  loadProfile = userProfile => {
     const { userData } = this.context;
-    const profile = this.props.match.params.userProfile;
+    const profile = userProfile || this.props.match.params.userProfile;
     API.getUserProfile(profile, { client: userData.userName }).then(res => {
       let friendContext;
       const userProfile = res.data.data[0];
@@ -100,6 +99,10 @@ class ViewUserProfile extends Component {
         this.setState({ _id: null });
       }
     });
+  }
+
+  componentDidMount = event => {
+    this.loadProfile()
   };
 
   reloadPosts = () => {
@@ -119,13 +122,6 @@ class ViewUserProfile extends Component {
   render() {
     // need links for it to work first (discover page)
     const { isAuthenticated } = this.context;
-    // if (!isAuthenticated) {
-    //   return <Redirect to='/log-in' />
-    // }
-
-    // console.log(this.state)
-
-    //this.setState({friendContext})
     const helloWorld = (command, value) => {
       switch (command) {
         case "request-friend":
@@ -166,7 +162,7 @@ class ViewUserProfile extends Component {
 
     return this.state._id === null ? (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <Header headerText={404} />
         <Jumbotron>
           <h1>User Not Found</h1>
@@ -179,7 +175,7 @@ class ViewUserProfile extends Component {
       </>
     ) : this.state.friendRenderContext === "friend" ? (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <main>
           <Container className="mt-4">
             <Row>
@@ -193,17 +189,7 @@ class ViewUserProfile extends Component {
                   />
 
                 </div>
-                <div style={{ width: "100%", height: "10", textAlign: "center" }}
-                >
-                  <Header headingLevel={3} headerText={`${this.state.userName}`}
-                  />
-                </div>
-                <hr />
-
-
-                <div style={{ 'wordWrap': 'break-word' }}>
-                  {/* <h3>Latest Status Update?</h3> */}
-                  {/* <h3>Last logged in?</h3> */}
+                <div style={{'wordWrap':'break-word'}}>
                   {this.state.steamIGN !== "" ? (
                     <>
                       <h4>{`Steam: ${this.state.steamIGN}`}</h4>
@@ -275,6 +261,7 @@ class ViewUserProfile extends Component {
         </main>
       </>
     ) : (
+<<<<<<< HEAD
           <>
             <Nav />
             <main>
@@ -306,6 +293,35 @@ class ViewUserProfile extends Component {
             </main>
           </>
         );
+=======
+      <>
+        <Nav notificationClickHandler={this.loadProfile} />
+        <main>
+          <Container className="mt-4">
+            <Row>
+              <div className="cold-sm-12 col-md-3">
+                <div
+                  style={{ width: "100%", height: "250px", textAlign: "left" }}
+                >
+                  <Header headerText={`${this.state.userName}`} />
+                  <ProfilePicture
+                    location={this.state.currentCity}
+                    age={this.state.age}
+                    profileImg={this.state.profileImg}
+                  />
+                </div>
+                <AddFriend
+                  friendContext={this.state.friendContext}
+                  viewedProfile={this.state.userName}
+                  helloWorld={helloWorld}
+                />
+              </div>
+            </Row>
+          </Container>
+        </main>
+      </>
+    );
+>>>>>>> d2e9a8124603b42adc32fe87e49c719d39b5d775
   }
 }
 

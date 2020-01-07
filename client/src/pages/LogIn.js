@@ -75,7 +75,6 @@ export default function LogIn() {
                     logInFunction({ user: resObj })
                 })
                 .catch(err => {
-                    console.log(err)
                     setLoginFailed(true)
                 });
         }
@@ -123,7 +122,6 @@ export default function LogIn() {
                                     required
                                 />
                                 <FormBtn
-                                    //  disabled={!(this.state.userName && this.state.email && this.state.password)}
                                     className="btn btn-success"
                                     type="submit"
                                 >

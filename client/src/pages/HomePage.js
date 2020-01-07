@@ -7,16 +7,9 @@ import Logo from "../images/Logos/G.png";
 import Brand from "../images/Logos/grid.png";
 
 
-
-
-
-
-
-
-
 export default class HomePage extends Component {
     state = {
-        // state stuff
+       
     }
 
     render() {
