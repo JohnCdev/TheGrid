@@ -9,17 +9,7 @@ import Spinner from '../Spinner/Spinner';
 
 const FindClansSearch = () => {
     const [clanSearch, setSearch] = useState('');
-    const [clanResult, setClanResult] = useState([
-        // { _id: 1, clanName: "Expo", profileImg: "Clan1" },
-        // { _id: 2, clanName: "Shawn", profileImg: "Clan2" },
-        // { _id: 3, clanName: "Charles", profileImg: "Clan3" },
-        // { _id: 4, clanName: "John", profileImg: "Clan1" },
-        // { _id: 5, clanName: "Shawn", profileImg: "Clan2" },
-        // { _id: 6, clanName: "Charles", profileImg: "Clan3" },
-        // { _id: 7, clanName: "John", profileImg: "Clan1" },
-        // { _id: 8, clanName: "Shawn", profileImg: "Clan2" },
-        // { _id: 9, clanName: "Charles", profileImg: "Clan3" }
-    ]);
+    const [clanResult, setClanResult] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSearchSubmit = (e) => {
@@ -38,7 +28,6 @@ const FindClansSearch = () => {
     }
 
     const searchResult = () => {
-        console.log(clanResult)
         return (
             <>
                 {clanResult.length > 0 ?

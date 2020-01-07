@@ -29,7 +29,6 @@ const FeedCard = ({ id, userName, timeStamp, content, profileImg, numComments })
                 className="btn btn-success"
                 style={{ "lineHeight": 1 }}
                 data-id={id}
-                // onClick={() => API.getComments({ postID: id })}
                 onClick={handleCommentToggle}
             >
                 {commentToggle ? "Close Comments" : `Comments ${numComments}`}

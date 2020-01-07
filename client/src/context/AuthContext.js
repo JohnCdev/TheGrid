@@ -29,13 +29,17 @@ class AuthContextProvider extends Component {
       });
     },
     joinedClan: clanName => {
-      const userDataCopy = {...this.state.userData}
+      const profilePic = this.state.userData.profileImg;
+      const userDataCopy = {...this.state.userData};
       userDataCopy.clans = [...userDataCopy.clans, clanName]
+      userDataCopy.profileIMG = profilePic;
       sessionStorage.setItem('project3user', JSON.stringify(userDataCopy))
       this.setState({ userData: userDataCopy });
     },
     leftClan: clanName => {
+      const profilePic = this.state.userData.profileImg;
       const userDataCopy = {...this.state.userData};
+      userDataCopy.profileIMG = profilePic;
       userDataCopy.clans = userDataCopy.clans.filter(clan => clan !== clanName);
       sessionStorage.setItem('project3user', JSON.stringify(userDataCopy));
       this.setState({ userData: userDataCopy });

@@ -49,11 +49,6 @@ export default function ProfilePicture({ location, age, profileImg }) {
   return (
     <div className="ProfilePicture">
       <img className="img-thumbnail" src={imgRef} />
-      {/* <ul>
-        <li>Status: Offline</li>
-        <li>Location: {location}</li>
-        <li>Age: {age}</li>
-      </ul> */}
     </div>
   );
 }
