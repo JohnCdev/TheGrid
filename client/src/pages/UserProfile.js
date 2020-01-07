@@ -187,8 +187,12 @@ class ViewUserProfile extends Component {
                     age={this.state.age}
                     profileImg={this.state.profileImg}
                   />
-
-                </div>
+                  </div>
+                  <div style={{ width: "100%", height: "15", textAlign: "center" }}
+                  >
+                    <Header headingLevel={3} headerText={`${this.state.userName}`} />
+                  </div>
+                  <hr />
                 <div style={{'wordWrap':'break-word'}}>
                   {this.state.steamIGN !== "" ? (
                     <>
@@ -261,33 +265,37 @@ class ViewUserProfile extends Component {
         </main>
       </>
     ) : (
-      <>
-        <Nav notificationClickHandler={this.loadProfile} />
-        <main>
-          <Container className="mt-4">
-            <Row>
-              <div className="cold-sm-12 col-md-3">
-                <div
-                  style={{ width: "100%", height: "250px", textAlign: "left" }}
-                >
-                  <Header headerText={`${this.state.userName}`} />
-                  <ProfilePicture
-                    location={this.state.currentCity}
-                    age={this.state.age}
-                    profileImg={this.state.profileImg}
-                  />
-                </div>
-                <AddFriend
-                  friendContext={this.state.friendContext}
-                  viewedProfile={this.state.userName}
-                  helloWorld={helloWorld}
-                />
-              </div>
-            </Row>
-          </Container>
-        </main>
-      </>
-    );
+          <>
+            <Nav />
+            <main>
+              <Container className="mt-4">
+                <Row>
+                  <div className="cold-sm-12 col-md-3">
+                    <div
+                      style={{ width: "100%", height: "200px", textAlign: "center" }}
+                    >
+                      <ProfilePicture
+                        location={this.state.currentCity}
+                        age={this.state.age}
+                        profileImg={this.state.profileImg}
+                      />
+                    </div>
+                    <div style={{ width: "100%", height: "10", textAlign: "center" }}
+                    >
+                      <Header headingLevel={3} headerText={`${this.state.userName}`}
+                      />
+                    </div>
+                    <AddFriend
+                      friendContext={this.state.friendContext}
+                      viewedProfile={this.state.userName}
+                      helloWorld={helloWorld}
+                    />
+                  </div>
+                </Row>
+              </Container>
+            </main>
+          </>
+        );
   }
 }
 
