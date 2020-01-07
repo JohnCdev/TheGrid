@@ -25,7 +25,7 @@ export default function Footer() {
             <Media queries={{ small: { maxWidth: 599 } }}>
                 {matches =>
                     matches.small ? (
-                        <nav className="navbar navbar-expand navbar-dark bg-primary">
+                        <nav className="navbar-expand navbar-dark bg-primary">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
                                     {isAuthenticated ? (
@@ -47,6 +47,11 @@ export default function Footer() {
                                             Discover
               </Link>
                                     ) : null}
+                                </li>
+                                <li className="nav-item">
+                                <Link to="/profile">
+                  {isAuthenticated && <ProfileIcon profileImg={userData.profileImg} large={true} />}
+                </Link>
                                 </li>
                             </ul>
                             </nav>
