@@ -36,6 +36,7 @@ const CreateClan = () => {
         selectedPic: ''
     });
     const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [submitFailed, setSubmitFailed] = useState(false);
 
     // if (!isAuthenticated) {
     //     return <Redirect to='/log-in' />
@@ -53,6 +54,9 @@ const CreateClan = () => {
             })
             joinedClan(formData.clanName)
             setSubmitSuccess(true)     
+        })
+        .catch(err => {
+            setSubmitFailed(true)
         });
     };
 
@@ -220,6 +224,7 @@ const CreateClan = () => {
                     </FormBtn>
                 </form>
                 {submitSuccess ? <SuccessMessage success={true}/>: null}
+                {submitFailed ? <SuccessMessage errMessage="Clan Name Taken. Pick a Different Name" success={false} /> : null}
             </Container>
         </main>
         </>
