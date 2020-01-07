@@ -9,7 +9,7 @@ function NoMatch() {
     <>
     <Nav />
     <Container fluid>
-      <Header headerText={404}/>
+      <Header headerText={404} display={false}/>
       <Row>
         <Col size="md-12">
           <Jumbotron>

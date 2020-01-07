@@ -68,7 +68,7 @@ const FeedPage = () => {
                                 null
                             }
                             {feed.length === 0 && !feedLoading ?
-                                <h2>You have no feed</h2> :
+                                <h3>You have no feed yet.</h3> :
                                 null
                             }
                         </div>

@@ -149,7 +149,7 @@ class ClanPage extends Component {
             <Row>
               <div className="col-sm-12 col-md-3">
                 <div>
-                  <div style={{ width: "100%", height: "200px", textAlign: "center" }}
+                  <div style={{ width: "100%", height: "", textAlign: "center" }}
                   >
                     <ClanPicture clanImg={this.state.clanImg} />
                   </div>
@@ -207,7 +207,7 @@ class ClanPage extends Component {
                       name={this.state.clanName}
                     />
                   ) : (
-                      <p>This clan has no feed.(Yet!)</p>
+                      <h3>This clan has no feed yet.</h3>
                     )}
                 </section>
               </div>
@@ -222,9 +222,15 @@ class ClanPage extends Component {
               <Container className="mt-4">
                 <Row>
                   <div className="col-sm-12 col-md-3">
-                    <div>
-                      <Header headerText={`${this.state.clanName}`} />
+                  <div style={{ width: "100%", height: "", textAlign: "center" }}
+                  >
+                      
                       <ClanPicture clanImg={this.state.clanImg} />
+                      <div style={{ width: "100%", height: "15", textAlign: "center" }}
+                  >
+                    <Header headingLevel={3} headerText={`${this.state.clanName}`} />
+                  </div>
+                  <hr />
                       <p>{this.state.clanDescription}</p>
                     </div>
                     <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>

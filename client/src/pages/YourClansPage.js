@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import API from '../utils/API';
 import Spinner from '../components/Spinner/Spinner';
 
+
 const YourClansPage = () => {
     const { userData } = useContext(AuthContext)
     const [yourClans, setYourClans] = useState([])
@@ -60,7 +61,7 @@ const YourClansPage = () => {
                                                     </div>
                                                     <div style={{ 'textAlign': 'left' }}>
                                                         <Link to={`/clans/${clan.clanReferenceName}`}>
-                                                            <button className="btn btn-primary">Go to Profile</button>
+                                                            <button className="btn btn-primary">Go to Page</button>
                                                         </Link>
                                                     </div>
                                                 </div>
