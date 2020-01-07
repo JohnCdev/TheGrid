@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   create: (req, res) => {
     const reference = req.body.clanName.replace(/\s/g, "");
-    db.Clan.find({ clanName: reference }).then(dbModel => {
+    db.Clan.find({ clanName: req.body.clanName }).then(dbModel => {
       //if any show up tell the client their account cannot be created
       if (dbModel.length > 0) res.sendStatus(400);
       else {
