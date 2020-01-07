@@ -27,7 +27,7 @@ module.exports = {
             lastName: req.body.lastName,
             age: req.body.age,
             currentCity: req.body.currentCity,
-            lastUpdated: Date.now()
+            lastUpdated: new Date()
           })
             .then(/*res.json({ profileCreated: true })*/)
             .catch(err => console.log(err));
@@ -39,41 +39,45 @@ module.exports = {
   logIn: (req, res) => {
     //find the user who wants to log in
     db.User.find({ userName: req.body.userName }).then(data => {
+      if(data.length === 0) {
+        res.sendStatus(400)
+      } else {
       //compare the req's password to the stored password using bcrypt since db's password is hashed
       bcrypt.compare(req.body.password, data[0].password).then(pwCheck => {
-        //if the return is true, create a client object with their profile information
-        if (pwCheck) {
-          db.Profile.find({ userName: req.body.userName }).then(data => {
-            const client = data[0];
-            user = {
-              userName: client.userName,
-              firstName: client.firstName,
-              lastName: client.lastName,
-              age: client.age,
-              lastUpdated: client.lastUpdated,
-              friendList: client.friendList,
-              clans: client.clans,
-              sentFriendRequests: client.sentFriendRequests,
-              receivedFriendRequests: client.receivedFriendRequests,
-              profileIMG: client.profileIMG,
-              steamIGN: client.steamIGN,
-              discordIGN: client.discordIGN,
-              battleNetIGN: client.battleNetIGN,
-              epicIGN: client.epicIGN,
-              originIGN: client.originIGN,
-              favGames: client.favGames
-            };
-            //assign a token to this user and send the user information and token back to the user
-            jwt.sign({ user }, process.env.JWT, (err, token) => {
-              if (err) throw err;
-              else {
-                const data = [user, token];
-                res.json({ data });
-              }
+          //if the return is true, create a client object with their profile information
+          if (pwCheck) {
+            db.Profile.find({ userName: req.body.userName }).then(data => {
+              const client = data[0];
+              user = {
+                userName: client.userName,
+                firstName: client.firstName,
+                lastName: client.lastName,
+                age: client.age,
+                lastUpdated: client.lastUpdated,
+                friendList: client.friendList,
+                clans: client.clans,
+                sentFriendRequests: client.sentFriendRequests,
+                receivedFriendRequests: client.receivedFriendRequests,
+                profileIMG: client.profileIMG,
+                steamIGN: client.steamIGN,
+                discordIGN: client.discordIGN,
+                battleNetIGN: client.battleNetIGN,
+                epicIGN: client.epicIGN,
+                originIGN: client.originIGN,
+                favGames: client.favGames
+              };
+              //assign a token to this user and send the user information and token back to the user
+              jwt.sign({ user }, process.env.JWT, (err, token) => {
+                if (err) throw err;
+                else {
+                  const data = [user, token];
+                  res.json({ data });
+                }
+              });
             });
-          });
-        } else res.json({ message: "Invalid login" });
+        } else res.sendStatus(400);
       });
+      }
     });
   },
 

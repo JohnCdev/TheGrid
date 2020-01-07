@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   create: (req, res) => {
     const reference = req.body.clanName.replace(/\s/g, "");
-    db.Clan.find({ clanName: reference }).then(dbModel => {
+    db.Clan.find({ clanName: req.body.clanName }).then(dbModel => {
       //if any show up tell the client their account cannot be created
       if (dbModel.length > 0) res.sendStatus(400);
       else {
@@ -57,7 +57,6 @@ module.exports = {
             clanProfileImage: clan[0].clanProfileImage
           };
           clanListReturn.push(returnItem);
-          console.log(clanListReturn)
         })
         .catch(err => console.log(err));
     }
@@ -98,7 +97,6 @@ module.exports = {
       ).then(data => {
         db.Profile.find({ userName }).then(data => {
           const newClans = data[0].clans.filter(clan => clan !== clanName);
-          console.log("new clans: " + newClans);
           db.Profile.updateOne(
             { userName },
             { $set: { clans: newClans } }

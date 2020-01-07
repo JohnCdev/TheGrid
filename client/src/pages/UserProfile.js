@@ -14,7 +14,6 @@ import Feed from "../components/Feed/Feed";
 class ViewUserProfile extends Component {
   static contextType = AuthContext;
 
-  //initial state
   state = {
     _id: "",
     currentCity: "",
@@ -37,9 +36,9 @@ class ViewUserProfile extends Component {
     friendRenderContext: ""
   };
 
-  componentDidMount = event => {
+  loadProfile = userProfile => {
     const { userData } = this.context;
-    const profile = this.props.match.params.userProfile;
+    const profile = userProfile || this.props.match.params.userProfile;
     API.getUserProfile(profile, { client: userData.userName }).then(res => {
       let friendContext;
       const userProfile = res.data.data[0];
@@ -96,6 +95,10 @@ class ViewUserProfile extends Component {
         this.setState({ _id: null });
       }
     });
+  }
+
+  componentDidMount = event => {
+    this.loadProfile()
   };
 
   reloadPosts = () => {
@@ -115,13 +118,6 @@ class ViewUserProfile extends Component {
   render() {
     // need links for it to work first (discover page)
     const { isAuthenticated } = this.context;
-    // if (!isAuthenticated) {
-    //   return <Redirect to='/log-in' />
-    // }
-
-    // console.log(this.state)
-
-    //this.setState({friendContext})
     const helloWorld = (command, value) => {
       switch (command) {
         case "request-friend":
@@ -162,7 +158,7 @@ class ViewUserProfile extends Component {
 
     return this.state._id === null ? (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <Header headerText={404} />
         <Jumbotron>
           <h1>User Not Found</h1>
@@ -175,7 +171,7 @@ class ViewUserProfile extends Component {
       </>
     ) : this.state.friendRenderContext === "friend" ? (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <main>
           <Container className="mt-4">
             <Row>
@@ -191,8 +187,6 @@ class ViewUserProfile extends Component {
                   />
                 </div>
                 <div style={{'wordWrap':'break-word'}}>
-                  {/* <h3>Latest Status Update?</h3> */}
-                  {/* <h3>Last logged in?</h3> */}
                   {this.state.steamIGN !== "" ? (
                     <>
                       <h4>{`Steam: ${this.state.steamIGN}`}</h4>
@@ -264,7 +258,7 @@ class ViewUserProfile extends Component {
       </>
     ) : (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <main>
           <Container className="mt-4">
             <Row>

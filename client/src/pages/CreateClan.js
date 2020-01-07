@@ -37,10 +37,6 @@ const CreateClan = () => {
     });
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
-    // if (!isAuthenticated) {
-    //     return <Redirect to='/log-in' />
-    // }
-
     const handleFormSubmit = e => {
         e.preventDefault();
         const payLoad = { ...formData, clanFounder: userData.userName };

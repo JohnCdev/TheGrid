@@ -49,7 +49,6 @@ export default class SignUp extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    //add a blank profile element
     API.saveUser({
       userName: this.state.userName,
       email: this.state.email,
@@ -98,10 +97,6 @@ export default class SignUp extends Component {
                 <img src={SignUpTitle} className="signuptitle" />
               </Col>
               <Col size="md-4">
-                {/* <Jumbotron>
-                  <Header headerText={'Sign Up'} />
-                </Jumbotron> */}
-
                 <form onSubmit={this.handleFormSubmit}>
                   <h3>Account Information</h3>
                   <label htmlFor="userName">User Name</label>
@@ -182,7 +177,6 @@ export default class SignUp extends Component {
                     title="Enter a valid value. Cannot contain numbers"
                   />
                   <FormBtn
-                    //  disabled={!(this.state.userName && this.state.email && this.state.password)}
                     className="btn btn-success"
                     type="submit"
                   >
