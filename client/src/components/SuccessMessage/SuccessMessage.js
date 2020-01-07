@@ -2,9 +2,10 @@ import React from 'react'
 
 const divStyle = {
     'marginTop': '50px',
-    'width': '100%', 
-    'backgroundColor': '#3c4042',
-    'marginRight': '0',
+    'width': '50%', 
+    'backgroundColor': '',
+    'marginLeft': 'auto',
+    'marginRight': 'auto',
     'textAlign': 'center',
 } 
 
@@ -14,7 +15,7 @@ const SuccessMessage = ({success, errMessage}) => {
 
     return (
         <div className="rounded" style={divStyle}>
-            <span style={{'fontSize':'2em', 'color':`${messageStyle}`}}>{success ? "Submit Success" : errMessage}</span>
+            <span style={{'fontSize':'1em', 'color':`${messageStyle}`}}>{success ? "Submit Success" : errMessage}</span>
         </div>
     );
 }
