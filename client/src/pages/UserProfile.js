@@ -251,12 +251,12 @@ class ViewUserProfile extends Component {
                       name={this.state.userName}
                     />
                   ) : (
-                      <p
+                      <h3
                         style={{
                           backgroundColor: "#3c4042",
                           textAlign: "center"
                         }}
-                      >{`${this.state.userName} has no feed. (Yet!)`}</p>
+                      >{`${this.state.userName} has no feed yet.`}</h3>
                     )}
                 </section>
               </div>

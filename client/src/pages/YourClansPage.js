@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import API from '../utils/API';
 import Spinner from '../components/Spinner/Spinner';
 
+
 const YourClansPage = () => {
     const { userData } = useContext(AuthContext)
     const [yourClans, setYourClans] = useState([])

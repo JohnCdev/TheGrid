@@ -207,7 +207,7 @@ class ClanPage extends Component {
                       name={this.state.clanName}
                     />
                   ) : (
-                      <p>This clan has no feed.(Yet!)</p>
+                      <h3>This clan has no feed yet.</h3>
                     )}
                 </section>
               </div>
