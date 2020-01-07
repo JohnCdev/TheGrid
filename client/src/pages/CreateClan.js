@@ -36,10 +36,11 @@ const CreateClan = () => {
         selectedPic: ''
     });
     const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [submitFailed, setSubmitFailed] = useState(false);
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        const payLoad = { ...formData, clanFounder: userData.userName };
+        const payLoad = { ...formData, clanName: formData.clanName.trim() ,clanFounder: userData.userName };
         const token = userData.token;
 
         API.createClan(payLoad, token).then((res) => {
@@ -49,6 +50,9 @@ const CreateClan = () => {
             })
             joinedClan(formData.clanName)
             setSubmitSuccess(true)     
+        })
+        .catch(err => {
+            setSubmitFailed(true)
         });
     };
 
@@ -220,6 +224,7 @@ const CreateClan = () => {
                 {submitSuccess ? <SuccessMessage success={true}/>: null}
                 </div>
                 </Row>
+                {submitFailed ? <SuccessMessage errMessage="Clan Name Taken. Pick a Different Name" success={false} /> : null}
             </Container>
         </main>
         </>

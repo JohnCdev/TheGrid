@@ -51,7 +51,9 @@ const YourClansPage = () => {
                                             return (
                                                 <div className="discoverListItem rounded" key={clan._id}>
                                                     <div style={{ 'textAlign': 'right', 'marginRight': '1em' }}>
-                                                        <ProfileIcon large={true} profileImg={clan.clanProfileImage} />
+                                                        <Link to={`/clans/${clan.clanReferenceName}`}>
+                                                           <ProfileIcon large={true} profileImg={clan.clanProfileImage} />
+                                                        </Link>
                                                     </div>
                                                     <div style={{ 'textAlign': 'left' }}>
                                                         <span>{clan.clanName}</span>
@@ -78,13 +80,11 @@ const YourClansPage = () => {
                                         null}
                                     <h3 className="mt-5" style={{ 'backgroundColor': '#3c4042' }}>Want to Make a New Clan?</h3>
                                     <Link to="/create-clan">
-                                        <button type="button" className="btn btn-primary"><i class="fa fa-users"></i> Click Here</button>
+                                        <button type="button" className="btn btn-primary"><i class="fa fa-users"></i> Click Here</button> 
                                     </Link>
                                 </div>
                             </section>
                         </div>
-
-
                     </Row>
                 </Container>
             </main>
