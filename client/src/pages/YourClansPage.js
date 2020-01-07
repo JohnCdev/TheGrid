@@ -60,7 +60,7 @@ const YourClansPage = () => {
                                                     </div>
                                                     <div style={{ 'textAlign': 'left' }}>
                                                         <Link to={`/clans/${clan.clanReferenceName}`}>
-                                                            <button className="btn btn-primary">Go to Profile</button>
+                                                            <button className="btn btn-primary">Go to Page</button>
                                                         </Link>
                                                     </div>
                                                 </div>

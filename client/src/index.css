@@ -291,7 +291,7 @@ nav > button > a {
 @keyframes spinner-border {
     to { transform: rotate(360deg); }
   } 
-  .spinner-border{
+  .spinner-border {
       display: inline-block;
       width: 2rem;
       height: 2rem;
@@ -370,10 +370,34 @@ nav > button > a {
         background-color: #9c4efa;
         margin-left: 0rem;
         margin-top: 6rem;
-
-        
     }
     
+    .discoverListItem {
+        height: 200px;
+        width: 100%;
+        border: 1px solid #666;
+        margin-bottom: 10px;
+        box-shadow: 5px 4px 4px #202124;
+        /* padding-right: 4rem; */
+        /* margin-left: auto;
+        margin-right: auto; */
+    }
+    .discoverListItem > div {
+        display: block;
+        width: 30%;
+        /* text-align: center; */
+
+        /* padding-top: 15px; */
+        margin-left: 30%;
+        /* margin-right: 33%; */
+    }
+  span.clanName {
+      display: block;
+      text-align: right;
+    }
+  
   }
+
+
 
   
