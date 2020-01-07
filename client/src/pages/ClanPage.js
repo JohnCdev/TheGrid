@@ -81,17 +81,11 @@ class ClanPage extends Component {
       } else {
         this.setState({ _id: null });
       }
-
-      // api call to get clan feed
       this.reloadPosts();
     });
-    // this.setState({
-    //     clanFeed: []
-    // })
   };
 
   reloadPosts = () => {
-    console.log(this.state.clanName)
     API.getClanPosts({ clanName: this.state.clanName })
       .then(response => {
         this.setState({
@@ -109,15 +103,11 @@ class ClanPage extends Component {
       clanName: this.state.clanName
     };
     API.joinClan(payLoad).then(response => {
-      console.log(response.data);
       if (response.data.alreadyAMember) {
-        console.log("already a member");
       } else if (response.data.nModified === 1) {
-        console.log(this.state.clanName);
         joinedClan(this.state.clanName);
         this.setState({clanRenderMemberContext: 'member'})
       } else {
-        //error occured
       }
     });
   };
@@ -129,7 +119,6 @@ class ClanPage extends Component {
       clanName: this.state.clanName
     };
     API.leaveClan(payLoad).then(response => {
-      console.log(response);
       leftClan(this.state.clanName);
       this.setState({clanRenderMemberContext: 'not-member'})
     });
@@ -137,9 +126,6 @@ class ClanPage extends Component {
 
   render() {
     const { isAuthenticated } = this.context;
-
-    console.log(this.state)
-
     return this.state._id === null ? (
       <>
         <Nav />

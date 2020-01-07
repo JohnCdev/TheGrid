@@ -14,7 +14,6 @@ import Feed from "../components/Feed/Feed";
 class ViewUserProfile extends Component {
   static contextType = AuthContext;
 
-  //initial state
   state = {
     _id: "",
     currentCity: "",
@@ -115,13 +114,6 @@ class ViewUserProfile extends Component {
   render() {
     // need links for it to work first (discover page)
     const { isAuthenticated } = this.context;
-    // if (!isAuthenticated) {
-    //   return <Redirect to='/log-in' />
-    // }
-
-    // console.log(this.state)
-
-    //this.setState({friendContext})
     const helloWorld = (command, value) => {
       switch (command) {
         case "request-friend":
@@ -191,8 +183,6 @@ class ViewUserProfile extends Component {
                   />
                 </div>
                 <div style={{'wordWrap':'break-word'}}>
-                  {/* <h3>Latest Status Update?</h3> */}
-                  {/* <h3>Last logged in?</h3> */}
                   {this.state.steamIGN !== "" ? (
                     <>
                       <h4>{`Steam: ${this.state.steamIGN}`}</h4>
