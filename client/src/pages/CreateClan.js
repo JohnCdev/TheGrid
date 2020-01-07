@@ -120,7 +120,7 @@ const CreateClan = () => {
                  <Row>
               <div className="col-sm-12 col-md-6 offset-md-3">
                 <form onSubmit={handleFormSubmit}>
-                <h3><i class="fa fa-pencil"></i> Create New Clan</h3>
+                <h3><i className="fa fa-pencil"></i> Create New Clan</h3>
 
                     <label htmlFor="clanName">Clan Name</label>
                     <Input
