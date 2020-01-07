@@ -135,6 +135,10 @@ h5 {
     border-color: #666;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 
 .fa-trash:before {
     content: "\f1f8";
