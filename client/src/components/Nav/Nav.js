@@ -13,6 +13,8 @@ const Nav = (props) => {
 
   const [notifications, setNotifications] = useState([]);
 
+  const linkHandler = props.notificationClickHandler ? props.notificationClickHandler : () => '';
+
   useEffect(() => {
     if (isAuthenticated) {
       API.getNotifications(userData.userName).then(response => {
@@ -32,6 +34,7 @@ const Nav = (props) => {
     const currentLink = isAuthenticated ? `/user-profile/${userData.userName}` : "/";
 
     return (
+      <div onClick={() => linkHandler(userData.userName)}>
       <Link to={currentLink} className="navbar-brand">
         <img
           src="https://i.ibb.co/wyZcs2t/icon.png"
@@ -39,6 +42,7 @@ const Nav = (props) => {
           alt="Grid Icon"
         />
       </Link>
+     </div>
     );
   };
 
