@@ -87,21 +87,18 @@ export default function LogIn() {
     return (
         <>
             <Nav />
-            <main>
-            <Header headerText="Log In" display={false} />
-                <Container>
+            <main style={{ "height": "50%", "marginTop": "100px" }}>
+            <Container className="mt-4">
+            <Header headerText="Log-In" display={false} />
                     <Row>
-                        <Col size="md-4">
-                        </Col>
-                        <Col size="md-4">
+                    <div className="col-sm-12 col-md-4 offset-md-4">
                             <img src={LoginTitle} className="LoginTitle" />
 
-                        </Col>
+                        </div>
                     </Row>
                     <Row>
-                        <Col size="md-4">
-                        </Col>
-                        <Col size="md-4">
+                    <div className="col-sm-12 col-md-4 offset-md-4">
+
                             <Header headerText={''} />
                             <form onSubmit={handleFormSubmit}>
                                 <label htmlFor="userName">User Name</label>
@@ -131,7 +128,7 @@ export default function LogIn() {
                                     Submit
                     </FormBtn>
                             </form>
-                        </Col>
+                        </div>
                     </Row>
                     {loginFailed ? <SuccessMessage errMessage="Username or Password Incorrect" success={false} /> : null}
                 </Container>

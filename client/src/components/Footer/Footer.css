@@ -18,6 +18,6 @@
     padding: 3px;
 }
 nav ul {
-    padding-inline-start: 12% !important;
+    /* padding-inline-start: 12% !important; */
     margin-bottom: -12px;
 }

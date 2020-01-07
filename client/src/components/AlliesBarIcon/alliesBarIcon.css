@@ -1,22 +1,42 @@
 .allies-icon {
-    display: inline-block;
-    border: 1px #CCC;
+    display:block;
+    /* border: 1px #CCC; */
     margin: 2px;
-    border: solid;
-    border-color: white;
+    margin-left: 15px;
+    border: solid 1px;
+    border-color: #666;
     text-align: center;
     text-decoration: none;
-    width: 180px;
+    width: 90%;
     padding-top: 10px;
     transition: all .3s ease-in-out;
     border-radius: .25rem;
+
 }
 
 .allies-icon:hover {
     background-color:#04dac6;
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 p {
     color: #e1e1e1;
+}
+
+@media only screen and (max-width: 768px) {
+    .allies-icon {
+        display: inline-block;
+        border: 1px #CCC;
+        margin: 2px;
+        border: solid 1px;
+        border-color: #666;
+        text-align: center;
+        text-decoration: none;
+        width: 49%;
+        padding-top: 10px;
+        transition: all .3s ease-in-out;
+        border-radius: .25rem;
+        overflow:scroll ;
+    
+    }
 }

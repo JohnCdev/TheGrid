@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Container } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import AlliesBar from "../components/AlliesBar/AlliesBar";
 import Feed from "../components/Feed/Feed";
 import PostForm from "../components/PostForm/PostForm";
@@ -8,6 +8,8 @@ import API from "../utils/API";
 import Header from "../components/Header/Header";
 import { AuthContext } from '../context/AuthContext';
 import { Redirect } from 'react-router';
+
+
 
 const FeedPage = () => {
     const { isAuthenticated } = useContext(AuthContext);
@@ -51,23 +53,34 @@ const FeedPage = () => {
     return (
         <>
             <Nav />
-            <main style={{ "height": "100%", "marginBottom": "200px" }}>
-                <AlliesBar />
-                <Container>
-                    <Header headerText="Info Board" />
-                    {feedLoading ?
-                        null
-                        :
-                        <PostForm reloadPosts={reloadPosts} />
-                    }
-                    {feed.length > 0 && !feedLoading ?
-                        <Feed feed={feed} name={sessionStorage.getItem('project3username')} /> :
-                        null
-                    }
-                    {feed.length === 0 && !feedLoading ?
-                        <h1>You have no feed</h1> :
-                        null
-                    }
+            <main>
+                <Container className="mt-4">
+                    <Row>
+                        <div className="col-sm-12 col-md-7 offset-md-1">
+                            <Header headerText="Info Board" display={false} />
+                            {feedLoading ?
+                                null
+                                :
+                                <PostForm reloadPosts={reloadPosts} />
+                            }
+                            {feed.length > 0 && !feedLoading ?
+                                <Feed feed={feed} name={sessionStorage.getItem('project3username')} /> :
+                                null
+                            }
+                            {feed.length === 0 && !feedLoading ?
+                                <h2>You have no feed</h2> :
+                                null
+                            }
+                        </div>
+                        <div className="col-sm-12 col-md-3">
+                            <div class="card-header allies-header"><i class="fa fa-users"></i> Allies</div>
+
+                            <AlliesBar />
+
+                        </div>
+
+
+                    </Row>
                 </Container>
             </main>
         </>

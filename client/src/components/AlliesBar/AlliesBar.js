@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import Spinner from '../Spinner/Spinner';
 
 
+
 const AlliesBar = () => {
     const [allies, setAllies] = useState([]);
     const [isLoading, setIsLoading] = useState(false)
@@ -35,18 +36,22 @@ const AlliesBar = () => {
 
     return (
         <div id="allies-bar">
-            {isLoading ?
-                <Spinner />
-                :
-                allies.map(ally => (
-                    <AlliesBarIcon
-                        key={ally.key}
-                        userName={ally.userName}
-                        profileImg={ally.profileImg}
-                    />
-                ))}
-        </div>
-    );
-}
-
+           
+           {/* <div class="card-header allies-header"><i class="fa fa-users"></i> Allies</div> */}
+           
+            {/* <hr /> */}
+                {isLoading ?
+                    <Spinner />
+                    :
+                    allies.map(ally => (
+                        <AlliesBarIcon
+                            key={ally.key}
+                            userName={ally.userName}
+                            profileImg={ally.profileImg}
+                        />
+                    ))}
+            </div>
+            );
+        }
+        
 export default AlliesBar;

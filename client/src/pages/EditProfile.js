@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../components/Form/Form";
 import API from "../utils/API";
-import { Container } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Nav from "../components/Nav/Nav";
 import { Redirect } from 'react-router';
@@ -197,12 +197,14 @@ export default class EditProfile extends Component {
             <>
             <Nav />
             <main>
-                <Container>
-                    <Jumbotron>
-                        <Header headerText="Edit Profile" />
-                    </Jumbotron>
+            <Container className="mt-4">
+
+                        <Header headerText="Edit Profile" display={false} />
+                    <Row>
+                    <div className="col-sm-12 col-md-6 offset-md-3">
+
                     <form onSubmit={this.handleFormSubmit}>
-                        <h3>Profile Information</h3>
+                        <h3><i class="fa fa-pencil"></i> Edit Profile</h3>
                         <label htmlFor="firstName">First Name</label>
                         <Input
                             value={this.state.firstName}
@@ -244,7 +246,7 @@ export default class EditProfile extends Component {
                             title="Enter a valid value"
                         />
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
-                        <h3>Game Services User Names</h3>
+                        <h3><i class="fa fa-pencil"></i> Game Services User Names</h3>
                         <label htmlFor="steamIGN">Steam Name</label>
                         <Input
                             value={this.state.steamIGN}
@@ -282,7 +284,7 @@ export default class EditProfile extends Component {
                         />
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
 
-                        <h3>Your Top Games</h3>
+                        <h3><i class="fa fa-pencil"></i> Your Top Games</h3>
                         <label htmlFor="addGame">Your Favorite Games</label>
                         <Input
                             value={this.state.addGame}
@@ -305,6 +307,7 @@ export default class EditProfile extends Component {
                                 );
                             })}
                         </ol>
+                        
                         <hr />
 
                         <h3>Update Your Profile Picture</h3>
@@ -347,7 +350,11 @@ export default class EditProfile extends Component {
                         </FormBtn>
                     </form>
                     {this.state.submitSuccess ? <SuccessMessage success={true}/> : null}
-                </Container>
+                    </div>
+
+                    </Row>
+
+                    </Container>
             </main>
             </>
         )

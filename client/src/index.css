@@ -12,34 +12,87 @@
     src: local('PTSans'), url(./fonts/PTSans-Regular.ttf) format('truetype');
 } */
 
-
 body {
     background-image: url(./images/Logos/grid-bg.png);
     background-size: cover;
     background-position: center top;
     background-color: #202124;
     z-index: -1;
-
-
 }
+
+
+.clanProfilePicture img {
+    width: 65%;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+
+.card {
+    background-color: #666;
+}
+
+
+.discoverListItem {
+    height: 80px;
+    width: 100%;
+    border: 1px solid #666;
+    margin-bottom: 10px;
+    box-shadow: 5px 4px 4px #202124;
+    padding-right: 1rem;
+  }
 
 
 input {
     background-color: #e2e2e2;
 }
 
+
 body, h1, h2, h3, h4, h5, li, ul, a, button {
     font-family: Poppins, sans-serif;
 }
 
+
+ h2 {
+    background-color: transparent !important;
+}
+
+
 body, h1, h2, h4, h5 {
     color: #e1e1e1;
 }
+
+
+p {
+    font-size: .95rem;
+}
+
+
 h3 {
     color: #04dac6;
-    font-size: 1.5rem;
+    font-size: 1.25em;
     background-color: transparent !important;
 }
+
+
+h4 {
+    font-size: .95rem;
+}
+
+
+h5 {
+    
+    font-size: .9rem;
+}
+
+
+.infoboard {
+    width: 850px;
+    height: 158px;
+}
+
+
 .btn-primary {
     font-family: Poppins, sans-serif;
     color: #231f20;
@@ -47,10 +100,12 @@ h3 {
     border-color: #018577;
 }
 
+
 .btn-primary:hover {
     background-color: #018577;
     border-color: #04dac6;
 }
+
 
 .btn-success {
     font-family: Poppins, sans-serif;
@@ -58,9 +113,35 @@ h3 {
     background-color: #04dac6;
 }
 
+
 .btn-success:hover {
     background-color: #018577;
 }
+
+
+.btn-danger, .btn-secondary {
+    font-family: Poppins, sans-serif;
+}
+
+
+.btn-danger {
+    background-color: #9c4efa;
+    border-color: #666;
+}
+
+
+.btn-danger:hover {
+    background-color: #4f2680;
+    border-color: #666;
+}
+
+
+.fa-trash:before {
+    content: "\f1f8";
+    color: #04dac6;
+    font-size: 1.25rem;
+}
+
 
 html,
 body,
@@ -72,10 +153,18 @@ div[data-reactroot] {
     margin: 0;
 }
 
+
 main {
     margin-top: 10px;
     margin-bottom: 200px;
 }
+
+
+.mr-5 {
+    margin-right: 1.5rem !important;
+}
+
+
 
 .selectedPic {
     position: relative;
@@ -83,73 +172,121 @@ main {
     height: 250px;
     border: 2px solid #e2e2e2;
     margin: auto;
+    border-Radius: 10px;
 }
 
-.selectedPic span {
+/* .selectedPic span {
     display: table;
     margin: 0 auto;
-}
+} */
 
 .selectedPic img {
     width: 100%;
     height: 100%;
+    border: 5px solid #04dac6;
+    background-color: #04dac6;
+    border-Radius: 10px;
+
 }
+
 
 .selectedPic Button {
     position: absolute;
     top: 5%;
-    right: 10%;
+    right: 5%;
 }
 
+
+#postBackground {
+    background-color: transparent !important;
+}
+
+
 .picGrid {
-    height: 450px;
+    height: 100%;
     width: 100%;
-    border: 2px solid #e2e2e2;
+    border: 2px solid #666;
     overflow: scroll;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; 
+    border-Radius: 10px;
 }
 
+
 .picGrid img {
-    height: 250px;
-    width: 23%;
+    height: 21%;
+    width: 21%;
     margin: 10px;
     border-Radius: 10px;
 }
 
+
+.img-thumbnail {
+    /* padding: 0.25rem; */
+    background-color: #04dac6;
+    border: 1px solid #04dac6 ;
+    border-radius: 100px;
+    max-width: 100%;
+    height: auto;
+}
+
+
 hr {
     border-color: #e2e2e2;
 }
+
 
 .logo {
     height: 650px;
     width: 650px;
 }
 
+
 .brand {
     height: 162px;
     width: 412px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .icon {
     height:30px;
     width: 30px;
 }
 
+
 nav > button > a {
     color: #000;
 }
 
+
 .signuptitle {
-    height:500px;
-    width: 100px;
+    height:100px;
+    width: 500px;
+    /* margin-bottom: 10px;
+    margin-top: 10px; */
 }
+
 
 .LoginTitle {
     height:100%;
     width: 100%;
+
 }
+
+
+.allies-header {
+    width: 89%;
+    color: #fff;
+    background-color: #9c4efa;
+    margin-top: 6rem;
+    margin-left: .75rem;
+    
+}
+
 
 @keyframes spinner-border {
     to { transform: rotate(360deg); }
@@ -169,15 +306,74 @@ nav > button > a {
       height: 1rem;
       border-width: .2em;
   }
+
+
   #controlHeader h1 {
     background-color: transparent !important;
   }
+
 
   .box-shadow-dark {
       box-shadow: 4px 2px 2px #333333; 
   }
 
+
   #infoBoard h1 {
-    background-color: #202124;
+    background-color: transparent !important;
   }
 
+
+  @media only screen and (max-width: 768px) {
+
+    .logo {
+        height: 300px;
+        width: 300px;
+        display: block;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .allies-header {
+        width: 100%;
+        color: #fff;
+        background-color: #9c4efa;
+        margin-top: 5rem;
+    }
+
+    .LoginTitle {
+        width: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+    .brand {
+        height: 109px;
+        width: 278px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .signuptitle {
+        height: 75px;
+        width: 375px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      
+    }
+    .allies-header {
+        width: 97%;
+        color: #fff;
+        background-color: #9c4efa;
+        margin-left: 0rem;
+        margin-top: 6rem;
+
+        
+    }
+    
+  }
+
+  
