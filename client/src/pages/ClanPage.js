@@ -109,9 +109,7 @@ class ClanPage extends Component {
       clanName: this.state.clanName
     };
     API.joinClan(payLoad).then(response => {
-      console.log(response.data);
       if (response.data.alreadyAMember) {
-        console.log("already a member");
       } else if (response.data.nModified === 1) {
         console.log(this.state.clanName);
         joinedClan(this.state.clanName);
