@@ -49,7 +49,9 @@ const YourClansPage = () => {
                                     return (
                                         <div className="discoverListItem rounded" key={clan._id}>
                                             <div style={{ 'textAlign': 'right', 'marginRight': '1em' }}>
-                                                <ProfileIcon large={true} profileImg={clan.clanProfileImage} />
+                                                <Link to={`/clans/${clan.clanReferenceName}`}>
+                                                    <ProfileIcon large={true} profileImg={clan.clanProfileImage} />
+                                                </Link>
                                             </div>
                                             <div style={{ 'textAlign': 'left' }}>
                                                 <span>{clan.clanName}</span>
