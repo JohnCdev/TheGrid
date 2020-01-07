@@ -9,17 +9,7 @@ import Spinner from '../Spinner/Spinner';
 
 const FindAlliesSearch = () => {
     const [allySearch, setSearch] = useState('');
-    const [allyResult, setAllyResult] = useState([
-        // { _id: 1, userName: "John", profileImage: "Default1" },
-        // { _id: 2, userName: "Shawn", profileImage: "Default2" },
-        // { _id: 3, userName: "Charles", profileImage: "Default3" },
-        // { _id: 4, userName: "John", profileImage: "Default1" },
-        // { _id: 5, userName: "Shawn", profileImage: "Default2" },
-        // { _id: 6, userName: "Charles", profileImage: "Default3" },
-        // { _id: 7, userName: "John", profileImage: "Default1" },
-        // { _id: 8, userName: "Shawn", profileImage: "Default2" },
-        // { _id: 9, userName: "Charles", profileImage: "Default3" }
-    ]);
+    const [allyResult, setAllyResult] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSearchSubmit = (e) => {
@@ -38,9 +28,6 @@ const FindAlliesSearch = () => {
     }
 
     const searchResult = () => {
-
-        console.log(allyResult)
-
         return (
             <>
                 {allyResult.length > 0 ?
@@ -48,7 +35,9 @@ const FindAlliesSearch = () => {
                         return (
                             <div className="discoverListItem rounded" key={result._id}>
                                 <div style={{ 'textAlign': 'right', 'marginRight': '1em' }}>
-                                    <ProfileIcon large={true} profileImg={result.profileImage} />
+                                    <Link to={`/user-profile/${result.userName}`}>
+                                        <ProfileIcon large={true} profileImg={result.profileImage} />
+                                    </Link>
                                 </div>
                                 <div style={{ 'textAlign': 'left' }}>
                                     <span>{result.userName}</span>
@@ -62,7 +51,7 @@ const FindAlliesSearch = () => {
                         )
                     })
                     :
-                    <h3>No Results</h3>}
+                    <p>No Results</p>}
             </>
         );
     }

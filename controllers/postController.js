@@ -7,7 +7,7 @@ module.exports = {
             userName: req.body.userName,
             profileImg: req.body.profileImg,
             content: req.body.content,
-            timeStamp: Date.now(),
+            timeStamp: new Date(),
             clanName: req.body.clanName
         })
             .then(res.json({ postCreated: true }))
@@ -61,7 +61,8 @@ module.exports = {
             userName: req.body.userName,
             profileIMG: req.body.profileIMG,
             postID: req.body.postID,
-            body: req.body.body
+            body: req.body.body,
+            timeStamp: new Date()
         })
             .then(comment => {
                 db.Post.findOneAndUpdate({ _id: req.body.postID },{$inc : {numComments: 1}})

@@ -21,15 +21,17 @@ const Notifications = props => {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Notifications
+          <i class="fa fa-bell"></i> Notifications
         </button>
         <div
           className="dropdown-menu dropdown-menu-right"
           aria-labelledby="dropdownMenuButton"
         >
+          
           {props.notifications.map(noti => {
             return (
               <Notification
+                notificationClickHandler={props.notificationClickHandler}
                 key={noti.id}
                 id={noti.id}
                 update={noti.update}

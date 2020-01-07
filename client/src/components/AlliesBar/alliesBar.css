@@ -2,4 +2,12 @@
     overflow: auto;
     height: 65;
     white-space: nowrap;
+    margin: auto;
+    width: 97%;
+    /* padding: 10px; */
+    /* margin-top: 5rem; */
+    margin-left: 0rem;
+    /* border: 1px solid #532886 ;
+    border-radius: 1%; */
+   
 }

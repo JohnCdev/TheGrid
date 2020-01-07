@@ -8,10 +8,12 @@ import Notifications from "../Notifications/Notifications";
 import API from "../../utils/API";
 import Media from 'react-media';
 
-const Nav = () => {
+const Nav = (props) => {
   const { isAuthenticated, userData } = useContext(AuthContext);
 
   const [notifications, setNotifications] = useState([]);
+
+  const linkHandler = props.notificationClickHandler ? props.notificationClickHandler : () => '';
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -32,6 +34,7 @@ const Nav = () => {
     const currentLink = isAuthenticated ? `/user-profile/${userData.userName}` : "/";
 
     return (
+      <div onClick={() => linkHandler(userData.userName)}>
       <Link to={currentLink} className="navbar-brand">
         <img
           src="https://i.ibb.co/wyZcs2t/icon.png"
@@ -39,6 +42,7 @@ const Nav = () => {
           alt="Grid Icon"
         />
       </Link>
+     </div>
     );
   };
 
@@ -78,14 +82,22 @@ const Nav = () => {
           }
         </Media>
         {/* Switch || to && to check to auth state for notifications */}
-        {isAuthenticated && <Notifications notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
-        <Link to="/profile">
-          {isAuthenticated && <ProfileIcon profileImg={userData.profileImg} large={true} />}
-        </Link>
-        <LogInOutBtn />
+        {isAuthenticated && <Notifications notificationClickHandler={props.notificationClickHandler} notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
+        <Media queries={{ small: { maxWidth: 599 } }}>
+          {matches =>
+            matches.small ? (
+              null
+            ) : (
+                <Link to="/profile">
+                  {isAuthenticated && <ProfileIcon profileImg={userData.profileImg} large={true} />}
+                </Link>
+              )
+          }
+          </Media>
+          <LogInOutBtn />
       </nav>
     </div>
-  );
-};
-
-export default Nav;
+      );
+    };
+    
+    export default Nav;

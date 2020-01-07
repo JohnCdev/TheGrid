@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../components/Form/Form";
 import API from "../utils/API";
-import { Container } from "../components/Grid/Grid";
+import { Container, Row, Col } from "../components/Grid/Grid";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Nav from "../components/Nav/Nav";
 import { Redirect } from 'react-router';
@@ -67,13 +67,6 @@ export default class EditProfile extends Component {
         API.getProfile({
             userName: this.state.userName
         })
-
-        // battleNetIGN: "",
-        // epicIGN: "",
-        // originIGN: "",
-        // profileImg: "",
-        // addGame: "",
-        // favGames: [],
             .then(res => {
                 const user = res.data.data[0]
                 this.setState({
@@ -98,15 +91,6 @@ export default class EditProfile extends Component {
     handleFormSubmit = event => {
         const { userData,logInFunction } = this.context;
         event.preventDefault();
-
-        // steamIGN: user.steamIGN,
-        // discordIGN: user.discordIGN,
-        // battleNetIGN: user.battleNetIGN,
-        // epicIGN: user.epicIGN,
-        // originIGN: user.originIGN,
-        // profileIMG: user.profileIMG,
-        // favGames: user.favGames
-        console.log(this.state)
         API.updateProfile({
             userName: this.state.userName,
             firstName: this.state.firstName,
@@ -120,14 +104,13 @@ export default class EditProfile extends Component {
             originIGN: this.state.originIGN,
             profileIMG: this.state.profileIMG,
             favGames: this.state.favGames,
-            lastUpdated: Date.now()
+            lastUpdated: new Date()
         }).then(res => {
 
             const user = {
                 user: userData
             }
             const client = user.user
-            console.log()
             
             client.profileIMG = this.state.profileIMG;
             client.firstName = this.state.firstName;
@@ -142,7 +125,6 @@ export default class EditProfile extends Component {
 
             logInFunction(user)
 
-            console.log(res)
             this.setState({
                 submitSuccess: true
             })
@@ -215,12 +197,14 @@ export default class EditProfile extends Component {
             <>
             <Nav />
             <main>
-                <Container>
-                    <Jumbotron>
-                        <Header headerText="Edit Profile" />
-                    </Jumbotron>
+            <Container className="mt-4">
+
+                        <Header headerText="Edit Profile" display={false} />
+                    <Row>
+                    <div className="col-sm-12 col-md-6 offset-md-3">
+
                     <form onSubmit={this.handleFormSubmit}>
-                        <h3>Profile Information</h3>
+                        <h3><i class="fa fa-pencil"></i> Edit Profile</h3>
                         <label htmlFor="firstName">First Name</label>
                         <Input
                             value={this.state.firstName}
@@ -261,15 +245,8 @@ export default class EditProfile extends Component {
                             pattern=".{2,}"
                             title="Enter a valid value"
                         />
-                        {/* <label htmlFor="profileImg">Chose a Profile Image</label>
-                        <Input
-                            value={this.state.profileImg}
-                            onChange={this.handleInputChange}
-                            id="profileImg"
-                            name="profileImg"
-                        /> */}
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
-                        <h3>Game Services User Names</h3>
+                        <h3><i class="fa fa-pencil"></i> Game Services User Names</h3>
                         <label htmlFor="steamIGN">Steam Name</label>
                         <Input
                             value={this.state.steamIGN}
@@ -307,7 +284,7 @@ export default class EditProfile extends Component {
                         />
                         <hr style={{ 'borderColor': '#e2e2e2' }} />
 
-                        <h3>Your Top Games</h3>
+                        <h3><i class="fa fa-pencil"></i> Your Top Games</h3>
                         <label htmlFor="addGame">Your Favorite Games</label>
                         <Input
                             value={this.state.addGame}
@@ -330,6 +307,7 @@ export default class EditProfile extends Component {
                                 );
                             })}
                         </ol>
+                        
                         <hr />
 
                         <h3>Update Your Profile Picture</h3>
@@ -372,7 +350,11 @@ export default class EditProfile extends Component {
                         </FormBtn>
                     </form>
                     {this.state.submitSuccess ? <SuccessMessage success={true}/> : null}
-                </Container>
+                    </div>
+
+                    </Row>
+
+                    </Container>
             </main>
             </>
         )

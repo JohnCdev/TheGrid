@@ -17,10 +17,9 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
                 userName: userData.userName,
                 profileImg: userData.profileImg,
                 content: post,
-                timeStamp: Date.now(),
+                timeStamp: new Date(),
                 clanName: "",
             }).then(data => {
-                console.log(data)
                 setPost('')
                 reloadPosts()
             })
@@ -30,13 +29,11 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
                 userName: userData.userName,
                 profileImg: userData.profileImg,
                 content: post,
-                timeStamp: Date.now(),
+                timeStamp: new Date(),
                 clanName: name
 
             })
                 .then(data => {
-                    console.log(name)
-                    console.log(data)
                     setPost('')
                     reloadPosts()
                 })
@@ -66,7 +63,7 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
             
             :
             <form id="postBackground" onSubmit={handlePostSubmit}>
-                <label id="postTitle" htmlFor="postComment">Create Post</label>
+                <label id="postTitle" htmlFor="postComment"><i class="fa fa-pencil"></i> Create Post</label>
                 <TextArea
                     id="postComment"
                     name="postComment"

@@ -10,11 +10,14 @@ import Header from "../components/Header/Header";
 import { AuthContext } from "../context/AuthContext";
 import PostForm from "../components/PostForm/PostForm";
 import Feed from "../components/Feed/Feed";
+import Brand from "../images/Logos/grid.png";
+
+
+
 
 class ViewUserProfile extends Component {
   static contextType = AuthContext;
 
-  //initial state
   state = {
     _id: "",
     currentCity: "",
@@ -37,43 +40,43 @@ class ViewUserProfile extends Component {
     friendRenderContext: ""
   };
 
-  componentDidMount = event => {
+  loadProfile = userProfile => {
     const { userData } = this.context;
-    const profile = this.props.match.params.userProfile;
+    const profile = userProfile || this.props.match.params.userProfile;
     API.getUserProfile(profile, { client: userData.userName }).then(res => {
       let friendContext;
       const userProfile = res.data.data[0];
 
-      const   setTheState = (obj, friendContextValue) => {
+      const setTheState = (obj, friendContextValue) => {
 
         //if(friendContextValue === 'friend' || profile === userData.userName){
-          this.setState({
-            _id: obj._id,
-            currentCity: obj.currentCity,
-            firstName: obj.firstName,
-            lastName: obj.lastName,
-            userName: obj.userName,
-            age: obj.age,
-            friendList: obj.friendList,
-            sentFriendRequests: obj.sentFriendRequests,
-            receivedFriendRequests: obj.receivedFriendRequests,
-            friendContext: friendContext,
-            profileImg: obj.profileIMG,
-            favGames: obj.favGames,
-            steamIGN: obj.steamIGN,
-            discordIGN: obj.discordIGN,
-            battleNetIGN: obj.battleNetIGN,
-            epicIGN: obj.epicIGN,
-            originIGN: obj.originIGN,
-            friendRenderContext: friendContextValue
-          });
+        this.setState({
+          _id: obj._id,
+          currentCity: obj.currentCity,
+          firstName: obj.firstName,
+          lastName: obj.lastName,
+          userName: obj.userName,
+          age: obj.age,
+          friendList: obj.friendList,
+          sentFriendRequests: obj.sentFriendRequests,
+          receivedFriendRequests: obj.receivedFriendRequests,
+          friendContext: friendContext,
+          profileImg: obj.profileIMG,
+          favGames: obj.favGames,
+          steamIGN: obj.steamIGN,
+          discordIGN: obj.discordIGN,
+          battleNetIGN: obj.battleNetIGN,
+          epicIGN: obj.epicIGN,
+          originIGN: obj.originIGN,
+          friendRenderContext: friendContextValue
+        });
 
       };
 
       if (userProfile) {
         const { userData } = this.context;
         const profile = this.props.match.params.userProfile;
-        
+
         switch (true) {
           case userProfile.friendList.includes(userData.userName) || profile === userData.userName:
             friendContext = "friend";
@@ -96,6 +99,10 @@ class ViewUserProfile extends Component {
         this.setState({ _id: null });
       }
     });
+  }
+
+  componentDidMount = event => {
+    this.loadProfile()
   };
 
   reloadPosts = () => {
@@ -115,13 +122,6 @@ class ViewUserProfile extends Component {
   render() {
     // need links for it to work first (discover page)
     const { isAuthenticated } = this.context;
-    // if (!isAuthenticated) {
-    //   return <Redirect to='/log-in' />
-    // }
-
-    // console.log(this.state)
-
-    //this.setState({friendContext})
     const helloWorld = (command, value) => {
       switch (command) {
         case "request-friend":
@@ -162,7 +162,7 @@ class ViewUserProfile extends Component {
 
     return this.state._id === null ? (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <Header headerText={404} />
         <Jumbotron>
           <h1>User Not Found</h1>
@@ -175,24 +175,25 @@ class ViewUserProfile extends Component {
       </>
     ) : this.state.friendRenderContext === "friend" ? (
       <>
-        <Nav />
+        <Nav notificationClickHandler={this.loadProfile} />
         <main>
           <Container className="mt-4">
             <Row>
               <div className="cold-sm-12 col-md-3">
-                <div
-                  style={{ width: "100%", height: "250px", textAlign: "left" }}
+                <div style={{ width: "100%", height: "200px", textAlign: "center" }}
                 >
-                  <Header headerText={`${this.state.userName}`} />
                   <ProfilePicture
                     location={this.state.currentCity}
                     age={this.state.age}
                     profileImg={this.state.profileImg}
                   />
-                </div>
+                  </div>
+                  <div style={{ width: "100%", height: "15", textAlign: "center" }}
+                  >
+                    <Header headingLevel={3} headerText={`${this.state.userName}`} />
+                  </div>
+                  <hr />
                 <div style={{'wordWrap':'break-word'}}>
-                  {/* <h3>Latest Status Update?</h3> */}
-                  {/* <h3>Last logged in?</h3> */}
                   {this.state.steamIGN !== "" ? (
                     <>
                       <h4>{`Steam: ${this.state.steamIGN}`}</h4>
@@ -241,6 +242,7 @@ class ViewUserProfile extends Component {
                 />
               </div>
               <div className="col-sm-12 col-md-9">
+
                 <section className="rounded pt-3 pl-1 pr-1 pb-1">
                   {this.state.userFeed.length > 0 ? (
                     <Feed
@@ -249,13 +251,13 @@ class ViewUserProfile extends Component {
                       name={this.state.userName}
                     />
                   ) : (
-                    <h2
-                      style={{
-                        backgroundColor: "#3c4042",
-                        textAlign: "center"
-                      }}
-                    >{`${this.state.userName} has no feed. (Yet!)`}</h2>
-                  )}
+                      <p
+                        style={{
+                          backgroundColor: "#3c4042",
+                          textAlign: "center"
+                        }}
+                      >{`${this.state.userName} has no feed. (Yet!)`}</p>
+                    )}
                 </section>
               </div>
             </Row>
@@ -263,33 +265,37 @@ class ViewUserProfile extends Component {
         </main>
       </>
     ) : (
-      <>
-        <Nav />
-        <main>
-          <Container className="mt-4">
-            <Row>
-              <div className="cold-sm-12 col-md-3">
-                <div
-                  style={{ width: "100%", height: "250px", textAlign: "left" }}
-                >
-                  <Header headerText={`${this.state.userName}`} />
-                  <ProfilePicture
-                    location={this.state.currentCity}
-                    age={this.state.age}
-                    profileImg={this.state.profileImg}
-                  />
-                </div>
-                <AddFriend
-                  friendContext={this.state.friendContext}
-                  viewedProfile={this.state.userName}
-                  helloWorld={helloWorld}
-                />
-              </div>
-            </Row>
-          </Container>
-        </main>
-      </>
-    );
+          <>
+            <Nav />
+            <main>
+              <Container className="mt-4">
+                <Row>
+                  <div className="cold-sm-12 col-md-3">
+                    <div
+                      style={{ width: "100%", height: "200px", textAlign: "center" }}
+                    >
+                      <ProfilePicture
+                        location={this.state.currentCity}
+                        age={this.state.age}
+                        profileImg={this.state.profileImg}
+                      />
+                    </div>
+                    <div style={{ width: "100%", height: "10", textAlign: "center" }}
+                    >
+                      <Header headingLevel={3} headerText={`${this.state.userName}`}
+                      />
+                    </div>
+                    <AddFriend
+                      friendContext={this.state.friendContext}
+                      viewedProfile={this.state.userName}
+                      helloWorld={helloWorld}
+                    />
+                  </div>
+                </Row>
+              </Container>
+            </main>
+          </>
+        );
   }
 }
 

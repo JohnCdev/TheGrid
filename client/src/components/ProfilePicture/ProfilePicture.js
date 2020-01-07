@@ -11,6 +11,8 @@ import Default8 from "../../images/profileImages/Default8.jpg";
 import Default9 from "../../images/profileImages/Default9.jpg";
 import Default10 from "../../images/profileImages/Default10.jpg";
 
+
+
 let imgRef = "";
 
 const reRender = profileImg => {
@@ -47,11 +49,6 @@ export default function ProfilePicture({ location, age, profileImg }) {
   return (
     <div className="ProfilePicture">
       <img className="img-thumbnail" src={imgRef} />
-      {/* <ul>
-        <li>Status: Offline</li>
-        <li>Location: {location}</li>
-        <li>Age: {age}</li>
-      </ul> */}
     </div>
   );
 }
