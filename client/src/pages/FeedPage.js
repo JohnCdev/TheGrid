@@ -64,9 +64,6 @@ const FeedPage = () => {
                 <Container className="mt-4">
                     <Row>
                         <div className="col-sm-12 col-md-7 offset-md-1">
-                            {/* <img src={InfoBoard} className="infoboard" /> */}
-
-
                             <Header headerText="Info Board" display={false} />
                             {feedLoading ?
                                 null
@@ -78,7 +75,7 @@ const FeedPage = () => {
                                 null
                             }
                             {feed.length === 0 && !feedLoading ?
-                                <h1>You have no feed</h1> :
+                                <h2>You have no feed</h2> :
                                 null
                             }
                         </div>

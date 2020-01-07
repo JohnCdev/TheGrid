@@ -7,7 +7,7 @@ export default function LogInOutBtn() {
   const { isAuthenticated, toggleAuth } = useContext(AuthContext);
   const authenticationStatus = !isAuthenticated ? (
     <button className="btn my-2 my-sm-0">
-      <Link to="/log-in"><i class="fa fa-lock"></i> Log In</Link>
+      <Link to="/log-in"><i className="fa fa-lock"></i> Log In</Link>
     </button>
   ) : (
       <button className="btn my-2 my-sm-0 logInOutBtn"
