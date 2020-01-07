@@ -23,7 +23,7 @@ const DiscoverPage = () => {
     return (
         <>
             <Nav />
-            <main style={{ "height": "100%", "marginTop": "50px" }}>
+            <main style={{ "height": "100%", "marginBottom": "50px", "marginTop": "50px" }}>
                 <Container>
                     <Row>
                         <div className="col-sm-12 col-md-6 offset-md-3">
