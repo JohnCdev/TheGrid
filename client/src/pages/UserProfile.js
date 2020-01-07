@@ -261,39 +261,6 @@ class ViewUserProfile extends Component {
         </main>
       </>
     ) : (
-<<<<<<< HEAD
-          <>
-            <Nav />
-            <main>
-              <Container className="mt-4">
-                <Row>
-                  <div className="cold-sm-12 col-md-3">
-                    <div
-                      style={{ width: "100%", height: "200px", textAlign: "center" }}
-                    >
-                      <ProfilePicture
-                        location={this.state.currentCity}
-                        age={this.state.age}
-                        profileImg={this.state.profileImg}
-                      />
-                    </div>
-                    <div style={{ width: "100%", height: "10", textAlign: "center" }}
-                    >
-                      <Header headingLevel={3} headerText={`${this.state.userName}`}
-                      />
-                    </div>
-                    <AddFriend
-                      friendContext={this.state.friendContext}
-                      viewedProfile={this.state.userName}
-                      helloWorld={helloWorld}
-                    />
-                  </div>
-                </Row>
-              </Container>
-            </main>
-          </>
-        );
-=======
       <>
         <Nav notificationClickHandler={this.loadProfile} />
         <main>
@@ -321,7 +288,6 @@ class ViewUserProfile extends Component {
         </main>
       </>
     );
->>>>>>> d2e9a8124603b42adc32fe87e49c719d39b5d775
   }
 }
 

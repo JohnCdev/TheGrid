@@ -94,11 +94,6 @@ export default class SignUp extends Component {
               <div className="col-sm-12 col-md-5">
                 <Header headerText="Sign Up" display={false} />
                 <img src={SignUpTitle} className="signuptitle" />
-<<<<<<< HEAD
-=======
-              </Col>
-              <Col size="md-4">
->>>>>>> d2e9a8124603b42adc32fe87e49c719d39b5d775
                 <form onSubmit={this.handleFormSubmit}>
                   <h3>Account Information</h3>
                   <label htmlFor="userName">User Name</label>

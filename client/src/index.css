@@ -279,10 +279,12 @@ nav > button > a {
 
 
 .allies-header {
-    width: 100%;
+    width: 89%;
     color: #fff;
     background-color: #9c4efa;
     margin-top: 6rem;
+    margin-left: .75rem;
+    
 }
 
 
@@ -338,7 +340,7 @@ nav > button > a {
         background-color: #9c4efa;
         margin-top: 5rem;
     }
-    
+
     .LoginTitle {
         width: 50%;
         display: block;
@@ -354,6 +356,23 @@ nav > button > a {
         margin-right: auto;
     }
     
+    .signuptitle {
+        height: 75px;
+        width: 375px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      
+    }
+    .allies-header {
+        width: 97%;
+        color: #fff;
+        background-color: #9c4efa;
+        margin-left: 0rem;
+        margin-top: 6rem;
+
+        
+    }
     
   }
 
