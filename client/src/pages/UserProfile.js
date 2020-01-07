@@ -252,8 +252,6 @@ class ViewUserProfile extends Component {
                 />
               </div>
               <div className="col-sm-12 col-md-9">
-                <img src={Brand} className="brand" alignment="center" />
-                <hr />
 
                 <section className="rounded pt-3 pl-1 pr-1 pb-1">
                   {this.state.userFeed.length > 0 ? (
