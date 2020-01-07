@@ -23,6 +23,7 @@ export default class HomePage extends Component {
         return (
             <>
                 <Nav />
+                <main>
                 <Header headerText="Landing" display={false} />
                 <Container className="mt-4">
                     <Row>
@@ -61,6 +62,7 @@ export default class HomePage extends Component {
                     </Row>
 
                 </Container>
+                </main>
             </>
 
 

@@ -324,9 +324,13 @@ nav > button > a {
   @media only screen and (max-width: 768px) {
 
     .logo {
-        height: 450px;
-        width: 450px;
-        text-align: center;
+        height: 300px;
+        width: 300px;
+        display: block;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        margin-left: auto;
+        margin-right: auto;
     }
     .allies-header {
         width: 100%;
@@ -334,6 +338,7 @@ nav > button > a {
         background-color: #9c4efa;
         margin-top: 5rem;
     }
+    
     .LoginTitle {
         width: 50%;
         display: block;
@@ -341,6 +346,14 @@ nav > button > a {
         margin-right: auto;
     
     }
+    .brand {
+        height: 109px;
+        width: 278px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
     
   }
 
