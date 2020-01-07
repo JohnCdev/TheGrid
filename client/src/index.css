@@ -266,8 +266,8 @@ nav > button > a {
 .signuptitle {
     height:100px;
     width: 500px;
-    /* margin-bottom: 10px;
-    margin-top: 10px; */
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 
@@ -378,18 +378,12 @@ nav > button > a {
         border: 1px solid #666;
         margin-bottom: 10px;
         box-shadow: 5px 4px 4px #202124;
-        /* padding-right: 4rem; */
-        /* margin-left: auto;
-        margin-right: auto; */
+        
     }
     .discoverListItem > div {
         display: block;
         width: 30%;
-        /* text-align: center; */
-
-        /* padding-top: 15px; */
         margin-left: 30%;
-        /* margin-right: 33%; */
     }
     span.clanName {
       display: block;
@@ -397,7 +391,7 @@ nav > button > a {
     }
     
     .leave-clan {
-        margin-top: 10px;
+        margin-top: 30px;
         display: block;
         margin-right: auto;
         margin-left: auto;
@@ -406,7 +400,7 @@ nav > button > a {
     }
   
     .join-clan {
-        margin-top: 10px;
+        margin-top: 30px;
         display: block;
         margin-right: auto;
         margin-left: auto;
@@ -419,6 +413,7 @@ nav > button > a {
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 10px;
+
 
     }
 
@@ -451,6 +446,6 @@ nav > button > a {
     }
     
     
-/* } */
+
 
   

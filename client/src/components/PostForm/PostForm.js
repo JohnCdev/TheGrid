@@ -57,7 +57,7 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
     }
 
     return (
-        <div style={{ 'marginBottom': '60px' }}>
+        <div style={{ 'marginBottom': '60px',  'marginTop': '60px'}}>
             {!makePost ?
         <button className="btn btn-success make-post" onClick={handleToggle}>{makePost ? "Send It!!" : "Make a Post"}</button>
             
