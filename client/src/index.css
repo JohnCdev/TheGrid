@@ -287,6 +287,10 @@ nav > button > a {
     
 }
 
+.game-button {
+    background-color: transparent !important;
+    border: 0px;
+}
 
 @keyframes spinner-border {
     to { transform: rotate(360deg); }

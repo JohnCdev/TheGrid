@@ -300,8 +300,8 @@ export default class EditProfile extends Component {
                                 return (
                                     <li key={i} className="mb-2">
                                         {game}
-                                        <button className="btn btn-primary" type="button" id={i} onClick={this.deleteGame}>
-                                            X
+                                        <button className="btn btn-primary game-button" type="button" id={i} onClick={this.deleteGame}>
+                                        <i class="fa fa-trash"></i>
                                         </button>
                                     </li>
                                 );
