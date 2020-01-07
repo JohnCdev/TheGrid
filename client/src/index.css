@@ -421,6 +421,16 @@ nav > button > a {
         margin-bottom: 10px;
 
     }
+
+    .picGrid img {
+        height: 26%;
+        width: 26%;
+        margin: 10px;
+        border-Radius: 10px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
   }
 
 /* Smartphones (portrait and landscape) ----------- */
