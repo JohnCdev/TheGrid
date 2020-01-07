@@ -1,11 +1,10 @@
 ![GitHub Logo](/client/src/images/Logos/grid.png)
-Format: ![Alt Text](https://github.com/JohnCdev/Project-3)
-## the Grid
+## The Grid
 The Grid is a social hub for the gaming community. You can sign up, create a profile, 
 add allies, create/join clans, share posts, and comment on them. 
 
 ### Built With
-M,E,R,N  | Description
+M E R N  | Description
 ------------- | -------------
 Mongo  | a cross-platform document-oriented database program.
 Express  | designed for building web applications and APIs.
@@ -23,7 +22,7 @@ npm i
 ```
 ### Deployed
 Using [Heroku](https://www.heroku.com/).
-[the-grid](https://www.heroku.com/)https://the-grid.herokuapp.com/).
+[the-grid](https://the-grid.herokuapp.com/).
 
 ## Authors
 * John Carver - [github](https://github.com/JohnCdev).
@@ -38,4 +37,11 @@ Using [Heroku](https://www.heroku.com/).
 ## Acknowledgements
 * [Bootstrap](https://getbootstrap.com/).
 * [react-media](https://www.npmjs.com/package/react-media).
-* [reac-moment](https://getbootstrap.com/).
+* [react-moment](https://www.npmjs.com/package/react-moment).
+* [react-helmet]().
+* [react-router](https://www.npmjs.com/package/mongoose).
+* [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken).
+* [bcrypt](https://www.npmjs.com/package/bcrypt).
+* [axios](https://www.npmjs.com/package/axios).
+* [mongoose](https://www.npmjs.com/package/mongoose).
+* [mongoose](https://www.npmjs.com/package/mongoose).

@@ -48,7 +48,9 @@ const FindAlliesSearch = () => {
                         return (
                             <div className="discoverListItem rounded" key={result._id}>
                                 <div style={{ 'textAlign': 'right', 'marginRight': '1em' }}>
-                                    <ProfileIcon large={true} profileImg={result.profileImage} />
+                                    <Link to={`/user-profile/${result.userName}`}>
+                                        <ProfileIcon large={true} profileImg={result.profileImage} />
+                                    </Link>
                                 </div>
                                 <div style={{ 'textAlign': 'left' }}>
                                     <span>{result.userName}</span>

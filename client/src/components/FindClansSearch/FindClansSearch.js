@@ -46,7 +46,9 @@ const FindClansSearch = () => {
                         return (
                             <div className="discoverListItem rounded" key={result._id}>
                                 <div style={{ 'textAlign': 'right', 'marginRight': '1em' }}>
-                                    <ProfileIcon large={true} profileImg={result.profileImg} />
+                                    <Link to={`/clans/${result.clanReferenceName}`}>
+                                        <ProfileIcon large={true} profileImg={result.profileImg} />
+                                    </Link>
                                 </div>
                                 <div style={{ 'textAlign': 'left' }}>
                                     <span>{result.clanName}</span>
