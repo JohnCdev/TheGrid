@@ -30,10 +30,11 @@ export default class HomePage extends Component {
                             <img src={Brand} className="brand" />
 
                             <Header headerText="">
+
                                 <h3>Discover the Grid</h3>
                                 <hr />
                                 <p>Recruit Allies<br />
-                                    Add your closest friends and find new ones. Share your strats, builds, wins, memes, and all things worthy. Use your profile to show off your favorite games, and various gaming usernames to join up!</p>
+                                    Add your closest friends and find new ones. Share your strats, builds, wins, memes, and all things worthy. Use your profile to show off your favorite games, and gaming IGNs to group up!</p>
                                 <p>Clans!<br />
                                     Create or find clans with popular game interest with close allies or vast war parties to share everything!</p>
                                 <p>Info Board<br />
