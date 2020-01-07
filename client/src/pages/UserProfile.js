@@ -284,13 +284,17 @@ class ViewUserProfile extends Component {
                 <Row>
                   <div className="cold-sm-12 col-md-3">
                     <div
-                      style={{ width: "100%", height: "250px", textAlign: "left" }}
+                      style={{ width: "100%", height: "200px", textAlign: "center" }}
                     >
-                      <Header headerText={`${this.state.userName}`} />
                       <ProfilePicture
                         location={this.state.currentCity}
                         age={this.state.age}
                         profileImg={this.state.profileImg}
+                      />
+                    </div>
+                    <div style={{ width: "100%", height: "10", textAlign: "center" }}
+                    >
+                      <Header headingLevel={3} headerText={`${this.state.userName}`}
                       />
                     </div>
                     <AddFriend

@@ -89,9 +89,8 @@ export default function LogIn() {
         <>
             <Nav />
             <main style={{ "height": "50%", "marginTop": "100px" }}>
-
-            <Header headerText="Log In" display={false} />
             <Container className="mt-4">
+            <Header headerText="Log-In" display={false} />
                     <Row>
                     <div className="col-sm-12 col-md-4 offset-md-4">
                             <img src={LoginTitle} className="LoginTitle" />

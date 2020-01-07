@@ -317,7 +317,7 @@ nav > button > a {
 
 
   #infoBoard h1 {
-    background-color: #202124;
+    background-color: transparent !important;
   }
 
 
