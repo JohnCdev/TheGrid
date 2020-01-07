@@ -38,10 +38,9 @@ Using [Heroku](https://www.heroku.com/).
 * [Bootstrap](https://getbootstrap.com/).
 * [react-media](https://www.npmjs.com/package/react-media).
 * [react-moment](https://www.npmjs.com/package/react-moment).
-* [react-helmet]().
-* [react-router](https://www.npmjs.com/package/mongoose).
+* [react-helmet](https://www.npmjs.com/package/react-helmet).
+* [react-router](https://www.npmjs.com/package/react-router).
 * [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken).
 * [bcrypt](https://www.npmjs.com/package/bcrypt).
 * [axios](https://www.npmjs.com/package/axios).
-* [mongoose](https://www.npmjs.com/package/mongoose).
 * [mongoose](https://www.npmjs.com/package/mongoose).
