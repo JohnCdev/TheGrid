@@ -44,7 +44,7 @@ const CreateClan = () => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        const payLoad = { ...formData, clanFounder: userData.userName };
+        const payLoad = { ...formData, clanName: formData.clanName.trim() ,clanFounder: userData.userName };
         const token = userData.token;
 
         API.createClan(payLoad, token).then((res) => {
