@@ -298,7 +298,7 @@ export default class EditProfile extends Component {
                         <ol>
                             {this.state.favGames.map((game, i) => {
                                 return (
-                                    <li key={i} className="mb-2">
+                                    <li key={i} className="mb-2" style={{'wordBreak': 'break-word'}}>
                                         {game}
                                         <button className="btn btn-primary game-button" type="button" id={i} onClick={this.deleteGame}>
                                         <i class="fa fa-trash"></i>
