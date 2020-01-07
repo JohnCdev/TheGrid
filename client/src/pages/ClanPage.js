@@ -165,7 +165,7 @@ class ClanPage extends Component {
                 <hr />
                 <h4>{`Active Timezone: ${this.state.clanTimeZone}`}</h4>
                 <hr />
-                {!this.state.clanDiscord === "" ? (
+                {this.state.clanDiscord !== "" ? (
                   <>
                     <h4>{`Discord: ${this.state.clanDiscord}`}</h4>
                     <hr />
