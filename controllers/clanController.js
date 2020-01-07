@@ -57,7 +57,6 @@ module.exports = {
             clanProfileImage: clan[0].clanProfileImage
           };
           clanListReturn.push(returnItem);
-          console.log(clanListReturn)
         })
         .catch(err => console.log(err));
     }
@@ -98,7 +97,6 @@ module.exports = {
       ).then(data => {
         db.Profile.find({ userName }).then(data => {
           const newClans = data[0].clans.filter(clan => clan !== clanName);
-          console.log("new clans: " + newClans);
           db.Profile.updateOne(
             { userName },
             { $set: { clans: newClans } }
