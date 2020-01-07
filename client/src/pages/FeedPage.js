@@ -73,7 +73,7 @@ const FeedPage = () => {
                             }
                         </div>
                         <div className="col-sm-12 col-md-3">
-                            <div class="card-header allies-header"><i class="fa fa-users"></i> Allies</div>
+                            <div class="card-header allies-header"><i className="fa fa-users"></i> Allies</div>
 
                             <AlliesBar />
 

@@ -21,7 +21,7 @@ const Notifications = props => {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <i class="fa fa-bell"></i> Notifications
+          <i className="fa fa-bell"></i> Notifications
         </button>
         <div
           className="dropdown-menu dropdown-menu-right"

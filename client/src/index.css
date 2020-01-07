@@ -391,13 +391,56 @@ nav > button > a {
         margin-left: 30%;
         /* margin-right: 33%; */
     }
-  span.clanName {
+    span.clanName {
       display: block;
       text-align: right;
     }
+    
+    .leave-clan {
+        margin-top: 10px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 10px;
+
+    }
   
+    .join-clan {
+        margin-top: 10px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 10px;
+
+    }
+
+    .make-post {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 10px;
+
+    }
   }
 
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 359px){
 
+    .logInOutBtn {
+            margin-left: 10px;
+            height: 30px;
+            width: 59px;
+            padding: 1px;
+            padding-bottom: 30px;
+        }
+
+    nav > button > a {
+        font-size: .6rem;
+        color: #000;
+        }
+    }
+    
+    
+/* } */
 
   

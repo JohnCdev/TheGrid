@@ -59,11 +59,11 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
     return (
         <div style={{ 'marginBottom': '60px' }}>
             {!makePost ?
-        <button className="btn btn-success" onClick={handleToggle}>{makePost ? "Send It!!" : "Make a Post"}</button>
+        <button className="btn btn-success make-post" onClick={handleToggle}>{makePost ? "Send It!!" : "Make a Post"}</button>
             
             :
             <form id="postBackground" onSubmit={handlePostSubmit}>
-                <label id="postTitle" htmlFor="postComment"><i class="fa fa-pencil"></i> Create Post</label>
+                <label id="postTitle" htmlFor="postComment"><i className="fa fa-pencil"></i> Create Post</label>
                 <TextArea
                     id="postComment"
                     name="postComment"

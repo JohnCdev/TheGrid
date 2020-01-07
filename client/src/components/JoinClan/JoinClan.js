@@ -9,7 +9,7 @@ export default function JoinClan(props) {
     button = !member ? (
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary join-clan"
         onClick={() => props.joinClan()}
       >
         Join Clan
@@ -17,7 +17,7 @@ export default function JoinClan(props) {
     ) : (
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary leave-clan"
         onClick={() => props.leaveClan()}
       >
         Leave Clan
