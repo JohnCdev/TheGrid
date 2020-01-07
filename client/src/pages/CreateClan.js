@@ -171,7 +171,7 @@ const CreateClan = () => {
                     <ul>
                         {formData.clanGames ? formData.clanGames.map((game, i) => {
                             return (
-                                <li key={i} className="mb-2">
+                                <li key={i} className="mb-2" style={{'wordBreak': 'break-word'}}>
                                     {game}
                                     <button className="btn btn-primary" type="button" id={i} onClick={deleteGame}>
                                         X
