@@ -79,13 +79,21 @@ const Nav = (props) => {
         </Media>
         {/* Switch || to && to check to auth state for notifications */}
         {isAuthenticated && <Notifications notificationClickHandler={props.notificationClickHandler} notifications={notifications} markNoteAsRead={markNoteAsRead} className="mr-auto" />}
-        <Link to="/profile">
-          {isAuthenticated && <ProfileIcon profileImg={userData.profileImg} large={true} />}
-        </Link>
-        <LogInOutBtn />
+        <Media queries={{ small: { maxWidth: 599 } }}>
+          {matches =>
+            matches.small ? (
+              null
+            ) : (
+                <Link to="/profile">
+                  {isAuthenticated && <ProfileIcon profileImg={userData.profileImg} large={true} />}
+                </Link>
+              )
+          }
+          </Media>
+          <LogInOutBtn />
       </nav>
     </div>
-  );
-};
-
-export default Nav;
+      );
+    };
+    
+    export default Nav;
