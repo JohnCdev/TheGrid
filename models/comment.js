@@ -25,7 +25,6 @@ const CommentSchema = new Schema({
     timeStamp: {
         type: Date,
         required: true,
-        default: Date.now()
     }
 });
 

@@ -27,7 +27,7 @@ module.exports = {
             lastName: req.body.lastName,
             age: req.body.age,
             currentCity: req.body.currentCity,
-            lastUpdated: Date.now()
+            lastUpdated: new Date()
           })
             .then(/*res.json({ profileCreated: true })*/)
             .catch(err => console.log(err));

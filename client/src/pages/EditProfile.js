@@ -120,7 +120,7 @@ export default class EditProfile extends Component {
             originIGN: this.state.originIGN,
             profileIMG: this.state.profileIMG,
             favGames: this.state.favGames,
-            lastUpdated: Date.now()
+            lastUpdated: new Date()
         }).then(res => {
 
             const user = {
