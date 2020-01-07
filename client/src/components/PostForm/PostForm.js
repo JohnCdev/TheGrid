@@ -20,7 +20,6 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
                 timeStamp: new Date(),
                 clanName: "",
             }).then(data => {
-                console.log(data)
                 setPost('')
                 reloadPosts()
             })
@@ -35,8 +34,6 @@ const PostForm = ({ reloadPosts, clan = false, name }) => {
 
             })
                 .then(data => {
-                    console.log(name)
-                    console.log(data)
                     setPost('')
                     reloadPosts()
                 })
