@@ -19,8 +19,10 @@
     cursor: pointer;
     transform: scale(1.05);
 }
+
 p {
     color: #e1e1e1;
+
 }
 
 @media only screen and (max-width: 768px) {
