@@ -23,12 +23,12 @@ const DiscoverPage = () => {
     return (
         <>
             <Nav />
-            <main style={{ "height": "100%", "marginTop": "50px" }}>
+            <main style={{ "height": "100%", "marginBottom": "50px", "marginTop": "50px" }}>
                 <Container>
                     <Row>
                         <div className="col-sm-12 col-md-6 offset-md-3">
                             <Header headerText="Discover" display={false} />
-                            <button className="btn btn-success" onClick={handleToggle}>{pickSearch ? "Switch to Allies Switch" : "Switch to Clan Search"}</button>
+                            <button className="btn btn-success" onClick={handleToggle}>{pickSearch ? "Switch to Allies Search" : "Switch to Clan Search"}</button>
                             {!pickSearch ?
                                 <FindAlliesSearch />
                                 :
